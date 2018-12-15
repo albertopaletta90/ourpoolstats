@@ -13,20 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import oupoolstats.api.coinmarket.GetCoin;
-import oupoolstats.service.coin.CoinService;
+import oupoolstats.service.coin.CoinMarketService;
 import oupoolstats.service.user.UserOperration;
+import ourpoolstats.manager.ManagerCoin;
 import ourpoolstats.manager.ManagerDashboard;
 import ourpoolstats.manager.ManagerHome;
 import ourpoolstats.manager.ManagerLoginSignin;
 import ourpoolstats.model.Login;
 import ourpoolstats.model.User;
+import ourpoolstats.myenum.CryptoCurrency;
 
 @Controller
 public class LoginSigninController {
 
 	private UserOperration userOperration = new UserOperration();
 	private GetCoin getCoin = new GetCoin();
-	private CoinService coinService = new CoinService();
+	private CoinMarketService coinService = new CoinMarketService();
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute("SpringWeb")Login l,ModelMap model,HttpServletRequest request) {
@@ -36,6 +38,7 @@ public class LoginSigninController {
 		Login login = new Login();
 		login.setAllParameter(model);
 		if(userOperration.loginUser(login.getUsername(), login.getPassword())) {
+			ManagerCoin.getInstance().setCryptoCurrency(CryptoCurrency.COINMARKET);
 
 			if(ManagerLoginSignin.getInstance().isFirstLogin()) {
 				ManagerLoginSignin.getInstance().setFirstLogin(false);

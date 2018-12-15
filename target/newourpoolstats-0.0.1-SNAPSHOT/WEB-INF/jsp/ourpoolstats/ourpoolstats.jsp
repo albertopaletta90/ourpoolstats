@@ -1,3 +1,5 @@
+<%@page import="ourpoolstats.myenum.CryptoCurrency"%>
+<%@page import="ourpoolstats.manager.ManagerCoin"%>
 <%@page import="oupoolstats.api.coinmarket.GetCoin"%>
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
 <%@page import="ourpoolstats.multilingual.MultiLilingualDashboardController"%>
@@ -33,6 +35,7 @@
 	</div>
 	
 	<div class="viewDashboard">
+<%-- 	<%if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.COINMARKET){%> --%>
 		<table class="table table-striped">
  		<thead>
 		    <tr>
@@ -67,6 +70,7 @@
 		 <%}%>
  	 	</tbody>
 		</table>
+		<%-- <%}%> --%>
 	</div>
 	
 	
