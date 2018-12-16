@@ -28,6 +28,7 @@ ourpoolstats\query\QueryChat.class
 oupoolstats\api\cryptopia\remote\data\TradeHistory.class
 ourpoolstats\model\UserLog.class
 oupoolstats\service\coin\ICryptopiaService.class
+ourpoolstats\controller\Coin\CoinMarketController.class
 ourpoolstats\query\QueryUser.class
 oupoolstats\api\cryptopia\remote\data\Market.class
 oupoolstats\api\cryptopia\remote\CryptopiaClientException.class

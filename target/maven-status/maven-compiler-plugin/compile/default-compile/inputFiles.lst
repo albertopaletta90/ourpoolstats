@@ -25,6 +25,7 @@ C:\Users\Alberto\workspace2\newourpoolstats\src\main\java\oupoolstats\service\co
 C:\Users\Alberto\workspace2\newourpoolstats\src\main\java\oupoolstats\service\dashboard\IDashboardService.java
 C:\Users\Alberto\workspace2\newourpoolstats\src\main\java\oupoolstats\api\cryptopia\remote\CryptopiaClientException.java
 C:\Users\Alberto\workspace2\newourpoolstats\src\main\java\oupoolstats\api\cryptopia\remote\data\Balance.java
+C:\Users\Alberto\workspace2\newourpoolstats\src\main\java\ourpoolstats\controller\Coin\CoinMarketController.java
 C:\Users\Alberto\workspace2\newourpoolstats\src\main\java\oupoolstats\api\cryptopia\remote\data\OpenOrder.java
 C:\Users\Alberto\workspace2\newourpoolstats\src\main\java\oupoolstats\service\coin\ICoinMarketService.java
 C:\Users\Alberto\workspace2\newourpoolstats\src\main\java\oupoolstats\api\cryptopia\remote\data\enums\TradeType.java

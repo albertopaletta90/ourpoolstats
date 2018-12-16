@@ -195,11 +195,15 @@ body {
 	overflow: scroll;
 }
 
+.coinSelected {
+	position: absolute;
+	top: 20%;
+}
+
 .green {
 	color: green;
 }
 
 .red {
 	color: red;
-	
 }

@@ -34,8 +34,13 @@
 		<jsp:include page="../menu/ourpoolstats/menuOption.jsp"></jsp:include>
 	</div>
 	
+	<div class="coinSelected">
+		<jsp:include page="../menu/ourpoolstats/menuCoin.jsp"></jsp:include>
+	</div>
+	
 	<div class="viewDashboard">
-<%-- 	<%if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.COINMARKET){%> --%>
+	
+ 	<%if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.COINMARKET){%> 
 		<table class="table table-striped">
  		<thead>
 		    <tr>
@@ -70,7 +75,33 @@
 		 <%}%>
  	 	</tbody>
 		</table>
-		<%-- <%}%> --%>
+		
+		<%} if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.CRYPTOPIA){%>
+				<table class="table table-striped">
+ 		<thead>
+		    <tr>
+		      <th scope="col"><%=MultiLilingualDashboardController.getInstance().getSymbol() %></th>
+		      <th scope="col"><%=MultiLilingualDashboardController.getInstance().getNameCoin()%></th>
+		      <th scope="col"><%=MultiLilingualDashboardController.getInstance().getPriceUsd()%></th>
+		      <th scope="col"><%=MultiLilingualDashboardController.getInstance().getPriceBtc()%></th>
+		      <th scope="col"><%=MultiLilingualDashboardController.getInstance().getMarketcap()%></th>
+		      <th scope="col"><%=MultiLilingualDashboardController.getInstance().getPerc1H()%></th>
+		      <th scope="col"><%=MultiLilingualDashboardController.getInstance().getPerc24H()%></th>
+		    </tr>
+		 </thead>
+  		<tbody>
+  		
+  		<% for(int i = 0; i < ManagerDashboard.getInstance().getListCoin().size(); i++){%>
+	    	<tr>
+		      <th scope="row">
+		      <img src="<%=GetCoin.getIcon(ManagerCoin.getInstance().getCryptopiaCoin().get(i).getName())%>" width="30"></img></th>		  
+			  <td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getName()%></td>
+			  
+		    </tr>
+		 <%}%>
+ 	 	</tbody>
+		</table>
+		<%}%>
 	</div>
 	
 	

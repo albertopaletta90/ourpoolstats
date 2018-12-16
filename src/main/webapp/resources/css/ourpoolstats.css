@@ -189,10 +189,15 @@ body {
 
 .viewDashboard {
 	position: absolute;
-	top: 30%;
+	top: 15%;
 	width: 95%;
 	left: 2%;
 	overflow: scroll;
+}
+
+.coinSelected {
+	position: absolute;
+	top: 20%;
 }
 
 .green {
@@ -201,5 +206,4 @@ body {
 
 .red {
 	color: red;
-	
 }

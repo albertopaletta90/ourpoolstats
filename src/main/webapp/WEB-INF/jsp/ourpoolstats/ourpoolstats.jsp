@@ -75,6 +75,7 @@
 		 <%}%>
  	 	</tbody>
 		</table>
+		
 		<%} if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.CRYPTOPIA){%>
 				<table class="table table-striped">
  		<thead>
@@ -93,19 +94,9 @@
   		<% for(int i = 0; i < ManagerDashboard.getInstance().getListCoin().size(); i++){%>
 	    	<tr>
 		      <th scope="row">
-		      <img src="<%=GetCoin.getIcon(ManagerCoin.getInstance().getCryptopiaCoin().get(i).getName())%>" width="30"></img></th></input>		  
+		      <img src="<%=GetCoin.getIcon(ManagerCoin.getInstance().getCryptopiaCoin().get(i).getName())%>" width="30"></img></th>		  
 			  <td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getName()%></td>
-			  <td><%=ManagerDashboard.getInstance().getListCoin().get(i).getPrice_usd()%></td>
-			  <td><%=ManagerDashboard.getInstance().getListCoin().get(i).getPrice_btc()%></td>
-		      <td><%=ManagerDashboard.getInstance().getListCoin().get(i).getMarket_cap_usd()%></td>
-		      <%if(ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_1h()>=0){%> 
-		     	<td class="green"><%=ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_1h()%></td><%}%>
-		     <%if(ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_1h()<0){%> 
-		     	<td class="red"><%=ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_1h()%></td><%}%>
-		     	<%if(ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_24h()>=0){%>
-		      		<td class="green"><%=ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_24h()%></td><%}%>
-		      	<%if(ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_24h()<0){%>
-		      		<td class="red"><%=ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_24h()%></td><%}%>
+			  
 		    </tr>
 		 <%}%>
  	 	</tbody>
