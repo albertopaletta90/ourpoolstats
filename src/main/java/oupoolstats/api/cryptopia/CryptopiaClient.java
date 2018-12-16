@@ -240,6 +240,7 @@ public class CryptopiaClient {
 			list.add(tmp);
 
 		}
+		createMapCoinCryptopia();
 
 		return list;
 
