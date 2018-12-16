@@ -52,7 +52,7 @@ public class LoginSigninController {
 			request.getSession().setAttribute("userType", userType);
 			request.getSession().setAttribute("username", login.getUsername());
 			try {
-				CryptopiaService.getInstance().initCoin();
+				ManagerCoin.getInstance().setCryptopiaCoin(CryptopiaService.getInstance().initCoin());
 			}catch (Exception e) {
 				return "ourPoolStats/cryptopia";
 			}

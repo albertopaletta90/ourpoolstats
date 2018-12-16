@@ -5,11 +5,12 @@ import ourpoolstats.myenum.CryptoCurrency;
 import java.util.List;
 
 import oupoolstats.api.cryptopia.remote.data.Currency;
+import oupoolstats.api.cryptopia.remote.data.TradePair;
 public class ManagerCoin {
 
 	private static ManagerCoin instance;
 	private CryptoCurrency cryptoCurrency;
-	private List<Currency>cryptopiaCoin;
+	private List<TradePair>cryptopiaCoin;
 	
 
 	private ManagerCoin() {}
@@ -31,11 +32,11 @@ public class ManagerCoin {
 		this.cryptoCurrency = cryptoCurrency;
 	}
 
-	public List<Currency> getCryptopiaCoin() {
+	public List<TradePair> getCryptopiaCoin() {
 		return cryptopiaCoin;
 	}
 
-	public void setCryptopiaCoin(List<Currency> cryptopiaCoin) {
+	public void setCryptopiaCoin(List<TradePair> cryptopiaCoin) {
 		this.cryptopiaCoin = cryptopiaCoin;
 	}
 	

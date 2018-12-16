@@ -21,6 +21,7 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.HttpsURLConnection;
 
+import oupoolstats.api.cryptopia.remote.ApiResponse;
 import oupoolstats.api.cryptopia.remote.CryptopiaClientException;
 import oupoolstats.api.cryptopia.remote.data.Balance;
 import oupoolstats.api.cryptopia.remote.data.Currency;
@@ -39,6 +40,8 @@ import oupoolstats.api.cryptopia.remote.data.Transaction;
 import oupoolstats.api.cryptopia.remote.data.enums.CurrencyListingStatus;
 import oupoolstats.api.cryptopia.remote.data.enums.CurrencyStatus;
 import oupoolstats.api.cryptopia.remote.data.enums.TransactionType;
+import ourpoolstats.jsonparser.JsonParserCurrency;
+import ourpoolstats.jsonparser.JsonParserTradePair;
 
 
 public class CryptopiaClient {
@@ -52,6 +55,7 @@ public class CryptopiaClient {
 	private Map<String,Currency> mapCoin;
 	private List<Currency> selectMapCoin = new ArrayList<Currency>();
 	private List<Currency>list = new ArrayList<>();
+	private List<TradePair> listTradePair = new ArrayList<>();
 
 	private static CryptopiaClient instance;
 
@@ -176,75 +180,11 @@ public class CryptopiaClient {
 
 		final String methodName = "GetCurrencies";
 		jsonResponse = publicApiQuery(methodName);	
-		jsonResponseTmp = jsonResponse.replace("{\"Success\":true,\"Message\":null,\"Data\":[","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("],\"Error\":null}","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace(",{", "");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"Id\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"Name\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"Symbol\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"Algorithm\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"WithdrawFee\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"MinWithdraw\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"MaxWithdraw\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"MinBaseTrade\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"IsTipEnabled\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"MinTip\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"DepositConfirmations\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"Status\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"StatusMessage\":","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("{","");
-		jsonResponse = jsonResponseTmp;
-		jsonResponseTmp = jsonResponse.replace("\"","");
-		jsonResponse = jsonResponseTmp;
-
-		String[] items = jsonResponseTmp.split("}");
-		list = createList(items);
-
+		JsonParserCurrency jsonParserCurrency = new JsonParserCurrency();
+		jsonParserCurrency.parse(jsonResponse);
 
 	}
 
-	private List<Currency> createList(String[] items) {
-
-		for (int i = 0; i <items.length; i++) {
-			String[]tmpItem = items[i].split(",");
-			Currency tmp = new Currency();
-			tmp.setId(Long.parseLong(tmpItem[0]));
-			tmp.setName(tmpItem[1]);
-			tmp.setSymbol(tmpItem[2]);
-			tmp.setAlgorithm(tmpItem[3]);
-			BigDecimal big = new BigDecimal(tmpItem[4]);
-			big =  new BigDecimal(tmpItem[5]);
-			tmp.setWithdrawFee(big);
-			tmp.setTipEnabled(Boolean.parseBoolean(tmpItem[6]));
-			big = new BigDecimal(tmpItem[7]);
-			tmp.setMinTip(big);
-			//tmp.setDepositConfirmations(Long.parseLong(tmpItem[8]));
-			tmp.setStatus(CurrencyStatus.OK);
-			tmp.setStatusMessage(tmpItem[9]);
-			tmp.setListingStatus(CurrencyListingStatus.ACTIVE);
-			list.add(tmp);
-
-		}
-
-		return list;
-
-	}
 
 
 	public void createMapCoinCryptopia(){
@@ -263,49 +203,22 @@ public class CryptopiaClient {
 		return selectMapCoin;
 	}
 
+	
 
-	//	public List<TradePair> getTradePairs() throws ParseException {
-	//		final String methodName = "GetTradePairs";
-	//		final String jsonResponse = publicApiQuery(methodName);
-	//		final ApiResponse<List<TradePair>> resp =
-	//				new ApiResponse<>();
-	//		final List<TradePair> data = new ArrayList<>();
-	//		resp.setData(data);
-	//		final JsonElement jElement = (JsonElement) parser.parse(jsonResponse);
-	//		final JsonObject rootObject = jElement.getAsJsonObject();
-	//		final JsonArray dataArray = rootObject.get("Data").getAsJsonArray();
-	//		resp.setJson(jsonResponse);
-	//		resp.setMessage(rootObject.get("Message").toString());
-	//		resp.setSuccess(rootObject.get("Success").getAsBoolean());
-	//		validateResponse(resp);
-	//		for (final JsonElement element : dataArray) {
-	//			final TradePair result = new TradePair();
-	//			data.add(result);
-	//			final JsonObject object = element.getAsJsonObject();
-	//			result.setId(object.get("Id").getAsLong());
-	//			result.setLabel(object.get("Label").toString());
-	//			result.setCurrency(object.get("Currency").toString());
-	//			result.setSymbol(object.get("Symbol").toString());
-	//			result.setBaseCurrency(object.get("BaseCurrency").toString());
-	//			result.setBaseSymbol(object.get("BaseSymbol").toString());
-	//			result.setStatus(TradePairStatus.byLabel(object.get("Status").toString().replace("\"","")));
-	//			result.setStatusMessage(object.get("StatusMessage").toString());
-	//			result.setTradeFee(object.get("TradeFee").getAsBigDecimal());
-	//			result.setMinimumTrade(object.get("MinimumTrade").getAsBigDecimal());
-	//			result.setMaximumTrade(object.get("MaximumTrade").getAsBigDecimal());
-	//			result.setMinimumBaseTrade(object.get("MinimumBaseTrade").getAsBigDecimal());
-	//			result.setMaximumBaseTrade(object.get("MaximumBaseTrade").getAsBigDecimal());
-	//			result.setMinimumPrice(object.get("MinimumPrice").getAsBigDecimal());
-	//			result.setMaximumPrice(object.get("MaximumPrice").getAsBigDecimal());
-	//		}
-	//		return data;
-	//	}
+	public List<TradePair> getTradePairs(){
+		final String methodName = "GetTradePairs";
+		final String jsonResponse = publicApiQuery(methodName);
+		JsonParserTradePair jsonTradePair = new JsonParserTradePair();
+		List<TradePair>list = jsonTradePair.parse(jsonResponse);
+		return list;
+	}
+	
 	//
-	//	public List<Market> getMarkets() throws ParseException {
-	//		final String methodName = "GetMarkets";
-	//		final String jsonResponse = publicApiQuery(methodName);
-	//		return parseGetMarketsResponse(jsonResponse);
-	//	}
+	//		public List<Market> getMarkets() throws ParseException {
+	//			final String methodName = "GetMarkets";
+	//			final String jsonResponse = publicApiQuery(methodName);
+	//			return parseGetMarketsResponse(jsonResponse);
+	//		}
 	//
 	//	public List<Market> getMarkets(String baseMarket) throws ParseException {
 	//		final String methodName = String.format("GetMarkets/%s", baseMarket);
