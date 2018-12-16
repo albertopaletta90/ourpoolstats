@@ -24,9 +24,23 @@ public class CryptopiaService implements ICryptopiaService {
 	
 	}
 	
+	
+	
 	@Override
 	public List<TradePair> initCoin() {
 		return CryptopiaClient.getInstance().getTradePairs();
 	}
+
+	@Override
+	public void setMapCoin() {
+		
+	}
+
+	@Override
+	public List<Currency> getListSelectecd(List<String> list) {
+		return null;
+	}
+
+
 
 }
