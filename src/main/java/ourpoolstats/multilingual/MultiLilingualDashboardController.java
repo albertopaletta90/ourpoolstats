@@ -36,6 +36,7 @@ public class MultiLilingualDashboardController {
 	private String perc24H = "24H%";
 	private String coinMarket = "CoinMarket";
 	private String cryptopia = "Cryptopia";
+	private String coinGeko = "Coingeko";
 
 
 
@@ -240,6 +241,10 @@ public class MultiLilingualDashboardController {
 
 	public String getCryptopia() {
 		return cryptopia;
+	}
+
+	public String getCoinGeko() {
+		return coinGeko;
 	}
 
 	

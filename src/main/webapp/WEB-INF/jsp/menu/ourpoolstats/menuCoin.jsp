@@ -10,6 +10,7 @@
   <div class="dropdown-menu">
     <a class="dropdown-item" href="./goToApiCryptopia"><%=MultiLilingualDashboardController.getInstance().getCryptopia()%></a>
     <a class="dropdown-item" href="./goToApiCoinMarket"><%=MultiLilingualDashboardController.getInstance().getCoinMarket()%></a>
+    <a class="dropdown-item" href="./goToApiCoinGeko"><%=MultiLilingualDashboardController.getInstance().getCoinGeko()%></a>
   </div>
 </div>
 </html>

@@ -4,6 +4,7 @@ import ourpoolstats.myenum.CryptoCurrency;
 
 import java.util.List;
 
+import oupoolstats.api.coingeko.data.Market;
 import oupoolstats.api.cryptopia.remote.data.Currency;
 import oupoolstats.api.cryptopia.remote.data.TradePair;
 public class ManagerCoin {
@@ -11,6 +12,7 @@ public class ManagerCoin {
 	private static ManagerCoin instance;
 	private CryptoCurrency cryptoCurrency;
 	private List<TradePair>cryptopiaCoin;
+	private List<Market>coingekoCoin;
 	
 
 	private ManagerCoin() {}
@@ -38,6 +40,14 @@ public class ManagerCoin {
 
 	public void setCryptopiaCoin(List<TradePair> cryptopiaCoin) {
 		this.cryptopiaCoin = cryptopiaCoin;
+	}
+
+	public List<Market> getCoingekoCoin() {
+		return coingekoCoin;
+	}
+
+	public void setCoingekoCoin(List<Market> coingekoCoin) {
+		this.coingekoCoin = coingekoCoin;
 	}
 	
 	

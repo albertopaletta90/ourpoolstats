@@ -65,7 +65,7 @@ public class JsonParserCurrency {
 			tmp.setTipEnabled(Boolean.parseBoolean(tmpItem[6]));
 			big = new BigDecimal(tmpItem[7]);
 			tmp.setMinTip(big);
-			//tmp.setDepositConfirmations(Long.parseLong(tmpItem[8]));
+			// tmp.setDepositConfirmations(Long.parseLong(tmpItem[8]));
 			tmp.setStatus(CurrencyStatus.OK);
 			tmp.setStatusMessage(tmpItem[9]);
 			tmp.setListingStatus(CurrencyListingStatus.ACTIVE);

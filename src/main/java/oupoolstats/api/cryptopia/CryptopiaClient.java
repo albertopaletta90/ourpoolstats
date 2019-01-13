@@ -41,13 +41,14 @@ import oupoolstats.api.cryptopia.remote.data.enums.CurrencyListingStatus;
 import oupoolstats.api.cryptopia.remote.data.enums.CurrencyStatus;
 import oupoolstats.api.cryptopia.remote.data.enums.TransactionType;
 import ourpoolstats.jsonparser.JsonParserCurrency;
+import ourpoolstats.jsonparser.JsonParserMarket;
 import ourpoolstats.jsonparser.JsonParserTradePair;
 
 
 public class CryptopiaClient {
 	private static final String ROOT_URL = "https://www.cryptopia.co.nz";
 	private static final String PRIVATE_PATH = "api";
-	
+
 	private String jsonResponse;
 	private List<Currency>list = new ArrayList<>();
 	private List<TradePair> listTradePair = new ArrayList<>();
@@ -67,7 +68,7 @@ public class CryptopiaClient {
 	}
 
 
-	
+
 	private static String publicApiQuery(String method) {
 		BufferedReader in = null;
 		try {
@@ -110,54 +111,22 @@ public class CryptopiaClient {
 		return list;
 	}
 
-	//
-	//		public List<Market> getMarkets() throws ParseException {
-	//			final String methodName = "GetMarkets";
-	//			final String jsonResponse = publicApiQuery(methodName);
-	//			return parseGetMarketsResponse(jsonResponse);
-	//		}
-	//
 
+	public List<Market> getMarkets(){
+		final String methodName = "GetMarkets";
+		final String jsonResponse = publicApiQuery(methodName);
+		JsonParserMarket jsonParserMarket = new JsonParserMarket();
+		return jsonParserMarket.parse(jsonResponse);
+	}
 
-	//	private List<Market> parseGetMarketsResponse(String jsonResponse) throws ParseException {
-	//		final ApiResponse<List<Market>> resp = new ApiResponse<>();
-	//		final List<Market> data = new ArrayList<>();
-	//		resp.setData(data);
-	//		final JsonElement jElement = (JsonElement) parser.parse(jsonResponse);
-	//		final JsonObject rootObject = jElement.getAsJsonObject();
-	//		final JsonArray dataArray = rootObject.get("Data").getAsJsonArray();
-	//		resp.setJson(jsonResponse);
-	//		resp.setMessage(rootObject.get("Message").toString());
-	//		resp.setSuccess(rootObject.get("Success").getAsBoolean());
-	//		for (final JsonElement element : dataArray) {
-	//			final JsonObject object = element.getAsJsonObject();
-	//			final Market result = parseMarketObject(object);
-	//			data.add(result);
-	//		}
-	//		validateResponse(resp);
-	//		return data;
-	//	}
-	//
-	//	private Market parseMarketObject(JsonObject object) {
-	//		final Market result = new Market();
-	//		result.setTradePairId(object.get("TradePairId").getAsLong());
-	//		result.setLabel(object.get("Label").toString());
-	//		result.setAskPrice(object.get("AskPrice").getAsBigDecimal());
-	//		result.setBidPrice(object.get("BidPrice").getAsBigDecimal());
-	//		result.setLow(object.get("Low").getAsBigDecimal());
-	//		result.setHigh(object.get("High").getAsBigDecimal());
-	//		result.setVolume(object.get("Volume").getAsBigDecimal());
-	//		result.setLastPrice(object.get("LastPrice").getAsBigDecimal());
-	//		result.setBuyVolume(object.get("BuyVolume").getAsBigDecimal());
-	//		result.setSellVolume(object.get("SellVolume").getAsBigDecimal());
-	//		result.setChange(object.get("Change").getAsBigDecimal());
-	//		result.setOpen(object.get("Open").getAsBigDecimal());
-	//		result.setClose(object.get("Close").getAsBigDecimal());
-	//		result.setBaseVolume(object.get("BaseVolume").getAsBigDecimal());
-	//		result.setBaseBuyVolume(object.get("BuyBaseVolume").getAsBigDecimal());
-	//		result.setBaseSellVolume(object.get("SellBaseVolume").getAsBigDecimal());
-	//		return result;
-	//	}
+	public List<Market> getMarketsOrders(){
+		final String methodName = "GetMarkets";
+		final String jsonResponse = publicApiQuery(methodName);
+		
+		JsonParserMarket jsonParserMarket = new JsonParserMarket();
+		return jsonParserMarket.parse(jsonResponse);
+	}
+
 
 
 }

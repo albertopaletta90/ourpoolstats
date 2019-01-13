@@ -2,7 +2,8 @@ package ourpoolstats.myenum;
 
 public enum CryptoCurrency {
 	COINMARKET,
-	CRYPTOPIA
+	CRYPTOPIA,
+	COINGEKO
 	
 
 }

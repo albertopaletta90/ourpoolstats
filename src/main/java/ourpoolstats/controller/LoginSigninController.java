@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import oupoolstats.api.coinmarket.GetCoin;
+import oupoolstats.api.coingeko.CoinGekoClient;
+import oupoolstats.api.coinmarket.CoinMarketClient;
+import oupoolstats.service.coin.CoinGekoService;
 import oupoolstats.service.coin.CoinMarketService;
 import oupoolstats.service.coin.CryptopiaService;
 import oupoolstats.service.user.UserOperration;
@@ -28,7 +30,7 @@ import ourpoolstats.myenum.CryptoCurrency;
 public class LoginSigninController {
 
 	private UserOperration userOperration = new UserOperration();
-	private GetCoin getCoin = new GetCoin();
+	private CoinMarketClient getCoin = new CoinMarketClient();
 	private CoinMarketService coinService = new CoinMarketService();
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -67,12 +69,15 @@ public class LoginSigninController {
 					coinList = coinService.getListCoinDefault();
 
 				}
+
 				for (String element : coinList) {
 					getCoin.getCoin(element);
+					CoinGekoClient.GetInstance().getMarket(element);
 
 				}
 
 				ManagerDashboard.getInstance().setListCoin(getCoin.getList());
+				ManagerCoin.getInstance().setCoingekoCoin(CoinGekoService.getInstance().getList());
 
 			}
 			catch (Exception e) {

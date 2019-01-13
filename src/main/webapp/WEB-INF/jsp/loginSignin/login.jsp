@@ -16,9 +16,6 @@
 			<input type="password" name ="password" class="imputBox"><br />
 			<input type="submit" value="<%=MultilingualHomeController.getInstance().getLogin()%>"  class="btn btn-outline-secondary buttonLogin">
 		</form>
-		<form action="./goToSignin">
-			<input type="submit" value="<%=MultilingualHomeController.getInstance().getSignin()%>" class="btn btn-outline-secondary buttonSigninLogin">
-		</form>
 		  <a class="forgotPassword"  href="./goToForGotPassword"><%=MultilingualHomeController.getInstance().getForGotPassword() %></a>
 	</div>
 </body>

@@ -1,6 +1,6 @@
 <%@page import="ourpoolstats.myenum.CryptoCurrency"%>
 <%@page import="ourpoolstats.manager.ManagerCoin"%>
-<%@page import="oupoolstats.api.coinmarket.GetCoin"%>
+<%@page import="oupoolstats.api.coinmarket.CoinMarketClient"%>
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
 <%@page
 	import="ourpoolstats.multilingual.MultiLilingualDashboardController"%>
@@ -53,11 +53,13 @@
 
 		<div class="viewDashboard">
 
-			<%if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.COINMARKET){%>
+			<%
+				if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.COINMARKET){
+			%>
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th scope="col"><%=MultiLilingualDashboardController.getInstance().getSymbol() %></th>
+						<th scope="col"><%=MultiLilingualDashboardController.getInstance().getSymbol()%></th>
 						<th scope="col"><%=MultiLilingualDashboardController.getInstance().getNameCoin()%></th>
 						<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPriceUsd()%></th>
 						<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPriceBtc()%></th>
@@ -68,10 +70,12 @@
 				</thead>
 				<tbody>
 
-					<% for(int i = 0; i < ManagerDashboard.getInstance().getListCoin().size(); i++){%>
+					<%
+						for(int i = 0; i < ManagerDashboard.getInstance().getListCoin().size(); i++){
+					%>
 					<tr>
 						<th scope="row"><img
-							src="<%=GetCoin.getIcon(ManagerDashboard.getInstance().getListCoin().get(i).getName())%>"
+							src="<%=CoinMarketClient.getIcon(ManagerDashboard.getInstance().getListCoin().get(i).getName())%>"
 							width="30"></img></th>
 						</input>
 						<td><%=ManagerDashboard.getInstance().getListCoin().get(i).getName()%></td>
@@ -103,18 +107,6 @@
 						<th scope="col">Label</th>
 						<th scope="col">Currency</th>
 						<th scope="col">Symbol</th>
-						<th scope="col">Base Currency</th>
-						<th scope="col">Base Symbol</th>
-						<th scope="col">Status</th>
-					<!-- 	<th scope="col">Status Message</th> -->
-						<th scope="col">Trade Fee</th>
-						<th scope="col">Minimim Trade</th>
-						<th scope="col">Maxinum Trade</th>
-						<th scope="col">Minimum Base Trade</th>
-						<th scope="col">Maximum Base Trade</th>
-						<th scope="col">Minimum Price</th>
-						<th scope="col">Maximum Price</th>
-
 					</tr>
 				</thead>
 				<tbody>
@@ -124,18 +116,43 @@
 						<th scope="row"><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getLabel()%></th>
 						<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getCurrency()%></td>
 						<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getSymbol()%></td>
-						<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getBaseCurrency()%></td>
-						<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getBaseSymbol()%></td>
-						<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getStatus()%></td>
-		<%-- 				<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getStatusMessage()%></td> --%>
-						<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getTradeFee()%></td>
-						<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getMinimumTrade()%></td>
-						<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getMaximumTrade()%></td>
-						<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getMinimumBaseTrade()%></td>
-						<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getMaximumBaseTrade()%></td>
-						<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getMinimumPrice()%></td>
-						<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getMaximumTrade()%></td>
+					</tr>
+					<%}%>
+				</tbody>
+			</table>
+			<%}%>
+			<%if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.COINGEKO){%>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col"><%=MultiLilingualDashboardController.getInstance().getSymbol()%></th>
+						<th scope="col"><%=MultiLilingualDashboardController.getInstance().getNameCoin()%></th>
+						<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPriceUsd()%></th>
+						<th scope="col"><%=MultiLilingualDashboardController.getInstance().getMarketcap()%></th>
+						<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPerc24H()%></th>
+					</tr>
+				</thead>
+				<tbody>
 
+					<%
+						for(int i = 0; i < ManagerDashboard.getInstance().getListCoin().size(); i++){
+					%>
+					<tr>
+						<th scope="row"><img
+							src="<%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getImage()%>"
+							width="30"></img></th>
+						<td><%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getName()%></td>
+						<td><%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getCurrent_price()%></td>
+
+
+						<td><%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getMarket_cap()%></td>
+						<%if(ManagerCoin.getInstance().getCoingekoCoin().get(i).getMarket_cap_change_percentage_24h()>=0){%>
+						<td class="green"><%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getMarket_cap_change_percentage_24h()%></td>
+						<%}%>
+						<%if(ManagerCoin.getInstance().getCoingekoCoin().get(i).getMarket_cap_change_percentage_24h()<0){%>
+						<td class="red"><%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getMarket_cap_change_percentage_24h()%></td>
+						<%}%>
+						
 					</tr>
 					<%}%>
 				</tbody>
