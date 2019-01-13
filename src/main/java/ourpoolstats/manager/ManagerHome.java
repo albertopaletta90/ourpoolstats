@@ -3,7 +3,7 @@ package ourpoolstats.manager;
 public class ManagerHome {
 
 	private static ManagerHome instance;
-	private boolean login;
+	private boolean login = true;
 	private boolean signin;
 	private boolean news;
 	

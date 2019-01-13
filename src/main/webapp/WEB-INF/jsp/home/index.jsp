@@ -25,16 +25,7 @@
 		<div class="lenguage">
 			<jsp:include page="../menu/lenguages/lenguagesHome.jsp"></jsp:include>
 		</div>	
-			<%if(ManagerHome.getInstance().isNews()){%>
-			<jsp:include page="../news/news.jsp"></jsp:include>
-			<%}%>
-			<%if(ManagerHome.getInstance().isLogin()){%>
-			<jsp:include page="../loginSignin/login.jsp"></jsp:include>
-			<%}%>
-			<%if(ManagerLoginSignin.getInstance().isErrorRegistration()){%>
-			<jsp:include page="../loginSignin/successErrorLogin.jsp"></jsp:include>
-			<%}%>
-		
+			<jsp:include page="../loginSignin/login.jsp"></jsp:include>		
 		</div>
 
 </body>

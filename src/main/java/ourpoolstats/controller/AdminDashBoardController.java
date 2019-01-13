@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import oupoolstats.api.coinmarket.GetCoin;
+import oupoolstats.api.coinmarket.CoinMarketClient;
 import oupoolstats.service.admin.AdminDasboradService;
 import ourpoolstats.manager.ManagerDashboard;
 import ourpoolstats.model.User;
@@ -144,7 +144,7 @@ public class AdminDashBoardController {
 	public ModelAndView addCoin() {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("ourpoolstats/ourpoolstats");
-		GetCoin getCoin = new GetCoin();
+		CoinMarketClient getCoin = new CoinMarketClient();
 		getCoin.getCoin("Litecoin");
 		return model;
 	}
