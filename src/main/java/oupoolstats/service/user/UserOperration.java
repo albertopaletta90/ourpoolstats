@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import ourpoolstats.manager.ManagerImage;
+import ourpoolstats.mapper.FirstLoginMapper;
 import ourpoolstats.mapper.ImageMapper;
 import ourpoolstats.mapper.LoginMapper;
 import ourpoolstats.mapper.MailMapper;
@@ -162,6 +163,26 @@ public class UserOperration implements IUserOperation {
 
 	public void deleteToUserOnline(String login) {
 		jdbcTemplate.update(QueryUser.getInstance().getDeleteUserOnline(),login);
+		
+	}
+
+	@Override
+	public boolean isFirstLogin(String User) {
+		if(jdbcTemplate.query(QueryUser.getInstance().getIsFisrtLogin(), new FirstLoginMapper(),User).get(0) == 1)
+			return true;
+		else
+		return false;
+	}
+
+	@Override
+	public boolean setFirstLogin(String user) {
+		try {
+			jdbcTemplate.update(QueryUser.getInstance().getSetFisrtLogin(), user);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+		
 		
 	}
 

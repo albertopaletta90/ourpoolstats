@@ -16,6 +16,9 @@ public class QueryUser {
 	private  String searchUserToEmail = "select username from user u where u.email = ?";
 	private  String insertUserOnline = "insert into user_online (username) values(?)";
 	private  String deleteUserOnline = "delete from user_online where username = ?";
+	private String 	isFisrtLogin = "select first_login from user u where u.username = ?";
+	private String 	setFisrtLogin = "update user set first_login = 0 where username = ?";
+	
 	private QueryUser() {}
 	
 	public static QueryUser getInstance() {
@@ -73,6 +76,15 @@ public class QueryUser {
 	public String getDeleteUserOnline() {
 		return deleteUserOnline;
 	}
+
+	public String getIsFisrtLogin() {
+		return isFisrtLogin;
+	}
+
+	public String getSetFisrtLogin() {
+		return setFisrtLogin;
+	}
+	
 	
 	
 	

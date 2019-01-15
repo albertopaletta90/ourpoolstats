@@ -48,42 +48,50 @@ public class LoginSigninController {
 				userOperration.insertToUserLogin(login);
 				userOperration.insertToUserOnline(login);
 			}
-			ManagerHome.getInstance().setLogin(false);
-			ManagerHome.getInstance().setNews(true);
-			String userType = userOperration.searchUserType(login.getUsername()).toString();
-			request.getSession().setAttribute("userType", userType);
-			request.getSession().setAttribute("username", login.getUsername());
-			try {
-				ManagerCoin.getInstance().setCryptopiaCoin(CryptopiaService.getInstance().initCoin());
-			}catch (Exception e) {
-				return "ourPoolStats/cryptopia";
-			}
+			if(userOperration.isFirstLogin(l.getUsername())){
+				userOperration.setFirstLogin(l.getUsername());
+				return "ourpoolstats/userOption/setPassword";
 
-
-			try {
-				List<String>coinList = coinService.getListCoinDefault();
-
-				if(!coinList.isEmpty()) {
-					coinList.clear();
-					getCoin.deleteList();
-					coinList = coinService.getListCoinDefault();
-
+			}else{
+				ManagerHome.getInstance().setLogin(false);
+				ManagerHome.getInstance().setNews(true);
+				String userType = userOperration.searchUserType(login.getUsername()).toString();
+				request.getSession().setAttribute("userType", userType);
+				request.getSession().setAttribute("username", login.getUsername());
+				try {
+					ManagerCoin.getInstance().setCryptopiaCoin(CryptopiaService.getInstance().initCoin());
+				}catch (Exception e) {
+					return "ourPoolStats/withOutInternet";
 				}
 
-				for (String element : coinList) {
-					getCoin.getCoin(element);
-					CoinGekoClient.GetInstance().getMarket(element);
+
+				try {
+					List<String>coinList = coinService.getListCoinDefault();
+
+					if(!coinList.isEmpty()) {
+						coinList.clear();
+						getCoin.deleteList();
+						coinList = coinService.getListCoinDefault();
+
+					}
+
+					for (String element : coinList) {
+						getCoin.getCoin(element);
+						CoinGekoClient.GetInstance().getMarket(element);
+
+					}
+
+					ManagerDashboard.getInstance().setListCoin(getCoin.getList());
+					ManagerCoin.getInstance().setCoingekoCoin(CoinGekoService.getInstance().getList());
 
 				}
-
-				ManagerDashboard.getInstance().setListCoin(getCoin.getList());
-				ManagerCoin.getInstance().setCoingekoCoin(CoinGekoService.getInstance().getList());
-
+				catch (Exception e) {
+					return "ourPoolStats/withOutInternet";
+				}
+				return "/ourpoolstats/ourpoolstats";
 			}
-			catch (Exception e) {
-				return "ourPoolStats/withOutInternet";
-			}
-			return "/ourpoolstats/ourpoolstats";
+
+
 		}
 		else {
 			ManagerLoginSignin.getInstance().setErrorLogin(true);

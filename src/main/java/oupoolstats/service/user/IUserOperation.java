@@ -16,5 +16,6 @@ public interface IUserOperation {
 	public boolean changePassword(String username, String password);
 	public boolean changeEmail(String username, String email);
 	public boolean deleteUser(String user);
-	
+	public boolean isFirstLogin(String User);
+	public boolean setFirstLogin(String user);
 }
