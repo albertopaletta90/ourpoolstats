@@ -32,6 +32,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="<c:url value="/resources/css/ourpoolstats.css"/>"
 	rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/buttonHome.css"/>"
+	rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/buttonOurpoolstats.css"/>"
+	rel="stylesheet" type="text/css" />
 <title>OurpoolStats</title>
 </head>
 <body>

@@ -1,0 +1,28 @@
+.buttonOption {
+	position: absolute;
+	left: 1%;
+	top: 1%;
+}
+
+.buttonCoin {
+	position: absolute;
+	left: 40%;
+	top: 1%;
+}
+
+.buttonChangeUser {
+	margin-top: 10px;
+	margin-left: 47%
+}
+
+.buttonBack {
+	position: absolute;
+	top: 90%;
+	left: 15%
+}
+
+.buttonSignin {
+	position: absolute;
+	top: 90%;
+	left: 55%
+}

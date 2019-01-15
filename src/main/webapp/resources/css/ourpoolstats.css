@@ -18,30 +18,6 @@ body {
 	overflow: scroll;
 }
 
-.buttonHome {
-	position: absolute;
-	top: 5%;
-	left: 2%;
-}
-
-.buttonAccount {
-	position: absolute;
-	top: 5%;
-	right: 1%;
-}
-
-.buttonForum {
-	position: absolute;
-	top: 5%;
-	left: 30%;
-}
-
-.buttonMarket {
-	position: absolute;
-	top: 5%;
-	right: 30%;
-}
-
 .lenguage {
 	position: absolute;
 	right: 5%;
@@ -53,18 +29,6 @@ body {
 	background-color: #EDEDED;
 }
 
-.buttonOption {
-	position: absolute;
-	left: 1%;
-	top: 1%;
-}
-
-.buttonCoin {
-	position: absolute;
-	left: 40%;
-	top: 1%;
-}
-
 .changeUserType {
 	position: absolute;
 	top: 25%;
@@ -74,22 +38,6 @@ body {
 	height: 45%;
 }
 
-.buttonChangeUser {
-	margin-top: 10px;
-	margin-left: 47%
-}
-
-.buttonBack {
-	position: absolute;
-	top: 90%;
-	left: 15%
-}
-
-.buttonSignin {
-	position: absolute;
-	top: 90%;
-	left: 55%
-}
 
 .imputBox {
 	margin-left: 78px;
