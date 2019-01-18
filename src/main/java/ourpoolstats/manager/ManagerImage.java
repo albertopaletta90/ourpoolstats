@@ -1,6 +1,6 @@
 package ourpoolstats.manager;
 
-import ourpoolstats.myenum.Lenguage;
+import ourpoolstats.myenum.LenguageType;
 
 public class ManagerImage {
 	
@@ -20,7 +20,7 @@ public class ManagerImage {
 		return instance;
 	}
 	
-	public void setImageDefault(Lenguage lenguage) {
+	public void setImageDefault(LenguageType lenguage) {
 		switch (lenguage) {
 		case ITALIAN:
 				this.linkDefaultImageLanguages = linkItalianImageLanguages;

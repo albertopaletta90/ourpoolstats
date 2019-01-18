@@ -26,3 +26,25 @@
 	top: 90%;
 	left: 55%
 }
+
+.buttonAddImage {
+	margin-top: 10px;
+	margin-left: 47%
+}
+
+.buttonBackAddImage {
+	position: absolute;
+	margin-top: -38px;
+	margin-left: 20%;
+}
+
+.buttonChangeEmail {
+	margin-top: 10px;
+	margin-left: 47%
+}
+
+.buttonAccount{
+	position: absolute;
+	top: 5%;
+	right: 1%;
+}

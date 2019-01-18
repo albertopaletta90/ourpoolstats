@@ -17,6 +17,7 @@ import oupoolstats.api.coinmarket.CoinMarketClient;
 import oupoolstats.service.coin.CoinGekoService;
 import oupoolstats.service.coin.CoinMarketService;
 import oupoolstats.service.coin.CryptopiaService;
+import oupoolstats.service.language.LanguageService;
 import oupoolstats.service.user.UserOperration;
 import ourpoolstats.manager.ManagerCoin;
 import ourpoolstats.manager.ManagerDashboard;
@@ -24,6 +25,7 @@ import ourpoolstats.manager.ManagerHome;
 import ourpoolstats.manager.ManagerLoginSignin;
 import ourpoolstats.model.Login;
 import ourpoolstats.model.User;
+import ourpoolstats.multilingual.MultiLilingualDashboardController;
 import ourpoolstats.myenum.CryptoCurrency;
 
 @Controller
@@ -32,6 +34,7 @@ public class LoginSigninController {
 	private UserOperration userOperration = new UserOperration();
 	private CoinMarketClient getCoin = new CoinMarketClient();
 	private CoinMarketService coinService = new CoinMarketService();
+	private LanguageService languageService = new LanguageService();
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute("SpringWeb")Login l,ModelMap model,HttpServletRequest request) {
@@ -42,7 +45,14 @@ public class LoginSigninController {
 		login.setAllParameter(model);
 		if(userOperration.loginUser(login.getUsername(), login.getPassword())) {
 			ManagerCoin.getInstance().setCryptoCurrency(CryptoCurrency.COINMARKET);
-
+			
+			if(languageService.getLenguace(l.getUsername()).equals("ITALIAN")) {
+				MultiLilingualDashboardController.getInstance().setLenguageItalian();
+			}else {
+				MultiLilingualDashboardController.getInstance().setLenguageEnglish();
+			}
+			
+			
 			if(ManagerLoginSignin.getInstance().isFirstLogin()) {
 				ManagerLoginSignin.getInstance().setFirstLogin(false);
 				userOperration.insertToUserLogin(login);
@@ -58,12 +68,12 @@ public class LoginSigninController {
 				String userType = userOperration.searchUserType(login.getUsername()).toString();
 				request.getSession().setAttribute("userType", userType);
 				request.getSession().setAttribute("username", login.getUsername());
-				try {
-					//ManagerCoin.getInstance().setCryptopiaCoin(CryptopiaService.getInstance().initCoin());
-				}catch (Exception e) {
-					
-					//return "ourpoolstats/withOutInternet";
-				}
+//				try {
+//					ManagerCoin.getInstance().setCryptopiaCoin(CryptopiaService.getInstance().initCoin());
+//				}catch (Exception e) {
+//					
+//					return "ourpoolstats/withOutInternet";
+//				}
 
 
 				try {

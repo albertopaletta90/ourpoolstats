@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import oupoolstats.api.coinmarket.Coin;
 import ourpoolstats.manager.ManagerImage;
 import ourpoolstats.multilingual.MultiLilingualDashboardController;
-import ourpoolstats.myenum.Lenguage;
+import ourpoolstats.myenum.LenguageType;
 
 
 @Controller
@@ -29,26 +29,6 @@ public class DashboardController {
 		model.setViewName("/ourpoolstats/account");
 		return model;
 	}
-	
-	
-	@RequestMapping(value = "/changeToItalianDasboard", method = RequestMethod.GET)
-	public ModelAndView changeToItalian() {
-		ModelAndView model = new ModelAndView();
-		MultiLilingualDashboardController.getInstance().setLenguageItalian();
-		ManagerImage.getInstance().setImageDefault(Lenguage.ITALIAN);
-		model.setViewName("/ourpoolstats/ourpoolstats");
-		return model;
-	}
-	
-	@RequestMapping(value = "/changeToEnglishDashboard", method = RequestMethod.GET)
-	public ModelAndView changeToEnglish() {
-		ModelAndView model = new ModelAndView();
-		MultiLilingualDashboardController.getInstance().setLenguageEnglish();
-		ManagerImage.getInstance().setImageDefault(Lenguage.ENGLISH);
-		model.setViewName("/ourpoolstats/ourpoolstats");
-		return model;
-	}
-	
 	
 	@RequestMapping(value = "/goToInfoCoin", method = RequestMethod.POST)
 	public String goToInfoCoin(@ModelAttribute("SpringWeb")Coin c,ModelMap model) {

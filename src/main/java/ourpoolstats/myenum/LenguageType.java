@@ -1,6 +1,6 @@
 package ourpoolstats.myenum;
 
-public enum Lenguage {
+public enum LenguageType {
 	ITALIAN,
 	ENGLISH
 }
