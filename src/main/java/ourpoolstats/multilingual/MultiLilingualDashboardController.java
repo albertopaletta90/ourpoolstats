@@ -38,7 +38,7 @@ public class MultiLilingualDashboardController {
 	private String cryptopia = "Cryptopia";
 	private String coinGeko = "Coingeko";
 	private String errorInternt = "Errore con La Connessione";  
-	private String deleteUserAction = "Sei Sicuro DI Volere Cancellare il Tuo Account";
+	private String deleteUserAction = "Sei Sicuro Di Volere Cancellare il Tuo Account";
 
 
 

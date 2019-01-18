@@ -35,7 +35,7 @@
 		</nav>	
 			<p class="imputBox">Password</p>
 			<input type="password" name="password" class="imputBox" >
-			<input type="submit" value="<%=MultiLilingualDashboardController.getInstance().getChangePassword()%>"  class="btn btn-outline-secondary buttonChangeEmail">
+			<input type="submit" value="<%=MultiLilingualDashboardController.getInstance().getChangePassword()%>"  class="btn btn-outline-secondary buttonChangeSetPassword">
 		</form>
 	</div>
 	

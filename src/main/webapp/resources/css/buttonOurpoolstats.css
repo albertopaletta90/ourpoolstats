@@ -43,7 +43,12 @@
 	margin-left: 47%
 }
 
-.buttonAccount{
+.buttonChangeSetPassword {
+	margin-top: 20px;
+	margin-left: 27%
+}
+
+.buttonAccount {
 	position: absolute;
 	top: 5%;
 	right: 1%;

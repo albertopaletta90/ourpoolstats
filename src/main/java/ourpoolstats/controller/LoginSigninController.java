@@ -22,6 +22,7 @@ import oupoolstats.service.user.UserOperration;
 import ourpoolstats.manager.ManagerCoin;
 import ourpoolstats.manager.ManagerDashboard;
 import ourpoolstats.manager.ManagerHome;
+import ourpoolstats.manager.ManagerImage;
 import ourpoolstats.manager.ManagerLoginSignin;
 import ourpoolstats.model.Login;
 import ourpoolstats.model.User;
@@ -44,15 +45,18 @@ public class LoginSigninController {
 		Login login = new Login();
 		login.setAllParameter(model);
 		if(userOperration.loginUser(login.getUsername(), login.getPassword())) {
+			String userType = userOperration.searchUserType(login.getUsername()).toString();
+			request.getSession().setAttribute("userType", userType);
+			request.getSession().setAttribute("username", login.getUsername());
 			ManagerCoin.getInstance().setCryptoCurrency(CryptoCurrency.COINMARKET);
-			
+
 			if(languageService.getLenguace(l.getUsername()).equals("ITALIAN")) {
 				MultiLilingualDashboardController.getInstance().setLenguageItalian();
 			}else {
 				MultiLilingualDashboardController.getInstance().setLenguageEnglish();
 			}
-			
-			
+
+
 			if(ManagerLoginSignin.getInstance().isFirstLogin()) {
 				ManagerLoginSignin.getInstance().setFirstLogin(false);
 				userOperration.insertToUserLogin(login);
@@ -65,15 +69,12 @@ public class LoginSigninController {
 			}else{
 				ManagerHome.getInstance().setLogin(false);
 				ManagerHome.getInstance().setNews(true);
-				String userType = userOperration.searchUserType(login.getUsername()).toString();
-				request.getSession().setAttribute("userType", userType);
-				request.getSession().setAttribute("username", login.getUsername());
-//				try {
-//					ManagerCoin.getInstance().setCryptopiaCoin(CryptopiaService.getInstance().initCoin());
-//				}catch (Exception e) {
-//					
-//					return "ourpoolstats/withOutInternet";
-//				}
+				//				try {
+				//					ManagerCoin.getInstance().setCryptopiaCoin(CryptopiaService.getInstance().initCoin());
+				//				}catch (Exception e) {
+				//					
+				//					return "ourpoolstats/withOutInternet";
+				//				}
 
 
 				try {

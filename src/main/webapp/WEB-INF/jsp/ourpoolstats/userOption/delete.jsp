@@ -36,9 +36,7 @@
 				<form action="./deleteUserAction" method="post">
 				<nav class="navbar navbar-light bg-light">
 					<p><%=MultiLilingualDashboardController.getInstance().getDeleteUserAction() %></p>
-				</nav>	
-					<p class="imputBox"><%=MultilingualHomeController.getInstance().getUsername()%></p>
-					
+				</nav>						
 					<input type="submit" value="<%=MultiLilingualDashboardController.getInstance().getDeleteUser()%>"  class="btn btn-outline-secondary buttonChangeEmail">
 				</form>
 				<form action="./dashboard">
