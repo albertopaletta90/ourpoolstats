@@ -53,6 +53,7 @@ C:\Users\Alberone\git\ourpoolstats\src\main\java\ourpoolstats\mapper\UserLogMapp
 C:\Users\Alberone\git\ourpoolstats\src\main\java\ourpoolstats\query\QueryChat.java
 C:\Users\Alberone\git\ourpoolstats\src\main\java\ourpoolstats\jsonparser\JsonParserMarket.java
 C:\Users\Alberone\git\ourpoolstats\src\main\java\ourpoolstats\manager\ManagerDashboard.java
+C:\Users\Alberone\git\ourpoolstats\src\main\java\ourpoolstats\myenum\LogType.java
 C:\Users\Alberone\git\ourpoolstats\src\main\java\oupoolstats\api\cryptopia\remote\data\MarketHistory.java
 C:\Users\Alberone\git\ourpoolstats\src\main\java\oupoolstats\service\coin\CoinMarketService.java
 C:\Users\Alberone\git\ourpoolstats\src\main\java\ourpoolstats\mapper\PasswordMapper.java
@@ -82,6 +83,7 @@ C:\Users\Alberone\git\ourpoolstats\src\main\java\oupoolstats\api\coingeko\CoinGe
 C:\Users\Alberone\git\ourpoolstats\src\main\java\oupoolstats\api\cryptopia\remote\data\MarketOrder.java
 C:\Users\Alberone\git\ourpoolstats\src\main\java\ourpoolstats\jsonparser\JsonParserTradePair.java
 C:\Users\Alberone\git\ourpoolstats\src\main\java\ourpoolstats\multilingual\MultiLilingualDashboardController.java
+C:\Users\Alberone\git\ourpoolstats\src\main\java\ourpoolstats\log\LoggerOurpoolstats.java
 C:\Users\Alberone\git\ourpoolstats\src\main\java\ourpoolstats\mapper\LanguageMapper.java
 C:\Users\Alberone\git\ourpoolstats\src\main\java\ourpoolstats\model\Language.java
 C:\Users\Alberone\git\ourpoolstats\src\main\java\ourpoolstats\myenum\CryptoCurrency.java

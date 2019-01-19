@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +20,7 @@ import oupoolstats.service.coin.CoinMarketService;
 import oupoolstats.service.coin.CryptopiaService;
 import oupoolstats.service.language.LanguageService;
 import oupoolstats.service.user.UserOperration;
+import ourpoolstats.log.LoginSigninLogger;
 import ourpoolstats.manager.ManagerCoin;
 import ourpoolstats.manager.ManagerDashboard;
 import ourpoolstats.manager.ManagerHome;
@@ -49,9 +51,7 @@ public class LoginSigninController {
 			request.getSession().setAttribute("userType", userType);
 			request.getSession().setAttribute("username", login.getUsername());
 			ManagerCoin.getInstance().setCryptoCurrency(CryptoCurrency.COINMARKET);
-
-			
-
+			LoginSigninLogger.getInstance().logger(login.getUsername(),true);
 			if(ManagerLoginSignin.getInstance().isFirstLogin()) {
 				ManagerLoginSignin.getInstance().setFirstLogin(false);
 				userOperration.insertToUserLogin(login);
@@ -107,6 +107,7 @@ public class LoginSigninController {
 
 		}
 		else {
+			LoginSigninLogger.getInstance().logger(login.getUsername(),false);
 			ManagerLoginSignin.getInstance().setErrorLogin(true);
 			return "/home/index";
 		}

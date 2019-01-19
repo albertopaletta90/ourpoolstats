@@ -10,6 +10,7 @@ ourpoolstats\mapper\PasswordMapper.class
 oupoolstats\api\cryptopia\remote\data\MarketOrderGroup.class
 ourpoolstats\manager\ManagerHome.class
 ourpoolstats\controller\MainController.class
+ourpoolstats\myenum\LogType.class
 ourpoolstats\manager\ManagerImage$1.class
 oupoolstats\api\cryptopia\CryptopiaClient.class
 oupoolstats\api\cryptopia\remote\data\enums\TradeType.class
@@ -53,8 +54,10 @@ oupoolstats\api\cryptopia\remote\data\MarketHistory.class
 oupoolstats\api\cryptopia\remote\data\enums\TransactionType.class
 ourpoolstats\mapper\CoinMapper.class
 oupoolstats\service\dashboard\IDashboardService.class
+ourpoolstats\log\LoggerOurpoolstats.class
 oupoolstats\api\cryptopia\remote\data\SubmittedTrade.class
 ourpoolstats\jsonparser\JsonParserMarket.class
+ourpoolstats\log\LoggerOurpoolstats$1.class
 oupoolstats\api\cryptopia\remote\data\Transaction.class
 oupoolstats\service\dashboard\DashboardService.class
 ourpoolstats\controller\LanguageController.class
