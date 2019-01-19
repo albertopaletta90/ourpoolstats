@@ -56,7 +56,6 @@ public class LoginSigninController {
 				MultiLilingualDashboardController.getInstance().setLenguageEnglish();
 			}
 
-
 			if(ManagerLoginSignin.getInstance().isFirstLogin()) {
 				ManagerLoginSignin.getInstance().setFirstLogin(false);
 				userOperration.insertToUserLogin(login);
@@ -64,17 +63,15 @@ public class LoginSigninController {
 			}
 			if(userOperration.isFirstLogin(l.getUsername())){
 				userOperration.setFirstLogin(l.getUsername());
+				userOperration.setImageProfile(l.getUsername(), ManagerImage.getInstance().getLinkImageProfile(), "insert");
 				return "ourpoolstats/userOption/setPassword";
-
 			}else{
-				ManagerHome.getInstance().setLogin(false);
-				ManagerHome.getInstance().setNews(true);
-				//				try {
-				//					ManagerCoin.getInstance().setCryptopiaCoin(CryptopiaService.getInstance().initCoin());
-				//				}catch (Exception e) {
-				//					
-				//					return "ourpoolstats/withOutInternet";
-				//				}
+				ManagerImage.getInstance().setLinkImageProfile(userOperration.getImageProfile(l.getUsername()));
+//			try {
+//				ManagerCoin.getInstance().setCryptopiaCoin(CryptopiaService.getInstance().initCoin());
+//			}catch (Exception e) {
+//				return "ourpoolstats/withOutInternet";
+//			}
 
 
 				try {

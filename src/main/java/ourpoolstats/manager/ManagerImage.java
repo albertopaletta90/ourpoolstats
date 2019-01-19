@@ -8,7 +8,7 @@ public class ManagerImage {
 	private String linkDefaultImageLanguages = "https://stadiodellaromafaq.files.wordpress.com/2016/09/italy.png";
 	private String linkItalianImageLanguages = "https://stadiodellaromafaq.files.wordpress.com/2016/09/italy.png";
 	private String linkEnglishImageLanguages = "https://www.statuasancarlo.it/wp-content/uploads/2015/04/icona-inglese.png";
-	private String linkImageProfile = "https://cdn.icon-icons.com/icons2/1369/PNG/512/-account-circle_89831.png";
+	private String linkImageProfile ;
 	private ManagerImage() {}
 	
 	public static ManagerImage getInstance() {

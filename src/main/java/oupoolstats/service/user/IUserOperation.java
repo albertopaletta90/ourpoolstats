@@ -12,7 +12,7 @@ public interface IUserOperation {
 	public UserType searchUserType(String username);	
 	public boolean forgotPassword(String username);	
 	public String getImageProfile(String username);
-	public boolean setImageProfile(String username, String url);
+	public boolean setImageProfile(String username, String url,String method );
 	public boolean changePassword(String username, String password);
 	public boolean changeEmail(String username, String email);
 	public boolean deleteUser(String user);

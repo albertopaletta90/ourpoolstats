@@ -25,7 +25,7 @@ public class AccountController {
 
 	@RequestMapping(value = "/addImage", method = RequestMethod.POST)
 	public String addImage(HttpServletRequest request){
-		userService.setImageProfile((String) request.getSession().getAttribute("username"), request.getParameter("url"));
+		userService.setImageProfile((String) request.getSession().getAttribute("username"), request.getParameter("url"),"update");
 		userService.getImageProfile((String) request.getSession().getAttribute("username"));
 		return "/ourpoolstats/account";
 
