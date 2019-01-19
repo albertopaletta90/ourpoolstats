@@ -50,11 +50,7 @@ public class LoginSigninController {
 			request.getSession().setAttribute("username", login.getUsername());
 			ManagerCoin.getInstance().setCryptoCurrency(CryptoCurrency.COINMARKET);
 
-			if(languageService.getLenguace(l.getUsername()).equals("ITALIAN")) {
-				MultiLilingualDashboardController.getInstance().setLenguageItalian();
-			}else {
-				MultiLilingualDashboardController.getInstance().setLenguageEnglish();
-			}
+			
 
 			if(ManagerLoginSignin.getInstance().isFirstLogin()) {
 				ManagerLoginSignin.getInstance().setFirstLogin(false);
@@ -64,9 +60,17 @@ public class LoginSigninController {
 			if(userOperration.isFirstLogin(l.getUsername())){
 				userOperration.setFirstLogin(l.getUsername());
 				userOperration.setImageProfile(l.getUsername(), ManagerImage.getInstance().getLinkImageProfile(), "insert");
+				languageService.insertLenguace(l.getUsername(), "italiano");
 				return "ourpoolstats/userOption/setPassword";
 			}else{
 				ManagerImage.getInstance().setLinkImageProfile(userOperration.getImageProfile(l.getUsername()));
+				if(languageService.getLenguace(l.getUsername()).equals("ITALIAN")) {
+					MultiLilingualDashboardController.getInstance().setLenguageItalian();
+				}else {
+					MultiLilingualDashboardController.getInstance().setLenguageEnglish();
+				}
+				
+				
 //			try {
 //				ManagerCoin.getInstance().setCryptopiaCoin(CryptopiaService.getInstance().initCoin());
 //			}catch (Exception e) {

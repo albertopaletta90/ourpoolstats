@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import oupoolstats.api.coinmarket.CoinMarketClient;
 import oupoolstats.service.admin.AdminDasboradService;
+import oupoolstats.service.language.LanguageService;
 import ourpoolstats.manager.ManagerDashboard;
 import ourpoolstats.model.User;
 import ourpoolstats.model.UserLog;
@@ -45,11 +46,12 @@ public class AdminDashBoardController {
 		model.addAttribute("userType",UserType.USER);
 		User tmp = new User();
 		tmp.setAllParameter(model);
-		System.out.println("sdfbuewfbuwebgfuiweb");
-
+		
 		if(adminDadshboardService.createUser(tmp)) {
 			ManagerDashboard.getInstance().setSigninAdminSuccess(true);
 			ManagerDashboard.getInstance().setOptionAdmin(false);
+			LanguageService languageService = new LanguageService();
+			languageService.setLenguace("italiano", u.getUsername());
 			return "ourpoolstats/succes";
 		}
 		else {
