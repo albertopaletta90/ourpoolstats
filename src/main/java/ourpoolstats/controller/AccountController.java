@@ -34,8 +34,8 @@ public class AccountController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request){
 		userService.deleteToUserOnline((String)request.getSession().getAttribute("username"));
-		request.getSession().removeAttribute("username");
 		userService.setFirstLoginDay((String)request.getSession().getAttribute("username"), 1);
+		request.getSession().removeAttribute("username");
 		return "/home/index";
 	}
 
