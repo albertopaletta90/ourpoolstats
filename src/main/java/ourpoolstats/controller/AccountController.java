@@ -35,6 +35,7 @@ public class AccountController {
 	public String logout(HttpServletRequest request){
 		userService.deleteToUserOnline((String)request.getSession().getAttribute("username"));
 		request.getSession().removeAttribute("username");
+		userService.setFirstLoginDay((String)request.getSession().getAttribute("username"), 1);
 		return "/home/index";
 	}
 

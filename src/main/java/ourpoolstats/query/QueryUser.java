@@ -18,7 +18,8 @@ public class QueryUser {
 	private  String deleteUserOnline = "delete from user_online where username = ?";
 	private String 	isFisrtLogin = "select first_login from user u where u.username = ?";
 	private String 	setFisrtLogin = "update user set first_login = 0 where username = ?";
-	
+	private String 	isFisrtLoginDay = "select first_login_day from user u where u.username = ?";
+	private String 	setFisrtLogin_day = "update user set first_login_day = ? where username = ?";
 	private QueryUser() {}
 	
 	public static QueryUser getInstance() {
@@ -83,6 +84,14 @@ public class QueryUser {
 
 	public String getSetFisrtLogin() {
 		return setFisrtLogin;
+	}
+
+	public String getIsFisrtLoginDay() {
+		return isFisrtLoginDay;
+	}
+
+	public String getSetFisrtLoginDay() {
+		return setFisrtLogin_day;
 	}
 	
 	

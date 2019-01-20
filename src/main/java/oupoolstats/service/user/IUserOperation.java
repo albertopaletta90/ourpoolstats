@@ -18,4 +18,6 @@ public interface IUserOperation {
 	public boolean deleteUser(String user);
 	public boolean isFirstLogin(String User);
 	public boolean setFirstLogin(String user);
+	public boolean isFirstLoginDay(String User);
+	public boolean setFirstLoginDay(String user,int value);
 }

@@ -21,6 +21,7 @@ import oupoolstats.service.coin.CryptopiaService;
 import oupoolstats.service.language.LanguageService;
 import oupoolstats.service.user.UserOperration;
 import ourpoolstats.log.LoginSigninLogger;
+import ourpoolstats.log.OperationDBLogger;
 import ourpoolstats.manager.ManagerCoin;
 import ourpoolstats.manager.ManagerDashboard;
 import ourpoolstats.manager.ManagerHome;
@@ -30,6 +31,8 @@ import ourpoolstats.model.Login;
 import ourpoolstats.model.User;
 import ourpoolstats.multilingual.MultiLilingualDashboardController;
 import ourpoolstats.myenum.CryptoCurrency;
+import ourpoolstats.myenum.DataBaseOperation;
+import ourpoolstats.myenum.LenguageType;
 
 @Controller
 public class LoginSigninController {
@@ -52,30 +55,54 @@ public class LoginSigninController {
 			request.getSession().setAttribute("username", login.getUsername());
 			ManagerCoin.getInstance().setCryptoCurrency(CryptoCurrency.COINMARKET);
 			LoginSigninLogger.getInstance().logger(login.getUsername(),true);
-			if(ManagerLoginSignin.getInstance().isFirstLogin()) {
-				ManagerLoginSignin.getInstance().setFirstLogin(false);
+
+			if(userOperration.isFirstLoginDay(login.getUsername())) {
+				userOperration.setFirstLoginDay(login.getUsername(), 0);
 				userOperration.insertToUserLogin(login);
 				userOperration.insertToUserOnline(login);
+				OperationDBLogger.getInstance().logger(login.getUsername(), true, DataBaseOperation.INSERTLOGUSER);
+			}else {
+				OperationDBLogger.getInstance().logger(login.getUsername(), false, DataBaseOperation.INSERTLOGUSER);
 			}
+
 			if(userOperration.isFirstLogin(l.getUsername())){
 				userOperration.setFirstLogin(l.getUsername());
-				userOperration.setImageProfile(l.getUsername(), ManagerImage.getInstance().getLinkImageProfile(), "insert");
-				languageService.insertLenguace(l.getUsername(), "italiano");
+				try {
+					userOperration.setImageProfile(l.getUsername(), ManagerImage.getInstance().getLinkImageProfile(), "insert");
+					OperationDBLogger.getInstance().logger(login.getUsername(), true, DataBaseOperation.INSERTIMAGEPROFILE);
+					OperationDBLogger.getInstance().logger(login.getUsername(), true, DataBaseOperation.INSERTLOGUSER);
+				} catch (Exception e) {
+					e.printStackTrace();
+					OperationDBLogger.getInstance().logger(login.getUsername(), false, DataBaseOperation.INSERTIMAGEPROFILE);
+					OperationDBLogger.getInstance().logger(login.getUsername(), false, DataBaseOperation.INSERTLOGUSER);
+				}
+
+				try {
+					languageService.insertLenguace(l.getUsername(), "italiano");
+					OperationDBLogger.getInstance().logger(login.getUsername(), true, DataBaseOperation.INSERTLANGUAGE);
+				} catch (Exception e) {
+					e.printStackTrace();
+					OperationDBLogger.getInstance().logger(login.getUsername(), false, DataBaseOperation.INSERTLANGUAGE);
+				}
+
 				return "ourpoolstats/userOption/setPassword";
 			}else{
 				ManagerImage.getInstance().setLinkImageProfile(userOperration.getImageProfile(l.getUsername()));
-				if(languageService.getLenguace(l.getUsername()).equals("ITALIAN")) {
+				if(languageService.getLenguace(l.getUsername())==LenguageType.ITALIAN) {
 					MultiLilingualDashboardController.getInstance().setLenguageItalian();
+					OperationDBLogger.getInstance().logger(login.getUsername(), true, DataBaseOperation.UPDATELANGUAGE);
+
 				}else {
 					MultiLilingualDashboardController.getInstance().setLenguageEnglish();
+					OperationDBLogger.getInstance().logger(login.getUsername(), true, DataBaseOperation.UPDATELANGUAGE);
 				}
-				
-				
-//			try {
-//				ManagerCoin.getInstance().setCryptopiaCoin(CryptopiaService.getInstance().initCoin());
-//			}catch (Exception e) {
-//				return "ourpoolstats/withOutInternet";
-//			}
+
+
+				//			try {
+				//				ManagerCoin.getInstance().setCryptopiaCoin(CryptopiaService.getInstance().initCoin());
+				//			}catch (Exception e) {
+				//				return "ourpoolstats/withOutInternet";
+				//			}
 
 
 				try {
@@ -96,9 +123,10 @@ public class LoginSigninController {
 
 					ManagerDashboard.getInstance().setListCoin(getCoin.getList());
 					ManagerCoin.getInstance().setCoingekoCoin(CoinGekoService.getInstance().getList());
-
+					OperationDBLogger.getInstance().logger("", true, DataBaseOperation.GETLISTCOIN);
 				}
 				catch (Exception e) {
+					OperationDBLogger.getInstance().logger("", false, DataBaseOperation.GETLISTCOIN);
 					return "ourPoolStats/withOutInternet";
 				}
 				return "/ourpoolstats/ourpoolstats";

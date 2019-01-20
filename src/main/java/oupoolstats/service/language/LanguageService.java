@@ -34,7 +34,7 @@ public class LanguageService implements ILanguageService {
 
 	@Override
 	public void insertLenguace(String u, String l) {
-		jdbcTemplate.update(QueryLanguage.getInstance().getSetLanguage(),u,l);
+		jdbcTemplate.update(QueryLanguage.getInstance().getInsertLanguage(),u,l);
 		
 	}
 

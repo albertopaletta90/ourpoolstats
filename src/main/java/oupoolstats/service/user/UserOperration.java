@@ -190,5 +190,23 @@ public class UserOperration implements IUserOperation {
 
 	}
 
+	@Override
+	public boolean isFirstLoginDay(String User) {
+		if(jdbcTemplate.query(QueryUser.getInstance().getIsFisrtLoginDay(), new FirstLoginMapper(),User).get(0) == 1)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public boolean setFirstLoginDay(String user, int value) {
+		try {
+			jdbcTemplate.update(QueryUser.getInstance().getSetFisrtLoginDay(),value,user);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 
 }
