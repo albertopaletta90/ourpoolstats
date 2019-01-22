@@ -11,7 +11,7 @@
     	<a class="dropdown-item colorLeguage" href="./goToAddImage"><%=MultiLilingualDashboardController.getInstance().getChangeImage()%></a>
     	<a class="dropdown-item colorLeguage" href="./goToChangePassword"><%=MultiLilingualDashboardController.getInstance().getChangePassword()%></a>
     	<a class="dropdown-item colorLeguage" href="./goToChangeEmail"><%=MultiLilingualDashboardController.getInstance().getChangeEmail()%></a>
-    	<a class="dropdown-item colorLeguage" href="./deleteUserAction"><%=MultiLilingualDashboardController.getInstance().getDeleteUser()%></a>
+    	<a class="dropdown-item colorLeguage" href="./goToDeleteUserAction"><%=MultiLilingualDashboardController.getInstance().getDeleteUser()%></a>
     	<a class="dropdown-item colorLeguage" href=./logout><%=MultiLilingualDashboardController.getInstance().getLogout()%></a>
     	
    	</div>

@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import ourpoolstats.manager.ManagerImage;
+import ourpoolstats.mapper.FirstLoginMapper;
 import ourpoolstats.mapper.ImageMapper;
 import ourpoolstats.mapper.LoginMapper;
 import ourpoolstats.mapper.MailMapper;
@@ -26,7 +27,7 @@ public class UserOperration implements IUserOperation {
 
 	private GetConnection getConnection;
 	private JdbcTemplate jdbcTemplate;
-	
+
 	public static String emailTemporaney; 
 
 	public UserOperration() {
@@ -88,26 +89,30 @@ public class UserOperration implements IUserOperation {
 	@Override
 	public String getImageProfile(String username) {
 		List<String> list = jdbcTemplate.query(QueryImage.getInstance().getGetImageProfile(), new ImageMapper(),username);
-		if(list.isEmpty())
-			return ManagerImage.getInstance().getLinkImageProfile();
-		else {
-			ManagerImage.getInstance().setLinkImageProfile(list.get(0));
-			return ManagerImage.getInstance().getLinkImageProfile();
-		}
+		return list.get(0);
 
 	}
 
 	@Override
-	public boolean setImageProfile(String username, String url) {
-		System.out.println("ffffff " + username);
-		int row = jdbcTemplate.update(QueryImage.getInstance().getSetImageProfile(),url,username);
-		if(row >0 )
-			return true;
-		else {
-			jdbcTemplate.update(QueryImage.getInstance().getInsetImageProfile(),username,url);
-			return true;
+	public boolean setImageProfile(String username, String url,String method) {
+		switch (method) {
+		case "insert":
+			try {
+				jdbcTemplate.update(QueryImage.getInstance().getInsetImageProfile(),username,url);
+			} catch (Exception e) {
+				return false;
+			}
+			break;
+		case "update":
+			try {
+				jdbcTemplate.update(QueryImage.getInstance().getSetImageProfile(),url,username);
+			} catch (Exception e) {
+				return false;
+			}
+			break;
 		}
 
+		return true;
 	}
 
 	@Override
@@ -119,8 +124,8 @@ public class UserOperration implements IUserOperation {
 		} catch (Exception e) {
 			return false;
 		}
-		
-		
+
+
 	}
 
 	@Override
@@ -131,7 +136,7 @@ public class UserOperration implements IUserOperation {
 		} catch (Exception e) {
 			return false;
 		}
-			
+
 	}
 
 	@Override
@@ -144,25 +149,63 @@ public class UserOperration implements IUserOperation {
 		}			
 	}
 
-	 public String findUsernameToEmail(String emails) {
-		 emailTemporaney = emails;
+	public String findUsernameToEmail(String emails) {
+		emailTemporaney = emails;
 		try {
 			List<String> list = jdbcTemplate.query(QueryUser.getInstance().getSearchUserToEmail(), new MailMapper(),emails);
 			return list.get(0);
 		} catch (Exception e) {
-			
+
 		}
 		return "";
 	}
 
 	public void insertToUserOnline(Login login) {
 		jdbcTemplate.update(QueryUser.getInstance().getInsertUserOnline(),login.getUsername());
-		
+
 	}
 
 	public void deleteToUserOnline(String login) {
 		jdbcTemplate.update(QueryUser.getInstance().getDeleteUserOnline(),login);
-		
+
+	}
+
+	@Override
+	public boolean isFirstLogin(String User) {
+		if(jdbcTemplate.query(QueryUser.getInstance().getIsFisrtLogin(), new FirstLoginMapper(),User).get(0) == 1)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public boolean setFirstLogin(String user) {
+		try {
+			jdbcTemplate.update(QueryUser.getInstance().getSetFisrtLogin(), user);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+
+
+	}
+
+	@Override
+	public boolean isFirstLoginDay(String User) {
+		if(jdbcTemplate.query(QueryUser.getInstance().getIsFisrtLoginDay(), new FirstLoginMapper(),User).get(0) == 1)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public boolean setFirstLoginDay(String user, int value) {
+		try {
+			jdbcTemplate.update(QueryUser.getInstance().getSetFisrtLoginDay(),value,user);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 

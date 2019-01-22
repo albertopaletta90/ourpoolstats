@@ -17,17 +17,15 @@ public class AccountController {
 
 	private UserOperration userService = new UserOperration();
 
-
 	@RequestMapping(value = "/goToAddImage", method = RequestMethod.GET)
 	public String goToAddImage(HttpServletRequest request){
 		return "ourpoolstats/userOption/addImage";
-
 	}
 
 
 	@RequestMapping(value = "/addImage", method = RequestMethod.POST)
 	public String addImage(HttpServletRequest request){
-		userService.setImageProfile((String) request.getSession().getAttribute("username"), request.getParameter("url"));
+		userService.setImageProfile((String) request.getSession().getAttribute("username"), request.getParameter("url"),"update");
 		userService.getImageProfile((String) request.getSession().getAttribute("username"));
 		return "/ourpoolstats/account";
 
@@ -35,32 +33,27 @@ public class AccountController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request){
-		
 		userService.deleteToUserOnline((String)request.getSession().getAttribute("username"));
-		request.getSession().removeAttribute("usernamane");
+		userService.setFirstLoginDay((String)request.getSession().getAttribute("username"), 1);
+		request.getSession().removeAttribute("username");
 		return "/home/index";
-
 	}
 
 
 	@RequestMapping(value = "/goToChangePassword", method = RequestMethod.GET)
 	public String goToChangePassword(HttpServletRequest request){
 		return "ourpoolstats/userOption/changePassword";
-
 	}
 
-	
 	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
 	public String changePassword(HttpServletRequest request){
-
+		
 		if(userService.changePassword((String) request.getSession().getAttribute("username"), request.getParameter("password"))) {
 			return "ourpoolstats/succesUser";
 		}
 		else {
 			return "/ourpoolstats/errorUser";
 		}
-		
-
 	}
 
 
@@ -69,20 +62,26 @@ public class AccountController {
 		return "ourpoolstats/userOption/changeEmail";
 
 	}
-	
+
 	@RequestMapping(value = "/changeEmail", method = RequestMethod.POST)
 	public String changeEmail(HttpServletRequest request){
-		
+
 		if(userService.changeEmail((String) request.getSession().getAttribute("username"), request.getParameter("email"))) {
 			return "ourpoolstats/succesUser";
 		}
 		else {
 			return "/ourpoolstats/errorUser";
 		}
-		
+
 	}
 
-	@RequestMapping(value = "/deleteUserAction", method = RequestMethod.GET)
+	@RequestMapping(value = "/goToDeleteUserAction", method = RequestMethod.GET)
+	public String goToDeleteUserAction(HttpServletRequest request) {
+		return "ourpoolstats/userOption/delete";
+
+	}
+
+	@RequestMapping(value = "/deleteUserAction", method = RequestMethod.POST)
 	public ModelAndView deleteUser(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		if(userService.deleteUser((String)request.getSession().getAttribute("username"))) {

@@ -11,7 +11,7 @@ import oupoolstats.service.user.UserOperration;
 import ourpoolstats.manager.ManagerHome;
 import ourpoolstats.manager.ManagerImage;
 import ourpoolstats.multilingual.MultilingualHomeController;
-import ourpoolstats.myenum.Lenguage;
+import ourpoolstats.myenum.LenguageType;
 import ourpoolstats.utility.SendEmail;
 
 
@@ -49,26 +49,7 @@ public class MainController {
 		model.setViewName("/home/index");
 		return model;
 	}
-	
-	@RequestMapping(value = "/changeToItalian", method = RequestMethod.GET)
-	public ModelAndView changeToItalian() {
-		ModelAndView model = new ModelAndView();
-		MultilingualHomeController.getInstance().setLenguageItalian();
-		ManagerImage.getInstance().setImageDefault(Lenguage.ITALIAN);
-		model.setViewName("/home/index");
-		return model;
-	}
-	
-	@RequestMapping(value = "/changeToEnglish", method = RequestMethod.GET)
-	public ModelAndView changeToEnglish() {
-		ModelAndView model = new ModelAndView();
-		MultilingualHomeController.getInstance().setLenguageEnglish();
-		ManagerImage.getInstance().setImageDefault(Lenguage.ENGLISH);
-		model.setViewName("/home/index");
-		return model;
-	}
-	
-	
+		
 	@RequestMapping(value = "/goToSignin", method = RequestMethod.GET)
 	public ModelAndView goToSignin() {
 		ModelAndView model = new ModelAndView();

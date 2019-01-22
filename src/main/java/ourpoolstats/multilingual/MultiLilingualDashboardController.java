@@ -37,6 +37,8 @@ public class MultiLilingualDashboardController {
 	private String coinMarket = "CoinMarket";
 	private String cryptopia = "Cryptopia";
 	private String coinGeko = "Coingeko";
+	private String errorInternt = "Errore con La Connessione";  
+	private String deleteUserAction = "Sei Sicuro Di Volere Cancellare il Tuo Account";
 
 
 
@@ -245,6 +247,14 @@ public class MultiLilingualDashboardController {
 
 	public String getCoinGeko() {
 		return coinGeko;
+	}
+
+	public String getErrorInternt() {
+		return errorInternt;
+	}
+
+	public String getDeleteUserAction() {
+		return deleteUserAction;
 	}
 
 	

@@ -1,0 +1,55 @@
+.buttonOption {
+	position: absolute;
+	left: 1%;
+	top: 1%;
+}
+
+.buttonCoin {
+	position: absolute;
+	left: 40%;
+	top: 1%;
+}
+
+.buttonChangeUser {
+	margin-top: 10px;
+	margin-left: 47%
+}
+
+.buttonBack {
+	position: absolute;
+	top: 90%;
+	left: 15%
+}
+
+.buttonSignin {
+	position: absolute;
+	top: 90%;
+	left: 55%
+}
+
+.buttonAddImage {
+	margin-top: 10px;
+	margin-left: 47%
+}
+
+.buttonBackAddImage {
+	position: absolute;
+	margin-top: -38px;
+	margin-left: 20%;
+}
+
+.buttonChangeEmail {
+	margin-top: 10px;
+	margin-left: 47%
+}
+
+.buttonChangeSetPassword {
+	margin-top: 20px;
+	margin-left: 27%
+}
+
+.buttonAccount {
+	position: absolute;
+	top: 5%;
+	right: 1%;
+}

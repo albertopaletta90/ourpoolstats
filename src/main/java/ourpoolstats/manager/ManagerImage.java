@@ -1,6 +1,6 @@
 package ourpoolstats.manager;
 
-import ourpoolstats.myenum.Lenguage;
+import ourpoolstats.myenum.LenguageType;
 
 public class ManagerImage {
 	
@@ -8,7 +8,7 @@ public class ManagerImage {
 	private String linkDefaultImageLanguages = "https://stadiodellaromafaq.files.wordpress.com/2016/09/italy.png";
 	private String linkItalianImageLanguages = "https://stadiodellaromafaq.files.wordpress.com/2016/09/italy.png";
 	private String linkEnglishImageLanguages = "https://www.statuasancarlo.it/wp-content/uploads/2015/04/icona-inglese.png";
-	private String linkImageProfile = "https://cdn.icon-icons.com/icons2/1369/PNG/512/-account-circle_89831.png";
+	private String linkImageProfile ="http://aux2.iconspalace.com/uploads/manager-icon-256.png" ;
 	private ManagerImage() {}
 	
 	public static ManagerImage getInstance() {
@@ -20,7 +20,7 @@ public class ManagerImage {
 		return instance;
 	}
 	
-	public void setImageDefault(Lenguage lenguage) {
+	public void setImageDefault(LenguageType lenguage) {
 		switch (lenguage) {
 		case ITALIAN:
 				this.linkDefaultImageLanguages = linkItalianImageLanguages;
@@ -53,6 +53,7 @@ public class ManagerImage {
 	public void setLinkImageProfile(String linkImageProfile) {
 		this.linkImageProfile = linkImageProfile;
 	}
+	
 	
 	
 }

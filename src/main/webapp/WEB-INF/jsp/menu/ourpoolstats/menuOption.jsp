@@ -12,14 +12,15 @@
     		<a class="dropdown-item colorLeguage" href="./goToCreateUser"><%=MultiLilingualDashboardController.getInstance().getInsertUser()%></a><%}%>
     	<%if(request.getSession().getAttribute("userType").equals("ADMIN")){%>	
     		<a class="dropdown-item colorLeguage" href="./goToDeleteUser"><%=MultiLilingualDashboardController.getInstance().getDeleteUser()%></a><%}%>
-    	
-    	<%if(request.getSession().getAttribute("userType").equals("ADMIN")){%>
+		<%if(request.getSession().getAttribute("userType").equals("ADMIN")){%>	
+    		<a class="dropdown-item colorLeguage" href="goToChangeTypeUser"><%=MultiLilingualDashboardController.getInstance().getChangeUser()%></a><%}%>
+    	<%if(request.getSession().getAttribute("userType").equals("ADMIN") || request.getSession().getAttribute("userType").equals("MANAGER")){%>
     		<a class="dropdown-item colorLeguage" href="#"><%=MultiLilingualDashboardController.getInstance().getAddCoin()%></a><%}%>
-    	<%if(request.getSession().getAttribute("userType").equals("ADMIN")){%>
+    	<%if(request.getSession().getAttribute("userType").equals("ADMIN")  || request.getSession().getAttribute("userType").equals("MANAGER")){%>
     		<a class="dropdown-item colorLeguage" href="#"><%=MultiLilingualDashboardController.getInstance().getDeleteCoin()%></a><%}%>
-    	<%if(request.getSession().getAttribute("userType").equals("ADMIN")){%>
+    	<%if(request.getSession().getAttribute("userType").equals("ADMIN")  || request.getSession().getAttribute("userType").equals("MANAGER")){%>
     		<a class="dropdown-item colorLeguage" href="#"><%=MultiLilingualDashboardController.getInstance().getViewLogSigleUser()%></a><%}%>
-    	<%if(request.getSession().getAttribute("userType").equals("ADMIN")){%>
+    	<%if(request.getSession().getAttribute("userType").equals("ADMIN")  || request.getSession().getAttribute("userType").equals("MANAGER")){%>
     		<a class="dropdown-item colorLeguage" href="./logUser"><%=MultiLilingualDashboardController.getInstance().getViewLogUsers()%></a><%}%>
     	<a class="dropdown-item colorLeguage" href="./userOnline"><%=MultiLilingualDashboardController.getInstance().getViewUserOnline()%></a>
    	</div>

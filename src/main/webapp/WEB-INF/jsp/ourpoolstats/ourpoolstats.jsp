@@ -32,6 +32,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="<c:url value="/resources/css/ourpoolstats.css"/>"
 	rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/buttonHome.css"/>"
+	rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/buttonOurpoolstats.css"/>"
+	rel="stylesheet" type="text/css" />
 <title>OurpoolStats</title>
 </head>
 <body>
@@ -80,7 +84,7 @@
 						</input>
 						<td><%=ManagerDashboard.getInstance().getListCoin().get(i).getName()%></td>
 						<td><%=ManagerDashboard.getInstance().getListCoin().get(i).getPrice_usd()%></td>
-						<td><%=ManagerDashboard.getInstance().getListCoin().get(i).getPrice_btc()%></td>
+						<td><a href="./viewDashboard?idBook=<%=ManagerDashboard.getInstance().getListCoin().get(i).getName()%>" ><%=ManagerDashboard.getInstance().getListCoin().get(i).getPrice_btc()%></a></td>
 						<td><%=ManagerDashboard.getInstance().getListCoin().get(i).getMarket_cap_usd()%></td>
 						<%if(ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_1h()>=0){%>
 						<td class="green"><%=ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_1h()%></td>

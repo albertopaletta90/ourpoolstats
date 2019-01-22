@@ -13,9 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import oupoolstats.api.coinmarket.CoinMarketClient;
 import oupoolstats.service.admin.AdminDasboradService;
+import oupoolstats.service.language.LanguageService;
+import ourpoolstats.log.AdminOperationLogger;
 import ourpoolstats.manager.ManagerDashboard;
 import ourpoolstats.model.User;
 import ourpoolstats.model.UserLog;
+import ourpoolstats.myenum.AdminOperation;
 import ourpoolstats.myenum.UserType;
 
 
@@ -45,18 +48,21 @@ public class AdminDashBoardController {
 		model.addAttribute("userType",UserType.USER);
 		User tmp = new User();
 		tmp.setAllParameter(model);
-		System.out.println("sdfbuewfbuwebgfuiweb");
 
 		if(adminDadshboardService.createUser(tmp)) {
 			ManagerDashboard.getInstance().setSigninAdminSuccess(true);
 			ManagerDashboard.getInstance().setOptionAdmin(false);
+			LanguageService languageService = new LanguageService();
+			languageService.setLenguace("italiano", u.getUsername());
+			AdminOperationLogger.getInstance().logger(u.getUsername(), true, AdminOperation.INSERTUSER);
 			return "ourpoolstats/succes";
 		}
 		else {
 			ManagerDashboard.getInstance().setOptionAdmin(true);
 			ManagerDashboard.getInstance().setCreateUser(true);
 			ManagerDashboard.getInstance().setSigninAdminSuccess(false);
-		//	Controllerutility.ERRORESIGNIN = true;
+			AdminOperationLogger.getInstance().logger(u.getUsername(), false, AdminOperation.INSERTUSER);
+
 			return "ourpoolstats/error";
 		}
 	}
@@ -77,11 +83,13 @@ public class AdminDashBoardController {
 		ModelAndView model = new ModelAndView();
 		if(adminDadshboardService.deleteUser(request.getParameter("username"))) {
 			model.setViewName("ourpoolstats/succes");
+			AdminOperationLogger.getInstance().logger(request.getParameter("username"), true, AdminOperation.DELETE);
 			return model;
 		}
 		else {
 			ManagerDashboard.getInstance().setDeleteUserSucces(false);
 			ManagerDashboard.getInstance().setOptionAdmin(true);
+			AdminOperationLogger.getInstance().logger(request.getParameter("username"), false, AdminOperation.DELETE);
 		}
 
 		model.setViewName("ourpoolstats/error");
@@ -97,19 +105,21 @@ public class AdminDashBoardController {
 
 	}
 
-	
+
 	@RequestMapping(value = "/changeTypeUser", method = RequestMethod.POST)
 	public ModelAndView changeTypeUser(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		if(adminDadshboardService.cangeTypeUser(request.getParameter("userType"),request.getParameter("username"))) {
+			AdminOperationLogger.getInstance().logger(request.getParameter("username"), true, AdminOperation.CHANGETYPE);
 			model.setViewName("ourpoolstats/succes");
 		}
 		else {
 			ManagerDashboard.getInstance().setChangeUserSuccess(false);
 			ManagerDashboard.getInstance().setOptionAdmin(true);
+			AdminOperationLogger.getInstance().logger(request.getParameter("username"), false, AdminOperation.CHANGETYPE);
+			model.setViewName("ourpoolstats/error");
 		}
 
-		model.setViewName("ourpoolstats/error");
 		return model;
 
 	}
@@ -118,8 +128,14 @@ public class AdminDashBoardController {
 	public ModelAndView logUser(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		List<UserLog>list=adminDadshboardService.logUser();
-		request.setAttribute("userLog", list);
-		model.setViewName("ourpoolstats/userOption/userLog");
+		if(list != null) {
+			request.setAttribute("userLog", list);
+			model.setViewName("ourpoolstats/userOption/userLog");
+			AdminOperationLogger.getInstance().logger("", true, AdminOperation.VIEWLOGUSER);
+		}
+		else {
+			AdminOperationLogger.getInstance().logger("", false, AdminOperation.VIEWLOGUSER);
+		}
 		return model;
 	}
 

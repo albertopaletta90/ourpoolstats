@@ -34,11 +34,11 @@ public class AdminDasboradService implements IAdminDasboradService {
 		String userType = "USER";
 		int row = 0;
 		try {
-			 row = jdbcTemplate.update(QueryAdminOption.getInstance().getInsertUserAdmin(),u.getUserName(),u.getUserSurname(),u.getEmail(),u.getUsername(),hashPswword,userType);
+			row = jdbcTemplate.update(QueryAdminOption.getInstance().getInsertUserAdmin(),u.getUserName(),u.getUserSurname(),u.getEmail(),u.getUsername(),hashPswword,userType);
 		}catch (Exception e) {
 			return false;
 		}
-		
+
 		if(row > 0)
 			return true;
 		else		
@@ -71,9 +71,11 @@ public class AdminDasboradService implements IAdminDasboradService {
 
 	@Override
 	public List<UserLog> logUser() {
-		List<UserLog>list = new ArrayList<>();
-		list = jdbcTemplate.query(QueryAdminOption.getInstance().getUserLog(), new UserLogMapper());
-		return list;
+		List<UserLog>list = jdbcTemplate.query(QueryAdminOption.getInstance().getUserLog(), new UserLogMapper());
+		if(list == null )
+			return null;
+		else
+			return list;
 	}
 
 	@Override
@@ -85,7 +87,7 @@ public class AdminDasboradService implements IAdminDasboradService {
 
 	@Override
 	public List<String> getCoins() {
-		
+
 		return null;
 	}
 
