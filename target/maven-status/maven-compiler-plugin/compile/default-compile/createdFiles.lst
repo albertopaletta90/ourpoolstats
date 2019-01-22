@@ -1,7 +1,6 @@
 oupoolstats\service\admin\AdminDasboradService.class
 ourpoolstats\mapper\UserLogMapper.class
 oupoolstats\api\cryptopia\remote\data\TradePair.class
-ourpoolstats\myenum\LogType.class
 ourpoolstats\manager\ManagerImage$1.class
 oupoolstats\api\cryptopia\CryptopiaClient.class
 oupoolstats\api\cryptopia\remote\data\enums\TradeType.class
