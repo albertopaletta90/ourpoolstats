@@ -84,7 +84,7 @@
 						</input>
 						<td><%=ManagerDashboard.getInstance().getListCoin().get(i).getName()%></td>
 						<td><%=ManagerDashboard.getInstance().getListCoin().get(i).getPrice_usd()%></td>
-						<td><%=ManagerDashboard.getInstance().getListCoin().get(i).getPrice_btc()%></td>
+						<td><a href="./viewDashboard?idBook=<%=ManagerDashboard.getInstance().getListCoin().get(i).getName()%>" ><%=ManagerDashboard.getInstance().getListCoin().get(i).getPrice_btc()%></a></td>
 						<td><%=ManagerDashboard.getInstance().getListCoin().get(i).getMarket_cap_usd()%></td>
 						<%if(ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_1h()>=0){%>
 						<td class="green"><%=ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_1h()%></td>

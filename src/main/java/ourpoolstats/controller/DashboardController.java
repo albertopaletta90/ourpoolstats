@@ -3,8 +3,10 @@ package ourpoolstats.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import oupoolstats.api.coinmarket.Coin;
@@ -29,11 +31,13 @@ public class DashboardController {
 		model.setViewName("/ourpoolstats/account");
 		return model;
 	}
+
+	@RequestMapping(value = "/viewDashboard", method = RequestMethod.GET)
+	public String goToInfoCoin(@RequestParam("idBook") String id) {
 	
-	@RequestMapping(value = "/goToInfoCoin", method = RequestMethod.POST)
-	public String goToInfoCoin(@ModelAttribute("SpringWeb")Coin c,ModelMap model) {
-		model.addAttribute("name", c.getName());
-		System.out.println("fenkrnkingri + " +c.getName());
-		return "";
+		System.out.println("fenkrnkingri + " + id);
+		return "/ourpoolstats/viewDashboard";
 	}
+	
+	
 }
