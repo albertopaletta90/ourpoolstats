@@ -2,7 +2,7 @@ package oupoolstats.service.user;
 
 import ourpoolstats.model.Login;
 import ourpoolstats.model.User;
-import ourpoolstats.myenum.UserType;
+import ourpoolstats.type.UserType;
 
 public interface IUserOperation {
 	public boolean signinUser(User u);

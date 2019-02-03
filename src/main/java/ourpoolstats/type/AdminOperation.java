@@ -1,4 +1,4 @@
-package ourpoolstats.myenum;
+package ourpoolstats.type;
 
 public enum AdminOperation {
 

@@ -2,7 +2,6 @@ package ourpoolstats.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,7 +11,7 @@ import oupoolstats.service.language.LanguageService;
 import ourpoolstats.manager.ManagerImage;
 import ourpoolstats.multilingual.MultiLilingualDashboardController;
 import ourpoolstats.multilingual.MultilingualHomeController;
-import ourpoolstats.myenum.LenguageType;
+import ourpoolstats.type.LenguageType;
 
 @Controller
 public class LanguageController {

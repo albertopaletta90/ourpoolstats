@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.client.RestTemplate;
 
-import oupoolstats.api.cryptopia.remote.data.TradePair;
-
 
 public class CoinMarketClient {
 	private String url = "https://api.coinmarketcap.com/v1/ticker/";
@@ -20,6 +18,14 @@ public class CoinMarketClient {
 		Coin[] coins = restTemplate.getForObject(url, Coin[].class);
 		Object[] list = Arrays.stream((Coin[]) coins).filter(x -> x.getName().equalsIgnoreCase(nameCoin)).toArray();
 		listCoin.add((Coin) list[0]);
+		
+	}
+	
+	public Coin getCoinInfo(String nameCoin) {
+		RestTemplate restTemplate = new RestTemplate();
+		Coin[] coins = restTemplate.getForObject(url, Coin[].class);
+		Object[] list = Arrays.stream((Coin[]) coins).filter(x -> x.getName().equalsIgnoreCase(nameCoin)).toArray();
+		return (Coin) list[0];
 		
 	}
 	

@@ -7,7 +7,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import ourpoolstats.manager.ManagerImage;
 import ourpoolstats.mapper.FirstLoginMapper;
 import ourpoolstats.mapper.ImageMapper;
 import ourpoolstats.mapper.LoginMapper;
@@ -16,9 +15,9 @@ import ourpoolstats.mapper.PasswordMapper;
 import ourpoolstats.mapper.UserTypeMapper;
 import ourpoolstats.model.Login;
 import ourpoolstats.model.User;
-import ourpoolstats.myenum.UserType;
 import ourpoolstats.query.QueryImage;
 import ourpoolstats.query.QueryUser;
+import ourpoolstats.type.UserType;
 import ourpoolstats.utility.GetConnection;
 
 

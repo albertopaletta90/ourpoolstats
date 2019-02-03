@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.springframework.ui.ModelMap;
 
-import ourpoolstats.myenum.UserType;
+import ourpoolstats.type.UserType;
 
 public class User implements Serializable {
 

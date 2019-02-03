@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import ourpoolstats.model.Language;
-import ourpoolstats.myenum.LenguageType;
+import ourpoolstats.type.LenguageType;
 
 public class LanguageMapper  implements RowMapper<Language> {
 

@@ -5,8 +5,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import ourpoolstats.mapper.LanguageMapper;
-import ourpoolstats.myenum.LenguageType;
 import ourpoolstats.query.QueryLanguage;
+import ourpoolstats.type.LenguageType;
 import ourpoolstats.utility.GetConnection;
 
 public class LanguageService implements ILanguageService {

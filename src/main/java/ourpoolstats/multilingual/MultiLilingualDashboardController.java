@@ -32,13 +32,17 @@ public class MultiLilingualDashboardController {
 	private String priceBtc ="Prezzo in BTC";
 	private String priceUsd ="Prezzo in Dollari";
 	private String marketcap = "Market Cap";
+	private String marketcap24 = "Market Cap";
 	private String perc1H = "1H%";
 	private String perc24H = "24H%";
+	private String perc7D = "7D%";
 	private String coinMarket = "CoinMarket";
 	private String cryptopia = "Cryptopia";
 	private String coinGeko = "Coingeko";
 	private String errorInternt = "Errore con La Connessione";  
 	private String deleteUserAction = "Sei Sicuro Di Volere Cancellare il Tuo Account";
+	private String currentPrice = "Prezzo Corrente";
+	private String price24H = "Prezzo in 24H";
 
 
 
@@ -79,8 +83,15 @@ public class MultiLilingualDashboardController {
 		this.priceBtc ="Prezzo in BTC";
 		this.priceUsd ="Prezzo in Dollari";
 		this.marketcap = "Market Cap";
+		this.marketcap24 = "Market Cap 24H";
 		this.perc1H = "1H%";
 		this.perc24H = "24H%";
+		this.perc7D = "7D%";
+		this.errorInternt = "Errore con La Connessione";  
+		this.deleteUserAction = "Sei Sicuro Di Volere Cancellare il Tuo Account";
+		this. currentPrice = "Prezzo Corrente";
+		this.price24H = "Prezzo in 24H";
+
 
 	}
 
@@ -109,8 +120,14 @@ public class MultiLilingualDashboardController {
 		this.priceBtc ="Price  BTC";
 		this.priceUsd ="Price USD";
 		this.marketcap = "Market Cap";
+		this.marketcap24 = "Market Cap 24H";
 		this.perc1H = "1H%";
 		this.perc24H = "24H%";
+		this.perc7D = "7D%";
+		this.errorInternt = "Error whith Connection";  
+		this.deleteUserAction = "Are you sure you want to cancel your account";
+		this.currentPrice = "Current Price";
+		this.price24H = "Price  in 24H";
 	}
 
 
@@ -229,12 +246,20 @@ public class MultiLilingualDashboardController {
 		return marketcap;
 	}
 
+	public String getMarketcap24() {
+		return marketcap24;
+	}
+
 	public String getPerc1H() {
 		return perc1H;
 	}
 
 	public String getPerc24H() {
 		return perc24H;
+	}
+
+	public String getPerc7D() {
+		return perc7D;
 	}
 
 	public String getCoinMarket() {
@@ -257,6 +282,15 @@ public class MultiLilingualDashboardController {
 		return deleteUserAction;
 	}
 
+	public String getCurrentPrice() {
+		return currentPrice;
+	}
+
+	public String getPrice24H() {
+		return price24H;
+	}
+	
+	
 	
 
 

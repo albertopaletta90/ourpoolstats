@@ -1,0 +1,20 @@
+body {
+	background-color: #EDEDED;
+}
+
+.positionImageInfo {
+	position: absolute;
+	left: 45%;
+	top: 3%;
+}
+
+.divInfo {
+	position: absolute;
+	width: 30%;
+}
+
+.divGraphic {
+	position: absolute;
+	width: 70%;
+	left: 30%;
+}

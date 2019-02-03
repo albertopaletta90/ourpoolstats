@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ourpoolstats.manager.ManagerCoin;
-import ourpoolstats.myenum.CryptoCurrency;
+import ourpoolstats.type.CryptoCurrency;
 
 @Controller
 public class CoinMarketController {

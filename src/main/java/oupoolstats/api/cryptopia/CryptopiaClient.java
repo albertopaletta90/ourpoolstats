@@ -1,45 +1,19 @@
 package oupoolstats.api.cryptopia;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Base64;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.HttpsURLConnection;
 
-import oupoolstats.api.cryptopia.remote.ApiResponse;
 import oupoolstats.api.cryptopia.remote.CryptopiaClientException;
-import oupoolstats.api.cryptopia.remote.data.Balance;
 import oupoolstats.api.cryptopia.remote.data.Currency;
-import oupoolstats.api.cryptopia.remote.data.DepositAddress;
 import oupoolstats.api.cryptopia.remote.data.Market;
-import oupoolstats.api.cryptopia.remote.data.MarketHistory;
-import oupoolstats.api.cryptopia.remote.data.MarketOrder;
-import oupoolstats.api.cryptopia.remote.data.MarketOrderGroup;
-import oupoolstats.api.cryptopia.remote.data.MarketOrders;
-import oupoolstats.api.cryptopia.remote.data.OpenOrder;
-import oupoolstats.api.cryptopia.remote.data.SubmittedTrade;
-import oupoolstats.api.cryptopia.remote.data.TradeHistory;
 import oupoolstats.api.cryptopia.remote.data.TradePair;
-import oupoolstats.api.cryptopia.remote.data.TradeSubmission;
-import oupoolstats.api.cryptopia.remote.data.Transaction;
-import oupoolstats.api.cryptopia.remote.data.enums.CurrencyListingStatus;
-import oupoolstats.api.cryptopia.remote.data.enums.CurrencyStatus;
-import oupoolstats.api.cryptopia.remote.data.enums.TransactionType;
 import ourpoolstats.jsonparser.JsonParserCurrency;
 import ourpoolstats.jsonparser.JsonParserMarket;
 import ourpoolstats.jsonparser.JsonParserTradePair;

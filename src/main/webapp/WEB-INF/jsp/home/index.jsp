@@ -18,14 +18,9 @@
 <title>OurpoolStats</title>
 </head>
 <body>
-	<div class="divMenu">
-		<jsp:include page="../menu/home/menuHome.jsp"></jsp:include>		
-	</div>
+	
 
 	<div class="divHomePage">
-		<div class="lenguage">
-			<jsp:include page="../menu/lenguages/lenguagesHome.jsp"></jsp:include>
-		</div>	
 			<jsp:include page="../loginSignin/login.jsp"></jsp:include>		
 		</div>
 

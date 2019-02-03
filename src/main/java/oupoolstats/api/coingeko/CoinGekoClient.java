@@ -6,16 +6,17 @@ import java.util.List;
 
 import org.springframework.web.client.RestTemplate;
 
-import oupoolstats.api.coingeko.data.Coin;
+import oupoolstats.api.coingeko.data.CoinG;
 import oupoolstats.api.coingeko.data.Market;
 
 
 public class CoinGekoClient {
 	private static  CoinGekoClient instance ;
-	private static String urlMarket = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd";
+	private String currency = "eur";
+	private String urlMarket = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=";
 	private static String urlListCoin = "https://api.coingecko.com/api/v3/coins/list";
 	private  List<Market>listMarket = new ArrayList<Market>();
-	private  List<Coin>listCoin = new ArrayList<Coin>();
+	private  List<CoinG>listCoin = new ArrayList<CoinG>();
 
 	private CoinGekoClient() {}
 
@@ -31,7 +32,7 @@ public class CoinGekoClient {
 
 	public void getMarket(String nameCoin) {
 		RestTemplate restTemplate = new RestTemplate();
-		Market[] coins = restTemplate.getForObject(urlMarket, Market[].class);
+		Market[] coins = restTemplate.getForObject(urlMarket+currency, Market[].class);
 		Object[] list = Arrays.stream((Market[]) coins).filter(x -> x.getName().equalsIgnoreCase(nameCoin)).toArray();
 		listMarket.add((Market) list[0]);
 
@@ -39,9 +40,9 @@ public class CoinGekoClient {
 
 	public void getListCoin(String nameCoin) {
 		RestTemplate restTemplate = new RestTemplate();
-		Coin[] coins = restTemplate.getForObject(urlListCoin, Coin[].class);
-		Object[] list = Arrays.stream((Coin[]) coins).filter(x -> x.getName().equalsIgnoreCase(nameCoin)).toArray();
-		listCoin.add((Coin) list[0]);
+		CoinG[] coins = restTemplate.getForObject(urlListCoin, CoinG[].class);
+		Object[] list = Arrays.stream((CoinG[]) coins).filter(x -> x.getName().equalsIgnoreCase(nameCoin)).toArray();
+		listCoin.add((CoinG) list[0]);
 
 	}
 
@@ -49,10 +50,19 @@ public class CoinGekoClient {
 		return listMarket;
 	}
 
-	public  List<Coin> getListCoin() {
+	public  List<CoinG> getListCoin() {
 		return listCoin;
 	}
 
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	
 
 
 }

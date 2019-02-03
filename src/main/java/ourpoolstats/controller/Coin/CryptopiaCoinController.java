@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import oupoolstats.service.coin.CoinMarketService;
 import oupoolstats.service.coin.CryptopiaService;
 import ourpoolstats.manager.ManagerCoin;
-import ourpoolstats.myenum.CryptoCurrency;
+import ourpoolstats.type.CryptoCurrency;
 
 @Controller
 public class CryptopiaCoinController {

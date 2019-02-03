@@ -1,5 +1,7 @@
 package ourpoolstats.manager;
 
+import oupoolstats.service.user.UserOperration;
+
 public class ManagerAccount {
 
 	private static ManagerAccount instance;
@@ -8,7 +10,8 @@ public class ManagerAccount {
 	private boolean changeEmail =false;
 	private boolean changeErrorEmail =false;
 	private boolean deleteUser = false;
-	private boolean deleteUserError = false; 
+	private boolean deleteUserError = false;
+	private UserOperration userOperration = new UserOperration();
 	
 	
 	private ManagerAccount() {}
@@ -70,6 +73,15 @@ public class ManagerAccount {
 	public void setDeleteUserError(boolean deleteUserError) {
 		this.deleteUserError = deleteUserError;
 	}
+
+	public UserOperration getUserOperration() {
+		return userOperration;
+	}
+
+	public void setUserOperration(UserOperration userOperration) {
+		this.userOperration = userOperration;
+	}
+	
 	
 	
 }

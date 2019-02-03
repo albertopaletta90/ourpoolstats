@@ -1,19 +1,24 @@
 package ourpoolstats.manager;
 
-import ourpoolstats.myenum.CryptoCurrency;
-
 import java.util.List;
 
+import oupoolstats.api.coingeko.CoinGekoClient;
 import oupoolstats.api.coingeko.data.Market;
-import oupoolstats.api.cryptopia.remote.data.Currency;
+import oupoolstats.api.coinmarket.Coin;
+import oupoolstats.api.coinmarket.CoinMarketClient;
 import oupoolstats.api.cryptopia.remote.data.TradePair;
+import oupoolstats.service.coin.CoinMarketService;
+import ourpoolstats.type.CryptoCurrency;
 public class ManagerCoin {
 
 	private static ManagerCoin instance;
 	private CryptoCurrency cryptoCurrency;
 	private List<TradePair>cryptopiaCoin;
 	private List<Market>coingekoCoin;
-	
+	private List<String>coinListDefault;
+	private CoinMarketClient getCoin = new CoinMarketClient();
+	private CoinMarketService coinService = new CoinMarketService();
+	private List<Coin>listUserCoinMarket; 
 
 	private ManagerCoin() {}
 
@@ -24,6 +29,18 @@ public class ManagerCoin {
 			instance = new ManagerCoin();
 		}
 		return instance;
+	}
+	
+	public void setMoneyListCoinGeko() {
+		for(int i = 0;	i<this.coinListDefault.size(); i++)
+			CoinGekoClient.GetInstance().getMarket(this.coinListDefault.get(i));
+
+	}
+	
+	public void setMoneyListCoinMarket() {
+		for (String element : ManagerCoin.getInstance().getCoinListDefault()) {
+			this.getCoin.getCoin(element);
+		}
 	}
 
 	public CryptoCurrency getCryptoCurrency() {
@@ -49,7 +66,37 @@ public class ManagerCoin {
 	public void setCoingekoCoin(List<Market> coingekoCoin) {
 		this.coingekoCoin = coingekoCoin;
 	}
-	
-	
-	
+
+	public List<String> getCoinListDefault() {
+		return coinListDefault;
+	}
+
+	public void setCoinListDefault(List<String> coinListDefault) {
+		this.coinListDefault = coinListDefault;
+	}
+
+	public CoinMarketClient getGetCoin() {
+		return getCoin;
+	}
+
+	public void setGetCoin(CoinMarketClient getCoin) {
+		this.getCoin = getCoin;
+	}
+
+	public CoinMarketService getCoinService() {
+		return coinService;
+	}
+
+	public void setCoinService(CoinMarketService coinService) {
+		this.coinService = coinService;
+	}
+
+	public List<Coin> getListUserCoinMarket() {
+		return listUserCoinMarket;
+	}
+
+	public void setListUserCoinMarket(List<Coin> listUserCoinMarket) {
+		this.listUserCoinMarket = listUserCoinMarket;
+	}
+
 }

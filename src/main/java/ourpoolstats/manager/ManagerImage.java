@@ -1,6 +1,7 @@
 package ourpoolstats.manager;
 
-import ourpoolstats.myenum.LenguageType;
+import ourpoolstats.type.CurrencyType;
+import ourpoolstats.type.LenguageType;
 
 public class ManagerImage {
 	
@@ -9,6 +10,9 @@ public class ManagerImage {
 	private String linkItalianImageLanguages = "https://stadiodellaromafaq.files.wordpress.com/2016/09/italy.png";
 	private String linkEnglishImageLanguages = "https://www.statuasancarlo.it/wp-content/uploads/2015/04/icona-inglese.png";
 	private String linkImageProfile ="http://aux2.iconspalace.com/uploads/manager-icon-256.png" ;
+	private String linkCurrencyDeflaut = "https://cdn.iconscout.com/icon/free/png-256/euro-207-444688.png";
+	private String linkCurrencyEur = "https://cdn.iconscout.com/icon/free/png-256/euro-207-444688.png";
+	private String linkCurrencyUsd = "http://i2.wp.com/www.klindex-america.com/wp-content/uploads/2016/02/klindex-dollar-icon-grinding.png";
 	private ManagerImage() {}
 	
 	public static ManagerImage getInstance() {
@@ -34,6 +38,21 @@ public class ManagerImage {
 		
 	}
 	
+
+	public void setImageCurrency(CurrencyType currency) {
+		switch (currency) {
+		case EURO:
+				this.linkCurrencyDeflaut = linkCurrencyEur;
+			break;
+		case  USD:
+			this.linkCurrencyDeflaut = linkCurrencyUsd;
+
+		default:
+			break;
+		}
+		
+	}
+	
 	public String getLinkDefaultImageLanguages() {
 		return linkDefaultImageLanguages;
 	}
@@ -52,6 +71,18 @@ public class ManagerImage {
 
 	public void setLinkImageProfile(String linkImageProfile) {
 		this.linkImageProfile = linkImageProfile;
+	}
+
+	public String getLinkCurrencyDeflaut() {
+		return linkCurrencyDeflaut;
+	}
+
+	public String getLinkCurrencyEur() {
+		return linkCurrencyEur;
+	}
+
+	public String getLinkCurrencyUsd() {
+		return linkCurrencyUsd;
 	}
 	
 	

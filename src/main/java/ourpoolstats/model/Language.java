@@ -1,6 +1,6 @@
 package ourpoolstats.model;
 
-import ourpoolstats.myenum.LenguageType;
+import ourpoolstats.type.LenguageType;
 
 public class Language {
 

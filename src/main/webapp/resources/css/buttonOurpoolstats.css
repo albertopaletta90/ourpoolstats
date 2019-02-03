@@ -10,6 +10,12 @@
 	top: 1%;
 }
 
+.buttonValue {
+	position: absolute;
+	left: 60%;
+	top: 1%;
+}
+
 .buttonChangeUser {
 	margin-top: 10px;
 	margin-left: 47%

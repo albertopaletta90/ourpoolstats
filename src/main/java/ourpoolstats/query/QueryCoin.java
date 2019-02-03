@@ -4,6 +4,7 @@ public class QueryCoin {
 	private static QueryCoin instance;
 	
 	private String getDefaulCoin = "select name from coin where username = 'user'";
+	private String getuserCoin = "select name,quantity from coin where username = ?";
 	private String insertCoin = "insert into coin (?,?)";
 	private String deleteCoin = "delete from coin where name = ?";
 	private String deleteCoinUser = "delete from coin where name = ? anda username = ?";
@@ -33,6 +34,10 @@ public class QueryCoin {
 
 	public String getDeleteCoinUser() {
 		return deleteCoinUser;
+	}
+
+	public String getGetuserCoin() {
+		return getuserCoin;
 	}
 	
 	

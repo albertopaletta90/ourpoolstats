@@ -12,8 +12,7 @@ import java.util.logging.Logger;
 import ourpoolstats.log.configuration.OurpoolStatsFilter;
 import ourpoolstats.log.configuration.OurpoolStatsFormatter;
 import ourpoolstats.log.configuration.OurpoolStatsHandler;
-import ourpoolstats.myenum.AdminOperation;
-import ourpoolstats.myenum.DataBaseOperation;
+import ourpoolstats.type.DataBaseOperation;
 
 public class OperationDBLogger {
 

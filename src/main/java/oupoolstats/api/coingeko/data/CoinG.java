@@ -1,6 +1,6 @@
 package oupoolstats.api.coingeko.data;
 
-public class Coin {
+public class CoinG {
 
 	private String id;
 	private String name;

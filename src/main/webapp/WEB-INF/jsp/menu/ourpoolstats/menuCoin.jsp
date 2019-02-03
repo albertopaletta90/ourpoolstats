@@ -5,12 +5,12 @@
 <html>
 <div>
   <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   <img src="https://findicons.com/files/icons/88/mac/128/setting.png" width="10" />
+   <img src="https://res.cloudinary.com/coinmarketcap/image/upload/cryptocurrency/128x128/dragon-coins.png" width="30" />
   </button>
   <div class="dropdown-menu">
     <!-- <a class="dropdown-item" href="./goToApiCryptopia"><%=MultiLilingualDashboardController.getInstance().getCryptopia()%></a>-->
     <a class="dropdown-item" href="./goToApiCoinMarket"><%=MultiLilingualDashboardController.getInstance().getCoinMarket()%></a>
-    <a class="dropdown-item" href="./goToApiCoinGeko"><%=MultiLilingualDashboardController.getInstance().getCoinGeko()%></a>
+    <a class="dropdown-item" href="./goToApiCoinGekoEuro"><%=MultiLilingualDashboardController.getInstance().getCoinGeko()%></a>
   </div>
 </div>
 </html>

@@ -18,8 +18,8 @@ import ourpoolstats.log.AdminOperationLogger;
 import ourpoolstats.manager.ManagerDashboard;
 import ourpoolstats.model.User;
 import ourpoolstats.model.UserLog;
-import ourpoolstats.myenum.AdminOperation;
-import ourpoolstats.myenum.UserType;
+import ourpoolstats.type.AdminOperation;
+import ourpoolstats.type.UserType;
 
 
 @Controller

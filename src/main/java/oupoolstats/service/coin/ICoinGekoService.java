@@ -7,5 +7,6 @@ import oupoolstats.api.coingeko.data.Market;
 public interface ICoinGekoService {
 	
 	public List<Market> getList();
+	public Market getCoinInfo(String id);
 
 }

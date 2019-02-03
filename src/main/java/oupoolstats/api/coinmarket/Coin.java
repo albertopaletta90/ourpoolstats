@@ -21,6 +21,8 @@ public class Coin {
 	private float percent_change_24h;
 	private float percent_change_7d;
 	private float last_updated;
+	//my variability
+	private int quantity;
 
 	
 	
@@ -115,6 +117,13 @@ public class Coin {
 	public void setLast_updated(float last_updated) {
 		this.last_updated = last_updated;
 	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 		
+	
 	
 }

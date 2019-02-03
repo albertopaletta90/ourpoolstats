@@ -1,6 +1,6 @@
 package oupoolstats.service.language;
 
-import ourpoolstats.myenum.LenguageType;
+import ourpoolstats.type.LenguageType;
 
 public interface ILanguageService {
 
