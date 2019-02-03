@@ -9,6 +9,7 @@ import oupoolstats.api.coinmarket.CoinMarketClient;
 import oupoolstats.api.cryptopia.remote.data.TradePair;
 import oupoolstats.service.coin.CoinMarketService;
 import ourpoolstats.type.CryptoCurrency;
+import ourpoolstats.type.CurrencyType;
 public class ManagerCoin {
 
 	private static ManagerCoin instance;
@@ -19,6 +20,7 @@ public class ManagerCoin {
 	private CoinMarketClient getCoin = new CoinMarketClient();
 	private CoinMarketService coinService = new CoinMarketService();
 	private List<Coin>listUserCoinMarket; 
+	private CurrencyType currencyType = CurrencyType.EURO;
 
 	private ManagerCoin() {}
 
@@ -32,6 +34,10 @@ public class ManagerCoin {
 	}
 	
 	public void setMoneyListCoinGeko() {
+		
+		if(!CoinGekoClient.GetInstance().getListMarket().isEmpty())
+			CoinGekoClient.GetInstance().getListMarket().clear();
+		
 		for(int i = 0;	i<this.coinListDefault.size(); i++)
 			CoinGekoClient.GetInstance().getMarket(this.coinListDefault.get(i));
 
@@ -98,5 +104,15 @@ public class ManagerCoin {
 	public void setListUserCoinMarket(List<Coin> listUserCoinMarket) {
 		this.listUserCoinMarket = listUserCoinMarket;
 	}
+
+	public CurrencyType getCurrencyType() {
+		return currencyType;
+	}
+
+	public void setCurrencyType(CurrencyType currencyType) {
+		this.currencyType = currencyType;
+	}
+	
+	
 
 }

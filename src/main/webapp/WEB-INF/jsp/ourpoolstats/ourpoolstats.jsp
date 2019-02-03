@@ -1,3 +1,4 @@
+<%@page import="ourpoolstats.type.CurrencyType"%>
 <%@page import="ourpoolstats.type.CryptoCurrency"%>
 <%@page import="ourpoolstats.manager.ManagerCoin"%>
 <%@page import="oupoolstats.api.coinmarket.CoinMarketClient"%>
@@ -122,7 +123,11 @@
 						<tr>
 							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getSymbol()%></th>
 							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getNameCoin()%></th>
-							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPriceUsd()%></th>
+							<%if(ManagerCoin.getInstance().getCurrencyType() == CurrencyType.USD) {%>
+								<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPriceUsd()%></th>							
+							<%} else{%>
+								<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPriceEuro()%></th>
+							<%} %>
 							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getMarketcap()%></th>
 							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPerc24H()%></th>
 						</tr>

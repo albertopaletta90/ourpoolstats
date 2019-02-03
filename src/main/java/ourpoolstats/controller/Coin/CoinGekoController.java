@@ -18,6 +18,7 @@ public class CoinGekoController {
 	@RequestMapping(value = "/goToApiCoinGekoEuro", method = RequestMethod.GET)
 	public ModelAndView getCoinEuro() {
 		ModelAndView model = new ModelAndView();
+		ManagerCoin.getInstance().setCurrencyType(CurrencyType.EURO);
 		ManagerImage.getInstance().setImageCurrency(CurrencyType.EURO);
 		CoinGekoClient.GetInstance().setCurrency("eur");
 		ManagerCoin.getInstance().setMoneyListCoinGeko();
@@ -29,6 +30,7 @@ public class CoinGekoController {
 	@RequestMapping(value = "/goToApiCoinGekoUsd", method = RequestMethod.GET)
 	public ModelAndView getCoinUsd() {
 		ModelAndView model = new ModelAndView();
+		ManagerCoin.getInstance().setCurrencyType(CurrencyType.USD);
 		ManagerImage.getInstance().setImageCurrency(CurrencyType.USD);
 		CoinGekoClient.GetInstance().setCurrency("usd");
 		ManagerCoin.getInstance().setMoneyListCoinGeko();

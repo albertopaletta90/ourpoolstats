@@ -30,6 +30,7 @@ public class MultiLilingualDashboardController {
 	private String symbol = "Simbolo";
 	private String nameCoin ="Nome";
 	private String priceBtc ="Prezzo in BTC";
+	private String priceEuro = "Prezzo In Euro";
 	private String priceUsd ="Prezzo in Dollari";
 	private String marketcap = "Market Cap";
 	private String marketcap24 = "Market Cap";
@@ -82,6 +83,7 @@ public class MultiLilingualDashboardController {
 		this.nameCoin ="Nome";
 		this.priceBtc ="Prezzo in BTC";
 		this.priceUsd ="Prezzo in Dollari";
+		this.priceEuro = "Prezzo In Euro";
 		this.marketcap = "Market Cap";
 		this.marketcap24 = "Market Cap 24H";
 		this.perc1H = "1H%";
@@ -119,6 +121,7 @@ public class MultiLilingualDashboardController {
 		this.nameCoin ="Name";
 		this.priceBtc ="Price  BTC";
 		this.priceUsd ="Price USD";
+		this.priceEuro = "Price Euro";
 		this.marketcap = "Market Cap";
 		this.marketcap24 = "Market Cap 24H";
 		this.perc1H = "1H%";
@@ -242,6 +245,10 @@ public class MultiLilingualDashboardController {
 		return priceUsd;
 	}
 
+	public String getPriceEuro() {
+		return priceEuro;
+	}
+
 	public String getMarketcap() {
 		return marketcap;
 	}
@@ -289,9 +296,9 @@ public class MultiLilingualDashboardController {
 	public String getPrice24H() {
 		return price24H;
 	}
-	
-	
-	
+
+
+
 
 
 }
