@@ -68,7 +68,7 @@ public class MarketController {
 				}
 				else {
 					ManagerCoin.getInstance().setListUserBalance(ManagerCoin.getInstance().getCoinService().getListCoinUser((String)request.getSession().getAttribute("username")));		
-					return "market/market";
+					return "";
 				}
 			}
 			else {
@@ -79,7 +79,7 @@ public class MarketController {
 				}
 				else {
 					ManagerCoin.getInstance().setListUserBalance(ManagerCoin.getInstance().getCoinService().getListCoinUser((String)request.getSession().getAttribute("username")));		
-					return "market/market";
+					return "";
 				}
 
 			}
@@ -94,7 +94,6 @@ public class MarketController {
 	@RequestMapping(value = "/convertToEuro", method = RequestMethod.GET)
 	public ModelAndView convertToEuro() {
 		ModelAndView model = new ModelAndView();
-		ManagerCoin.getInstance().setCurrencyType(CurrencyType.EURO);
 		ManagerImage.getInstance().setImageMarketCurrency(CurrencyType.EURO);		
 		for(int i = 0; i<ManagerCoin.getInstance().getListUserBalance().size(); i++) {
 			BigDecimal tmp = ConvertCurrency.getInstace().convertTo(CurrencyType.EURO, ManagerCoin.getInstance().getListUserBalance().get(i).getTotalCurrency());
@@ -103,12 +102,10 @@ public class MarketController {
 		model.setViewName("market/market");
 		return model;
 	}
-	
 	@RequestMapping(value = "/convertToUsd", method = RequestMethod.GET)
 	public ModelAndView convertToUsd() {
 		ModelAndView model = new ModelAndView();
 		ManagerImage.getInstance().setImageMarketCurrency(CurrencyType.USD);
-		ManagerCoin.getInstance().setCurrencyType(CurrencyType.USD);
 		for(int i = 0; i<ManagerCoin.getInstance().getListUserBalance().size(); i++) {
 			BigDecimal tmp = ConvertCurrency.getInstace().convertTo(CurrencyType.USD, ManagerCoin.getInstance().getListUserBalance().get(i).getTotalCurrency());
 			ManagerCoin.getInstance().getListUserBalance().get(i).setTotalCurrency(tmp);
@@ -116,12 +113,10 @@ public class MarketController {
 		model.setViewName("market/market");
 		return model;
 	}
-	
 	@RequestMapping(value = "/convertToBtc", method = RequestMethod.GET)
 	public ModelAndView convertToBtc() {
 		ModelAndView model = new ModelAndView();
 		ManagerImage.getInstance().setImageMarketCurrency(CurrencyType.BTC);
-		ManagerCoin.getInstance().setCurrencyType(CurrencyType.BTC);
 		for(int i = 0; i<ManagerCoin.getInstance().getListUserBalance().size(); i++) {
 			BigDecimal tmp = ConvertCurrency.getInstace().convertTo(CurrencyType.BTC, ManagerCoin.getInstance().getListUserBalance().get(i).getTotalCurrency());
 			ManagerCoin.getInstance().getListUserBalance().get(i).setTotalCurrency(tmp);
