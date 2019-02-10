@@ -57,7 +57,6 @@ public class CoinMarketClient {
 	}
 
 	public List<Coin> getList() {
-		System.out.println("jkasdhuiwfhuiwehf " + listCoin.size());
 		return listCoin;
 		
 	}
