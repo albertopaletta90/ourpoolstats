@@ -1,3 +1,4 @@
+<%@page import="ourpoolstats.type.CurrencyType"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>

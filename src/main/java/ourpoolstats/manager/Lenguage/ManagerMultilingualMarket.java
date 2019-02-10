@@ -12,6 +12,7 @@ public class ManagerMultilingualMarket {
 	private String sell = "Vendi";
 	private String buy = "Compra";
 	private String errorChoiche = "Devi Selezionare Almeno Una Moneta o una quantità";
+	private String symbolEuro = "€";
 	private ManagerMultilingualMarket() {}
 
 	public static ManagerMultilingualMarket getInstance() {
@@ -54,6 +55,10 @@ public class ManagerMultilingualMarket {
 
 	public String getErrorChoiche() {
 		return errorChoiche;
+	}
+
+	public String getSymbolEuro() {
+		return symbolEuro;
 	}
 
 	

@@ -24,7 +24,7 @@ public class ManagerCoin {
 	private CoinMarketClient getCoin = new CoinMarketClient();
 	private CoinMarketService coinService = new CoinMarketService();
 	private MarketService marketService = new MarketService(); 	
-
+	
 	private CurrencyType currencyType = CurrencyType.EURO;
 	
 
@@ -131,6 +131,14 @@ public class ManagerCoin {
 	public void setListCoin(List<CoinDB> listCoin) {
 		this.listCoin = listCoin;
 	}
+
+	public void deleteList() {
+		if(!listUserBalance.isEmpty())
+			listUserBalance.clear();
+		
+	}
+	
+	
 	
 	
 
