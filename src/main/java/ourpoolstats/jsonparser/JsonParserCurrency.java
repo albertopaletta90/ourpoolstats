@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import oupoolstats.api.cryptopia.remote.data.Currency;
-import oupoolstats.api.cryptopia.remote.data.enums.CurrencyListingStatus;
-import oupoolstats.api.cryptopia.remote.data.enums.CurrencyStatus;
+import ourpoolstats.api.cryptopia.data.enums.CurrencyListingStatus;
+import ourpoolstats.api.cryptopia.data.enums.CurrencyStatus;
+import ourpoolstats.api.cryptopia.remote.Currency;
 
 
 public class JsonParserCurrency {

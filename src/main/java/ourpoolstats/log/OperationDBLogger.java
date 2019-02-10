@@ -50,7 +50,7 @@ public class OperationDBLogger {
 			fileHandler.setFormatter(new OurpoolStatsFormatter());
 			fileHandler.setFilter(new OurpoolStatsFilter());
 			logger.addHandler(fileHandler);
-			//logging messages
+			
 			switch (operation) {
 			
 			case INSERTIMAGEPROFILE :

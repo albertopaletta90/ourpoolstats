@@ -13,6 +13,10 @@ public class ManagerImage {
 	private String linkCurrencyDeflaut = "https://cdn.iconscout.com/icon/free/png-256/euro-207-444688.png";
 	private String linkCurrencyEur = "https://cdn.iconscout.com/icon/free/png-256/euro-207-444688.png";
 	private String linkCurrencyUsd = "http://i2.wp.com/www.klindex-america.com/wp-content/uploads/2016/02/klindex-dollar-icon-grinding.png";
+	private String linkMarketCurrencyDeflaut = "http://i2.wp.com/www.klindex-america.com/wp-content/uploads/2016/02/klindex-dollar-icon-grinding.png";
+	private String linkMarketCurrencyEur = "https://cdn.iconscout.com/icon/free/png-256/euro-207-444688.png";
+	private String linkMarketCurrencyUsd = "http://i2.wp.com/www.klindex-america.com/wp-content/uploads/2016/02/klindex-dollar-icon-grinding.png";
+	private String linkMarketCurrencyBTC = "https://chainz.cryptoid.info/logo/btc.png";
 	private ManagerImage() {}
 	
 	public static ManagerImage getInstance() {
@@ -53,6 +57,22 @@ public class ManagerImage {
 		
 	}
 	
+	public void setImageMarketCurrency(CurrencyType currency) {
+		switch (currency) {
+		case EURO:
+				this.linkMarketCurrencyDeflaut = linkMarketCurrencyEur;
+			break;
+		case  USD:
+			this.linkMarketCurrencyDeflaut = linkMarketCurrencyUsd;
+			break;
+		case  BTC:
+			this.linkMarketCurrencyDeflaut = linkMarketCurrencyBTC;
+			break;
+		}
+		
+	}
+	
+	
 	public String getLinkDefaultImageLanguages() {
 		return linkDefaultImageLanguages;
 	}
@@ -83,6 +103,22 @@ public class ManagerImage {
 
 	public String getLinkCurrencyUsd() {
 		return linkCurrencyUsd;
+	}
+
+	public String getLinkMarketCurrencyDeflaut() {
+		return linkMarketCurrencyDeflaut;
+	}
+
+	public String getLinkMarketCurrencyEur() {
+		return linkMarketCurrencyEur;
+	}
+
+	public String getLinkMarketCurrencyUsd() {
+		return linkMarketCurrencyUsd;
+	}
+
+	public String getLinkMarketCurrencyBTC() {
+		return linkMarketCurrencyBTC;
 	}
 	
 	

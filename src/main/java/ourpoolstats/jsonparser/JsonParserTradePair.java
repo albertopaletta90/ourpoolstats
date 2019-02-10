@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import oupoolstats.api.cryptopia.remote.data.TradePair;
-import oupoolstats.api.cryptopia.remote.data.enums.TradePairStatus;
+import ourpoolstats.api.cryptopia.data.enums.TradePairStatus;
+import ourpoolstats.api.cryptopia.remote.TradePair;
 
 public class JsonParserTradePair {
 

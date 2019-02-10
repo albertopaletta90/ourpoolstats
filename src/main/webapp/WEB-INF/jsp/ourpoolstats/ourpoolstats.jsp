@@ -1,12 +1,10 @@
 <%@page import="ourpoolstats.type.CurrencyType"%>
 <%@page import="ourpoolstats.type.CryptoCurrency"%>
 <%@page import="ourpoolstats.manager.ManagerCoin"%>
-<%@page import="oupoolstats.api.coinmarket.CoinMarketClient"%>
+<%@page import="ourpoolstats.api.coinmarket.CoinMarketClient"%>
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
-<%@page
-	import="ourpoolstats.multilingual.MultiLilingualDashboardController"%>
-<%@page import="ourpoolstats.multilingual.MultilingualHomeController"%>
-<%@page import="ourpoolstats.manager.ManagerHome"%>
+<%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
+<%@page import="ourpoolstats.manager.Lenguage.MangerMultilingualHome"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -48,124 +46,15 @@
 			<%}%>
 	
 			<div class="viewDashboard">
-	
-				<%
-					if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.COINMARKET){
-				%>
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getSymbol()%></th>
-							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getNameCoin()%></th>
-							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPriceUsd()%></th>
-							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPriceBtc()%></th>
-							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getMarketcap()%></th>
-							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPerc1H()%></th>
-							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPerc24H()%></th>
-						</tr>
-					</thead>
-					<tbody>
-	
-						<%
-							for(int i = 0; i < ManagerDashboard.getInstance().getListCoin().size(); i++){
-						%>
-						<tr>
-							<th scope="row"><img
-								src="<%=CoinMarketClient.getIcon(ManagerDashboard.getInstance().getListCoin().get(i).getName())%>"
-								width="30"></img></th>
-							</input>
-							<td><a href="./coinMarketInfo?idCoin=<%=ManagerDashboard.getInstance().getListCoin().get(i).getName()%>"><%=ManagerDashboard.getInstance().getListCoin().get(i).getName()%></a> </td>
-							<td><%=ManagerDashboard.getInstance().getListCoin().get(i).getPrice_usd()%></td>
-							<td><%=ManagerDashboard.getInstance().getListCoin().get(i).getPrice_btc()%></td>
-							<td><%=ManagerDashboard.getInstance().getListCoin().get(i).getMarket_cap_usd()%></td>
-							<%if(ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_1h()>=0){%>
-							<td class="green"><%=ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_1h()%></td>
-							<%}%>
-							<%if(ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_1h()<0){%>
-							<td class="red"><%=ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_1h()%></td>
-							<%}%>
-							<%if(ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_24h()>=0){%>
-							<td class="green"><%=ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_24h()%></td>
-							<%}%>
-							<%if(ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_24h()<0){%>
-							<td class="red"><%=ManagerDashboard.getInstance().getListCoin().get(i).getPercent_change_24h()%></td>
-							<%}%>
-						</tr>
-						<%}%>
-					</tbody>
-				</table>
-	
-	
+				<%if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.COINMARKET){%>
+					<jsp:include page="../ourpoolstats/coin/listCoinMarket.jsp"></jsp:include>
 				<%} if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.CRYPTOPIA){%>
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th scope="col">Label</th>
-							<th scope="col">Currency</th>
-							<th scope="col">Symbol</th>
-						</tr>
-					</thead>
-					<tbody>
-	
-						<% for(int i = 0; i <=1000; i++){%>
-						<tr>
-							<th scope="row"><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getLabel()%></th>
-							<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getCurrency()%></td>
-							<td><%=ManagerCoin.getInstance().getCryptopiaCoin().get(i).getSymbol()%></td>
-						</tr>
-						<%}%>
-					</tbody>
-				</table>
+					<jsp:include page="../ourpoolstats/coin/listCryptopia.jsp"></jsp:include>
 				<%}%>
 				<%if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.COINGEKO){%>
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getSymbol()%></th>
-							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getNameCoin()%></th>
-							<%if(ManagerCoin.getInstance().getCurrencyType() == CurrencyType.USD) {%>
-								<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPriceUsd()%></th>							
-							<%} else{%>
-								<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPriceEuro()%></th>
-							<%} %>
-							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getMarketcap()%></th>
-							<th scope="col"><%=MultiLilingualDashboardController.getInstance().getPerc24H()%></th>
-						</tr>
-					</thead>
-					<tbody>
-	
-						<%
-							for(int i = 0; i < ManagerDashboard.getInstance().getListCoin().size(); i++){
-						%>
-						<tr>
-							<th scope="row"><img
-								src="<%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getImage()%>"
-								width="30"></img></th>
-							<td><a href="./coinGekoInfo?idCoin=<%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getName()%>"><%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getName()%></a></td>
-							<td><%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getCurrent_price()%></td>
-	
-	
-							<td><%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getMarket_cap()%></td>
-							<%if(ManagerCoin.getInstance().getCoingekoCoin().get(i).getMarket_cap_change_percentage_24h()>=0){%>
-							<td class="green"><%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getMarket_cap_change_percentage_24h()%></td>
-							<%}%>
-							<%if(ManagerCoin.getInstance().getCoingekoCoin().get(i).getMarket_cap_change_percentage_24h()<0){%>
-							<td class="red"><%=ManagerCoin.getInstance().getCoingekoCoin().get(i).getMarket_cap_change_percentage_24h()%></td>
-							<%}%>
-							
-						</tr>
-						<%}%>
-					</tbody>
-				</table>
+					<jsp:include page="../ourpoolstats/coin/listCoinGeko.jsp"></jsp:include>
 				<%}%>
 			</div>
 		</div>
-	
-	
-	
-	
-	
-	
-	
 	</body>
 </html>

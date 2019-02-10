@@ -1,7 +1,6 @@
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
-<%@page import="ourpoolstats.multilingual.MultiLilingualDashboardController"%>
-<%@page import="ourpoolstats.multilingual.MultilingualHomeController"%>
-<%@page import="ourpoolstats.manager.ManagerHome"%>
+<%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
+<%@page import="ourpoolstats.manager.Lenguage.MangerMultilingualHome"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -40,10 +39,10 @@
 		</nav>	
 			<p class="imputBox">url</p>
 			<input type="text" name="url" class="imputBox" >
-			<input type="submit" value="<%=MultiLilingualDashboardController.getInstance().getAddImage()%>"  class="btn btn-outline-secondary buttonAddImage">
+			<input type="submit" value="<%=ManagerMultiLilingualDashboard.getInstance().getAddImage()%>"  class="btn btn-outline-secondary buttonAddImage">
 		</form>
 		<form action="./dashboad">
-			<input type="submit" value="<%=MultilingualHomeController.getInstance().getBack()%>"  class="btn btn-outline-secondary buttonBackAddImage">
+			<input type="submit" value="<%=MangerMultilingualHome.getInstance().getBack()%>"  class="btn btn-outline-secondary buttonBackAddImage">
 		</form>
 	</div>
 	</div>

@@ -1,9 +1,5 @@
 package ourpoolstats.manager;
 
-import java.util.List;
-
-import oupoolstats.api.coinmarket.Coin;
-
 public class ManagerDashboard {
 
 	private static ManagerDashboard instance;
@@ -17,7 +13,7 @@ public class ManagerDashboard {
 	private boolean userLog = false;
 	private boolean userOnline = false;
 	private boolean optionAdmin = false;
-	private List<Coin> listCoin = null;
+	
 
 	private ManagerDashboard() {}
 	
@@ -110,16 +106,4 @@ public class ManagerDashboard {
 		this.optionAdmin = optionAdmin;
 	}
 
-	public List<Coin> getListCoin() {
-		return listCoin;
-	}
-
-	public void setListCoin(List<Coin> listCoin) {
-		this.listCoin = listCoin;
-	}
-	
-	
-	
-	
-	
 }

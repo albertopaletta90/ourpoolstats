@@ -11,7 +11,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import oupoolstats.service.user.UserOperration;
+import ourpoolstats.service.user.UserOperration;
 
 public class SendEmail {
 

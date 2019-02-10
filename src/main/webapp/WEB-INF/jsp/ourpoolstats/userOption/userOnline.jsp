@@ -1,8 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
-<%@page import="ourpoolstats.multilingual.MultiLilingualDashboardController"%>
-<%@page import="ourpoolstats.multilingual.MultilingualHomeController"%>
-<%@page import="ourpoolstats.manager.ManagerHome"%>
+<%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
+<%@page import="ourpoolstats.manager.Lenguage.MangerMultilingualHome"%>
 <%@page import="ourpoolstats.model.*"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -37,13 +36,13 @@
 	<div class="userOnline">
 		
 	<nav class="navbar-light bg-light">
-		<p><%=MultiLilingualDashboardController.getInstance().getUserOnline() %></p>
+		<p><%=ManagerMultiLilingualDashboard.getInstance().getUserOnline()%></p>
 	
 	<table class="tableBorder table-active">
 		<tr class="tableBorder" >
 			<td class="tableBorder" >Image</td>
 			<td class="tableBorder" >Username</td>
-			<td class="tableBorder"><%=MultiLilingualDashboardController.getInstance().getAction() %></td>
+			<td class="tableBorder"><%=ManagerMultiLilingualDashboard.getInstance().getAction()%></td>
 		</tr>
 		<%List<User>list = (List<User>) request.getAttribute("userOnline");
 		for(int i = 0; i< list.size(); i++){%>

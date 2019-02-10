@@ -1,6 +1,6 @@
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
-<%@page import="ourpoolstats.multilingual.MultiLilingualDashboardController"%>
-<%@page import="ourpoolstats.multilingual.MultilingualHomeController"%>
+<%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
+<%@page import="ourpoolstats.manager.Lenguage.MangerMultilingualHome"%>
 <%@page import="ourpoolstats.manager.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>

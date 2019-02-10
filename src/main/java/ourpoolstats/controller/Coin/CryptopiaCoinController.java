@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import oupoolstats.service.coin.CoinMarketService;
-import oupoolstats.service.coin.CryptopiaService;
 import ourpoolstats.manager.ManagerCoin;
+import ourpoolstats.service.coin.CoinMarketService;
+import ourpoolstats.service.coin.CryptopiaService;
 import ourpoolstats.type.CryptoCurrency;
 
 @Controller

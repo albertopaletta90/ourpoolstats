@@ -1,7 +1,6 @@
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
-<%@page import="ourpoolstats.multilingual.MultiLilingualDashboardController"%>
-<%@page import="ourpoolstats.multilingual.MultilingualHomeController"%>
-<%@page import="ourpoolstats.manager.ManagerHome"%>
+<%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
+<%@page import="ourpoolstats.manager.Lenguage.MangerMultilingualHome"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -35,14 +34,14 @@
 		<div class="changeEmail">
 			<form action="./changeEmail" method="post">
 			<nav class="navbar navbar-light bg-light">
-				<p><%=MultiLilingualDashboardController.getInstance().getChangeEmail() %></p>
+				<p><%=ManagerMultiLilingualDashboard.getInstance().getChangeEmail()%></p>
 			</nav>	
 				<p class="imputBox">Email</p>
 				<input type="text" name="email" class="imputBox" >
-				<input type="submit" value="<%=MultiLilingualDashboardController.getInstance().getChangeEmail()%>"  class="btn btn-outline-secondary buttonChangeEmail">
+				<input type="submit" value="<%=ManagerMultiLilingualDashboard.getInstance().getChangeEmail()%>"  class="btn btn-outline-secondary buttonChangeEmail">
 			</form>
 			<form action="./changeOurPoolStats">
-				<input type="submit" value="<%=MultilingualHomeController.getInstance().getBack()%>"  class="btn btn-outline-secondary buttonBackAddImage">
+				<input type="submit" value="<%=MangerMultilingualHome.getInstance().getBack()%>"  class="btn btn-outline-secondary buttonBackAddImage">
 			</form>
 	</div>
 	

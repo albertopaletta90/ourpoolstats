@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import oupoolstats.api.coinmarket.CoinMarketClient;
-import oupoolstats.service.admin.AdminDasboradService;
-import oupoolstats.service.language.LanguageService;
+import ourpoolstats.api.coinmarket.CoinMarketClient;
 import ourpoolstats.log.AdminOperationLogger;
 import ourpoolstats.manager.ManagerDashboard;
 import ourpoolstats.model.User;
 import ourpoolstats.model.UserLog;
+import ourpoolstats.service.admin.AdminDasboradService;
+import ourpoolstats.service.language.LanguageService;
 import ourpoolstats.type.AdminOperation;
 import ourpoolstats.type.UserType;
 

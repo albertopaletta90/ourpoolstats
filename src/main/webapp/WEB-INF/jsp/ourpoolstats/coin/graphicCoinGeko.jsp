@@ -1,5 +1,5 @@
-<%@page import="oupoolstats.api.coingeko.data.Market"%>
-<%@page import="oupoolstats.api.coinmarket.Coin"%>
+<%@page import="ourpoolstats.api.coingeko.data.Market"%>
+<%@page import="ourpoolstats.api.coinmarket.Coin"%>
 <html>
 	<%Market coin = (Market) request.getSession().getAttribute("infoCoinGeko"); %>
 	<body>

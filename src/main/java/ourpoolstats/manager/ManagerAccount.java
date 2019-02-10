@@ -1,6 +1,6 @@
 package ourpoolstats.manager;
 
-import oupoolstats.service.user.UserOperration;
+import ourpoolstats.service.user.UserOperration;
 
 public class ManagerAccount {
 

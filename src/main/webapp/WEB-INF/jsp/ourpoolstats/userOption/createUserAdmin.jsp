@@ -1,7 +1,6 @@
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
-<%@page import="ourpoolstats.multilingual.MultiLilingualDashboardController"%>
-<%@page import="ourpoolstats.multilingual.MultilingualHomeController"%>
-<%@page import="ourpoolstats.manager.ManagerHome"%>
+<%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
+<%@page import="ourpoolstats.manager.Lenguage.MangerMultilingualHome"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -34,23 +33,23 @@
 	<div class="signin">
 		<form action="./createUser" method="post">
 		<nav class="navbar navbar-light bg-light">
-			<p><%=MultiLilingualDashboardController.getInstance().getInsertUser()%></p>
+			<p><%=ManagerMultiLilingualDashboard.getInstance().getInsertUser()%></p>
 		</nav>
 					
-			<p class="imputBox"><%=MultilingualHomeController.getInstance().getName()%></p>
+			<p class="imputBox"><%=MangerMultilingualHome.getInstance().getName()%></p>
 			<input type="text" name="userName" class="imputBox" >
-			<p class="imputBox"><%=MultilingualHomeController.getInstance().getSurname()%></p>
+			<p class="imputBox"><%=MangerMultilingualHome.getInstance().getSurname()%></p>
 			<input type="text" name="userSurname" class="imputBox" >
-			<p class="imputBox"><%=MultilingualHomeController.getInstance().getEmail()%></p>
+			<p class="imputBox"><%=MangerMultilingualHome.getInstance().getEmail()%></p>
 			<input type="text" name="email" class="imputBox" >
-			<p class="imputBox"><%=MultilingualHomeController.getInstance().getUsername() %></p>
+			<p class="imputBox"><%=MangerMultilingualHome.getInstance().getUsername()%></p>
 			<input type="text" name="username" class="imputBox" >
-			<p class="imputBox"><%=MultilingualHomeController.getInstance().getPassword() %></p>
+			<p class="imputBox"><%=MangerMultilingualHome.getInstance().getPassword()%></p>
 			<input type="password" name ="password" class="imputBox"><br />
-			<input type="submit" value="<%=MultilingualHomeController.getInstance().getSignin()%>"  class="btn btn-outline-secondary buttonSignin">		
+			<input type="submit" value="<%=MangerMultilingualHome.getInstance().getSignin()%>"  class="btn btn-outline-secondary buttonSignin">		
 			</form>
 			<form action="./dashboard">
-				<input type="submit" value="<%=MultilingualHomeController.getInstance().getBack()%>"  class="btn btn-outline-secondary buttonBack">
+				<input type="submit" value="<%=MangerMultilingualHome.getInstance().getBack()%>"  class="btn btn-outline-secondary buttonBack">
 			</form>
 		</div>
 	</div>	 

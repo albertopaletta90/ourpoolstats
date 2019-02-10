@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import oupoolstats.api.cryptopia.remote.data.Market;
+import ourpoolstats.api.cryptopia.remote.Market;
 
 public class JsonParserMarket {
 	private String responseReadePair;

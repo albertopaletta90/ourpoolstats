@@ -1,9 +1,8 @@
 <%@page import="ourpoolstats.model.UserLog"%>
 <%@page import="java.util.List"%>
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
-<%@page import="ourpoolstats.multilingual.MultiLilingualDashboardController"%>
-<%@page import="ourpoolstats.multilingual.MultilingualHomeController"%>
-<%@page import="ourpoolstats.manager.ManagerHome"%>
+<%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
+<%@page import="ourpoolstats.manager.Lenguage.MangerMultilingualHome"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -36,14 +35,14 @@
 		<div class="logUser">
 
 	<nav class="navbar-light bg-light">
-		<p><%=MultiLilingualDashboardController.getInstance().getUserLog() %></p>
+		<p><%=ManagerMultiLilingualDashboard.getInstance().getUserLog()%></p>
 	
 	<table class="table-active tableBorder">
 		<tr class="tableBorder" >
 			<td class="tableBorder" >Image</td>
 			<td class="tableBorder" >Username</td>
 			<td class="tableBorder" >Date</td>
-			<td class="tableBorder"><%=MultiLilingualDashboardController.getInstance().getAction() %></td>
+			<td class="tableBorder"><%=ManagerMultiLilingualDashboard.getInstance().getAction()%></td>
 		</tr>
 	 <% List<UserLog> list = (List<UserLog>) request.getAttribute("userLog");
 		for(int i = 0; i< list.size(); i++){%>

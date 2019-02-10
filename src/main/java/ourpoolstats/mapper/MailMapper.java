@@ -13,3 +13,4 @@ public class MailMapper implements RowMapper<String> {
 	}
 
 }
+ 

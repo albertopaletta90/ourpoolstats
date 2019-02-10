@@ -1,4 +1,4 @@
-<%@page import="oupoolstats.api.coinmarket.Coin"%>
+<%@page import="ourpoolstats.api.coinmarket.Coin"%>
 <html>
 	<%Coin coin = (Coin) request.getSession().getAttribute("infoCoin"); %>
 	<body>

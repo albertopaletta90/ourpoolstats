@@ -1,7 +1,6 @@
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
-<%@page import="ourpoolstats.multilingual.MultiLilingualDashboardController"%>
-<%@page import="ourpoolstats.multilingual.MultilingualHomeController"%>
-<%@page import="ourpoolstats.manager.ManagerHome"%>
+<%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
+<%@page import="ourpoolstats.manager.Lenguage.MangerMultilingualHome"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -36,10 +35,10 @@
 	<div style="	position: absolute;	top: 23.5%;right: 35%;	border: solid silver 1px;	width: 30%;	height: 50%;">
 		
 		<nav class="p-3 mb-2 bg-danger text-white">
-			<p><%=MultiLilingualDashboardController.getInstance().getErrorInternt() %></p>
+			<p><%=ManagerMultiLilingualDashboard.getInstance().getErrorInternt()%></p>
 		</nav>
 		<form action="./dashboard">
-		<input type="submit" value="<%=MultilingualHomeController.getInstance().getBack()%>"  class="btn btn-outline-secondary" style="position: absolute; margin-top: 40px; margin-left: 35%;">
+		<input type="submit" value="<%=MangerMultilingualHome.getInstance().getBack()%>"  class="btn btn-outline-secondary" style="position: absolute; margin-top: 40px; margin-left: 35%;">
 		</form>
 		
 	</div>

@@ -1,7 +1,6 @@
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
-<%@page import="ourpoolstats.multilingual.MultiLilingualDashboardController"%>
-<%@page import="ourpoolstats.multilingual.MultilingualHomeController"%>
-<%@page import="ourpoolstats.manager.ManagerHome"%>
+<%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
+<%@page import="ourpoolstats.manager.Lenguage.MangerMultilingualHome"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -34,16 +33,16 @@
 	<div class="changeUserType">
 		<form action="./changeTypeUser" method="post">
 		<nav class="navbar navbar-light bg-light">
-			<p><%=MultiLilingualDashboardController.getInstance().getChangeUser() %></p>
+			<p><%=ManagerMultiLilingualDashboard.getInstance().getChangeUser()%></p>
 		</nav>	
-			<p class="imputBox"><%=MultilingualHomeController.getInstance().getUsername() %></p>
+			<p class="imputBox"><%=MangerMultilingualHome.getInstance().getUsername()%></p>
 			<input type="text" name="username" class="inputBox" >
-			<p class="imputBox"><%=MultiLilingualDashboardController.getInstance().getUserType() %></p>
+			<p class="imputBox"><%=ManagerMultiLilingualDashboard.getInstance().getUserType()%></p>
 			<input type="text" name="userType"class="inputBox" >
-			<input type="submit" value="<%=MultiLilingualDashboardController.getInstance().getChangeUser()%>"  class="btn btn-outline-secondary buttonChangeUser">
+			<input type="submit" value="<%=ManagerMultiLilingualDashboard.getInstance().getChangeUser()%>"  class="btn btn-outline-secondary buttonChangeUser">
 		</form>
 		<form action="./changeOurPoolStats">
-			<input type="submit" value="<%=MultilingualHomeController.getInstance().getBack()%>"  class="btn btn-outline-secondary buttonBack">
+			<input type="submit" value="<%=MangerMultilingualHome.getInstance().getBack()%>"  class="btn btn-outline-secondary buttonBack">
 		</form>
 </div>
 	

@@ -2,12 +2,14 @@ package ourpoolstats.manager;
 
 import java.util.List;
 
-import oupoolstats.api.coingeko.CoinGekoClient;
-import oupoolstats.api.coingeko.data.Market;
-import oupoolstats.api.coinmarket.Coin;
-import oupoolstats.api.coinmarket.CoinMarketClient;
-import oupoolstats.api.cryptopia.remote.data.TradePair;
-import oupoolstats.service.coin.CoinMarketService;
+import ourpoolstats.api.coingeko.CoinGekoClient;
+import ourpoolstats.api.coingeko.data.Market;
+import ourpoolstats.api.coinmarket.CoinMarketClient;
+import ourpoolstats.api.cryptopia.remote.TradePair;
+import ourpoolstats.model.Balance;
+import ourpoolstats.model.CoinDB;
+import ourpoolstats.service.coin.CoinMarketService;
+import ourpoolstats.service.market.MarketService;
 import ourpoolstats.type.CryptoCurrency;
 import ourpoolstats.type.CurrencyType;
 public class ManagerCoin {
@@ -17,10 +19,14 @@ public class ManagerCoin {
 	private List<TradePair>cryptopiaCoin;
 	private List<Market>coingekoCoin;
 	private List<String>coinListDefault;
+	private List<CoinDB> listCoin = null;
+	private List<Balance>listUserBalance; //MERCATO PERSONALE
 	private CoinMarketClient getCoin = new CoinMarketClient();
 	private CoinMarketService coinService = new CoinMarketService();
-	private List<Coin>listUserCoinMarket; 
+	private MarketService marketService = new MarketService(); 	
+
 	private CurrencyType currencyType = CurrencyType.EURO;
+	
 
 	private ManagerCoin() {}
 
@@ -47,6 +53,7 @@ public class ManagerCoin {
 		for (String element : ManagerCoin.getInstance().getCoinListDefault()) {
 			this.getCoin.getCoin(element);
 		}
+		
 	}
 
 	public CryptoCurrency getCryptoCurrency() {
@@ -97,12 +104,12 @@ public class ManagerCoin {
 		this.coinService = coinService;
 	}
 
-	public List<Coin> getListUserCoinMarket() {
-		return listUserCoinMarket;
+	public List<Balance> getListUserBalance() {
+		return listUserBalance;
 	}
 
-	public void setListUserCoinMarket(List<Coin> listUserCoinMarket) {
-		this.listUserCoinMarket = listUserCoinMarket;
+	public void setListUserBalance(List<Balance> listUserBalance) {
+		this.listUserBalance = listUserBalance;
 	}
 
 	public CurrencyType getCurrencyType() {
@@ -111,6 +118,18 @@ public class ManagerCoin {
 
 	public void setCurrencyType(CurrencyType currencyType) {
 		this.currencyType = currencyType;
+	}
+
+	public MarketService getMarketService() {
+		return marketService;
+	}
+	
+	public List<CoinDB> getListCoin() {
+		return listCoin;
+	}
+
+	public void setListCoin(List<CoinDB> listCoin) {
+		this.listCoin = listCoin;
 	}
 	
 	
