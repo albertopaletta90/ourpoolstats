@@ -37,6 +37,7 @@ public class MarketController {
 
 	@RequestMapping(value = "/buy", method = RequestMethod.POST)
 	public String buy(HttpServletRequest request) {
+		try {
 		BigDecimal quantity = new BigDecimal(request.getParameter("quantity"));
 		int  index =Integer.parseInt(request.getParameter("coin"));
 		String coin = ManagerCoin.getInstance().getListCoin().get(index).getName();
@@ -48,7 +49,11 @@ public class MarketController {
 			return "market/market";
 		}
 		else
-			return "";
+			return "market/market";
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			return "market/errorChoiche";
+		}
 	}
 
 	@RequestMapping(value = "/sell", method = RequestMethod.POST)
@@ -79,7 +84,7 @@ public class MarketController {
 				}
 				else {
 					ManagerCoin.getInstance().setListUserBalance(ManagerCoin.getInstance().getCoinService().getListCoinUser((String)request.getSession().getAttribute("username")));		
-					return "";
+					return "market/market";
 				}
 
 			}

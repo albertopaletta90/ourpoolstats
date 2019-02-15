@@ -60,7 +60,11 @@ public class CoinMarketService implements ICoinMarketService {
 
 	@Override
 	public void setListCoinDB(List<Coin> list) {
-		jdbcTemplate.update(QueryCoin.getInstance().getDeleteCoin());
+		try {
+			jdbcTemplate.update(QueryCoin.getInstance().getDeleteCoin());
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
 		for(int i =0; i<list.size(); i++) {
 			BigDecimal btc = BigDecimal.valueOf(list.get(i).getPrice_btc());

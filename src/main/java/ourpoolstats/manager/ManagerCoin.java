@@ -1,5 +1,6 @@
 package ourpoolstats.manager;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import ourpoolstats.api.coingeko.CoinGekoClient;
@@ -54,6 +55,14 @@ public class ManagerCoin {
 			this.getCoin.getCoin(element);
 		}
 		
+	}
+	
+	public BigDecimal getSumCurrency() {
+		BigDecimal sum = new BigDecimal("0");
+		for (Balance element : listUserBalance) {
+			sum = sum.add(element.getTotalCurrency());
+		}
+		return sum;
 	}
 
 	public CryptoCurrency getCryptoCurrency() {

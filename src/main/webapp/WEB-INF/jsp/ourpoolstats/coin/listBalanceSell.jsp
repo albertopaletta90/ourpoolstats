@@ -1,4 +1,4 @@
-<%@page import="ourpoolstats.type.CurrencyType"%>
+ <%@page import="ourpoolstats.type.CurrencyType"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
@@ -6,6 +6,7 @@
 <%@page import="ourpoolstats.manager.Lenguage.ManagerMultilingualMarket"%>
 <%@page import="ourpoolstats.manager.ManagerCoin"%>
 <html>
+
 	<body>
 		<form action="./sell" method="post">
 		<table class="table table-striped">
@@ -62,5 +63,6 @@
 			<input type="text" class="imputBoxBuy" name="quantity">
 		<%}%>
 		</form>
+		
 	</body>
 </html>

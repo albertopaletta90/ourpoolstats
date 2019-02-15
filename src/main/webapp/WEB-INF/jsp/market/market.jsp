@@ -1,3 +1,4 @@
+<%@page import="ourpoolstats.manager.ManagerCoin"%>
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
 <%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
 <%@page import="ourpoolstats.manager.Lenguage.MangerMultilingualHome"%>
@@ -34,6 +35,7 @@
 				<jsp:include page="../menu/ourpoolstats/menuCurrencySell.jsp"></jsp:include>
 			</div>
 			<div class="viewDashboard">
+				<p class ="currencyTotal"><%=ManagerCoin.getInstance().getSumCurrency() %></p>
 				<jsp:include page="../ourpoolstats/coin/listBalanceSell.jsp"></jsp:include>
 			</div>
 		</div>

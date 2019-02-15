@@ -103,7 +103,7 @@ public class LoginController {
 				}
 				catch (Exception e) {
 					OperationDBLogger.getInstance().logger("", false, DataBaseOperation.GETLISTCOIN);
-					return "ourPoolStats/withOutInternet";
+					return "ourpoolstats/withOutInternet";
 				}
 				return "/ourpoolstats/ourpoolstats";
 			}

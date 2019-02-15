@@ -16,3 +16,10 @@
 	top: 110%;
 	left: 15%
 }
+
+.currencyTotal {
+	position: absolute;
+	left: 75%;
+	top : -10%;
+	
+}
