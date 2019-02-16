@@ -1,0 +1,19 @@
+{
+  "name": "ourpoolstats",
+  "version": "1.0.0",
+  "description": "Piattaforma Cryptomonete",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertopaletta90/ourpoolstats.git"
+  },
+  "author": "Alberto Paletta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertopaletta90/ourpoolstats/issues"
+  },
+  "homepage": "https://github.com/albertopaletta90/ourpoolstats#readme"
+}
