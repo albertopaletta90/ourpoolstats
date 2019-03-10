@@ -2,11 +2,13 @@ package ourpoolstats.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
+import ourpoolstats.response.Response;
 import ourpoolstats.service.user.UserOperration;
 
 
@@ -14,84 +16,41 @@ import ourpoolstats.service.user.UserOperration;
 
 @Controller
 public class AccountController {
-
-	private UserOperration userService = new UserOperration();
-
-	@RequestMapping(value = "/goToAddImage", method = RequestMethod.GET)
-	public String goToAddImage(HttpServletRequest request){
-		return "ourpoolstats/userOption/addImage";
+	
+	@RequestMapping(value = "/addImage/{url}", method = RequestMethod.POST)
+	public ResponseEntity<Response> addImage(HttpServletRequest request,@PathVariable("url") String url){
+		String username = (String) request.getSession().getAttribute("username");
+		return new UserOperration().setImageProfile(username, url,"update");
 	}
 
-
-	@RequestMapping(value = "/addImage", method = RequestMethod.POST)
-	public String addImage(HttpServletRequest request){
-		userService.setImageProfile((String) request.getSession().getAttribute("username"), request.getParameter("url"),"update");
-		userService.getImageProfile((String) request.getSession().getAttribute("username"));
-		return "/ourpoolstats/account";
-
+	@RequestMapping(value = "/getImage/{username}", method = RequestMethod.POST)
+	public String getImage(HttpServletRequest request,@PathVariable("username") String username){
+		return new UserOperration().getImageProfile(username);
 	}
 
+	
+	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout(HttpServletRequest request){
-		userService.deleteToUserOnline((String)request.getSession().getAttribute("username"));
-		userService.setFirstLoginDay((String)request.getSession().getAttribute("username"), 1);
-		request.getSession().removeAttribute("username");
-		return "/home/index";
+	public ResponseEntity<Response> logout(HttpServletRequest request){
+		String username = (String) request.getSession().getAttribute("username");
+		return new UserOperration().deleteToUserOnline(username,request);
 	}
 
 
-	@RequestMapping(value = "/goToChangePassword", method = RequestMethod.GET)
-	public String goToChangePassword(HttpServletRequest request){
-		return "ourpoolstats/userOption/changePassword";
+	@RequestMapping(value = "/changePassword/{username}/password{password}", method = RequestMethod.POST)
+	public  ResponseEntity<Response> changePassword(HttpServletRequest request,@PathVariable("username")String username,@PathVariable("password")String password){
+		return new UserOperration().changePassword(username, password);
 	}
 
-	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
-	public String changePassword(HttpServletRequest request){
-		
-		if(userService.changePassword((String) request.getSession().getAttribute("username"), request.getParameter("password"))) {
-			return "ourpoolstats/succesUser";
-		}
-		else {
-			return "/ourpoolstats/errorUser";
-		}
+	@RequestMapping(value = "/changeEmail/{username}/email{email}", method = RequestMethod.POST)
+	public ResponseEntity<Response> changeEmail(HttpServletRequest request,@PathVariable("username")String username,@PathVariable("email")String email){
+		return new UserOperration().changeEmail(username, email);
 	}
 
-
-	@RequestMapping(value = "/goToChangeEmail", method = RequestMethod.GET)
-	public String goToChangeEmail(HttpServletRequest request){
-		return "ourpoolstats/userOption/changeEmail";
-
-	}
-
-	@RequestMapping(value = "/changeEmail", method = RequestMethod.POST)
-	public String changeEmail(HttpServletRequest request){
-
-		if(userService.changeEmail((String) request.getSession().getAttribute("username"), request.getParameter("email"))) {
-			return "ourpoolstats/succesUser";
-		}
-		else {
-			return "/ourpoolstats/errorUser";
-		}
-
-	}
-
-	@RequestMapping(value = "/goToDeleteUserAction", method = RequestMethod.GET)
-	public String goToDeleteUserAction(HttpServletRequest request) {
-		return "ourpoolstats/userOption/delete";
-
-	}
-
-	@RequestMapping(value = "/deleteUserAction", method = RequestMethod.POST)
-	public ModelAndView deleteUser(HttpServletRequest request) {
-		ModelAndView model = new ModelAndView();
-		if(userService.deleteUser((String)request.getSession().getAttribute("username"))) {
-			model.setViewName("ourpoolstats/succesUser");
-		}
-		else {
-			model.setViewName("ourpoolstats/errorUser");
-		}
-		return model;
-
+	@RequestMapping(value = "/deleteUserAction", method = RequestMethod.DELETE)
+	public ResponseEntity<Response> deleteUser(HttpServletRequest request) {
+		String username = (String)request.getSession().getAttribute("username");
+		return new UserOperration().deleteUser(username);
 	}
 
 

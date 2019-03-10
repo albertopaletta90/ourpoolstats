@@ -13,5 +13,3 @@ public class FirstLoginMapper implements RowMapper<Integer>{
 	}
 
 }
-
-

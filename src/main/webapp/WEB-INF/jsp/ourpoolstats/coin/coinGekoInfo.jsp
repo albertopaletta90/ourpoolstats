@@ -1,6 +1,6 @@
-<%@page import="ourpoolstats.api.coingeko.data.Market"%>
-<%@page import="ourpoolstats.api.coinmarket.CoinMarketClient"%>
-<%@page import="ourpoolstats.api.coinmarket.Coin"%>
+<%@page import="ourpoolstats.client.coingeko.data.Market"%>
+<%@page import="ourpoolstats.client.coinmarket.CoinMarketClient"%>
+<%@page import="ourpoolstats.client.coinmarket.Coin"%>
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
 <%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
 <%@page import="ourpoolstats.manager.Lenguage.MangerMultilingualHome"%>

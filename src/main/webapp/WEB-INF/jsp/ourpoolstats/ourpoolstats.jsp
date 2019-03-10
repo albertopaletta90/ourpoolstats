@@ -1,7 +1,7 @@
 <%@page import="ourpoolstats.type.CurrencyType"%>
 <%@page import="ourpoolstats.type.CryptoCurrency"%>
 <%@page import="ourpoolstats.manager.ManagerCoin"%>
-<%@page import="ourpoolstats.api.coinmarket.CoinMarketClient"%>
+<%@page import="ourpoolstats.client.coinmarket.CoinMarketClient"%>
 <%@page import="ourpoolstats.manager.ManagerDashboard"%>
 <%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
 <%@page import="ourpoolstats.manager.Lenguage.MangerMultilingualHome"%>
@@ -49,7 +49,7 @@
 				<%if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.COINMARKET){%>
 					<jsp:include page="../ourpoolstats/coin/listCoinMarket.jsp"></jsp:include>
 				<%} if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.CRYPTOPIA){%>
-					<jsp:include page="../ourpoolstats/coin/listCryptopia.jsp"></jsp:include>
+					
 				<%}%>
 				<%if(ManagerCoin.getInstance().getCryptoCurrency()==CryptoCurrency.COINGEKO){%>
 					<jsp:include page="../ourpoolstats/coin/listCoinGeko.jsp"></jsp:include>

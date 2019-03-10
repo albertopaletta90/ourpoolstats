@@ -1,6 +1,6 @@
-<%@page import="ourpoolstats.api.coingeko.data.Market"%>
+<%@page import="ourpoolstats.client.coingeko.data.Market"%>
 <%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
-<%@page import="ourpoolstats.api.coinmarket.Coin"%>
+<%@page import="ourpoolstats.client.coinmarket.Coin"%>
 <%
 	Market coin = (Market) request.getSession().getAttribute("infoCoinGeko");
 %>

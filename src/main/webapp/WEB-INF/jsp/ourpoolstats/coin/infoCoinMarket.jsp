@@ -1,5 +1,5 @@
 <%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
-<%@page import="ourpoolstats.api.coinmarket.Coin"%>
+<%@page import="ourpoolstats.client.coinmarket.Coin"%>
 <%
 	Coin coin = (Coin) request.getSession().getAttribute("infoCoin");
 %>

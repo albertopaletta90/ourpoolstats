@@ -2,77 +2,68 @@ package ourpoolstats.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestController;
 
-import ourpoolstats.api.coingeko.data.Market;
-import ourpoolstats.api.coinmarket.Coin;
 import ourpoolstats.manager.ManagerCoin;
+import ourpoolstats.response.BalanceResponse;
+import ourpoolstats.response.CoinGekoListResponse;
+import ourpoolstats.response.CoinGekoResponse;
+import ourpoolstats.response.CoinMarketListResponse;
+import ourpoolstats.response.CoinMarketResponse;
+import ourpoolstats.response.Response;
 import ourpoolstats.service.coin.CoinGekoService;
 import ourpoolstats.service.coin.CoinMarketService;
+import ourpoolstats.service.language.LanguageService;
 
-
-@Controller
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@RestController
 public class DashboardController {
 
-	private CoinMarketService coinMarket = new CoinMarketService();
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView defaultPage() {
-		ModelAndView model = new ModelAndView();
-		model.setViewName("/home/index");
-		return model;
+
+	@RequestMapping(value = "/getListMarket", method = RequestMethod.GET)
+	public ResponseEntity<BalanceResponse> goToMarket(HttpServletRequest request) {
+		String username = (String)request.getSession().getAttribute("username");
+		return ManagerCoin.getInstance().getMarketService().getListMarket(username);
+	}
+	
+	@RequestMapping(value = "/coinMarketInfo/{id}", method = RequestMethod.POST)
+	public ResponseEntity<CoinMarketResponse> goToInfoCoin(@PathVariable("id") String id){
+		return new CoinMarketService().getCoinInfo(id);
 	}
 
-	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-	public ModelAndView goToDashboard() {
-		ModelAndView model = new ModelAndView();
-		model.setViewName("/ourpoolstats/ourpoolstats");
-		return model;
+	@RequestMapping(value = "/coinGekoInfo/{id}", method = RequestMethod.POST)
+	public ResponseEntity<CoinGekoResponse> goToInfoGekoCoin(@PathVariable("id") String id){
+		return new CoinGekoService().getCoinInfo(id);
 	}
 
-	@RequestMapping(value = "/goToAccount", method = RequestMethod.GET)
-	public ModelAndView goToAccount() {
-		ModelAndView model = new ModelAndView();
-		model.setViewName("/ourpoolstats/account");
-		return model;
-	}
-
-	@RequestMapping(value = "/goToMarket", method = RequestMethod.GET)
-	public ModelAndView goToMarket(HttpServletRequest request) {
-		ModelAndView model = new ModelAndView();
-		ManagerCoin.getInstance().setListUserBalance(ManagerCoin.getInstance().getCoinService().getListCoinUser((String)request.getSession().getAttribute("username")));
-		model.setViewName("/market/market");
-		return model;
+	@RequestMapping(value = "/getCoinGekoList", method = RequestMethod.GET)
+	public ResponseEntity<CoinGekoListResponse> getCoinGekoList(){
+		CoinGekoListResponse coinGekoList = new CoinGekoListResponse();
+		coinGekoList.setCoingekoList(ManagerCoin.getInstance().getCoingekoCoin());
+		return new ResponseEntity<CoinGekoListResponse>(coinGekoList,HttpStatus.OK);
 
 	}
 
-	@RequestMapping(value = "/goToForum", method = RequestMethod.GET)
-	public ModelAndView goToForum() {
-		ModelAndView model = new ModelAndView();
-		model.setViewName("/forum/forum");
-		return model;
+	@RequestMapping(value = "/getCoinMarketList", method = RequestMethod.GET)
+	public ResponseEntity<CoinMarketListResponse> getCoinMarketList(){
+		CoinMarketListResponse coinMarketResponse = new CoinMarketListResponse();
+		coinMarketResponse.setCoinMarketList(ManagerCoin.getInstance().getListCoin());
+		return new ResponseEntity<CoinMarketListResponse>(coinMarketResponse,HttpStatus.OK);
+
 	}
 
-	@RequestMapping(value = "/coinMarketInfo", method = RequestMethod.GET)
-	public String goToInfoCoin(@RequestParam("idCoin") String id,HttpServletRequest request) throws Exception{
-
-		Coin coinInfo = coinMarket.getCoinInfo(id);
-		request.getSession().setAttribute("infoCoin", coinInfo);
-
-		return "/ourpoolstats/coin/coinMarketInfo";
+	
+	@RequestMapping(value = "/changeLanguage/{type}", method = RequestMethod.GET)
+	public ResponseEntity<Response> chageLanguage(@PathVariable("type")String type,HttpServletRequest request) {
+		String username = (String) request.getSession().getAttribute("username");
+		return new LanguageService().changeLanguage(username, type);
 	}
-
-	@RequestMapping(value = "/coinGekoInfo", method = RequestMethod.GET)
-	public String goToInfoGekoCoin(@RequestParam("idCoin") String id,HttpServletRequest request) throws Exception{
-
-		Market coingeko = CoinGekoService.getInstance().getCoinInfo(id);
-		request.getSession().setAttribute("infoCoinGeko", coingeko);
-		return "/ourpoolstats/coin/coinGekoInfo";
-	}
-
-
+	
 }

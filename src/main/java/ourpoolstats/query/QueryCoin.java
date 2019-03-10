@@ -4,15 +4,17 @@ public class QueryCoin {
 	private static QueryCoin instance;
 	
 	private String getDefaulCoin = "select name from coin where username = 'user'";
-	private String getuserCoin = "select idsaldo_user,name_coin,initial_currency,current_currency,total_currency,quantity from saldo_user where username = ?";
+	private String getuserCoin = "select idsaldo_user,username,name_coin,initial_currency,current_currency,total_currency,quantity from saldo_user where username = ?";
 	private String insertCoin = "insert into coin (name,username,price_btc,price_usd,market_cap,perc_1,perc_24) VALUES (?,?,?,?,?,?,?)";
 	private String updatecoin = "update coin set price_btc = ? and price_usd = ? where name = ?";
-	private String deleteCoin = "delete from coin";
+	private String deleteCoin = "delete from coin where id_coin > '1'";
 	private String deleteCoinUser = "delete from coin where name = ? anda username = ?";
 	private String buyCoin = "insert into saldo_user (username,name_coin,initial_currency,total_currency,quantity) VALUES (?,?,?,?,?)";
 	private String deleteCoinBalance = "delete from saldo_user where idsaldo_user = ?";
 	private String updateQuantityCoinBalance = "update saldo_user set quantity = quantity - ? where idsaldo_user = ?";
 	private String getCoinDB = "select id_coin ,name,price_btc,price_usd,market_cap,perc_1, perc_24 from coin"; 
+	private String updateListMarketPersonal = "update saldo_user set total_currency = ? , initial_currency = ? where idsaldo_user =?"; 
+	
 	
 	private QueryCoin() {}
 	
@@ -64,9 +66,10 @@ public class QueryCoin {
 	public String getGetCoinDB() {
 		return getCoinDB;
 	}
-	
-	
-	
+
+	public String getUpdateListMarketPersonal() {
+		return updateListMarketPersonal;
+	}
 	
 	
 }

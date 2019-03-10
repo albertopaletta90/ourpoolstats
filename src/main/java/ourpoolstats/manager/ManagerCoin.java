@@ -1,13 +1,10 @@
 package ourpoolstats.manager;
 
-import java.math.BigDecimal;
 import java.util.List;
 
-import ourpoolstats.api.coingeko.CoinGekoClient;
-import ourpoolstats.api.coingeko.data.Market;
-import ourpoolstats.api.coinmarket.CoinMarketClient;
-import ourpoolstats.api.cryptopia.remote.TradePair;
-import ourpoolstats.model.Balance;
+import ourpoolstats.client.coingeko.CoinGekoClient;
+import ourpoolstats.client.coingeko.data.Market;
+import ourpoolstats.client.coinmarket.CoinMarketClient;
 import ourpoolstats.model.CoinDB;
 import ourpoolstats.service.coin.CoinMarketService;
 import ourpoolstats.service.market.MarketService;
@@ -17,11 +14,9 @@ public class ManagerCoin {
 
 	private static ManagerCoin instance;
 	private CryptoCurrency cryptoCurrency;
-	private List<TradePair>cryptopiaCoin;
 	private List<Market>coingekoCoin;
 	private List<String>coinListDefault;
 	private List<CoinDB> listCoin = null;
-	private List<Balance>listUserBalance; //MERCATO PERSONALE
 	private CoinMarketClient getCoin = new CoinMarketClient();
 	private CoinMarketService coinService = new CoinMarketService();
 	private MarketService marketService = new MarketService(); 	
@@ -57,13 +52,13 @@ public class ManagerCoin {
 		
 	}
 	
-	public BigDecimal getSumCurrency() {
-		BigDecimal sum = new BigDecimal("0");
-		for (Balance element : listUserBalance) {
-			sum = sum.add(element.getTotalCurrency());
-		}
-		return sum;
-	}
+//	public BigDecimal getSumCurrency() {
+//		BigDecimal sum = new BigDecimal("0");
+//		for (Balance element : listUserBalance) {
+//			sum = sum.add(element.getTotalCurrency());
+//		}
+//		return sum;
+//	}
 
 	public CryptoCurrency getCryptoCurrency() {
 		return cryptoCurrency;
@@ -71,14 +66,6 @@ public class ManagerCoin {
 
 	public void setCryptoCurrency(CryptoCurrency cryptoCurrency) {
 		this.cryptoCurrency = cryptoCurrency;
-	}
-
-	public List<TradePair> getCryptopiaCoin() {
-		return cryptopiaCoin;
-	}
-
-	public void setCryptopiaCoin(List<TradePair> cryptopiaCoin) {
-		this.cryptopiaCoin = cryptopiaCoin;
 	}
 
 	public List<Market> getCoingekoCoin() {
@@ -113,14 +100,6 @@ public class ManagerCoin {
 		this.coinService = coinService;
 	}
 
-	public List<Balance> getListUserBalance() {
-		return listUserBalance;
-	}
-
-	public void setListUserBalance(List<Balance> listUserBalance) {
-		this.listUserBalance = listUserBalance;
-	}
-
 	public CurrencyType getCurrencyType() {
 		return currencyType;
 	}
@@ -141,11 +120,7 @@ public class ManagerCoin {
 		this.listCoin = listCoin;
 	}
 
-	public void deleteList() {
-		if(!listUserBalance.isEmpty())
-			listUserBalance.clear();
-		
-	}
+
 	
 	
 

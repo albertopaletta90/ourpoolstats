@@ -1,7 +1,6 @@
 package ourpoolstats.manager;
 
 import ourpoolstats.type.CurrencyType;
-import ourpoolstats.type.LenguageType;
 
 public class ManagerImage {
 	
@@ -28,12 +27,12 @@ public class ManagerImage {
 		return instance;
 	}
 	
-	public void setImageDefault(LenguageType lenguage) {
+	public void setImageDefault(String lenguage) {
 		switch (lenguage) {
-		case ITALIAN:
+		case "ITALIAN":
 				this.linkDefaultImageLanguages = linkItalianImageLanguages;
 			break;
-		case  ENGLISH :
+		case  "ENGLISH" :
 			this.linkDefaultImageLanguages = linkEnglishImageLanguages;
 
 		default:

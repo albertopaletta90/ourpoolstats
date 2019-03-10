@@ -2,11 +2,14 @@ package ourpoolstats.service.coin;
 
 import java.util.List;
 
-import ourpoolstats.api.coingeko.data.Market;
+import org.springframework.http.ResponseEntity;
+
+import ourpoolstats.client.coingeko.data.Market;
+import ourpoolstats.response.CoinGekoResponse;
 
 public interface ICoinGekoService {
 	
 	public List<Market> getList();
-	public Market getCoinInfo(String id);
+	public ResponseEntity<CoinGekoResponse> getCoinInfo(String name);
 
 }

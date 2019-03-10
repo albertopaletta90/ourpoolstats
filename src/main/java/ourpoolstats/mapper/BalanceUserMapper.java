@@ -16,11 +16,12 @@ public class BalanceUserMapper  implements RowMapper<Balance> {
 	public Balance mapRow(ResultSet rs, int index) throws SQLException {
 		Balance balance = new Balance();
 		balance.setId(rs.getInt(1));
-		balance.setNameCoin(rs.getString(2));
-		balance.setInitialCurrency(rs.getBigDecimal(3));
-		balance.setCurrentCurrency(rs.getBigDecimal(4));
-		balance.setTotalCurrency(rs.getBigDecimal(5));
-		balance.setQuantity(rs.getBigDecimal(6));		
+		balance.setUsername(rs.getString(2));
+		balance.setNameCoin(rs.getString(3));
+		balance.setInitialCurrency(rs.getBigDecimal(4));
+		balance.setCurrentCurrency(rs.getBigDecimal(5));
+		balance.setTotalCurrency(rs.getBigDecimal(6));
+		balance.setQuantity(rs.getBigDecimal(7));		
 		return balance;
 	}
 

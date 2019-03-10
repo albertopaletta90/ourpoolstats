@@ -3,20 +3,22 @@ package ourpoolstats.service.user;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import ourpoolstats.mapper.FirstLoginMapper;
-import ourpoolstats.mapper.ImageMapper;
 import ourpoolstats.mapper.LoginMapper;
-import ourpoolstats.mapper.MailMapper;
-import ourpoolstats.mapper.PasswordMapper;
-import ourpoolstats.mapper.UserTypeMapper;
+import ourpoolstats.mapper.StringMapper;
 import ourpoolstats.model.Login;
 import ourpoolstats.model.User;
 import ourpoolstats.query.QueryImage;
 import ourpoolstats.query.QueryUser;
+import ourpoolstats.response.Response;
 import ourpoolstats.type.UserType;
 import ourpoolstats.utility.GetConnection;
 
@@ -38,7 +40,7 @@ public class UserOperration implements IUserOperation {
 
 	@Override
 	public boolean signinUser(User u) {
-		String hashPswword = jdbcTemplate.query(QueryUser.getInstance().getHashPassword(), new PasswordMapper(),u.getPassword()).get(0);
+		String hashPswword = jdbcTemplate.query(QueryUser.getInstance().getHashPassword(), new StringMapper(),u.getPassword()).get(0);
 		String userType = UserType.USER.toString();
 		try {
 			jdbcTemplate.update(QueryUser.getInstance().getInserUser(),u.getUserName(),u.getUserSurname(),u.getEmail(),u.getUsername(),hashPswword,userType);
@@ -52,7 +54,7 @@ public class UserOperration implements IUserOperation {
 
 	@Override
 	public boolean loginUser(String username, String password) {
-		String hashPassword = jdbcTemplate.query(QueryUser.getInstance().getHashPassword(), new PasswordMapper(),password).get(0);
+		String hashPassword = jdbcTemplate.query(QueryUser.getInstance().getHashPassword(), new StringMapper(),password).get(0);
 		List<Login>login =jdbcTemplate.query(QueryUser.getInstance().getLogin(), new LoginMapper(),username);
 		if(login.isEmpty())
 			return false;
@@ -65,7 +67,7 @@ public class UserOperration implements IUserOperation {
 
 	@Override
 	public UserType searchUserType(String username) {
-		List<String>usertype = jdbcTemplate.query(QueryUser.getInstance().getSearchUserType(), new UserTypeMapper(),username);			
+		List<String>usertype = jdbcTemplate.query(QueryUser.getInstance().getSearchUserType(), new StringMapper(),username);			
 		if(usertype.get(0).equals("ADMIN"))
 			return UserType.ADMIN ;
 		if(usertype.get(0).equals("MANAGER"))
@@ -80,78 +82,101 @@ public class UserOperration implements IUserOperation {
 	}
 
 	@Override
-	public boolean forgotPassword(String username) {
-
-		return false;
-	}
-
-	@Override
 	public String getImageProfile(String username) {
-		List<String> list = jdbcTemplate.query(QueryImage.getInstance().getGetImageProfile(), new ImageMapper(),username);
-		return list.get(0);
-
+		return jdbcTemplate.query(QueryImage.getInstance().getGetImageProfile(), new StringMapper(),username).get(0);
 	}
 
 	@Override
-	public boolean setImageProfile(String username, String url,String method) {
+	public ResponseEntity<Response> setImageProfile(String username, String url,String method) {
 		switch (method) {
 		case "insert":
 			try {
 				jdbcTemplate.update(QueryImage.getInstance().getInsetImageProfile(),username,url);
+				return success();
 			} catch (Exception e) {
-				return false;
+				return fail(e);
 			}
-			break;
+			
 		case "update":
 			try {
 				jdbcTemplate.update(QueryImage.getInstance().getSetImageProfile(),url,username);
+				return success();
 			} catch (Exception e) {
-				return false;
+				return fail(e);
 			}
-			break;
+			
 		}
+		return null;
 
-		return true;
+		
 	}
 
+	private ResponseEntity<Response> success() {
+		Response response = new Response();
+		response.setStatus(HttpStatus.OK.toString());
+		return new  ResponseEntity<Response>(response, HttpStatus.OK);
+
+	}
+
+	private ResponseEntity<Response> fail(Exception e ) {
+		Response response = new Response();
+		response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+		response.setEror(e.getMessage());
+		return new  ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	
+
+	}
+
+
 	@Override
-	public boolean changePassword(String username, String password) {
+	public ResponseEntity<Response> changePassword(String username, String password) {
+		Response response = new Response();
 		try {
-			String newPassword =  jdbcTemplate.query(QueryUser.getInstance().getHashPassword(), new PasswordMapper(),password).get(0);
+			String newPassword =  jdbcTemplate.query(QueryUser.getInstance().getHashPassword(), new StringMapper(),password).get(0);
 			jdbcTemplate.update(QueryUser.getInstance().getChangePassword(),newPassword,username);
-			return true;
+			response.setStatus(HttpStatus.OK.toString());
+			return new  ResponseEntity<Response>(response,HttpStatus.OK);
 		} catch (Exception e) {
-			return false;
+			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+			response.setEror("Errore Tecnico");
+			return new  ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-
 
 	}
 
 	@Override
-	public boolean changeEmail(String username, String email) {
+	public ResponseEntity<Response> changeEmail(String username, String email) {
+		Response response = new Response();
 		try {
 			jdbcTemplate.update(QueryUser.getInstance().getChangeEmail(),email,username);
-			return true;
+			response.setStatus(HttpStatus.OK.toString());
+			return new ResponseEntity<Response>(response,HttpStatus.OK);
 		} catch (Exception e) {
-			return false;
+			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+			response.setEror(e.getMessage());
+			return new ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}
 
 	@Override
-	public boolean deleteUser(String user) {
+	public ResponseEntity<Response> deleteUser(String user) {
+		Response response = new Response();
 		try {
 			jdbcTemplate.update(QueryUser.getInstance().getDeleteUser(),user);
-			return true;
+			response.setStatus(HttpStatus.OK.toString());
+			return new ResponseEntity<Response>(response,HttpStatus.OK);
 		} catch (Exception e) {
-			return false;
+			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+			response.setEror(e.getMessage());
+			return new  ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}			
 	}
 
 	public String findUsernameToEmail(String emails) {
 		emailTemporaney = emails;
 		try {
-			List<String> list = jdbcTemplate.query(QueryUser.getInstance().getSearchUserToEmail(), new MailMapper(),emails);
+			List<String> list = jdbcTemplate.query(QueryUser.getInstance().getSearchUserToEmail(), new StringMapper(),emails);
 			return list.get(0);
 		} catch (Exception e) {
 
@@ -163,9 +188,21 @@ public class UserOperration implements IUserOperation {
 		jdbcTemplate.update(QueryUser.getInstance().getInsertUserOnline(),login.getUsername());
 
 	}
-
-	public void deleteToUserOnline(String login) {
-		jdbcTemplate.update(QueryUser.getInstance().getDeleteUserOnline(),login);
+	
+	@Override
+	public ResponseEntity<Response> deleteToUserOnline(String username,HttpServletRequest request) {
+		Response response = new Response();
+		try {
+			jdbcTemplate.update(QueryUser.getInstance().getDeleteUserOnline(),username);
+			setFirstLoginDay(username, 1);
+			response.setStatus(HttpStatus.OK.toString());
+			request.getSession().removeAttribute(username);
+			return new  ResponseEntity<Response>(response,HttpStatus.OK);			
+		}catch (Exception e) {
+			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+			response.setEror(e.getMessage());
+			return new  ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 
 	}
 

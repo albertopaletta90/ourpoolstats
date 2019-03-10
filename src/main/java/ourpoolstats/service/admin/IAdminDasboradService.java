@@ -2,18 +2,22 @@ package ourpoolstats.service.admin;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+
 import ourpoolstats.model.User;
-import ourpoolstats.model.UserLog;
+import ourpoolstats.response.LogUserResponse;
+import ourpoolstats.response.Response;
+import ourpoolstats.response.UserOnlineResponse;
 
 public interface IAdminDasboradService {
 
-	public boolean createUser(User u);
-	public boolean deleteUser(String username);
-	public boolean cangeTypeUser(String userType,String username);
+	public ResponseEntity<Response> createUser(User user);
+	public ResponseEntity<Response> deleteUser(String username);
+	public ResponseEntity<Response> cangeTypeUser(String userType,String username);
 	public User logSingleUser(String username);
-	public List<UserLog> logUser();
-	public List<User> userOnline(String username);
+	public ResponseEntity<LogUserResponse> logUser();
+	public  ResponseEntity<UserOnlineResponse> userOnline(String username);
 	public List<String> getCoins();
-	
-	
+
+
 }

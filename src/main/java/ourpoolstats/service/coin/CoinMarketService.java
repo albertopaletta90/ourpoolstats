@@ -6,16 +6,19 @@ import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import ourpoolstats.api.coinmarket.Coin;
-import ourpoolstats.api.coinmarket.CoinMarketClient;
+import ourpoolstats.client.coinmarket.Coin;
+import ourpoolstats.client.coinmarket.CoinMarketClient;
 import ourpoolstats.mapper.BalanceUserMapper;
 import ourpoolstats.mapper.CoinDBMapper;
-import ourpoolstats.mapper.CoinMapper;
+import ourpoolstats.mapper.StringMapper;
 import ourpoolstats.model.Balance;
 import ourpoolstats.model.CoinDB;
 import ourpoolstats.query.QueryCoin;
+import ourpoolstats.response.CoinMarketResponse;
 import ourpoolstats.utility.GetConnection;
 
 public class CoinMarketService implements ICoinMarketService {
@@ -34,15 +37,26 @@ public class CoinMarketService implements ICoinMarketService {
 	@Override
 	public List<String> getListCoinDefault() {
 		List<String>coinList = new ArrayList<>();
-		coinList =jdbcTemplate.query(QueryCoin.getInstance().getGetDefaulCoin(), new CoinMapper());
+		coinList =jdbcTemplate.query(QueryCoin.getInstance().getGetDefaulCoin(), new StringMapper());
 		return coinList;
 	}
 
 
 	@Override
-	public Coin getCoinInfo(String name) {
-		CoinMarketClient client = new CoinMarketClient();
-		return client.getCoinInfo(name);		
+	public ResponseEntity<CoinMarketResponse> getCoinInfo(String name) {
+		CoinMarketResponse coinMarketResponse = new CoinMarketResponse();
+		try {
+			CoinMarketClient client = new CoinMarketClient();
+			Coin coinInfo = client.getCoinInfo(name);		
+			coinMarketResponse.setStatus(HttpStatus.OK.toString());
+			coinMarketResponse.setCoinInfo(coinInfo);
+			return new ResponseEntity<CoinMarketResponse>(coinMarketResponse,HttpStatus.OK);			
+		} catch (Exception e) {
+			coinMarketResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+			coinMarketResponse.setCoinInfo(null);
+			coinMarketResponse.setEroor(e.getMessage());
+			return new ResponseEntity<CoinMarketResponse>(coinMarketResponse,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 
@@ -65,24 +79,21 @@ public class CoinMarketService implements ICoinMarketService {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		for(int i =0; i<list.size(); i++) {
 			BigDecimal btc = BigDecimal.valueOf(list.get(i).getPrice_btc());
 			BigDecimal usd = BigDecimal.valueOf(list.get(i).getPrice_usd());
 			BigDecimal market = BigDecimal.valueOf(list.get(i).getMarket_cap_usd());
 			BigDecimal perc_1 = BigDecimal.valueOf(list.get(i).getPercent_change_1h());
 			BigDecimal perc_24 = BigDecimal.valueOf(list.get(i).getPercent_change_24h());
-			if(list.get(i).getName().equals("Bitcoin"))
-				btc.movePointLeft(3);
-		
 			try {
 				jdbcTemplate.update(QueryCoin.getInstance().getInsertCoin(),list.get(i).getName(),"user",btc,usd,market,perc_1,perc_24);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 		}
-		
-		
+
+
 	}
 
 
@@ -94,7 +105,7 @@ public class CoinMarketService implements ICoinMarketService {
 			System.out.println(e.getMessage());
 			return null;
 		}
-		
+
 	}
 
 }

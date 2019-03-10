@@ -2,9 +2,12 @@ package ourpoolstats.model;
 
 import java.math.BigDecimal;
 
+import ourpoolstats.client.coinmarket.CoinMarketClient;
+
 public class CoinDB {
 
 	private int id;
+	private String symbol;
 	private String name;
 	private BigDecimal priceBtc;
 	private BigDecimal priceUsd;
@@ -69,6 +72,10 @@ public class CoinDB {
 
 	public void setPerc_24(BigDecimal perc_24) {
 		this.perc_24 = perc_24;
+	}
+	
+	public String getSymbol() {
+		return this.symbol = CoinMarketClient.getIcon(name);
 	}
 	
 	

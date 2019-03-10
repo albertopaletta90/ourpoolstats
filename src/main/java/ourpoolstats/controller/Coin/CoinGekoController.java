@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import ourpoolstats.api.coingeko.CoinGekoClient;
+import ourpoolstats.client.coingeko.CoinGekoClient;
 import ourpoolstats.manager.ManagerCoin;
 import ourpoolstats.manager.ManagerImage;
 import ourpoolstats.type.CryptoCurrency;

@@ -35,7 +35,7 @@
 				<jsp:include page="../menu/ourpoolstats/menuCurrencySell.jsp"></jsp:include>
 			</div>
 			<div class="viewDashboard">
-				<p class ="currencyTotal"><%=ManagerCoin.getInstance().getSumCurrency() %></p>
+				
 				<jsp:include page="../ourpoolstats/coin/listBalanceSell.jsp"></jsp:include>
 			</div>
 		</div>

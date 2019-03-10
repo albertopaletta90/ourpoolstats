@@ -1,5 +1,5 @@
 <%@page import="java.math.BigDecimal"%>
-<%@page import="ourpoolstats.api.coinmarket.CoinMarketClient"%>
+<%@page import="ourpoolstats.client.coinmarket.CoinMarketClient"%>
 <%@page import="ourpoolstats.manager.ManagerCoin"%>
 <%@page import="ourpoolstats.manager.Lenguage.ManagerMultiLilingualDashboard"%>
 <html>

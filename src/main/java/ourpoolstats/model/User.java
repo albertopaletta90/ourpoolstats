@@ -19,6 +19,14 @@ public class User implements Serializable {
 	private UserType userType;
 
 	public User() {}
+	
+	public User(String name,String surname,String username,String password,String email) {
+		this.userName = name;
+		this.userSurname = surname;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
 
 	public int getUserId() {
 		return userId;

@@ -5,15 +5,23 @@ import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import ourpoolstats.mapper.PasswordMapper;
+import ourpoolstats.log.AdminOperationLogger;
+import ourpoolstats.mapper.StringMapper;
 import ourpoolstats.mapper.UserLogMapper;
 import ourpoolstats.mapper.UserLoginMapper;
 import ourpoolstats.model.User;
 import ourpoolstats.model.UserLog;
 import ourpoolstats.query.QueryAdminOption;
 import ourpoolstats.query.QueryUser;
+import ourpoolstats.response.LogUserResponse;
+import ourpoolstats.response.Response;
+import ourpoolstats.response.UserOnlineResponse;
+import ourpoolstats.service.language.LanguageService;
+import ourpoolstats.type.AdminOperation;
 import ourpoolstats.utility.GetConnection;
 
 public class AdminDasboradService implements IAdminDasboradService {
@@ -29,39 +37,54 @@ public class AdminDasboradService implements IAdminDasboradService {
 	}
 
 	@Override
-	public boolean createUser(User u) {		
-		String hashPswword = jdbcTemplate.query(QueryUser.getInstance().getHashPassword(), new PasswordMapper(),u.getPassword()).get(0);
+	public ResponseEntity<Response> createUser(User user) {
+		Response response = new Response();
+		String hashPswword = jdbcTemplate.query(QueryUser.getInstance().getHashPassword(), new StringMapper(),user.getPassword()).get(0);
 		String userType = "USER";
-		int row = 0;
 		try {
-			row = jdbcTemplate.update(QueryAdminOption.getInstance().getInsertUserAdmin(),u.getUserName(),u.getUserSurname(),u.getEmail(),u.getUsername(),hashPswword,userType);
+			jdbcTemplate.update(QueryAdminOption.getInstance().getInsertUserAdmin(),user.getUserName(),user.getUserSurname(),user.getEmail(),user.getUsername(),hashPswword,userType);
 		}catch (Exception e) {
-			return false;
+			AdminOperationLogger.getInstance().logger(user.getUsername(), false, AdminOperation.INSERTUSER);
+			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+			response.setEror("Utente Già presente  " + e.getMessage());
+			return new  ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		if(row > 0)
-			return true;
-		else		
-			return false;
+		LanguageService languageService = new LanguageService();
+		languageService.setLenguace("italiano", user.getUsername());
+		AdminOperationLogger.getInstance().logger(user.getUsername(), true, AdminOperation.INSERTUSER);
+		response.setStatus(HttpStatus.OK.toString());
+		return new  ResponseEntity<Response>(response, HttpStatus.OK);
 	}
 
 	@Override
-	public boolean deleteUser(String username) {
-
-		int row = jdbcTemplate.update(QueryAdminOption.getInstance().getDeleteUser(),username);
-		if (row > 0)
-			return true;
-		else		
-			return false;
+	public ResponseEntity<Response> deleteUser(String username) {
+		Response response = new Response();
+		try {
+			jdbcTemplate.update(QueryAdminOption.getInstance().getDeleteUser(),username);
+			AdminOperationLogger.getInstance().logger(username, true, AdminOperation.DELETE);
+			response.setStatus(HttpStatus.OK.toString());
+			return new  ResponseEntity<Response>(response, HttpStatus.OK);
+		}catch (Exception e) {
+			AdminOperationLogger.getInstance().logger(username, false, AdminOperation.DELETE);
+			response.setEror("Errore Tecnico " + e.getMessage());
+			return new  ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	@Override
-	public boolean cangeTypeUser(String userType,String username) {
-		int row = jdbcTemplate.update(QueryAdminOption.getInstance().getChangeUserType(),userType,username);
-		if (row > 0)
-			return true;
-		else		
-			return false;
+	public ResponseEntity<Response> cangeTypeUser(String userType,String username) {
+		Response response = new Response();
+		try {
+			jdbcTemplate.update(QueryAdminOption.getInstance().getChangeUserType(),userType,username);
+			AdminOperationLogger.getInstance().logger(username, true, AdminOperation.CHANGETYPE);
+			response.setStatus(HttpStatus.OK.toString());
+			return new  ResponseEntity<Response>(response, HttpStatus.OK);
+		}catch (Exception e) {
+			AdminOperationLogger.getInstance().logger(username, false, AdminOperation.CHANGETYPE);
+			response.setEror("Errore Tecnico " + e.getMessage());
+			return new  ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	@Override
@@ -70,19 +93,38 @@ public class AdminDasboradService implements IAdminDasboradService {
 	}
 
 	@Override
-	public List<UserLog> logUser() {
+	public ResponseEntity<LogUserResponse> logUser() {
 		List<UserLog>list = jdbcTemplate.query(QueryAdminOption.getInstance().getUserLog(), new UserLogMapper());
-		if(list == null )
-			return null;
-		else
-			return list;
+		LogUserResponse logUserResponse = new LogUserResponse();
+		if(list != null) {
+			AdminOperationLogger.getInstance().logger("", true, AdminOperation.VIEWLOGUSER);
+			logUserResponse.setStatus(HttpStatus.OK.toString());
+			logUserResponse.setUserLog(list);
+			return new  ResponseEntity<LogUserResponse>(logUserResponse, HttpStatus.OK);
+		}
+		else {
+			AdminOperationLogger.getInstance().logger("", false, AdminOperation.VIEWLOGUSER);
+			logUserResponse.setStatus(HttpStatus.NOT_FOUND.toString());
+			logUserResponse.setUserLog(list);
+			return new  ResponseEntity<LogUserResponse>(logUserResponse, HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@Override
-	public List<User> userOnline(String username) {
+	public ResponseEntity<UserOnlineResponse> userOnline(String username) {
 		List<User>list = new ArrayList<>();
 		list = jdbcTemplate.query(QueryAdminOption.getInstance().getUserOnline(), new UserLoginMapper(),username);
-		return list;
+		UserOnlineResponse userOnlineResponse = new UserOnlineResponse();
+		if(list!=null || !list.isEmpty()) {
+			userOnlineResponse.setStatus(HttpStatus.OK.toString());
+			userOnlineResponse.setUserLog(list);
+			return new ResponseEntity<UserOnlineResponse>(userOnlineResponse,HttpStatus.OK);
+		}else {
+			userOnlineResponse.setStatus(HttpStatus.NOT_FOUND.toString());
+			userOnlineResponse.setUserLog(list);
+			userOnlineResponse.setError("Nessun User Trovato");
+			return new ResponseEntity<UserOnlineResponse>(userOnlineResponse,HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@Override
