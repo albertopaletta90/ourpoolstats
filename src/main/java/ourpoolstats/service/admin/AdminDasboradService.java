@@ -110,6 +110,7 @@ public class AdminDasboradService implements IAdminDasboradService {
 		}
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public ResponseEntity<UserOnlineResponse> userOnline(String username) {
 		List<User>list = new ArrayList<>();

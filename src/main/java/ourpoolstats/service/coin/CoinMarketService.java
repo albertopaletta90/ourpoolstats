@@ -19,6 +19,7 @@ import ourpoolstats.model.Balance;
 import ourpoolstats.model.CoinDB;
 import ourpoolstats.query.QueryCoin;
 import ourpoolstats.response.CoinMarketResponse;
+import ourpoolstats.response.Response;
 import ourpoolstats.utility.GetConnection;
 
 public class CoinMarketService implements ICoinMarketService {
@@ -106,6 +107,19 @@ public class CoinMarketService implements ICoinMarketService {
 			return null;
 		}
 
+	}
+
+
+	public ResponseEntity<Response> addCoin(String name, Response response) {
+		try {
+			jdbcTemplate.update(QueryCoin.getInstance().getInsertCoin(),name,"user",0,0,0,0,0);
+			response.setStatus(HttpStatus.OK.toString());
+			return new ResponseEntity<Response>(response,HttpStatus.OK);
+		} catch (Exception e) {
+			response.setEror(e.getMessage());
+			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+			return new ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 }

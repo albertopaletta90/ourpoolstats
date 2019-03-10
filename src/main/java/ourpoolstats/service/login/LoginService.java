@@ -82,7 +82,7 @@ public class LoginService implements ILoginService{
 					OperationDBLogger.getInstance().logger(l.getUsername(), false, DataBaseOperation.INSERTLANGUAGE,logResponse);
 				}
 				setCoin();
-				success(userType, HttpStatus.CONTINUE);
+				return success(userType, HttpStatus.CONTINUE);
 				
 				}else{
 				ManagerImage.getInstance().setLinkImageProfile(userOperation.getImageProfile(l.getUsername()));
@@ -102,7 +102,7 @@ public class LoginService implements ILoginService{
 					loginResponse.setStatus(HttpStatus.NOT_FOUND.toString());
 					return new   ResponseEntity<LoginResponse>(loginResponse, HttpStatus.NOT_FOUND);
 				}
-				success(userType,HttpStatus.OK);
+				return success(userType,HttpStatus.OK);
 			}
 
 
@@ -112,7 +112,7 @@ public class LoginService implements ILoginService{
 			loginResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
 			return new  ResponseEntity<LoginResponse>(loginResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return null;
+		
 
 	}
 

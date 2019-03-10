@@ -77,6 +77,10 @@ public class CoinDB {
 	public String getSymbol() {
 		return this.symbol = CoinMarketClient.getIcon(name);
 	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
 	
 	
 	

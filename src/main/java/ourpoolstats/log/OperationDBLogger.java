@@ -112,6 +112,8 @@ public class OperationDBLogger {
 				}
 
 				break;
+			default:
+				break;
 
 
 			}
