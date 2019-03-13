@@ -1,6 +1,6 @@
 
 export class LoginResponse {
-    constructor(public user: String, public status: String, public password: String, coinkarket : CoinMarket[], coingeko :CoinGeko[]) { }
+    constructor(public status: String, public typeUser ) { }
 }
 
 export class Response {
@@ -8,12 +8,17 @@ export class Response {
 }
 
 export class CoinGekoResponse {
-    constructor(public status: String, public error: String ,coingeko :CoinGeko) { }
+    constructor(public status: String, public error: String ,public coingekoList :Array<CoinGeko>) { }
 }
 
 export class CoinMarketResponse {
-    constructor(public status: String, public error: String ,coinmarket :CoinMarket) { }
+    constructor(public status: String, public error: String ,public coinMarketList :Array<CoinMarket>) { }
 }
+
+export class CoinMarketInfoResponse {
+    constructor(public status: String, public error: String ,public coinInfo :CoinMarket) { }
+}
+
 
 export class BalanceResponse {
     constructor(public status: String, public error: String,balance : Balance[]) { }
@@ -46,7 +51,8 @@ export class CoinMarket {
                         percent_change_24h : number ,
                         percent_change_7d : number ,
                         last_updated : number ,
-                        quantity : number) { }
+                        quantity : number,
+                        image : string) { }
 }
 
 export class CoinGeko {
@@ -68,7 +74,8 @@ export class CoinGeko {
                         circulating_supply : number ,
                         total_supply : number,
                         ath : number,
-                        ath_change_percentage : number
+                        ath_change_percentage : number,
+                        ath_date : Date
                         ) { }
 }
 

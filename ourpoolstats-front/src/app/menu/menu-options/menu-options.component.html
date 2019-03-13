@@ -1,3 +1,13 @@
-<p>
-  menu-options works!
-</p>
+<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <img src="https://findicons.com/files/icons/88/mac/128/setting.png" width="30" />
+ </button>	 
+ <div class="dropdown-menu colorLeguage">
+    <button type="submit" class="dropdown-item colorLeguage" ng-if="typeUser == 'ADMIN'" (click)="goToCreateUser()">Inserisci Utente</button>
+    <button type="submit" class="dropdown-item colorLeguage" ng-if="typeUser == 'ADMIN'"  (click)="goToDeleteUser()" >Cancella Utente</button>
+    <button type="submit" class="dropdown-item colorLeguage" ng-if="typeUser == 'ADMIN'" (click)="goToChangeTypeUser()">Cambia Tipo Utente</button>
+    <button type="submit" class="dropdown-item colorLeguage" ng-if="typeUser == 'ADMIN' || 'MANAGER'">Aggiungi Monete</button>
+    <button type="submit" class="dropdown-item colorLeguage" ng-if="typeUser == 'ADMIN' || 'MANAGER'">Cancella Monete</button>
+    <button type="submit" class="dropdown-item colorLeguage" ng-if="typeUser == 'ADMIN' || 'MANAGER'">Visualizza Log Singolo Utente</button>
+    <button type="submit" class="dropdown-item colorLeguage" ng-if="typeUser == 'ADMIN' || 'MANAGER'" href="./logUser">Visualizza Log Utenti</button>
+  <button type="submit" class="dropdown-item colorLeguage" href="./userOnline">Visualizza Utenti online</button>
+  </div>

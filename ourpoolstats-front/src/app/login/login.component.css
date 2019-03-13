@@ -1,5 +1,22 @@
-.buttonLogin {
+.login {
+	position: absolute;
+	top: 25%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 50%;
+}
+
+.login .imputBox{
+	margin-left: 10vh;
+}
+
+.login .buttonLogin {
 	position: absolute;
 	top: 80%;
 	left: 35%
+}
+
+.login .textLogin {
+	border-bottom: 1px solid silver;
 }

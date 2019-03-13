@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CoinMarket } from '../../model/model';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-menu-coin',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuCoinComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
   }
 
+    change = function(value){
+      this.router.navigate([value]);
+    }
 }

@@ -45,7 +45,9 @@ import { MenuCoinComponent } from './menu/menu-coin/menu-coin.component';
 import { MenuCurrencySellComponent } from './menu/menu-currency-sell/menu-currency-sell.component';
 import { MenuMarketComponent } from './menu/menu-market/menu-market.component';
 import { MenuValueCoinComponent } from './menu/menu-value-coin/menu-value-coin.component';
-import { ChartsModule } from '../../node_modules/ng2-charts/src';
+
+
+
 
 
 @NgModule({
@@ -91,6 +93,7 @@ import { ChartsModule } from '../../node_modules/ng2-charts/src';
     MenuCurrencySellComponent,
     MenuMarketComponent,
     MenuValueCoinComponent
+    
   ],
   imports: [
     BrowserModule,

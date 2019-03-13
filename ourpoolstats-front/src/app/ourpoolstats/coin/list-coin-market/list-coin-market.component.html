@@ -1,0 +1,24 @@
+<table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Prezzo In Dollari</th>
+            <th scope="col">Prezzo in Btc</th>
+            <th scope="col">1H%</th>
+            <th scope="col">24H%</th>
+            <th scope="col">Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let list of coinMarketList">
+            <td><img src='{{list.symbol}}' width="30px"></td>
+            <td>{{list.name}}</td>
+            <td>{{list.priceUsd}}</td>
+            <td>{{list.priceBtc}}</td>
+            <td  ng-class="{'green': list.perc_1 > 0}" >{{list.perc_1}}</td>
+            <td>{{list.perc_24}}</td>
+            <td><button (click)="goToInfo(list.name)"><img src="https://www.iconsdb.com/icons/preview/gray/info-xxl.png" width="30px"></button></td>
+            </tr>
+        </tbody>
+</table>

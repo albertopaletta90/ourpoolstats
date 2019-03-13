@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-options',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuOptionsComponent implements OnInit {
 
-  constructor() { }
+  typeUser : String = sessionStorage.getItem('typeUser');
+  constructor(private router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
+  goToCreateUser = function() {
+    this.router.navigate(['createUser']);
+  };
+
+  goToDeleteUser = function(){  
+    this.router.navigate(['deleteUser']);
+
+  };
+
+  goToChangeTypeUser = function(){
+    this.router.navigate(['changeTypeUser']);
+  };
+
+
 
 }

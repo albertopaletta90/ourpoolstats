@@ -46,9 +46,6 @@ h3 {
 	position: absolute;
 	top: 10.5%;
 	right: 35%;
-	border-top: solid silver 1px;
-	border-left: solid silver 1px;
-	border-right: solid silver 1px;
 	width: 30%;
 }
 
@@ -77,3 +74,178 @@ h3 {
 	width: 30%;
 }
 
+body {
+	background-color: #EDEDED;
+}
+
+.divMenu {
+	position: absolute;
+	width: 95%;
+	height: 9%;
+}
+
+.divDashboard {
+	position: absolute;
+	width: 90%;
+	height: 80%;
+	top: 10%;
+	left: 5%;
+	overflow: scroll;
+}
+
+.lenguage {
+	position: absolute;
+	right: 5%;
+	top: 1%;
+	width: 2%;
+}
+
+.colorLeguage {
+	background-color: #EDEDED;
+}
+
+.changeUserType {
+	position: absolute;
+	top: 25%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 45%;
+}
+
+
+.imputBox {
+	margin-left: 78px;
+}
+
+.createUser {
+	position: absolute;
+	top: 15%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 95%;
+}
+
+.signin {
+	position: absolute;
+	top: 5%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 95%;
+}
+
+.deleteUser {
+	position: absolute;
+	top: 25%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 40%;
+}
+
+.logUser {
+	position: absolute;
+	top: 15%;
+	left: 30%;
+	max-height: 350px;
+	margin-bottom: 10px;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+.userOnline {
+	position: absolute;
+	top: 15%;
+	left: 40%;
+}
+
+.addImage {
+	position: absolute;
+	top: 25%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 40%;
+}
+
+.changeEmail {
+	position: absolute;
+	top: 25%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 45%;
+}
+
+.changePassword {
+	position: absolute;
+	top: 25%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 45%;
+}
+
+.tableBorder {
+	border: 1px solid silver;
+}
+
+.successOperation {
+	position: absolute;
+	top: 23.5%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 50%;
+}
+
+.viewDashboard {
+	position: absolute;
+	top: 15%;
+	width: 95%;
+	left: 2%;
+}
+
+.coinSelected {
+	position: absolute;
+	top: 20%;
+}
+
+.green {
+	color: green;
+}
+
+.red {
+	color: red;
+}
+.positionImageInfo {
+	position: absolute;
+	left: 45%;
+	top: 15%;
+}
+
+.divInfo {
+	position: absolute;
+	width: 30%;
+}
+
+.divGraphic {
+	position: absolute;
+	width: 70%;
+	left: 30%;
+}
+
+
+.divDashboard .buttonCoin{
+	position: absolute;
+	left: 40%;
+	top: 1%;
+}
+
+.divDashboard .buttonOption{
+	position: absolute;
+	left: 1%;
+	top: 1%;
+}

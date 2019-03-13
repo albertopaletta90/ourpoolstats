@@ -1,0 +1,24 @@
+.divDashboard .viewDashboard .createUser {
+	position: absolute;
+	top: 15%;
+	right: 35%;
+	width: 30%;
+	height: 98%;
+}
+
+.divDashboard .viewDashboard .createUser .buttonBack {
+    position: absolute;
+	top: 46vh;
+	left: 5vh
+}
+
+.divDashboard .viewDashboard .createUser .buttonSignin {
+	position: absolute;
+	top: 46vh;
+	left: 25vh
+}
+
+.divDashboard .viewDashboard .imputBox {
+	margin-left: 58px;
+}
+
