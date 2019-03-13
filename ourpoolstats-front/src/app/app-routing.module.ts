@@ -84,7 +84,6 @@ const routes: Routes = [
   {
     path : 'infoCoinMarket',
     component : CoinMarketInfoComponent
-
   },
   {
     path : 'coinkego',
@@ -93,6 +92,9 @@ const routes: Routes = [
   {
     path : 'coinmarket',
     component : OurpoolstatsComponent
+  },{
+    path : 'setPassword',
+    component : SetPasswordComponent
   }
   
 ];

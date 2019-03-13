@@ -1,3 +1,43 @@
-<p>
-  list-coin-geko works!
-</p>
+<div class="divMenu">
+	<app-menu-ourpoolstats></app-menu-ourpoolstats>
+</div>
+
+<div class="divDashboard">
+	<div class="lenguage">
+		
+	</div>
+	<div class="buttonOption">
+		<app-menu-options></app-menu-options>
+	</div>
+
+	<div class="buttonCoin">
+		<app-menu-coin></app-menu-coin>
+    </div>
+    
+    <div class="buttonValue">
+        <app-menu-value-coin></app-menu-value-coin>
+    </div>
+
+	<div class="viewDashboard">		
+		<table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">{{coinLabels.orpLabels.image}}</th>
+                <th scope="col">{{coinLabels.orpLabels.name}}</th>
+                <th scope="col">{{coinLabels.orpLabels.priceUsd}}</th>
+                <th scope="col">{{coinLabels.orpLabels.change24}}</th>
+                <th scope="col">{{coinLabels.orpLabels.info}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let list of coingekoList">
+                <td><img src='{{list.image}}' width="30px"></td>
+                <td>{{list.name}}</td>
+                <td>{{list.current_price}}</td>
+                <td>{{list.price_change_percentage_24h}}</td>
+                <td><button (click)="goToInfo(list.name)"><img src="https://www.iconsdb.com/icons/preview/gray/info-xxl.png" width="30px"></button></td>
+                </tr>
+            </tbody>
+          </table>
+	</div>
+</div>

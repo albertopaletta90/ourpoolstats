@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CoinGekoResponse, CoinMarketResponse, CoinMarket, CoinGeko } from '../../../model/model';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-list-coin-geko',
@@ -8,9 +9,15 @@ import { CoinGekoResponse, CoinMarketResponse, CoinMarket, CoinGeko } from '../.
   styleUrls: ['./list-coin-geko.component.css']
 })
 export class ListCoinGekoComponent implements OnInit {
-
-  constructor(private http: HttpClient) { }
+  coinLabels : any;
   coingekoList: CoinGeko[];
+
+  constructor(private http: HttpClient) {
+    this.getJSON().subscribe(data => {
+        this.coinLabels = data;
+    });
+}
+
   ngOnInit() {
     this.getCoin();
   }
@@ -22,4 +29,10 @@ export class ListCoinGekoComponent implements OnInit {
       }); 
   }
 
+  public getJSON(): Observable<any> {
+    return this.http.get("./assets/json/coin.json")
 }
+
+}
+
+

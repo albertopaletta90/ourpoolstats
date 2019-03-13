@@ -45,8 +45,7 @@ import { MenuCoinComponent } from './menu/menu-coin/menu-coin.component';
 import { MenuCurrencySellComponent } from './menu/menu-currency-sell/menu-currency-sell.component';
 import { MenuMarketComponent } from './menu/menu-market/menu-market.component';
 import { MenuValueCoinComponent } from './menu/menu-value-coin/menu-value-coin.component';
-
-
+import { GraphicCoinMarketComponent } from './ourpoolstats/coin/graphic-coin-market/graphic-coin-market.component';
 
 
 
@@ -92,7 +91,10 @@ import { MenuValueCoinComponent } from './menu/menu-value-coin/menu-value-coin.c
     MenuCoinComponent,
     MenuCurrencySellComponent,
     MenuMarketComponent,
-    MenuValueCoinComponent
+    MenuValueCoinComponent,
+    GraphicCoinMarketComponent
+    
+    
     
   ],
   imports: [

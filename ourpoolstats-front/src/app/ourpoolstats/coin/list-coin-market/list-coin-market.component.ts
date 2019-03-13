@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CoinGekoResponse, CoinMarketResponse, CoinMarket, CoinGeko, CoinMarketInfoResponse } from '../../../model/model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-list-coin-market',
   templateUrl: './list-coin-market.component.html',
@@ -10,7 +11,13 @@ import { Router } from '@angular/router';
 export class ListCoinMarketComponent implements OnInit {
   coinMarketList: CoinMarket[];
   coinName : string;
-  constructor(private http: HttpClient,private router: Router) { }
+  coinLabels : any;
+
+  constructor(private http: HttpClient,private router: Router) {
+    this.getJSON().subscribe(data => {
+      this.coinLabels = data;
+  });
+   }
 
   ngOnInit() {
     this.getCoin();
@@ -23,9 +30,14 @@ export class ListCoinMarketComponent implements OnInit {
       });
  }
 
+ public getJSON(): Observable<any> {
+  return this.http.get("./assets/json/coin.json")
+}
+
  goToInfo(name){
    this.coinName = name;
-    this.router.navigate(['infoCoinMarket']);    
+   sessionStorage.setItem('coin',name);
+   this.router.navigate(['infoCoinMarket']);    
 }
 
 }

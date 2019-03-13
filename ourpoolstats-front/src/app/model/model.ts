@@ -29,12 +29,24 @@ export class LogUserResponse {
 }
 
 
-export class User {
+export class Login {
     constructor(public user: String, password: String) {
 
     }
 }
 
+export class User {
+    constructor(public name : string ,public surname :string,  public username: String, password: String ,email: string) {
+
+    }
+}
+
+
+export class CoinInfo {
+    constructor(public nameCoin: String) {
+
+    }
+}
 export class CoinMarket {
     constructor(public id: string,
                         name : string ,
