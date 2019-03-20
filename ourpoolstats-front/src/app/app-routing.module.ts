@@ -18,7 +18,6 @@ import { WhitOutInternetComponent } from './ourpoolstats/whit-out-internet/whit-
 import { UserOperationComponent } from './ourpoolstats/user-operation/user-operation.component';
 import { AddImageComponent } from './ourpoolstats/user-operation/add-image/add-image.component';
 import { ChangeEmailComponent } from './ourpoolstats/user-operation/change-email/change-email.component';
-import { ChengePasswordComponent } from './ourpoolstats/user-operation/chenge-password/chenge-password.component';
 import { ChengeUserTypeComponent } from './ourpoolstats/user-operation/chenge-user-type/chenge-user-type.component';
 import { ChatComponent } from './ourpoolstats/user-operation/chat/chat.component';
 import { CreateUserComponent } from './ourpoolstats/user-operation/create-user/create-user.component';

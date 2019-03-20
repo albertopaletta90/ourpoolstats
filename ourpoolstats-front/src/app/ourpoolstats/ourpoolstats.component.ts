@@ -10,6 +10,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 })
 export class OurpoolstatsComponent implements OnInit {
+  viewAllert : string = sessionStorage.getItem('setPassword');
+  view : boolean = (this.viewAllert=='setPassword')? true : false;
 
   constructor(private route: ActivatedRoute) {}
   ngOnInit() {}

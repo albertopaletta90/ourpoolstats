@@ -28,10 +28,14 @@ export class LoginComponent implements OnInit {
     let u = new Login(this.user,this.pass);
     this.http.post<LoginResponse>('http://localhost:8080/newourpoolstats/login/?login=' + this.user+','+this.pass,this.u).
       subscribe(data => {
-        var go = (data.status =="200")? 'dashboard' : 'setPassword';
+        var go = (data.status == "200")? 'dashboard' : 'setPassword';
+        var setPassword = (go == "dashboard") ? 'noSetPassword' : 'setPassword';
+        sessionStorage.setItem('setPassword',setPassword);
         this.router.navigate([go]);
         sessionStorage.setItem('typeUser',data.typeUser);        
         sessionStorage.setItem('current','coinMarket')
+        sessionStorage.setItem('username',this.user)
+
       }, error => {
       this.typeError = 'Login';
       this.router.navigate(['errorLogin',{typeEroor: this.typeError}]);        

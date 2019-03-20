@@ -4,7 +4,7 @@
         "password" : "Password",
         "email" : "Emails",
         "name" : "Nome",
-        "surname" : "surname",
+        "surname" : "Cognome",
 
         "button":{
             "insert" : "Crea Utente",

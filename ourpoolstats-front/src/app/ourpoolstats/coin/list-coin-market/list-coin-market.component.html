@@ -12,13 +12,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let list of coinMarketList">
-            <td><img src='{{list.symbol}}' width="30px"></td>
-            <td>{{list.name}}</td>
-            <td>{{list.priceUsd}}</td>
-            <td>{{list.priceBtc}}</td>
-            <td  ng-class="{'green': list.perc_1 > 0}" >{{list.perc_1}}</td>
-            <td>{{list.perc_24}}</td>
-            <td><button (click)="goToInfo(list.name)"><img src="https://www.iconsdb.com/icons/preview/gray/info-xxl.png" width="30px"></button></td>
-            </tr>
+                <td><img src='{{list.symbol}}' width="30px"></td>
+                <td>{{list.name}}</td>
+                <td>{{list.priceUsd}}</td>
+                <td>{{list.priceBtc}}</td>
+                <td class="{{list.perc_1>=0 ? 'green' : 'red'}}">{{list.perc_1}}</td>
+                <td class="{{list.perc_24>=0 ? 'green' : 'red'}}">{{list.perc_24}}</td>
+                <td><button (click)="goToInfo(list.name)"><img src="https://www.iconsdb.com/icons/preview/gray/info-xxl.png" width="30px"></button></td>    
+        </tr>
         </tbody>
 </table>

@@ -20,7 +20,6 @@ import { WhitOutInternetComponent } from './ourpoolstats/whit-out-internet/whit-
 import { UserOperationComponent } from './ourpoolstats/user-operation/user-operation.component';
 import { AddImageComponent } from './ourpoolstats/user-operation/add-image/add-image.component';
 import { ChangeEmailComponent } from './ourpoolstats/user-operation/change-email/change-email.component';
-import { ChengePasswordComponent } from './ourpoolstats/user-operation/chenge-password/chenge-password.component';
 import { ChengeUserTypeComponent } from './ourpoolstats/user-operation/chenge-user-type/chenge-user-type.component';
 import { ChatComponent } from './ourpoolstats/user-operation/chat/chat.component';
 import { CreateUserComponent } from './ourpoolstats/user-operation/create-user/create-user.component';
@@ -46,8 +45,10 @@ import { MenuCurrencySellComponent } from './menu/menu-currency-sell/menu-curren
 import { MenuMarketComponent } from './menu/menu-market/menu-market.component';
 import { MenuValueCoinComponent } from './menu/menu-value-coin/menu-value-coin.component';
 import { GraphicCoinMarketComponent } from './ourpoolstats/coin/graphic-coin-market/graphic-coin-market.component';
-
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { AlertsComponent } from './ourpoolstats/alerts/alerts.component';
+import { AccordionComponent } from './ourpoolstats/accordion/accordion.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,6 @@ import { GraphicCoinMarketComponent } from './ourpoolstats/coin/graphic-coin-mar
     UserOperationComponent,
     AddImageComponent,
     ChangeEmailComponent,
-    ChengePasswordComponent,
     ChengeUserTypeComponent,
     ChatComponent,
     CreateUserComponent,
@@ -92,18 +92,23 @@ import { GraphicCoinMarketComponent } from './ourpoolstats/coin/graphic-coin-mar
     MenuCurrencySellComponent,
     MenuMarketComponent,
     MenuValueCoinComponent,
-    GraphicCoinMarketComponent
+    GraphicCoinMarketComponent,
+    AlertsComponent,
+    AccordionComponent
     
     
     
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule, 
     HttpClientModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbPaginationModule,
+    NgbAlertModule
     
 
   ],

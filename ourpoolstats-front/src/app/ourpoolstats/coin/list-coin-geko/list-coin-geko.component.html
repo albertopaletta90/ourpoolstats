@@ -34,7 +34,7 @@
                 <td><img src='{{list.image}}' width="30px"></td>
                 <td>{{list.name}}</td>
                 <td>{{list.current_price}}</td>
-                <td>{{list.price_change_percentage_24h}}</td>
+                <td class="{{list.price_change_percentage_24h>=0 ? 'green' : 'red'}}">{{list.price_change_percentage_24h}}</td>
                 <td><button (click)="goToInfo(list.name)"><img src="https://www.iconsdb.com/icons/preview/gray/info-xxl.png" width="30px"></button></td>
                 </tr>
             </tbody>

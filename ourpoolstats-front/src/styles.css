@@ -1,3 +1,6 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
 body {
 	background-color: #EDEDED;
 }
@@ -6,6 +9,15 @@ h3 {
 	text-align: center;
 }
 
+.margin-left{
+	margin-left: 20px; 
+}
+.margin-left_30{
+	margin-left: 30px; 
+}
+.margin-top_10{
+	margin-top :10px;
+}
 .divMenu {
 	position: absolute;
 	width: 95%;

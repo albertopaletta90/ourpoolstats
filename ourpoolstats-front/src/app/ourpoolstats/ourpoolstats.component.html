@@ -15,7 +15,10 @@
 		<app-menu-coin></app-menu-coin>
 	</div>
 
-	<div class="viewDashboard">		
+	<div class="viewDashboard">
+		<div *ngIf="view">
+			<app-alerts></app-alerts>
+		</div>
 		<app-list-coin-market></app-list-coin-market>
 	</div>
 </div>

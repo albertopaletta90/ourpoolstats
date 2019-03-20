@@ -10,6 +10,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SetPasswordComponent implements OnInit {
 
+  oldPassword : string;
+  password : string ;
+  repeatPassword : string;
+  alert : boolean = false;
+
   setPasswordLabels: any;
   constructor(private http: HttpClient, private router: Router) { 
     this.getJSON().subscribe(data => {
@@ -17,6 +22,22 @@ export class SetPasswordComponent implements OnInit {
   });
   
 }
+
+changePassword(){
+
+  if(this.password == this.repeatPassword){
+    
+    this.http.post(`http://localhost:8080/newourpoolstats/changePassword/${sessionStorage.getItem("username")}/password${this.oldPassword}/newPassword${this.password}`,{}).
+        subscribe(data => {
+          this.alert = true;
+          this.router.navigate(['dashboard']);
+      }, error => {
+        
+      });
+
+  }
+
+} 
 
 
   public getJSON(): Observable<any> {

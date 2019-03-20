@@ -21,11 +21,11 @@
               <input type="text" name="username" class="imputBox"  [(ngModel)]="username"  >
               <span class="imputBox">{{createUserLabels.orpLabels.password}}</span>
               <input type="password" name ="password" class="imputBox"  [(ngModel)]="password" ><br />
-              <input type="submit" value="{{createUserLabels.orpLabels.button.insert}}" (click)="createUser()"  class="btn btn-outline-secondary buttonSignin">		
-              </form>
-              <form>
-                <input type="submit" value="{{createUserLabels.orpLabels.button.back}}" class="btn btn-outline-secondary buttonBack" (click)="back()">
-              </form>
+              <nav> 
+                <input type="submit" value="{{createUserLabels.orpLabels.button.back}}" class="btn btn-outline-secondary margin-top_10 margin-left" (click)="back()">
+                <input type="submit" value="{{createUserLabels.orpLabels.button.insert}}" (click)="createUser()"  class="btn btn-outline-secondary margin-top_10 margin-left_30">		
+              </nav>
+            </form>  
           </div>	
       
     </div>
