@@ -1,3 +1,32 @@
-<p>
-  create-user works!
-</p>
+<div class="divMenu">
+    <app-menu-ourpoolstats></app-menu-ourpoolstats>
+  </div>
+  
+  <div class="divDashboard">
+    <div class="buttonOption">
+      <app-menu-options></app-menu-options>
+    </div>
+    
+    <div class="viewDashboard">	
+      	<div class="createUser">
+            <form>
+                            
+              <span class="imputBox">{{createUserLabels.orpLabels.name}}</span>
+              <input type="text" name="name" class="imputBox"  [(ngModel)]="name" >
+              <span class="imputBox">{{createUserLabels.orpLabels.surname}}</span>
+              <input type="text" name="userSurname" class="imputBox"  [(ngModel)]="surname" >
+              <span class="imputBox">{{createUserLabels.orpLabels.email}}</span>
+              <input type="text" name="email" class="imputBox"  [(ngModel)]="email" >
+              <span class="imputBox">{{createUserLabels.orpLabels.username}}</span>
+              <input type="text" name="username" class="imputBox"  [(ngModel)]="username"  >
+              <span class="imputBox">{{createUserLabels.orpLabels.password}}</span>
+              <input type="password" name ="password" class="imputBox"  [(ngModel)]="password" ><br />
+              <nav> 
+                <input type="submit" value="{{createUserLabels.orpLabels.button.back}}" class="btn btn-outline-secondary margin-top_10 margin-left" (click)="back()">
+                <input type="submit" value="{{createUserLabels.orpLabels.button.insert}}" (click)="createUser()"  class="btn btn-outline-secondary margin-top_10 margin-left_30">		
+              </nav>
+            </form>  
+          </div>	
+      
+    </div>
+  </div>

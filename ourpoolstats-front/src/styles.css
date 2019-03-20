@@ -1,4 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
 body {
 	background-color: #EDEDED;
 }
@@ -7,73 +9,192 @@ h3 {
 	text-align: center;
 }
 
+.margin-left{
+	margin-left: 20px; 
+}
+.margin-left_30{
+	margin-left: 30px; 
+}
+.margin-top_10{
+	margin-top :10px;
+}
 .divMenu {
 	position: absolute;
 	width: 95%;
 	height: 9%;
+	top : 2%;
 }
 
-.divHomePage {
+.divDashboard {
 	position: absolute;
-	width: 80%;
+	width: 90%;
 	height: 80%;
-	top: 10%;
-	left: 10%;
-	border: 1px solid silver;
+	top: 15%;
+	left: 5%;
+	overflow: scroll;
 }
 
-.lenguage {
+.divDashboard .lenguage {
 	position: absolute;
 	right: 5%;
 	top: 1%;
 	width: 2%;
 }
 
+.divDashboard .viewDashboard {
+	position: absolute;
+	top: 15%;
+	width: 95%;
+	left: 2%;
+}
+
+.divDashboard .buttonCoin{
+	position: absolute;
+	left: 40%;
+	top: 1%;
+}
+
+.divDashboard .buttonOption{
+	position: absolute;
+	left: 1%;
+	top: 1%;
+}
+
 .colorLeguage {
 	background-color: #EDEDED;
 }
 
-.login {
+.changeUserType {
 	position: absolute;
 	top: 25%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 45%;
+}
+
+.divDashboard .signin {
+	position: absolute;
+	top: 5%;
+	right: 35%;
+	width: 30%;
+	height: 95%;
+}
+
+.deleteUser {
+	position: absolute;
+	top: 25%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 40%;
+}
+
+.logUser {
+	position: absolute;
+	top: 15%;
+	left: 30%;
+	max-height: 350px;
+	margin-bottom: 10px;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+.userOnline {
+	position: absolute;
+	top: 15%;
+	left: 40%;
+}
+
+.addImage {
+	position: absolute;
+	top: 25%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 40%;
+}
+
+.changeEmail {
+	position: absolute;
+	top: 25%;
+	right: 35%;
+	border: solid silver 1px;
+	width: 30%;
+	height: 45%;
+}
+
+.tableBorder {
+	border: 1px solid silver;
+}
+
+.successOperation {
+	position: absolute;
+	top: 23.5%;
 	right: 35%;
 	border: solid silver 1px;
 	width: 30%;
 	height: 50%;
 }
 
-.errorLogin {
+
+
+.coinSelected {
 	position: absolute;
-	top: 10.5%;
-	right: 35%;
-	border-top: solid silver 1px;
-	border-left: solid silver 1px;
-	border-right: solid silver 1px;
+	top: 20%;
+}
+
+.green {
+	color: green;
+}
+
+.red {
+	color: red;
+}
+.positionImageInfo {
+	position: absolute;
+	left: 45%;
+	top: 15%;
+}
+
+.divInfo {
+	position: absolute;
 	width: 30%;
 }
 
-.imputBox {
+.divGraphic {
+	position: absolute;
+	width: 70%;
+	left: 30%;
+}
+
+
+.buttonChangeUser {
+	margin-top: 10px;
+	margin-left: 47%
+}
+
+
+.buttonAddImage {
+	margin-top: 10px;
+	margin-left: 47%
+}
+
+.buttonBackAddImage {
+	position: absolute;
+	margin-top: -38px;
 	margin-left: 20%;
 }
 
-.textLogin {
-	border: 1px solid silver;
+.buttonChangeEmail {
+	margin-top: 10px;
+	margin-left: 47%
 }
 
-.signin {
+
+
+.buttonAccount {
 	position: absolute;
-	top: 20%;
-	right: 35%;
-	border: solid silver 1px;
-	width: 30%;
-	height: 75%;
+	top: 5%;
+	right: 1%;
 }
-
-.errorSignin {
-	position: absolute;
-	top: 23.5%;
-	right: 35%;
-	border: solid silver 1px;
-	width: 30%;
-}
-

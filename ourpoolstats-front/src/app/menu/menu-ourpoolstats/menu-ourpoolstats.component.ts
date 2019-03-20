@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-menu-ourpoolstats',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuOurpoolstatsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+   goToHome = function() {
+     this.router.navigate(['dashboard']);    
+  };
+
+  goToMarket = function(){
+    this.router.navigate(['market']);    
+  }
+
+  goToForum = function(){
+    this.router.navigate(['forum']);
+  }
+
+  goToAccount = function(){
+    this.router.navigate(['account']);
+  }
 }

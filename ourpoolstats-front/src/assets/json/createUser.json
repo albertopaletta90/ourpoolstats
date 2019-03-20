@@ -1,0 +1,14 @@
+{
+    "orpLabels" :{
+        "username" : "username",
+        "password" : "Password",
+        "email" : "Emails",
+        "name" : "Nome",
+        "surname" : "Cognome",
+
+        "button":{
+            "insert" : "Crea Utente",
+            "back" : "Indietro"
+        }
+     }
+}

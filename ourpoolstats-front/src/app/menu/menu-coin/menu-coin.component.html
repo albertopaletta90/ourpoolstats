@@ -1,3 +1,14 @@
-<p>
-  menu-coin works!
-</p>
+<div>
+  <button type="button"
+          class="btn btn-outline-secondary dropdown-toggle"
+          data-toggle="dropdown" 
+          aria-haspopup="true"
+          aria-expanded="false">
+    <img src="https://res.cloudinary.com/coinmarketcap/image/upload/cryptocurrency/128x128/dragon-coins.png" width="30" />
+  </button>
+  <div class="dropdown-menu">
+    <button type="submit" class="dropdown-item" (click)="change('coinmarket')">CoinMarket</button>
+    <button type="submit" class="dropdown-item" (click)="change('coinkego')">CoinGeko</button>
+
+  </div>
+</div>
