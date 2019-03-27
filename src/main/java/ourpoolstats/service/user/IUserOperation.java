@@ -17,7 +17,7 @@ public interface IUserOperation {
 	public UserType searchUserType(String username);	
 	public String getImageProfile(String username);
 	public ResponseEntity<Response>  setImageProfile(String username, String url,String method );
-	public ResponseEntity<Response> changePassword(String username, String password);
+	public ResponseEntity<Response> changePassword(String username, String password,String newPassword);
 	public ResponseEntity<Response> changeEmail(String username, String email);
 	public ResponseEntity<Response> deleteUser(String user);
 	public boolean isFirstLogin(String User);

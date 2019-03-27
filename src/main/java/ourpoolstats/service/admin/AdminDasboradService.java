@@ -61,16 +61,18 @@ public class AdminDasboradService implements IAdminDasboradService {
 	public ResponseEntity<Response> deleteUser(String username) {
 		Response response = new Response();
 		try {
-			jdbcTemplate.update(QueryAdminOption.getInstance().getDeleteUser(),username);
+			int row =jdbcTemplate.update(QueryAdminOption.getInstance().getDeleteUser(),username);
+			if(row==0) {
+				return error(response,username,new Exception());
+			}
 			AdminOperationLogger.getInstance().logger(username, true, AdminOperation.DELETE);
 			response.setStatus(HttpStatus.OK.toString());
 			return new  ResponseEntity<Response>(response, HttpStatus.OK);
 		}catch (Exception e) {
-			AdminOperationLogger.getInstance().logger(username, false, AdminOperation.DELETE);
-			response.setEror("Errore Tecnico " + e.getMessage());
-			return new  ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			return error(response,username,new Exception());
 		}
 	}
+
 
 	@Override
 	public ResponseEntity<Response> cangeTypeUser(String userType,String username) {
@@ -88,8 +90,15 @@ public class AdminDasboradService implements IAdminDasboradService {
 	}
 
 	@Override
-	public User logSingleUser(String username) {
-		return null;
+	public ResponseEntity<LogUserResponse> logSingleUser(String username) {
+		List<UserLog>list = jdbcTemplate.query(QueryAdminOption.getInstance().getUserSingleLog(), new UserLogMapper(),username);
+		LogUserResponse logUserResponse = new LogUserResponse();
+		if(list != null) {
+			return succesLog(logUserResponse,list,username);
+		}
+		else {
+			return notFoundLog(logUserResponse,list,username);
+		}
 	}
 
 	@Override
@@ -134,4 +143,24 @@ public class AdminDasboradService implements IAdminDasboradService {
 		return null;
 	}
 
+
+	private ResponseEntity<Response> error(Response response, String username, Exception e) {
+		AdminOperationLogger.getInstance().logger(username, false, AdminOperation.DELETE);
+		response.setEror("Errore Tecnico " + e.getMessage());
+		return new  ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	private ResponseEntity<LogUserResponse> succesLog(LogUserResponse logUserResponse, List<UserLog> list,String username) {
+		AdminOperationLogger.getInstance().logger(username, true, AdminOperation.VIEWLOGUSER);
+		logUserResponse.setStatus(HttpStatus.OK.toString());
+		logUserResponse.setUserLog(list);
+		return new  ResponseEntity<LogUserResponse>(logUserResponse, HttpStatus.OK);
+	}
+	
+	private ResponseEntity<LogUserResponse> notFoundLog(LogUserResponse logUserResponse, List<UserLog> list,String username) {
+		AdminOperationLogger.getInstance().logger("", false, AdminOperation.VIEWLOGUSER);
+		logUserResponse.setStatus(HttpStatus.NOT_FOUND.toString());
+		logUserResponse.setUserLog(list);
+		return new  ResponseEntity<LogUserResponse>(logUserResponse, HttpStatus.NOT_FOUND);
+	}
 }

@@ -61,13 +61,16 @@ public class PortfolioService implements IportfolioService{
 				return listNotFound(responsePortfolio);
 			if(list.get(0).getUserType().equals("MASTER")) {
 				List<Portfolio>listPartecipant = jdbcTemplate.query(QueryPortfolio.getInstance().getGetPortfolioPartecipant(), new PortfolioMapper(),list.get(0).getUsername());
-				return succes(responsePortfolio, list,listPartecipant);
+				responsePortfolio.setStatus(HttpStatus.OK.toString());
+				responsePortfolio.setPortfolio(list);
+				responsePortfolio.setListPartecipant(listPartecipant);
+				return new ResponseEntity<ResponsePortfolio>(responsePortfolio,HttpStatus.OK);
 			}
 			return succes(responsePortfolio,list,null);
 		}catch (Exception e) {
-	
+			return error(responsePortfolio, e);
 		}
-		return null;
+		
 	}
 
 	

@@ -53,14 +53,11 @@ public class LoginSigninLogger {
 			fileHandler.setFilter(new OurpoolStatsFilter());
 			logger.addHandler(fileHandler);
 			//logging messages
-			logResponse.setOperation("Login");
 			if(status) {
-				logResponse.setLevel("INFO");
 				logger.log(Level.INFO, "<LOGIN><OK> " + "L'utente " +  username + " ha effetuato corretamente L'acesso </LOGIN>");
 				ManagerDashboard.getInstance().getLog().add("<LOGIN><OK> " + "L'utente " +  username + " ha effetuato corretamente L'acesso </LOGIN>");
 			}				
 			else if(!status) {
-				logResponse.setLevel("SEVERE");
 				logger.log(Level.SEVERE, "<LOGIN><KO> " + "L'utente " +  username + " Ha inserito in modo errato i dati. </LOGIN>");
 				ManagerDashboard.getInstance().getLog().add("<LOGIN><KO> " + "L'utente " +  username + " Ha inserito in modo errato i dati. </LOGIN>");
 			}

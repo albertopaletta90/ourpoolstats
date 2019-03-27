@@ -14,9 +14,9 @@ public interface IAdminDasboradService {
 	public ResponseEntity<Response> createUser(User user);
 	public ResponseEntity<Response> deleteUser(String username);
 	public ResponseEntity<Response> cangeTypeUser(String userType,String username);
-	public User logSingleUser(String username);
+	public ResponseEntity<LogUserResponse> logSingleUser(String username);
 	public ResponseEntity<LogUserResponse> logUser();
-	public  ResponseEntity<UserOnlineResponse> userOnline(String username);
+	public ResponseEntity<UserOnlineResponse> userOnline(String username);
 	public List<String> getCoins();
 
 

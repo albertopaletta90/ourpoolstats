@@ -10,7 +10,7 @@ public class QueryAdminOption {
 	public  String deleteUser = "delete from user where username = ?";
 	public  String changeUserType = "update user set user_type = ? where username = ?";
 	public  String userLog = "select distinct username,date_login from user_login";
-	public  String userSingleLog = "select distinct username,date_login from user_login where username = ?";
+	public  String userSingleLog = "select username,date_login from user_login where username = ?";
 	
 	
 	private QueryAdminOption() {}

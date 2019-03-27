@@ -45,11 +45,9 @@ public class AdminDashBoardController {
 	}
 
 
-	@RequestMapping(value = "/logSingleUser", method = RequestMethod.GET)
-	public ModelAndView logSingleUser() {
-		ModelAndView model = new ModelAndView();
-		model.setViewName("ourpoolstats/ourpoolstats");
-		return model;
+	@RequestMapping(value = "/logSingleUser/{username}", method = RequestMethod.GET)
+	public ResponseEntity<LogUserResponse> logSingleUser(@PathVariable("username")String username) {
+		return new AdminDasboradService().logSingleUser(username);
 	}
 
 	@RequestMapping(value = "/userOnline", method = RequestMethod.GET)
@@ -62,6 +60,13 @@ public class AdminDashBoardController {
 	public ResponseEntity<Response> addCoin(@PathVariable("nameCoin")String name) {
 		Response response = new Response();
 		return new CoinMarketService().addCoin(name,response);
+		
+	}
+	
+	@RequestMapping(value = "/deleteCoin/{nameCoin}", method = RequestMethod.DELETE)
+	public ResponseEntity<Response> deleteCoin(@PathVariable("nameCoin")String name) {
+		Response response = new Response();
+		return new CoinMarketService().deleteCoin(name,response);
 		
 	}
 

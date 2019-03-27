@@ -96,7 +96,7 @@ public class UserOperration implements IUserOperation {
 			} catch (Exception e) {
 				return fail(e);
 			}
-			
+
 		case "update":
 			try {
 				jdbcTemplate.update(QueryImage.getInstance().getSetImageProfile(),url,username);
@@ -104,11 +104,11 @@ public class UserOperration implements IUserOperation {
 			} catch (Exception e) {
 				return fail(e);
 			}
-			
+
 		}
 		return null;
 
-		
+
 	}
 
 	private ResponseEntity<Response> success() {
@@ -123,23 +123,26 @@ public class UserOperration implements IUserOperation {
 		response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
 		response.setEror(e.getMessage());
 		return new  ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-	
+
 
 	}
 
 
 	@Override
-	public ResponseEntity<Response> changePassword(String username, String password) {
+	public ResponseEntity<Response> changePassword(String username, String password,String newPassword) {
 		Response response = new Response();
-		try {
-			String newPassword =  jdbcTemplate.query(QueryUser.getInstance().getHashPassword(), new StringMapper(),password).get(0);
-			jdbcTemplate.update(QueryUser.getInstance().getChangePassword(),newPassword,username);
-			response.setStatus(HttpStatus.OK.toString());
-			return new  ResponseEntity<Response>(response,HttpStatus.OK);
-		} catch (Exception e) {
-			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
-			response.setEror("Errore Tecnico");
-			return new  ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		if(loginUser(username, password)) {
+			try {
+				newPassword = jdbcTemplate.query(QueryUser.getInstance().getHashPassword(), new StringMapper(),password).get(0);
+				jdbcTemplate.update(QueryUser.getInstance().getChangePassword(),newPassword,username);
+				response.setStatus(HttpStatus.OK.toString());
+				return new  ResponseEntity<Response>(response,HttpStatus.OK);
+			} catch (Exception e) {
+				return error(response);
+			}
+
+		}else {
+			return error(response);
 		}
 
 	}
@@ -188,7 +191,7 @@ public class UserOperration implements IUserOperation {
 		jdbcTemplate.update(QueryUser.getInstance().getInsertUserOnline(),login.getUsername());
 
 	}
-	
+
 	@Override
 	public ResponseEntity<Response> deleteToUserOnline(String username,HttpServletRequest request) {
 		Response response = new Response();
@@ -242,6 +245,12 @@ public class UserOperration implements IUserOperation {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	private ResponseEntity<Response> error(Response response) {
+		response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+		response.setEror("Errore Tecnico");
+		return new  ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 

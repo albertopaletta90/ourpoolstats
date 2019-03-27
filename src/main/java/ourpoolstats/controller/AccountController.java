@@ -4,17 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import ourpoolstats.response.Response;
 import ourpoolstats.service.user.UserOperration;
 
 
 
-
-@Controller
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@RestController
 public class AccountController {
 	
 	@RequestMapping(value = "/addImage/{url}", method = RequestMethod.POST)
@@ -37,9 +39,9 @@ public class AccountController {
 	}
 
 
-	@RequestMapping(value = "/changePassword/{username}/password{password}", method = RequestMethod.POST)
-	public  ResponseEntity<Response> changePassword(HttpServletRequest request,@PathVariable("username")String username,@PathVariable("password")String password){
-		return new UserOperration().changePassword(username, password);
+	@RequestMapping(value = "/changePassword/{username}/password{password}/newPassword{newPassword}", method = RequestMethod.POST)
+	public  ResponseEntity<Response> changePassword(HttpServletRequest request,@PathVariable("username")String username,@PathVariable("password")String password,@PathVariable("newPassword")String newPassword){
+		return new UserOperration().changePassword(username, password,newPassword);
 	}
 
 	@RequestMapping(value = "/changeEmail/{username}/email{email}", method = RequestMethod.POST)

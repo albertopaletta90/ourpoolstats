@@ -7,7 +7,7 @@ import ourpoolstats.model.Balance;
 public class BalanceResponse {
 	
 	private String status;
-	private String eroor ="Nessun Errore";
+	private String error ="Nessun Errore";
 	private List<Balance>balance;
 	
 	public String getStatus() {
@@ -16,11 +16,11 @@ public class BalanceResponse {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getEroor() {
-		return eroor;
+	public String getError() {
+		return error;
 	}
 	public void setEroor(String eroor) {
-		this.eroor = eroor;
+		this.error = eroor;
 	}
 	public List<Balance> getBalance() {
 		return balance;

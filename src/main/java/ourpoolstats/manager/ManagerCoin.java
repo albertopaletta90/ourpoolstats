@@ -15,9 +15,8 @@ public class ManagerCoin {
 	private static ManagerCoin instance;
 	private CryptoCurrency cryptoCurrency;
 	private List<Market>coingekoCoin;
-	private List<String>coinListDefault;
 	private List<CoinDB> listCoin = null;
-	private CoinMarketClient getCoin = new CoinMarketClient();
+	private CoinMarketClient coinMarketClient = new CoinMarketClient();
 	private CoinMarketService coinService = new CoinMarketService();
 	private MarketService marketService = new MarketService(); 	
 
@@ -35,19 +34,22 @@ public class ManagerCoin {
 		return instance;
 	}
 	
-	public void setMoneyListCoinGeko() {
+	public void setMoneyListCoinGeko(List<String>listDefault) {
 		
 		if(!CoinGekoClient.GetInstance().getListMarket().isEmpty())
 			CoinGekoClient.GetInstance().getListMarket().clear();
 		
-		for(int i = 0;	i<this.coinListDefault.size(); i++)
-			CoinGekoClient.GetInstance().getMarket(this.coinListDefault.get(i));
+		for(int i = 0;	i<listDefault.size(); i++)
+			CoinGekoClient.GetInstance().getMarket(listDefault.get(i));
 
 	}
 	
-	public void setMoneyListCoinMarket() {
-		for (String element : ManagerCoin.getInstance().getCoinListDefault()) {
-			this.getCoin.getCoin(element);
+	public void setMoneyListCoinMarket(List<String>listDefault) {
+		if(!coinMarketClient.getList().isEmpty())
+			coinMarketClient.deleteList();
+		
+		for (String element : listDefault) {
+			this.coinMarketClient.getCoin(element);
 		}
 		
 	}
@@ -76,20 +78,12 @@ public class ManagerCoin {
 		this.coingekoCoin = coingekoCoin;
 	}
 
-	public List<String> getCoinListDefault() {
-		return coinListDefault;
-	}
-
-	public void setCoinListDefault(List<String> coinListDefault) {
-		this.coinListDefault = coinListDefault;
-	}
-
 	public CoinMarketClient getGetCoin() {
-		return getCoin;
+		return coinMarketClient;
 	}
 
 	public void setGetCoin(CoinMarketClient getCoin) {
-		this.getCoin = getCoin;
+		this.coinMarketClient = getCoin;
 	}
 
 	public CoinMarketService getCoinService() {

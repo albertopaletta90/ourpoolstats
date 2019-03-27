@@ -14,6 +14,7 @@ import ourpoolstats.client.coinmarket.Coin;
 import ourpoolstats.client.coinmarket.CoinMarketClient;
 import ourpoolstats.mapper.BalanceUserMapper;
 import ourpoolstats.mapper.CoinDBMapper;
+import ourpoolstats.mapper.IntegerMapper;
 import ourpoolstats.mapper.StringMapper;
 import ourpoolstats.model.Balance;
 import ourpoolstats.model.CoinDB;
@@ -76,7 +77,7 @@ public class CoinMarketService implements ICoinMarketService {
 	@Override
 	public void setListCoinDB(List<Coin> list) {
 		try {
-			jdbcTemplate.update(QueryCoin.getInstance().getDeleteCoin());
+			jdbcTemplate.update(QueryCoin.getInstance().getDeleteCoinDefault());
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -109,17 +110,40 @@ public class CoinMarketService implements ICoinMarketService {
 
 	}
 
-
+	@Override
 	public ResponseEntity<Response> addCoin(String name, Response response) {
 		try {
+			CoinMarketClient client = new CoinMarketClient();
+			client.getCoinInfo(name);
 			jdbcTemplate.update(QueryCoin.getInstance().getInsertCoin(),name,"user",0,0,0,0,0);
 			response.setStatus(HttpStatus.OK.toString());
 			return new ResponseEntity<Response>(response,HttpStatus.OK);
 		} catch (Exception e) {
-			response.setEror(e.getMessage());
-			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
-			return new ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+			return error(e,response);
 		}
 	}
+
+	@Override
+	public ResponseEntity<Response> deleteCoin(String name, Response response) {
+		try {
+			CoinMarketClient client = new CoinMarketClient();
+			client.getCoinInfo(name);
+			int id = jdbcTemplate.query(QueryCoin.getInstance().getGetIdCoin(), new IntegerMapper() ,name).get(0);
+			jdbcTemplate.update(QueryCoin.getInstance().getDeleteCoin(),id);
+			response.setStatus(HttpStatus.OK.toString());
+			return new ResponseEntity<Response>(response,HttpStatus.OK);
+		} catch (Exception e) {
+			return error(e,response);
+		}
+	}
+
+
+	private ResponseEntity<Response> error(Exception e, Response response) {
+		response.setEror(e.getMessage());
+		response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+		return new ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+
 
 }

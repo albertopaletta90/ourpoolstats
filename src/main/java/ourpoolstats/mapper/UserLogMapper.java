@@ -13,7 +13,7 @@ public class UserLogMapper  implements RowMapper<UserLog>{
 	public UserLog mapRow(ResultSet rs, int index) throws SQLException {
 		UserLog  log =  new UserLog();
 		log.setUsername(rs.getString(1));
-		log.setDateLogin(rs.getTimestamp(2));
+		log.setDateLogin(rs.getDate(2));
 		
 		return log;
 	}

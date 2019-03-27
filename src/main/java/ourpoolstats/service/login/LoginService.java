@@ -1,5 +1,8 @@
 package ourpoolstats.service.login;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.ApplicationContext;
@@ -82,7 +85,7 @@ public class LoginService implements ILoginService{
 					OperationDBLogger.getInstance().logger(l.getUsername(), false, DataBaseOperation.INSERTLANGUAGE,logResponse);
 				}
 				setCoin();
-				return success(userType, HttpStatus.CONTINUE);
+				return success(userType, HttpStatus.CREATED);
 				
 				}else{
 				ManagerImage.getInstance().setLinkImageProfile(userOperation.getImageProfile(l.getUsername()));
@@ -98,6 +101,7 @@ public class LoginService implements ILoginService{
 					setCoin();					
 				}
 				catch (Exception e) {
+					System.out.println(e.getMessage());
 					OperationDBLogger.getInstance().logger("", false, DataBaseOperation.GETLISTCOIN,logResponse);
 					loginResponse.setStatus(HttpStatus.NOT_FOUND.toString());
 					return new   ResponseEntity<LoginResponse>(loginResponse, HttpStatus.NOT_FOUND);
@@ -127,17 +131,12 @@ public class LoginService implements ILoginService{
 	
 	private void setCoin() {
 		CoinGekoService coinGekoService = new CoinGekoService();
-		ManagerCoin.getInstance().setCoinListDefault(ManagerCoin.getInstance().getCoinService().getListCoinDefault());
+		List<String>listDefault = new ArrayList<String>();
+		listDefault = ManagerCoin.getInstance().getCoinService().getListCoinDefault();
 
-		if(!ManagerCoin.getInstance().getCoinListDefault().isEmpty()) {
-			ManagerCoin.getInstance().getCoinListDefault().clear();
-			ManagerCoin.getInstance().getGetCoin().deleteList();
-			ManagerCoin.getInstance().setCoinListDefault(ManagerCoin.getInstance().getCoinService().getListCoinDefault());
 
-		}
-
-		ManagerCoin.getInstance().setMoneyListCoinGeko();
-		ManagerCoin.getInstance().setMoneyListCoinMarket();
+		ManagerCoin.getInstance().setMoneyListCoinGeko(listDefault);
+		ManagerCoin.getInstance().setMoneyListCoinMarket(listDefault);
 		ManagerCoin.getInstance().getCoinService().setListCoinDB(ManagerCoin.getInstance().getGetCoin().getList());
 		ManagerCoin.getInstance().setListCoin(ManagerCoin.getInstance().getCoinService().getListDB());
 		ManagerCoin.getInstance().setCoingekoCoin(coinGekoService.getList());
