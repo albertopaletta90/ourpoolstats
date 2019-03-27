@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ourpoolstats.model.User;
 import ourpoolstats.response.LogUserResponse;
 import ourpoolstats.response.Response;
+import ourpoolstats.response.UserListResponse;
 import ourpoolstats.response.UserOnlineResponse;
 import ourpoolstats.service.admin.AdminDasboradService;
 import ourpoolstats.service.coin.CoinMarketService;
@@ -27,12 +28,10 @@ public class AdminDashBoardController {
 		return new AdminDasboradService().createUser(user);
 	}
 
-
 	@RequestMapping(value = "/deleteUser/{name}", method = RequestMethod.DELETE)
 	public ResponseEntity<Response>  deleteUser(@PathVariable("name") String username) {
 		return new AdminDasboradService().deleteUser(username);
 	}
-
 
 	@RequestMapping(value = "/changeTypeUser/{type}/user/{username}", method = RequestMethod.POST)
 	public ResponseEntity<Response> changeTypeUser(@PathVariable("type") String type,@PathVariable("username") String username) {
@@ -43,7 +42,6 @@ public class AdminDashBoardController {
 	public ResponseEntity<LogUserResponse> logUser(HttpServletRequest request) {
 		return new AdminDasboradService().logUser();
 	}
-
 
 	@RequestMapping(value = "/logSingleUser/{username}", method = RequestMethod.GET)
 	public ResponseEntity<LogUserResponse> logSingleUser(@PathVariable("username")String username) {
@@ -69,5 +67,11 @@ public class AdminDashBoardController {
 		return new CoinMarketService().deleteCoin(name,response);
 		
 	}
-
+	
+	@RequestMapping(value = "/getUserList", method = RequestMethod.GET)
+	public ResponseEntity<UserListResponse> getUserList() {
+		return new AdminDasboradService().getUserList();
+		
+	}
+	
 }

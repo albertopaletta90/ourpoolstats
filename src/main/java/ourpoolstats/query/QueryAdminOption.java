@@ -11,6 +11,7 @@ public class QueryAdminOption {
 	public  String changeUserType = "update user set user_type = ? where username = ?";
 	public  String userLog = "select distinct username,date_login from user_login";
 	public  String userSingleLog = "select username,date_login from user_login where username = ?";
+	public  String getListUser = "select user_name,user_surname,username,email,user_type from user";
 	
 	
 	private QueryAdminOption() {}
@@ -51,7 +52,10 @@ public class QueryAdminOption {
 	public String getUserSingleLog() {
 		return userSingleLog;
 	}
-	
+
+	public String getGetListUser() {
+		return getListUser;
+	}
 	
 	
 	
