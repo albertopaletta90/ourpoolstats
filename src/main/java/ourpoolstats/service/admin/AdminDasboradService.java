@@ -11,14 +11,17 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import ourpoolstats.log.AdminOperationLogger;
 import ourpoolstats.mapper.StringMapper;
+import ourpoolstats.mapper.UserListMapper;
 import ourpoolstats.mapper.UserLogMapper;
 import ourpoolstats.mapper.UserLoginMapper;
 import ourpoolstats.model.User;
+import ourpoolstats.model.UserList;
 import ourpoolstats.model.UserLog;
 import ourpoolstats.query.QueryAdminOption;
 import ourpoolstats.query.QueryUser;
 import ourpoolstats.response.LogUserResponse;
 import ourpoolstats.response.Response;
+import ourpoolstats.response.UserListResponse;
 import ourpoolstats.response.UserOnlineResponse;
 import ourpoolstats.service.language.LanguageService;
 import ourpoolstats.type.AdminOperation;
@@ -144,6 +147,23 @@ public class AdminDasboradService implements IAdminDasboradService {
 	}
 
 
+	@Override
+	public ResponseEntity<UserListResponse> getUserList() {
+		UserListResponse userListResponse = new UserListResponse();
+		List<UserList>userList = new ArrayList<>();
+		try {
+			userList = jdbcTemplate.query(QueryAdminOption.getInstance().getListUser, new UserListMapper());
+			userListResponse.setStatus(HttpStatus.OK.toString());
+			userListResponse.setUserList(userList);
+			return new ResponseEntity<UserListResponse>(userListResponse,HttpStatus.OK);
+		} catch (Exception e) {
+			userListResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
+			userListResponse.setError(e.getMessage());
+			userListResponse.setUserList(userList);
+			return new ResponseEntity<UserListResponse>(userListResponse,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	private ResponseEntity<Response> error(Response response, String username, Exception e) {
 		AdminOperationLogger.getInstance().logger(username, false, AdminOperation.DELETE);
 		response.setEror("Errore Tecnico " + e.getMessage());
@@ -163,4 +183,6 @@ public class AdminDasboradService implements IAdminDasboradService {
 		logUserResponse.setUserLog(list);
 		return new  ResponseEntity<LogUserResponse>(logUserResponse, HttpStatus.NOT_FOUND);
 	}
+
+
 }
