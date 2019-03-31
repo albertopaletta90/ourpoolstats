@@ -109,6 +109,7 @@ public class MarketService implements IMarketService {
 		Coin coin = ManagerCoin.getInstance().getGetCoin().getCoinInfo(nameCoin);
 		BigDecimal priceCurrent = BigDecimal.valueOf(coin.getPrice_usd());
 		return priceCurrent;
+
 	}
 
 	@Override

@@ -98,7 +98,8 @@ public class LoginService implements ILoginService{
 					OperationDBLogger.getInstance().logger(l.getUsername(), true, DataBaseOperation.UPDATELANGUAGE,logResponse);
 				}
 				try {
-					setCoin();					
+					setCoin();		
+					return success(userType,HttpStatus.OK);
 				}
 				catch (Exception e) {
 					System.out.println(e.getMessage());
@@ -106,7 +107,7 @@ public class LoginService implements ILoginService{
 					loginResponse.setStatus(HttpStatus.NOT_FOUND.toString());
 					return new   ResponseEntity<LoginResponse>(loginResponse, HttpStatus.NOT_FOUND);
 				}
-				return success(userType,HttpStatus.OK);
+				
 			}
 
 

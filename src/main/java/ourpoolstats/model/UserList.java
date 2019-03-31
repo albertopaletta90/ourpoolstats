@@ -1,26 +1,24 @@
 package ourpoolstats.model;
 
-import ourpoolstats.type.UserType;
 
 public class UserList {
 
-	private String userName;
-	private String userSurname;
+	private String name;
+	private String surname;
 	private String username;
 	private String email;
 	private String userType;
-
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getUserSurname() {
-		return userSurname;
+	public String getSurname() {
+		return surname;
 	}
-	public void setUserSurname(String userSurname) {
-		this.userSurname = userSurname;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 	public String getUsername() {
 		return username;
@@ -40,7 +38,6 @@ public class UserList {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
+
 	
-
-
 }

@@ -12,8 +12,8 @@ public class UserListMapper implements RowMapper<UserList> {
 	@Override
 	public UserList mapRow(ResultSet rs, int index) throws SQLException {
 		UserList userList = new UserList();
-		userList.setUserName(rs.getString(1));
-		userList.setUserSurname(rs.getString(2));
+		userList.setName(rs.getString(1));
+		userList.setSurname(rs.getString(2));
 		userList.setUsername(rs.getString(3));
 		userList.setEmail(rs.getString(4));
 		userList.setUserType(rs.getString(5));		
