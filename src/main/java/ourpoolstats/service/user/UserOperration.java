@@ -82,8 +82,14 @@ public class UserOperration implements IUserOperation {
 	}
 
 	@Override
-	public String getImageProfile(String username) {
-		return jdbcTemplate.query(QueryImage.getInstance().getGetImageProfile(), new StringMapper(),username).get(0);
+	public ResponseEntity<Response> getImageProfile(String username) {
+		List<String> imageProfile = jdbcTemplate.query(QueryImage.getInstance().getGetImageProfile(), new StringMapper(),username);
+		Response response = new Response();
+		response.setStatus(HttpStatus.OK.toString());
+		response.setEror("Nessun Errore");
+		response.setData(imageProfile);
+		return new ResponseEntity<Response>(response,HttpStatus.OK);
+		
 	}
 
 	@Override

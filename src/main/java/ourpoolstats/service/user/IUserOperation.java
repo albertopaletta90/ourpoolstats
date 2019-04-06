@@ -15,7 +15,7 @@ public interface IUserOperation {
 	ResponseEntity<Response> deleteToUserOnline(String username ,HttpServletRequest request);
 	public void insertToUserLogin(Login l);
 	public UserType searchUserType(String username);	
-	public String getImageProfile(String username);
+	public ResponseEntity<Response> getImageProfile(String username);
 	public ResponseEntity<Response>  setImageProfile(String username, String url,String method );
 	public ResponseEntity<Response> changePassword(String username, String password,String newPassword);
 	public ResponseEntity<Response> changeEmail(String username, String email);
