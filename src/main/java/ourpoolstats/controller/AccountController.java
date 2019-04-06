@@ -26,7 +26,7 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/getImage/{username}", method = RequestMethod.POST)
-	public String getImage(HttpServletRequest request,@PathVariable("username") String username){
+	public ResponseEntity<Response> getImage(HttpServletRequest request,@PathVariable("username") String username){
 		return new UserOperration().getImageProfile(username);
 	}
 

@@ -88,7 +88,6 @@ public class LoginService implements ILoginService{
 				return success(userType, HttpStatus.CREATED);
 				
 				}else{
-				ManagerImage.getInstance().setLinkImageProfile(userOperation.getImageProfile(l.getUsername()));
 				if(languageService.getLenguace(l.getUsername())==LenguageType.ITALIAN) {
 					ManagerMultiLilingualDashboard.getInstance().setLenguageItalian();
 					OperationDBLogger.getInstance().logger(l.getUsername(), true, DataBaseOperation.UPDATELANGUAGE,logResponse);
