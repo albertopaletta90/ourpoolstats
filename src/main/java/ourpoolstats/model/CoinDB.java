@@ -14,8 +14,13 @@ public class CoinDB {
 	private BigDecimal marketCap;
 	private BigDecimal perc_1;
 	private BigDecimal perc_24;
-	
-	
+	private BigDecimal perc_7;
+	private BigDecimal volume;
+	private BigDecimal lastUpdate;
+	private BigDecimal supplyAvaible;
+	private BigDecimal totalSupply;
+	private BigDecimal maxSupply;
+
 	public CoinDB() {}
 
 	public int getId() {
@@ -81,8 +86,54 @@ public class CoinDB {
 	public void setSymbol(String symbol) {
 		this.symbol = symbol;
 	}
-	
-	
-	
 
+	public BigDecimal getPerc_7() {
+		return perc_7;
+	}
+
+	public void setPerc_7(BigDecimal perc_7) {
+		this.perc_7 = perc_7;
+	}
+
+	public BigDecimal getVolume() {
+		return volume;
+	}
+
+	public void setVolume(BigDecimal volume) {
+		this.volume = volume;
+	}
+
+	public BigDecimal getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public void setLastUpdate(BigDecimal lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+
+	public BigDecimal getSupplyAvaible() {
+		return supplyAvaible;
+	}
+
+	public void setSupplyAvaible(BigDecimal supplyAvaible) {
+		this.supplyAvaible = supplyAvaible;
+	}
+
+	public BigDecimal getTotalSupply() {
+		return totalSupply;
+	}
+
+	public void setTotalSupply(BigDecimal totalSupply) {
+		this.totalSupply = totalSupply;
+	}
+
+	public BigDecimal getMaxSupply() {
+		return maxSupply;
+	}
+
+	public void setMaxSupply(BigDecimal maxSupply) {
+		this.maxSupply = maxSupply;
+	}	
+
+	
 }
