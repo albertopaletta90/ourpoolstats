@@ -39,7 +39,7 @@
         "lastUpdate" : "Ultimo Aggiornamento",
         "avaibleSupply" : "Monete diponibili",
         "maxSupply" : "Numero Massimo di monete",
-        "initiCurrency" : "Valore Iniziale",
+        "initialCurrency" : "Valore Iniziale",
         "currentCurrency" : "Valore Corrente",
         "totalCurrency" : "Valore Totale",
         "quantity" : "Quantità"
