@@ -148,7 +148,7 @@ public class AdminDasboradService implements IAdminDasboradService {
 
 
 	@Override
-	public ResponseEntity<UserListResponse> getUserList() {
+	public ResponseEntity<UserListResponse> getUserList(String username){
 		UserListResponse userListResponse = new UserListResponse();
 		List<UserList>userList = new ArrayList<>();
 		try {

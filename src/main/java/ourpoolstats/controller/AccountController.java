@@ -44,7 +44,7 @@ public class AccountController {
 		return new UserOperration().changePassword(username, password,newPassword);
 	}
 
-	@RequestMapping(value = "/changeEmail/{username}/email{email}", method = RequestMethod.POST)
+	@RequestMapping(value = "/changeEmail/{username}/email/{email}", method = RequestMethod.POST)
 	public ResponseEntity<Response> changeEmail(HttpServletRequest request,@PathVariable("username")String username,@PathVariable("email")String email){
 		return new UserOperration().changeEmail(username, email);
 	}
