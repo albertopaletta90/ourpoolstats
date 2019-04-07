@@ -1,3 +1,34 @@
-<p>
-  change-email works!
-</p>
+
+<div class="divMenu">
+  <app-menu-ourpoolstats></app-menu-ourpoolstats>
+</div>
+<div class="divDashboard">
+  <div class="lenguage">
+    
+  </div>
+  <div class="buttonOption">
+    <app-menu-options></app-menu-options>
+  </div>
+
+  <div class="buttonCoin">
+    <app-menu-coin></app-menu-coin>
+  </div>
+  <div class="viewDashboard">		
+      <div *ngIf="error">
+          <app-alerts></app-alerts>
+      </div>
+    <div class="deleteUser margin-top_40">
+      <form>
+          <nav>
+            <p><strong>{{'operation.changeImage' | translate}}</strong></p>
+          </nav>	
+            <span class="imputBox">{{'email' | translate}}</span><br />
+            <input type="text" name="email" class="imputBox" [(ngModel)]="email" >
+            <nav>
+              <button type="submit" class="btn btn-outline-secondary margin-top_10" (click)="back()">{{'button.back' | translate}}</button>
+              <button type="submit"  class="btn btn-outline-secondary margin-top_10 margin-left" (click)="changeEmail()">{{'button.confirm' | translate}}</button>
+            </nav>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+{
+    "username" : "Username",
+    "password" : "Password",
+    "email" : "Emails",
+    "name" : "Nome",
+    "surname" : "Cognome",
+    "userType" : "Tipo Utente",
+    "nameCoin" : "Nome Moneta",
+    "url" : "Url" ,
+    "operation" :{
+        "deleteUser" : "Cancella Utente",
+        "createUser" : "Inserisci Utente",
+        "changeTypeUser" : "Cambia Tipo User",
+        "addCoin" : "Aggiungi Moneta",
+        "deleteCoin" : "Cancella Moneta",
+        "LogUser" : "Log Utenti",
+        "changeImage" : "Cambia immaggine"
+    },
+    "message" : {
+        "deleteUser" : "Sei sicuro di voler cancellare l'utente selezionato "
+    },
+    "setPassworrd" :{
+        "changePassword" : "Cambia La tua Password",
+        "oldPassword" : "Password Precedente",
+        "password" : "Password",
+        "repeatPassword" : "Ripeti Password"
+     },
+     "coin" :{
+        "name" : "Nome",
+        "image" : "Immagine",
+        "priceBtc" : "Prezzo In BTC",
+        "priceUsd" : "Prezzo in Dollari",
+        "priceEuro" : "Prezzo in Euro",
+        "change1" : "1H%",
+        "change24" : "24H%",
+        "info" : "Info",
+        "marketCap" : "MarketCap"
+    },
+    "userLog" : {
+        "date" : "Data login" 
+    },
+    "button" :{
+        "home" : "Home", 
+        "forum" : "Forum",
+        "merket" : "Mercato",
+        "account" : "Profilo",
+        "confirm" : "Conferma",
+        "back": "Indietro",
+        "sell" : "Vendi",
+        "buy" : "Compra",
+        "login" : "Login"
+    },
+    "menu":{
+        "account" :{
+            "changeImage" : "Cambia immaggine",
+            "changePassword" : "Cambia La tua password",
+            "changeEmail" : "Cambia La tua email",
+            "logout" : "Esci"  
+        },
+        "option": {
+            "insertUser" : "Inserisci Utente",
+            "userList" : "Lista Utenti",
+            "addCoin" : "Aggiungi Monete",
+            "deleteCoin" : "Cancella Monete",
+            "viewLogUser" : "Visualizza Log Utenti"
+        }
+    }
+
+}

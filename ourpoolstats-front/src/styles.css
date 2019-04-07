@@ -1,5 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 body {
 	background-color: #EDEDED;
@@ -7,6 +8,10 @@ body {
 
 h3 {
 	text-align: center;
+}
+
+.margin-left_10{
+	margin-left: 10px; 
 }
 
 .margin-left{
@@ -17,6 +22,18 @@ h3 {
 }
 .margin-top_10{
 	margin-top :10px;
+}
+
+.margin-top_20{
+	margin-top :20px;
+}
+
+.margin-top_30{
+	margin-top :30px;
+}
+
+.margin-top_40{
+	margin-top :40px;
 }
 .divMenu {
 	position: absolute;
@@ -36,7 +53,7 @@ h3 {
 
 .divDashboard .lenguage {
 	position: absolute;
-	right: 5%;
+	right: 8%;
 	top: 1%;
 	width: 2%;
 }
@@ -64,14 +81,7 @@ h3 {
 	background-color: #EDEDED;
 }
 
-.changeUserType {
-	position: absolute;
-	top: 25%;
-	right: 35%;
-	border: solid silver 1px;
-	width: 30%;
-	height: 45%;
-}
+
 
 .divDashboard .signin {
 	position: absolute;
@@ -85,7 +95,6 @@ h3 {
 	position: absolute;
 	top: 25%;
 	right: 35%;
-	border: solid silver 1px;
 	width: 30%;
 	height: 40%;
 }

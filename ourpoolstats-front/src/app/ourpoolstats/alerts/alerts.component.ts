@@ -1,36 +1,32 @@
 import { Component, OnInit,Input } from '@angular/core';
-
-interface Alert {
-  type: string;
-  message: string;
-}
-
-const ALERTS: Alert[] = [{
-  type: 'success',
-  message: 'Password Cambiata Corretamente'
-  }
-];
-
+import {Subject} from 'rxjs';
+import {NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-alerts',
   templateUrl: './alerts.component.html',
-  styleUrls: ['./alerts.component.css']
+  styleUrls: ['./alerts.component.css'],
+  providers: [NgbAlertConfig]
 })
 export class AlertsComponent implements OnInit {
+  @Input() public alerts: Array<string> = [];
 
-alerts: Alert[];
-  constructor() {
-    this.reset();
+  message : string;
+  typeAlert : string;
+
+  constructor(private route: ActivatedRoute,alertConfig: NgbAlertConfig) {
+    this.route.params.subscribe((params) => this.typeAlert = params.typeAlert);
+    this.route.params.subscribe((params) => this.message = params.message);
+    this.setAlert(alertConfig);
   }
-
-  close(alert: Alert) {
-    this.alerts.splice(this.alerts.indexOf(alert), 1);
-  }
-
-  reset() {
-    this.alerts = Array.from(ALERTS);
-  }  
   
-  ngOnInit() {}
+  ngOnInit() { }
 
+  setAlert(alertConfig : NgbAlertConfig){
+    alertConfig.type = this.typeAlert;
+    alertConfig.dismissible = true;
+    this.message = this.message;
+  }
+
+  
 }

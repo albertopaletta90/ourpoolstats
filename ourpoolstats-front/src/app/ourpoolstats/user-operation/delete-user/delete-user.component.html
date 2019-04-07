@@ -14,9 +14,20 @@
     <div class="buttonCoin">
       <app-menu-coin></app-menu-coin>
     </div>
-  
-  
     <div class="viewDashboard">		
-      
+        <div *ngIf="error">
+            <app-alerts></app-alerts>
+        </div>
+      <div class="deleteUser margin-top_40">
+        <form>
+            <nav>
+              <p><strong>{{'message.deleteUser' | translate}} = {{username}}</strong></p>
+            </nav>	
+              <nav>
+                <button type="submit" class="btn btn-outline-secondary margin-top_10" (click)="back()">{{'button.back' | translate}}</button>
+                <button type="submit"  class="btn btn-outline-secondary margin-top_10 margin-left" (click)="deleteUser()">{{'button.confirm' | translate}}</button>
+              </nav>
+				</form>
+		  </div>
     </div>
   </div>

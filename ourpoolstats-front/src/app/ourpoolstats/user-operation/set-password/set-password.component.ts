@@ -10,39 +10,34 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SetPasswordComponent implements OnInit {
 
+  typeAlert: string;
+  message: string;
+  error: boolean;
   oldPassword : string;
   password : string ;
   repeatPassword : string;
-  alert : boolean = false;
 
-  setPasswordLabels: any;
-  constructor(private http: HttpClient, private router: Router) { 
-    this.getJSON().subscribe(data => {
-      this.setPasswordLabels = data;
-  });
-  
-}
+  constructor(private http: HttpClient, private router: Router) {}
 
 changePassword(){
 
   if(this.password == this.repeatPassword){
     
     this.http.post(`http://localhost:8080/newourpoolstats/changePassword/${sessionStorage.getItem("username")}/password${this.oldPassword}/newPassword${this.password}`,{}).
-        subscribe(data => {
-          this.alert = true;
-          this.router.navigate(['dashboard']);
-      }, error => {
-        
+      subscribe(data => {
+          this.typeAlert = 'success';
+          this.message = 'Password cambiata correttamente';
+          this.router.navigate(['account',{typeAlert: this.typeAlert,message : this.message,activeAlert : true}]);
+        }, error => {
+          this.error = true;
+          this.typeAlert = 'danger';
+          this.message = 'Password non corretta';
+          this.router.navigate(['setPassword',{typeAlert: this.typeAlert,message : this.message}]);  
       });
 
   }
 
 } 
-
-
-  public getJSON(): Observable<any> {
-    return this.http.get("./assets/json/changePassword.json")
-}
   ngOnInit() {
   }
 

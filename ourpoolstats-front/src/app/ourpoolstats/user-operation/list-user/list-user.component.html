@@ -1,0 +1,62 @@
+<div class="divMenu">
+  <app-menu-ourpoolstats></app-menu-ourpoolstats>
+</div>
+<div class="divDashboard">
+  <div class="lenguage">
+    
+  </div>
+  <div class="buttonOption">
+    <app-menu-options></app-menu-options>
+  </div>
+
+  <div class="buttonCoin">
+    <app-menu-coin></app-menu-coin>
+  </div>
+  <div class="viewDashboard">		
+      <mat-paginator #paginator
+      [length]="totalRows$ | async"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+    ></mat-paginator>
+    
+    <mat-accordion displayMode="flat" multi class="mat-table">
+      <section matSort class="mat-elevation-z2 mat-header-row">
+        <span class="mat-header-cell" mat-sort-header="name">{{'name' | translate}}</span>
+        <span class="mat-header-cell" mat-sort-header="vesselId">{{'surname' | translate}}</span>
+        <span class="mat-header-cell" mat-sort-header="vesselStatus">{{'username' | translate}}</span>
+        <span class="mat-header-cell" mat-sort-header="ircs">{{'userType' | translate}}</span>
+        <span class="mat-header-cell" mat-sort-header="ircs">{{'email' | translate}}</span>
+      </section>
+    
+      <mat-expansion-panel *ngFor="let item of displayedRows$| async;let i=index">
+        <mat-expansion-panel-header class="mat-row">
+          <span class="mat-cell">{{item.name}}</span>
+          <span class="mat-cell">{{item.surname}}</span>
+          <span class="mat-cell">{{item.username}}</span>
+          <span class="mat-cell">{{item.userType}}</span>
+          <span class="mat-cell">{{item.email}}</span>
+        </mat-expansion-panel-header>
+        <div>
+          <pre>
+            <nav>
+              <div class="div_accordion_1">
+                <button type="submit" class="buotton_1_accordion btn btn-outline-secondary" (click)="goToLogUser(i)">Log Accessi</button>
+              </div>
+              <div class="div_accordion_2">
+                  <button type="submit" class="buotton_1_accordion btn btn-outline-secondary" (click)="goToDeleteUser(i)">Cancella Utente</button>
+              </div>
+              <div class="div_accordion_3">
+                  <button type="submit" class="buotton_1_accordion btn btn-outline-secondary" (click)="goToChangeTypeUser()">Cambia tipo Utente</button>
+              </div>
+            </nav> 
+               
+          </pre>
+        </div>
+      </mat-expansion-panel>
+    
+    </mat-accordion>
+
+  </div>
+</div>
+
