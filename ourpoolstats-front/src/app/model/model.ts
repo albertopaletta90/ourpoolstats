@@ -1,10 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 
 export class LoginResponse {
     constructor(public status: String, public typeUser ) { }
 }
 
-export class Response {
-    constructor(public status: String, public error: String) { }
+export class GenericResponse {
+    constructor(public status: String, public error: String,public data :Array<string>) { }
 }
 
 export class CoinGekoResponse {
@@ -25,14 +26,16 @@ export class BalanceResponse {
 }
 
 export class LogUserResponse {
-    constructor(public status: String, public error: String,logUser : UserLog[]) { }
+    constructor(public status: String, public error: String,public userLog : Array<UserLog>) { }
+}
+
+export class UserListResponse {
+    constructor(public status: String, public error: String,public userList : Array<UserList>) { }
 }
 
 
 export class Login {
-    constructor(public user: String, password: String) {
-
-    }
+    constructor(public user: String, password: String) {}
 }
 
 export class User {
@@ -92,28 +95,18 @@ export class CoinGeko {
 }
 
 export class Balance{
-        constructor(public id : number,
-                           username : string,
-                           nameCoin : string,
-                           initialCurrency : number,
-                           currentCurrency : number,
-                           totalCurrency : number,
-                           quantity : number){}
+        constructor(public id : number,public username : string, public nameCoin : string, public initialCurrency : number, public currentCurrency : number, public totalCurrency : number, public quantity : number){}
 }
 
 export class UserLog {
-    constructor(public userLogId : number,
-                       username : string,
-                       dateLogin : Date
-                ){}
-
+    constructor(public userLogId : number,public username : string, public dateLogin : Date){}
 }
 
+export class UserList {
+    constructor(public name : string,public surname : string,public username : string,public email : string,public userType : string){}
+}
 
-
- class UserService {
-    isLoggedIn(): boolean {
-      return false;
-    }
-  }
+export function getName(){
+    return 'ciao';
+}
 

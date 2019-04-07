@@ -1,24 +1,55 @@
-<table class="table table-striped">
-        <thead>
-            <tr>
-            <th scope="col">{{coinLabels.orpLabels.image}}</th>
-            <th scope="col">{{coinLabels.orpLabels.name}}</th>
-            <th scope="col">{{coinLabels.orpLabels.priceUsd}}</th>
-            <th scope="col">{{coinLabels.orpLabels.priceBtc}}</th>
-            <th scope="col">{{coinLabels.orpLabels.change1}}</th>
-            <th scope="col">{{coinLabels.orpLabels.change24}}</th>
-            <th scope="col">{{coinLabels.orpLabels.info}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let list of coinMarketList">
-                <td><img src='{{list.symbol}}' width="30px"></td>
-                <td>{{list.name}}</td>
-                <td>{{list.priceUsd}}</td>
-                <td>{{list.priceBtc}}</td>
-                <td class="{{list.perc_1>=0 ? 'green' : 'red'}}">{{list.perc_1}}</td>
-                <td class="{{list.perc_24>=0 ? 'green' : 'red'}}">{{list.perc_24}}</td>
-                <td><button (click)="goToInfo(list.name)"><img src="https://www.iconsdb.com/icons/preview/gray/info-xxl.png" width="30px"></button></td>    
-        </tr>
-        </tbody>
-</table>
+<mat-paginator #paginator
+      [length]="totalRows$ | async"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+    ></mat-paginator>
+    
+    <mat-accordion displayMode="flat" multi class="mat-table">
+      <section matSort class="mat-elevation-z2 mat-header-row">
+        <span class="mat-header-cell" >{{'coin.image' | translate}}</span>
+        <span class="mat-header-cell" >{{'coin.name' | translate}}</span>
+        <span class="mat-header-cell">{{'coin.priceUsd' | translate}}</span>
+        <span class="mat-header-cell">{{'coin.priceBtc' | translate}}</span>
+        <span class="mat-header-cell">{{'coin.change1' | translate}}</span>
+        <span class="mat-header-cell">{{'coin.change24' | translate}}</span>
+      </section>
+    
+      <mat-expansion-panel *ngFor="let item of displayedRows$| async;let i=index">
+        <mat-expansion-panel-header class="mat-row">
+          <span class="mat-cell"><img src='{{item.symbol}}' width="30px"></span>
+          <span class="mat-cell">{{item.name}}</span>
+          <span class="mat-cell">{{item.priceUsd}}</span>
+          <span class="mat-cell">{{item.priceBtc}}</span>
+          <span class="mat-cell {{item.perc_1>=0 ? 'green' : 'red'}}">{{item.perc_1}}</span>
+          <span class="mat-cell {{item.perc_24>=0 ? 'green' : 'red'}}">{{item.perc_24}}</span>
+        </mat-expansion-panel-header>
+        <div>
+          <pre>
+           <span>{{'coin.name' | translate}} : {{item.name}}</span>
+           <span>{{'coin.priceBtc' | translate}} : {{item.priceBtc}}</span>    
+          </pre>
+        </div>
+      </mat-expansion-panel>
+    
+    </mat-accordion>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

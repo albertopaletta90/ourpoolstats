@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { UserList, UserListResponse } from '../../model/model';
 
 @Component({
   selector: 'app-menu-options',
@@ -8,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class MenuOptionsComponent implements OnInit {
 
+  userList : UserList[];
   typeUser : String = sessionStorage.getItem('typeUser');
-  constructor(private router: Router) {}
+  constructor(private router: Router,private http: HttpClient) {}
 
   ngOnInit() {}
 
@@ -17,15 +20,21 @@ export class MenuOptionsComponent implements OnInit {
     this.router.navigate(['createUser']);
   };
 
-  goToDeleteUser = function(){  
-    this.router.navigate(['deleteUser']);
+  goToAddCoin = function(){
+    this.router.navigate(['addCoin']);
+  }
 
-  };
+  goToDeleteCoin = function(){
+    this.router.navigate(['deleteCoin']);
 
-  goToChangeTypeUser = function(){
-    this.router.navigate(['changeTypeUser']);
-  };
+  }
 
+  goToLogUser= function(type : string){
+    this.router.navigate(['logUser',{type : type}]);
+  }
 
+  goToListUser(){
+      this.router.navigate(['listUser']);
+  }
 
 }

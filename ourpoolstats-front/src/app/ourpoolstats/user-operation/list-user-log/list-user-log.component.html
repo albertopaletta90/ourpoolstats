@@ -1,0 +1,31 @@
+<div class="divMenu">
+  <app-menu-ourpoolstats></app-menu-ourpoolstats>
+</div>
+<div class="divDashboard">
+  <div class="lenguage">
+    
+  </div>
+  <div class="buttonOption">
+    <app-menu-options></app-menu-options>
+  </div>
+
+  <div class="buttonCoin">
+    <app-menu-coin></app-menu-coin>
+  </div>
+  <div class="viewDashboard">		
+    <table class="table table-striped">
+      <thead>
+          <tr>
+          <th scope="col">{{'username' | translate}}</th>
+          <th scope="col">{{'userLog.date' | translate}}</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let list of userLog"> 
+            <td>{{list.username}}</td>
+            <td>{{list.dateLogin}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

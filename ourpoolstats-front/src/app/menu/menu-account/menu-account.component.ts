@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-account',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuAccountComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private http: HttpClient) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  goToAddImage(){
+    this.router.navigate(['addImage']);
   }
 
+  goToChangePassword(){
+    this.router.navigate(['setPassword']);
+  }
+
+  goTochangeEmail(){
+    this.router.navigate(['changeEmail']);
+  }
+
+  logout(){
+    this.http.get('http://localhost:8080/newourpoolstats/logout').
+      subscribe(data => {
+        this.router.navigate(['logout',{typeAlert : 'success' ,message: 'Arrivederci',activeAlert : true}]);              
+      }, error => {    
+    });
+  }
 }

@@ -1,3 +1,9 @@
-<p>
-  menu-account works!
-</p>
+<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <img src="https://findicons.com/files/icons/88/mac/128/setting.png" width="30" />
+</button>	 
+<div class="dropdown-menu colorLeguage">
+  <button type="submit" class="dropdown-item colorLeguage"  (click)="goToAddImage()">{{'menu.account.changeImage' | translate}}</button>
+  <button type="submit" class="dropdown-item colorLeguage"  (click)="goToChangePassword()">{{'menu.account.changePassword' | translate}}</button>
+  <button type="submit" class="dropdown-item colorLeguage"  (click)="goTochangeEmail()">{{'menu.account.changeEmail' | translate}}</button>
+  <button type="submit" class="dropdown-item colorLeguage"  (click)="logout()">{{'menu.account.logout' | translate}}</button>
+</div>

@@ -14,8 +14,6 @@ import { MenuOptionsComponent } from './menu/menu-options/menu-options.component
 import { CoinComponent } from './ourpoolstats/coin/coin.component';
 import { ListCoinMarketComponent } from './ourpoolstats/coin/list-coin-market/list-coin-market.component';
 import { AccountComponent } from './ourpoolstats/account/account.component';
-import { ErrorComponent } from './ourpoolstats/error/error.component';
-import { SuccesComponent } from './ourpoolstats/succes/succes.component';
 import { WhitOutInternetComponent } from './ourpoolstats/whit-out-internet/whit-out-internet.component';
 import { UserOperationComponent } from './ourpoolstats/user-operation/user-operation.component';
 import { AddImageComponent } from './ourpoolstats/user-operation/add-image/add-image.component';
@@ -49,6 +47,25 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { AlertsComponent } from './ourpoolstats/alerts/alerts.component';
 import { AccordionComponent } from './ourpoolstats/accordion/accordion.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {HttpClient } from '@angular/common/http';
+import { MenuLanguageComponent } from './menu/menu-language/menu-language.component';
+import { TranslateComponent } from './translate/translate.component';
+import { AddCoinComponent } from './ourpoolstats/user-operation/add-coin/add-coin.component';
+import { DeleteCoinComponent } from './ourpoolstats/user-operation/delete-coin/delete-coin.component';
+import { ListUserLogComponent } from './ourpoolstats/user-operation/list-user-log/list-user-log.component';
+import { ListUserComponent } from './ourpoolstats/user-operation/list-user/list-user.component';
+import { MatListModule } from '@angular/material';
+import { MatExpansionModule } from '@angular/material';
+import { MatSortModule } from '@angular/material';
+import { MatPaginatorModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -62,8 +79,6 @@ import { AccordionComponent } from './ourpoolstats/accordion/accordion.component
     CoinComponent,
     ListCoinMarketComponent,
     AccountComponent,
-    ErrorComponent,
-    SuccesComponent,
     WhitOutInternetComponent,
     UserOperationComponent,
     AddImageComponent,
@@ -94,7 +109,13 @@ import { AccordionComponent } from './ourpoolstats/accordion/accordion.component
     MenuValueCoinComponent,
     GraphicCoinMarketComponent,
     AlertsComponent,
-    AccordionComponent
+    AccordionComponent,
+    MenuLanguageComponent,
+    TranslateComponent,
+    AddCoinComponent,
+    DeleteCoinComponent,
+    ListUserLogComponent,
+    ListUserComponent
     
     
     
@@ -108,7 +129,21 @@ import { AccordionComponent } from './ourpoolstats/accordion/accordion.component
     RouterModule,
     AppRoutingModule,
     NgbPaginationModule,
-    NgbAlertModule
+    NgbAlertModule,
+    FormsModule,
+    MatListModule,
+    MatExpansionModule,
+     MatSortModule,
+     BrowserAnimationsModule,
+     FlexLayoutModule,
+    MatPaginatorModule ,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
     
 
   ],

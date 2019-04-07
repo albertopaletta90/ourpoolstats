@@ -12,8 +12,6 @@ import { MenuOptionsComponent } from './menu/menu-options/menu-options.component
 import { CoinComponent } from './ourpoolstats/coin/coin.component';
 import { ListCoinMarketComponent } from './ourpoolstats/coin/list-coin-market/list-coin-market.component';
 import { AccountComponent } from './ourpoolstats/account/account.component';
-import { ErrorComponent } from './ourpoolstats/error/error.component';
-import { SuccesComponent } from './ourpoolstats/succes/succes.component';
 import { WhitOutInternetComponent } from './ourpoolstats/whit-out-internet/whit-out-internet.component';
 import { UserOperationComponent } from './ourpoolstats/user-operation/user-operation.component';
 import { AddImageComponent } from './ourpoolstats/user-operation/add-image/add-image.component';
@@ -42,12 +40,21 @@ import { MenuCoinComponent } from './menu/menu-coin/menu-coin.component';
 import { MenuCurrencySellComponent } from './menu/menu-currency-sell/menu-currency-sell.component';
 import { MenuMarketComponent } from './menu/menu-market/menu-market.component';
 import { MenuValueCoinComponent } from './menu/menu-value-coin/menu-value-coin.component';
+import { AddCoinComponent } from './ourpoolstats/user-operation/add-coin/add-coin.component';
+import { DeleteCoinComponent } from './ourpoolstats/user-operation/delete-coin/delete-coin.component';
+import { LogUserResponse } from './model/model';
+import { ListUserLogComponent } from './ourpoolstats/user-operation/list-user-log/list-user-log.component';
+import { ListUserComponent } from './ourpoolstats/user-operation/list-user/list-user.component';
 
 const routes: Routes = [
   {
       path: '',
       component: LoginComponent
   },
+  {
+    path: 'logout',
+    component: LoginComponent
+},
   {
     path: 'dashboard',
     component: OurpoolstatsComponent
@@ -63,10 +70,6 @@ const routes: Routes = [
   {
     path : 'account',
     component : AccountComponent
-  },
-  {
-    path : 'errorLogin',
-    component : ErrorComponent
   },
   {
     path : 'createUser',
@@ -91,9 +94,38 @@ const routes: Routes = [
   {
     path : 'coinmarket',
     component : OurpoolstatsComponent
-  },{
+  },
+  {
     path : 'setPassword',
     component : SetPasswordComponent
+  },
+  {
+    path : 'addCoin',
+    component : AddCoinComponent
+  },
+  {
+    path : 'deleteCoin',
+    component : DeleteCoinComponent
+  },
+  {
+    path : 'logUser',
+    component : UserLogComponent
+  },
+  {
+    path : 'listUserLog',
+    component : ListUserLogComponent
+  },
+  {
+    path : 'listUser',
+    component : ListUserComponent
+  },
+  {
+    path : 'addImage',
+    component : AddImageComponent
+  },
+  {
+    path : 'changeEmail',
+    component : ChangeEmailComponent
   }
   
 ];

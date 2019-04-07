@@ -7,6 +7,13 @@
 	height: 50%;
 }
 
+.loginAlert {
+	position: absolute;
+	top: 15%;
+	right: 35%;
+	width: 30%;
+}
+
 .login .imputBox{
 	margin-left: 10vh;
 }

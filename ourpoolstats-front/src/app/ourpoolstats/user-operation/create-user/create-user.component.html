@@ -8,23 +8,28 @@
     </div>
     
     <div class="viewDashboard">	
-      	<div class="createUser">
+      	<div *ngIf="error">
+            <app-alerts></app-alerts>
+        </div>
+      	<div class="createUser margin-top_40">
             <form>
-                            
-              <span class="imputBox">{{createUserLabels.orpLabels.name}}</span>
-              <input type="text" name="name" class="imputBox"  [(ngModel)]="name" >
-              <span class="imputBox">{{createUserLabels.orpLabels.surname}}</span>
-              <input type="text" name="userSurname" class="imputBox"  [(ngModel)]="surname" >
-              <span class="imputBox">{{createUserLabels.orpLabels.email}}</span>
-              <input type="text" name="email" class="imputBox"  [(ngModel)]="email" >
-              <span class="imputBox">{{createUserLabels.orpLabels.username}}</span>
-              <input type="text" name="username" class="imputBox"  [(ngModel)]="username"  >
-              <span class="imputBox">{{createUserLabels.orpLabels.password}}</span>
-              <input type="password" name ="password" class="imputBox"  [(ngModel)]="password" ><br />
-              <nav> 
-                <input type="submit" value="{{createUserLabels.orpLabels.button.back}}" class="btn btn-outline-secondary margin-top_10 margin-left" (click)="back()">
-                <input type="submit" value="{{createUserLabels.orpLabels.button.insert}}" (click)="createUser()"  class="btn btn-outline-secondary margin-top_10 margin-left_30">		
-              </nav>
+                <nav>
+                    <p class="imputBox"><strong>{{'operation.createUser' | translate}}</strong></p>
+                  </nav>
+                  <span class="imputBox">{{'name'| translate}}</span>
+                  <input type="text" name="name" class="imputBox"  [(ngModel)]="name" >
+                  <span class="imputBox">{{'surname' | translate}}</span>
+                  <input type="text" name="userSurname" class="imputBox"  [(ngModel)]="surname" >
+                  <span class="imputBox">{{'email' | translate}}</span>
+                  <input type="text" name="email" class="imputBox"  [(ngModel)]="email" >
+                  <span class="imputBox">{{'username' | translate}}</span>
+                  <input type="text" name="username" class="imputBox"  [(ngModel)]="username"  >
+                  <span class="imputBox">{{'password' | translate}}</span>
+                  <input type="password" name ="password" class="imputBox"  [(ngModel)]="password" ><br />
+                  <nav> 
+                    <button type="submit" class="btn btn-outline-secondary margin-top_10 margin-left_30" (click)="back()">{{'button.back' | translate}}</button>
+                    <button type="submit" (click)="createUser()"  class="btn btn-outline-secondary margin-top_10 margin-left_30">{{'button.confirm' | translate}}</button>		
+                  </nav>
             </form>  
           </div>	
       

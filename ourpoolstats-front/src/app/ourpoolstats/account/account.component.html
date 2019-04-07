@@ -1,3 +1,21 @@
-<p>
-  account works!
-</p>
+
+<div class="divMenu">
+    <app-menu-ourpoolstats></app-menu-ourpoolstats>
+  </div>
+  
+  <div class="divDashboard">
+    <div class="lenguage">
+      
+    </div>
+    <div class="buttonOption">
+      <app-menu-account></app-menu-account>
+    </div>
+    <div *ngIf="alert">
+      <app-alerts></app-alerts>
+  </div>
+    <div class="imageProfile">
+        <img src="{{image}}" width="80" />
+        <p style = "position : absolute; right: 18%;">{{username}}</p>
+      </div>
+
+  </div>

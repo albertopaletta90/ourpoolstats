@@ -19,25 +19,39 @@
     </div>
 
 	<div class="viewDashboard">		
-		<table class="table table-striped">
-            <thead>
-                <tr>
-                <th scope="col">{{coinLabels.orpLabels.image}}</th>
-                <th scope="col">{{coinLabels.orpLabels.name}}</th>
-                <th scope="col">{{coinLabels.orpLabels.priceUsd}}</th>
-                <th scope="col">{{coinLabels.orpLabels.change24}}</th>
-                <th scope="col">{{coinLabels.orpLabels.info}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let list of coingekoList">
-                <td><img src='{{list.image}}' width="30px"></td>
-                <td>{{list.name}}</td>
-                <td>{{list.current_price}}</td>
-                <td class="{{list.price_change_percentage_24h>=0 ? 'green' : 'red'}}">{{list.price_change_percentage_24h}}</td>
-                <td><button (click)="goToInfo(list.name)"><img src="https://www.iconsdb.com/icons/preview/gray/info-xxl.png" width="30px"></button></td>
-                </tr>
-            </tbody>
-          </table>
+            <mat-paginator #paginator
+            [length]="totalRows$ | async"
+            [pageIndex]="0"
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+          ></mat-paginator>
+          
+          <mat-accordion displayMode="flat" multi class="mat-table">
+            <section matSort class="mat-elevation-z2 mat-header-row">
+              <span class="mat-header-cell" >{{'coin.image' | translate}}</span>
+              <span class="mat-header-cell" >{{'coin.name' | translate}}</span>
+              <span class="mat-header-cell">{{'coin.priceUsd' | translate}}</span>
+              <span class="mat-header-cell">{{'coin.change24' | translate}}</span>
+            </section>
+          
+            <mat-expansion-panel *ngFor="let item of displayedRows$| async;let i=index">
+              <mat-expansion-panel-header class="mat-row">
+                <span class="mat-cell"><img src='{{item.image}}' width="30px"></span>
+                <span class="mat-cell">{{item.name}}</span>
+                <span class="mat-cell">{{item.current_price}}</span>
+                <span class="mat-cell {{item.price_change_percentage_24h>=0 ? 'green' : 'red'}}">{{item.price_change_percentage_24h}}</span>
+              </mat-expansion-panel-header>
+              <div>
+                <pre>
+                 <span>{{'coin.name' | translate}} : {{item.name}}</span>
+                 <span>{{'coin.priceBtc' | translate}} : {{item.priceBtc}}</span>    
+                </pre>
+              </div>
+            </mat-expansion-panel>
+          
+          </mat-accordion>
+      
+      
+		
 	</div>
 </div>
