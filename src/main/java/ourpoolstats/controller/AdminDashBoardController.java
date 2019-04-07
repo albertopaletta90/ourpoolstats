@@ -69,8 +69,9 @@ public class AdminDashBoardController {
 	}
 	
 	@RequestMapping(value = "/getUserList", method = RequestMethod.GET)
-	public ResponseEntity<UserListResponse> getUserList() {
-		return new AdminDasboradService().getUserList();
+	public ResponseEntity<UserListResponse> getUserList(HttpServletRequest request) {
+		String username = (String) request.getSession().getAttribute("username");
+		return new AdminDasboradService().getUserList(username);
 		
 	}
 	

@@ -19,6 +19,12 @@ public class CoinDBMapper  implements RowMapper<CoinDB>{
 		coin.setMarketCap(rs.getBigDecimal(5));
 		coin.setPerc_1(rs.getBigDecimal(6));
 		coin.setPerc_24(rs.getBigDecimal(7));
+		coin.setPerc_7(rs.getBigDecimal(8));
+		coin.setVolume(rs.getBigDecimal(9));
+		coin.setLastUpdate(rs.getBigDecimal(10));
+		coin.setSupplyAvaible(rs.getBigDecimal(11));
+		coin.setTotalSupply(rs.getBigDecimal(12));
+		coin.setMaxSupply(rs.getBigDecimal(13));
 		return coin;
 	}
 

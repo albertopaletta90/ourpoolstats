@@ -27,9 +27,8 @@ public class DashboardController {
 
 
 
-	@RequestMapping(value = "/getListMarket", method = RequestMethod.GET)
-	public ResponseEntity<BalanceResponse> goToMarket(HttpServletRequest request) {
-		String username = (String)request.getSession().getAttribute("username");
+	@RequestMapping(value = "/getListMarket/{username}", method = RequestMethod.GET)
+	public ResponseEntity<BalanceResponse> goToMarket(@PathVariable("username") String username) {
 		return ManagerCoin.getInstance().getMarketService().getListMarket(username);
 	}
 	

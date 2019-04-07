@@ -19,7 +19,7 @@ public interface IAdminDasboradService {
 	public ResponseEntity<LogUserResponse> logUser();
 	public ResponseEntity<UserOnlineResponse> userOnline(String username);
 	public List<String> getCoins();
-	public ResponseEntity<UserListResponse>getUserList();
+	public ResponseEntity<UserListResponse> getUserList(String username);
 
 
 }
