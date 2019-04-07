@@ -1,0 +1,89 @@
+
+<div class="divMenu">
+    <app-menu-ourpoolstats></app-menu-ourpoolstats>
+  </div>
+  
+  <div class="divDashboard">
+    <div class="lenguage">
+      <app-menu-language></app-menu-language>
+    </div>
+    <div class="buttonOption">
+      <app-menu-market></app-menu-market>
+    </div>
+  
+    <div class="buttonCoin">
+      <app-menu-coin></app-menu-coin>
+    </div>
+  
+    <div class="viewDashboard">
+      <div *ngIf="view">
+        <app-alerts></app-alerts>
+      </div>
+
+        <mat-paginator #paginator
+              [length]="totalRows$ | async"
+              [pageIndex]="0"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+            ></mat-paginator>
+            
+            <mat-accordion displayMode="flat" multi class="mat-table">
+              <section matSort class="mat-elevation-z2 mat-header-row">
+                <span class="mat-header-cell" >{{'coin.image' | translate}}</span>
+                <span class="mat-header-cell" >{{'coin.name' | translate}}</span>
+                <span class="mat-header-cell">{{'coin.priceUsd' | translate}}</span>
+                <span class="mat-header-cell">{{'coin.priceBtc' | translate}}</span>
+                <span class="mat-header-cell">{{'coin.change1' | translate}}</span>
+                <span class="mat-header-cell">{{'coin.change24' | translate}}</span>
+              </section>
+            
+              <mat-expansion-panel *ngFor="let item of displayedRows$| async;let i=index">
+                <mat-expansion-panel-header class="mat-row">
+                  <span class="mat-cell"><img src='{{item.symbol}}' width="30px"></span>
+                  <span class="mat-cell">{{item.name}}</span>
+                  <span class="mat-cell">{{item.priceUsd}}</span>
+                  <span class="mat-cell">{{item.priceBtc}}</span>
+                  <span class="mat-cell {{item.perc_1>=0 ? 'green' : 'red'}}">{{item.perc_1}}</span>
+                  <span class="mat-cell {{item.perc_24>=0 ? 'green' : 'red'}}">{{item.perc_24}}</span>
+                </mat-expansion-panel-header>
+                <div>
+                  <pre>
+                    <div>
+                      <span>{{'coin.chage7' | translate}} : {{item.perc_7}}</span>
+                      <span>{{'coin.lastUpdate' | translate}} : {{item.lastUpdate}}</span>
+                    </div>
+                    <div class="infoCoin">
+                        <span>{{'coin.avaibleSupply' | translate}} : {{item.supplyAvaible}}</span>
+                        <span>{{'coin.maxSupply' | translate}} : {{item.maxSupply}}</span>
+                    </div>
+                    <span class="text">Quantita :</span>
+                    <div class="buyForm">
+                      <input type="text" class="imputBox" name='quantita' [(ngModel)] = "quantity" />
+                      <button type="button" class="btn btn-outline-secondary buy" (click)="buy(i)">Buy</button>
+                    </div>
+                  </pre>
+                </div>
+              </mat-expansion-panel>
+            
+            </mat-accordion>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

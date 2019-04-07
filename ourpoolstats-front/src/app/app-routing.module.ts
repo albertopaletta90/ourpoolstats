@@ -19,7 +19,6 @@ import { ChangeEmailComponent } from './ourpoolstats/user-operation/change-email
 import { ChengeUserTypeComponent } from './ourpoolstats/user-operation/chenge-user-type/chenge-user-type.component';
 import { ChatComponent } from './ourpoolstats/user-operation/chat/chat.component';
 import { CreateUserComponent } from './ourpoolstats/user-operation/create-user/create-user.component';
-import { DeleteComponent } from './ourpoolstats/user-operation/delete/delete.component';
 import { DeleteUserComponent } from './ourpoolstats/user-operation/delete-user/delete-user.component';
 import { SetPasswordComponent } from './ourpoolstats/user-operation/set-password/set-password.component';
 import { UserLogComponent } from './ourpoolstats/user-operation/user-log/user-log.component';
@@ -32,8 +31,6 @@ import { ListBalanceBuyComponent } from './ourpoolstats/coin/list-balance-buy/li
 import { ListBalanceSellComponent } from './ourpoolstats/coin/list-balance-sell/list-balance-sell.component';
 import { ListCoinGekoComponent } from './ourpoolstats/coin/list-coin-geko/list-coin-geko.component';
 import { ForumComponent } from './forum/forum.component';
-import { BuyComponent } from './market/buy/buy.component';
-import { ErrorChoicheComponent } from './market/error-choiche/error-choiche.component';
 import { MenuAccountComponent } from './menu/menu-account/menu-account.component';
 import { MenuActionComponent } from './menu/menu-action/menu-action.component';
 import { MenuCoinComponent } from './menu/menu-coin/menu-coin.component';
@@ -45,6 +42,7 @@ import { DeleteCoinComponent } from './ourpoolstats/user-operation/delete-coin/d
 import { LogUserResponse } from './model/model';
 import { ListUserLogComponent } from './ourpoolstats/user-operation/list-user-log/list-user-log.component';
 import { ListUserComponent } from './ourpoolstats/user-operation/list-user/list-user.component';
+import { ListBuyComponent } from './market/list-buy/list-buy.component';
 
 const routes: Routes = [
   {
@@ -126,6 +124,10 @@ const routes: Routes = [
   {
     path : 'changeEmail',
     component : ChangeEmailComponent
+  },
+  {
+    path: 'buy',
+    component : ListBuyComponent
   }
   
 ];

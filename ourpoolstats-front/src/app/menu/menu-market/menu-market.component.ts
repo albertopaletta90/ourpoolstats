@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-menu-market',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuMarketComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private http: HttpClient) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  goToSell(){
+    this.router.navigate(['market']);
   }
-
+  goToBuy(){
+    this.router.navigate(['buy']);
+  }
 }

@@ -35,7 +35,7 @@ export class DeleteUserComponent implements OnInit {
   }
 
   back(){
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['listUser']);
   }
   
 }

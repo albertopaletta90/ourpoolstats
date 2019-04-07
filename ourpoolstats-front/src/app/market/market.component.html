@@ -1,3 +1,24 @@
-<p>
-  market works!
-</p>
+
+<div class="divMenu">
+    <app-menu-ourpoolstats></app-menu-ourpoolstats>
+  </div>
+  
+  <div class="divDashboard">
+    <div class="lenguage">
+      <app-menu-language></app-menu-language>
+    </div>
+    <div class="buttonOption">
+      <app-menu-market></app-menu-market>
+    </div>
+  
+    <div class="buttonCoin">
+      <app-menu-coin></app-menu-coin>
+    </div>
+  
+    <div class="viewDashboard">
+      <div *ngIf="view">
+        <app-alerts></app-alerts>
+      </div>
+      <app-list-sell></app-list-sell>
+    </div>
+  </div>

@@ -1,3 +1,7 @@
-<p>
-  menu-market works!
-</p>
+<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <img src="https://findicons.com/files/icons/88/mac/128/setting.png" width="30" />
+  </button>	 
+  <div class="dropdown-menu colorLeguage">
+    <button type="submit" class="dropdown-item colorLeguage"  (click)="goToBuy()">{{'menu.market.buy' | translate}}</button>
+    <button type="submit" class="dropdown-item colorLeguage"  (click)="goToSell()">{{'menu.market.sell' | translate}}</button>
+  </div>

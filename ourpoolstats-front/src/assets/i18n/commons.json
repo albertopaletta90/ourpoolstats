@@ -34,7 +34,15 @@
         "change1" : "1H%",
         "change24" : "24H%",
         "info" : "Info",
-        "marketCap" : "MarketCap"
+        "marketCap" : "MarketCap",
+        "chage7" : "7D%",
+        "lastUpdate" : "Ultimo Aggiornamento",
+        "avaibleSupply" : "Monete diponibili",
+        "maxSupply" : "Numero Massimo di monete",
+        "initialCurrency" : "Valore Iniziale",
+        "currentCurrency" : "Valore Corrente",
+        "totalCurrency" : "Valore Totale",
+        "quantity" : "Quantità"
     },
     "userLog" : {
         "date" : "Data login" 
@@ -63,6 +71,10 @@
             "addCoin" : "Aggiungi Monete",
             "deleteCoin" : "Cancella Monete",
             "viewLogUser" : "Visualizza Log Utenti"
+        },
+        "market" :{
+            "buy" :"Compra",
+            "sell" :"Vendi"
         }
     }
 
