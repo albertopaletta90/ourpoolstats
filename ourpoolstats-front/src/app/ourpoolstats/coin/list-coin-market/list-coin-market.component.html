@@ -26,8 +26,19 @@
         </mat-expansion-panel-header>
         <div>
           <pre>
-           <span>{{'coin.name' | translate}} : {{item.name}}</span>
-           <span>{{'coin.priceBtc' | translate}} : {{item.priceBtc}}</span>    
+            <div>
+              <span>{{'coin.chage7' | translate}} : {{item.perc_7}}</span>
+              <span>{{'coin.lastUpdate' | translate}} : {{item.lastUpdate}}</span>
+            </div>
+            <div class="infoCoin">
+                <span>{{'coin.avaibleSupply' | translate}} : {{item.supplyAvaible}}</span>
+                <span>{{'coin.maxSupply' | translate}} : {{item.maxSupply}}</span>
+            </div>
+            <div class="graphic">
+              <button type="button" class="btn">
+                <img src="assets/image/chart.png" width="30">
+             </button>
+            </div>
           </pre>
         </div>
       </mat-expansion-panel>

@@ -20,7 +20,7 @@ export class DeleteCoinComponent implements OnInit {
   }
 
   deleteCoin(){
-    this.http.post(`http://localhost:8080/newourpoolstats/deleteCoin/${this.nameCoin}`,{}).
+    this.http.delete(`http://localhost:8080/newourpoolstats/deleteCoin/${this.nameCoin}`,{}).
     subscribe(data => {
       this.typeAlert = 'success';
       this.message = 'Moneta eliminata correttamente';

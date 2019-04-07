@@ -44,4 +44,9 @@ export class ListUserLogComponent implements OnInit {
   });
 
   }
+
+  back(){
+    this.router.navigate(['listUser']);
+  }
+  
 }

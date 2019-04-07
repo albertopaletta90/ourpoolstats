@@ -34,7 +34,11 @@
         "change1" : "1H%",
         "change24" : "24H%",
         "info" : "Info",
-        "marketCap" : "MarketCap"
+        "marketCap" : "MarketCap",
+        "chage7" : "7D%",
+        "lastUpdate" : "Ultimo Aggiornamento",
+        "avaibleSupply" : "Monete diponibili",
+        "maxSupply" : "Numero Massimo di monete"
     },
     "userLog" : {
         "date" : "Data login" 
