@@ -38,7 +38,11 @@
         "chage7" : "7D%",
         "lastUpdate" : "Ultimo Aggiornamento",
         "avaibleSupply" : "Monete diponibili",
-        "maxSupply" : "Numero Massimo di monete"
+        "maxSupply" : "Numero Massimo di monete",
+        "initiCurrency" : "Valore Iniziale",
+        "currentCurrency" : "Valore Corrente",
+        "totalCurrency" : "Valore Totale",
+        "quantity" : "Quantità"
     },
     "userLog" : {
         "date" : "Data login" 
@@ -67,6 +71,10 @@
             "addCoin" : "Aggiungi Monete",
             "deleteCoin" : "Cancella Monete",
             "viewLogUser" : "Visualizza Log Utenti"
+        },
+        "market" :{
+            "buy" :"Compra",
+            "sell" :"Vendi"
         }
     }
 

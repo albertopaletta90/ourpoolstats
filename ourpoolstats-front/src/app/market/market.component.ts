@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-market',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarketComponent implements OnInit {
 
-  constructor() { }
+  view : boolean = false;
+  constructor(private route : ActivatedRoute) {}
 
   ngOnInit() {
+    this.route.params.subscribe((params) => this.view = params.activeAlert);
   }
 
 }

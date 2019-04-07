@@ -22,7 +22,7 @@ export class CoinMarketInfoResponse {
 
 
 export class BalanceResponse {
-    constructor(public status: String, public error: String,balance : Balance[]) { }
+    constructor(public status: String, public error: String,public balance : Balance[]) { }
 }
 
 export class LogUserResponse {

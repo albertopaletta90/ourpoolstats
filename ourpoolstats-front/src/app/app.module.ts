@@ -21,7 +21,6 @@ import { ChangeEmailComponent } from './ourpoolstats/user-operation/change-email
 import { ChengeUserTypeComponent } from './ourpoolstats/user-operation/chenge-user-type/chenge-user-type.component';
 import { ChatComponent } from './ourpoolstats/user-operation/chat/chat.component';
 import { CreateUserComponent } from './ourpoolstats/user-operation/create-user/create-user.component';
-import { DeleteComponent } from './ourpoolstats/user-operation/delete/delete.component';
 import { DeleteUserComponent } from './ourpoolstats/user-operation/delete-user/delete-user.component';
 import { SetPasswordComponent } from './ourpoolstats/user-operation/set-password/set-password.component';
 import { UserLogComponent } from './ourpoolstats/user-operation/user-log/user-log.component';
@@ -34,8 +33,6 @@ import { ListBalanceBuyComponent } from './ourpoolstats/coin/list-balance-buy/li
 import { ListBalanceSellComponent } from './ourpoolstats/coin/list-balance-sell/list-balance-sell.component';
 import { ListCoinGekoComponent } from './ourpoolstats/coin/list-coin-geko/list-coin-geko.component';
 import { ForumComponent } from './forum/forum.component';
-import { BuyComponent } from './market/buy/buy.component';
-import { ErrorChoicheComponent } from './market/error-choiche/error-choiche.component';
 import { MenuAccountComponent } from './menu/menu-account/menu-account.component';
 import { MenuActionComponent } from './menu/menu-action/menu-action.component';
 import { MenuCoinComponent } from './menu/menu-coin/menu-coin.component';
@@ -62,6 +59,8 @@ import { MatSortModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ListBuyComponent } from './market/list-buy/list-buy.component';
+import { ListSellComponent } from './market/list-sell/list-sell.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -86,7 +85,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChengeUserTypeComponent,
     ChatComponent,
     CreateUserComponent,
-    DeleteComponent,
     DeleteUserComponent,
     SetPasswordComponent,
     UserLogComponent,
@@ -99,8 +97,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ListBalanceSellComponent,
     ListCoinGekoComponent,
     ForumComponent,
-    BuyComponent,
-    ErrorChoicheComponent,
     MenuAccountComponent,
     MenuActionComponent,
     MenuCoinComponent,
@@ -115,7 +111,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddCoinComponent,
     DeleteCoinComponent,
     ListUserLogComponent,
-    ListUserComponent
+    ListUserComponent,
+    ListBuyComponent,
+    ListSellComponent
     
     
     
