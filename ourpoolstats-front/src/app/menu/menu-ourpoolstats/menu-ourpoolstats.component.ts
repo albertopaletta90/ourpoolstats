@@ -31,6 +31,6 @@ export class MenuOurpoolstatsComponent implements OnInit {
   }
 
   goToPortfolio = function(){
-    this.router.navigate(['account']);
+    this.router.navigate(['portfolio']);
   }
 }

@@ -36,6 +36,7 @@ import { LogUserResponse } from './model/model';
 import { ListUserLogComponent } from './ourpoolstats/user-operation/list-user-log/list-user-log.component';
 import { ListUserComponent } from './ourpoolstats/user-operation/list-user/list-user.component';
 import { ListBuyComponent } from './market/list-buy/list-buy.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 const routes: Routes = [
 {
@@ -117,6 +118,10 @@ const routes: Routes = [
 {
   path: 'buy',
   component : ListBuyComponent
+},
+{
+  path: 'portfolio',
+  component : PortfolioComponent
 }
   
 ];
