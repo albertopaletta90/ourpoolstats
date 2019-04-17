@@ -1,6 +1,7 @@
 package ourpoolstats.service.market;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import ourpoolstats.manager.ManagerImage;
 import ourpoolstats.model.Balance;
 import ourpoolstats.query.QueryCoin;
 import ourpoolstats.response.BalanceResponse;
+import ourpoolstats.response.CurrentCoinResponse;
 import ourpoolstats.response.Response;
 import ourpoolstats.type.CurrencyType;
 import ourpoolstats.type.DataBaseOperation;
@@ -105,10 +107,14 @@ public class MarketService implements IMarketService {
 
 
 	@Override
-	public BigDecimal getCurrentCurrencyCoin(String nameCoin) {
+	public  ResponseEntity<CurrentCoinResponse> getCurrentCurrencyCoin(String nameCoin) {
 		Coin coin = ManagerCoin.getInstance().getGetCoin().getCoinInfo(nameCoin);
 		BigDecimal priceCurrent = BigDecimal.valueOf(coin.getPrice_usd());
-		return priceCurrent;
+		CurrentCoinResponse response = new CurrentCoinResponse();
+		response.setStatus(HttpStatus.OK.toString());
+		priceCurrent = priceCurrent.setScale(7, RoundingMode.CEILING);
+		response.setValue(priceCurrent);
+		return new ResponseEntity<CurrentCoinResponse>(response,HttpStatus.OK);
 
 	}
 

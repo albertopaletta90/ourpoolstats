@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ourpoolstats.manager.ManagerCoin;
 import ourpoolstats.response.BalanceResponse;
+import ourpoolstats.response.CurrentCoinResponse;
 import ourpoolstats.response.Response;
 
 
@@ -31,7 +32,7 @@ public class MarketController {
 	}
 
 	@RequestMapping(value = "/getCurrentCurrency/{nameCoin}", method = RequestMethod.POST)
-	public BigDecimal getCurrencyCoin(@PathVariable("nameCoin") String nameCoin) {		
+	public  ResponseEntity<CurrentCoinResponse> getCurrencyCoin(@PathVariable("nameCoin") String nameCoin) {		
 		return ManagerCoin.getInstance().getMarketService().getCurrentCurrencyCoin(nameCoin);
 	}
 	
