@@ -42,7 +42,8 @@
         "initialCurrency" : "Valore Iniziale",
         "currentCurrency" : "Valore Corrente",
         "totalCurrency" : "Valore Totale",
-        "quantity" : "Quantità"
+        "quantity" : "Quantità",
+        "util" : "Utile"
     },
     "userLog" : {
         "date" : "Data login" 
