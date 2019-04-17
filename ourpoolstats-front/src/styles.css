@@ -35,6 +35,45 @@ h3 {
 .margin-top_40{
 	margin-top :40px;
 }
+
+.margin-top_100{
+	margin-top :100px;
+}
+
+.margin-top_150{
+	margin-top :150px;
+}
+.chart_rigth{
+	display: block;
+	width: 30%;
+	height: 30%;
+	position: absolute;
+	right: 5%;
+}
+
+.chart_center{
+	display: block;
+	width: 30%;
+	height: 30%;
+	position: absolute;
+	left: 35%;
+}
+
+.chart_left{
+	display: block;
+	width: 30%;
+	height: 30%;
+	position: absolute;
+	left: 5%;
+}
+
+.infoSell{
+	display: block;
+	width: 30%;
+	height: 30%;
+	position: absolute;
+	left: 5%;
+}
 .divMenu {
 	position: absolute;
 	width: 95%;

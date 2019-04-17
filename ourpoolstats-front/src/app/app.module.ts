@@ -14,7 +14,6 @@ import { MenuOptionsComponent } from './menu/menu-options/menu-options.component
 import { CoinComponent } from './ourpoolstats/coin/coin.component';
 import { ListCoinMarketComponent } from './ourpoolstats/coin/list-coin-market/list-coin-market.component';
 import { AccountComponent } from './ourpoolstats/account/account.component';
-import { WhitOutInternetComponent } from './ourpoolstats/whit-out-internet/whit-out-internet.component';
 import { UserOperationComponent } from './ourpoolstats/user-operation/user-operation.component';
 import { AddImageComponent } from './ourpoolstats/user-operation/add-image/add-image.component';
 import { ChangeEmailComponent } from './ourpoolstats/user-operation/change-email/change-email.component';
@@ -25,12 +24,6 @@ import { DeleteUserComponent } from './ourpoolstats/user-operation/delete-user/d
 import { SetPasswordComponent } from './ourpoolstats/user-operation/set-password/set-password.component';
 import { UserLogComponent } from './ourpoolstats/user-operation/user-log/user-log.component';
 import { UserOnlineComponent } from './ourpoolstats/user-operation/user-online/user-online.component';
-import { CoinGekoInfoComponent } from './ourpoolstats/coin/coin-geko-info/coin-geko-info.component';
-import { CoinMarketInfoComponent } from './ourpoolstats/coin/coin-market-info/coin-market-info.component';
-import { InfoCoinGekoComponent } from './ourpoolstats/coin/info-coin-geko/info-coin-geko.component';
-import { InfoCoinMarketComponent } from './ourpoolstats/coin/info-coin-market/info-coin-market.component';
-import { ListBalanceBuyComponent } from './ourpoolstats/coin/list-balance-buy/list-balance-buy.component';
-import { ListBalanceSellComponent } from './ourpoolstats/coin/list-balance-sell/list-balance-sell.component';
 import { ListCoinGekoComponent } from './ourpoolstats/coin/list-coin-geko/list-coin-geko.component';
 import { ForumComponent } from './forum/forum.component';
 import { MenuAccountComponent } from './menu/menu-account/menu-account.component';
@@ -39,11 +32,9 @@ import { MenuCoinComponent } from './menu/menu-coin/menu-coin.component';
 import { MenuCurrencySellComponent } from './menu/menu-currency-sell/menu-currency-sell.component';
 import { MenuMarketComponent } from './menu/menu-market/menu-market.component';
 import { MenuValueCoinComponent } from './menu/menu-value-coin/menu-value-coin.component';
-import { GraphicCoinMarketComponent } from './ourpoolstats/coin/graphic-coin-market/graphic-coin-market.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { AlertsComponent } from './ourpoolstats/alerts/alerts.component';
-import { AccordionComponent } from './ourpoolstats/accordion/accordion.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {HttpClient } from '@angular/common/http';
@@ -61,6 +52,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ListBuyComponent } from './market/list-buy/list-buy.component';
 import { ListSellComponent } from './market/list-sell/list-sell.component';
+import { ChartsModule } from 'ng2-charts';
+import { PieChartComponent } from './chartPie/piechart';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -78,7 +72,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoinComponent,
     ListCoinMarketComponent,
     AccountComponent,
-    WhitOutInternetComponent,
     UserOperationComponent,
     AddImageComponent,
     ChangeEmailComponent,
@@ -89,12 +82,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     SetPasswordComponent,
     UserLogComponent,
     UserOnlineComponent,
-    CoinGekoInfoComponent,
-    CoinMarketInfoComponent,
-    InfoCoinGekoComponent,
-    InfoCoinMarketComponent,
-    ListBalanceBuyComponent,
-    ListBalanceSellComponent,
     ListCoinGekoComponent,
     ForumComponent,
     MenuAccountComponent,
@@ -103,9 +90,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MenuCurrencySellComponent,
     MenuMarketComponent,
     MenuValueCoinComponent,
-    GraphicCoinMarketComponent,
     AlertsComponent,
-    AccordionComponent,
     MenuLanguageComponent,
     TranslateComponent,
     AddCoinComponent,
@@ -113,7 +98,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ListUserLogComponent,
     ListUserComponent,
     ListBuyComponent,
-    ListSellComponent
+    ListSellComponent,
+    PieChartComponent,
+    PortfolioComponent
     
     
     
@@ -131,10 +118,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     MatListModule,
     MatExpansionModule,
-     MatSortModule,
-     BrowserAnimationsModule,
-     FlexLayoutModule,
+    MatSortModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
     MatPaginatorModule ,
+    ChartsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

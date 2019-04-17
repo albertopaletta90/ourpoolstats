@@ -20,6 +20,9 @@ export class CoinMarketInfoResponse {
     constructor(public status: String, public error: String ,public coinInfo :CoinMarket) { }
 }
 
+export class CurrentyCoinResponse {
+    constructor(public status : string, public error : string,public value : number){}
+}
 
 export class BalanceResponse {
     constructor(public status: String, public error: String,public balance : Balance[]) { }
@@ -95,7 +98,7 @@ export class CoinGeko {
 }
 
 export class Balance{
-        constructor(public id : number,public username : string, public nameCoin : string, public initialCurrency : number, public currentCurrency : number, public totalCurrency : number, public quantity : number){}
+        constructor(public id : number,public username : string, public nameCoin : string, public initialCurrency : number, public currentCurrency : number, public totalCurrency : number, public quantity : number,public util : number){}
 }
 
 export class UserLog {

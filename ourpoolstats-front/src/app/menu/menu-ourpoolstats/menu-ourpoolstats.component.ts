@@ -29,4 +29,8 @@ export class MenuOurpoolstatsComponent implements OnInit {
   goToAccount = function(){
     this.router.navigate(['account']);
   }
+
+  goToPortfolio = function(){
+    this.router.navigate(['portfolio']);
+  }
 }

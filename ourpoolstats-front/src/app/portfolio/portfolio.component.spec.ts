@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListBalanceBuyComponent } from './list-balance-buy.component';
+import { PortfolioComponent } from './portfolio.component';
 
-describe('ListBalanceBuyComponent', () => {
-  let component: ListBalanceBuyComponent;
-  let fixture: ComponentFixture<ListBalanceBuyComponent>;
+describe('PortfolioComponent', () => {
+  let component: PortfolioComponent;
+  let fixture: ComponentFixture<PortfolioComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListBalanceBuyComponent ]
+      declarations: [ PortfolioComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListBalanceBuyComponent);
+    fixture = TestBed.createComponent(PortfolioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

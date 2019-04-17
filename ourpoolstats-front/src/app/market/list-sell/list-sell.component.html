@@ -1,56 +1,63 @@
-<mat-paginator #paginator
-      [length]="totalRows$ | async"
-      [pageIndex]="0"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-    ></mat-paginator>
-    
-    <mat-accordion displayMode="flat" multi class="mat-table">
-      <section matSort class="mat-elevation-z2 mat-header-row">
-        <span class="mat-header-cell" >{{'coin.name' | translate}}</span>
-        <span class="mat-header-cell">{{'coin.initialCurrency' | translate}}</span>
-        <span class="mat-header-cell">{{'coin.currentCurrency' | translate}}</span>
-        <span class="mat-header-cell">{{'coin.totalCurrency' | translate}}</span>
-        <span class="mat-header-cell">{{'coin.quantity' | translate}}</span>
-      </section>
-    
-      <mat-expansion-panel *ngFor="let item of displayedRows$| async;let i=index">
-        <mat-expansion-panel-header class="mat-row">
-          <span class="mat-cell">{{item.nameCoin}}</span>
-          <span class="mat-cell">{{item.initialCurrency}}</span>
-          <span class="mat-cell {{item.initialCurrency>=item.currentCurrency ? 'green' : 'red'}}">{{item.currentCurrency}}</span>
-          <span class="mat-cell">{{item.totalCurrency}}</span>
-          <span class="mat-cell">{{item.quantity}}</span>
-        </mat-expansion-panel-header>
-        <div>
-          <pre>
-            <div class="sellForm">
-              <span>Quantita :</span>
-              <input type="text" class="imputBox" name='quantita' [(ngModel)] = "quantity" />
-              <button type="button" class="btn btn-outline-secondary sell" (click)="sell(i)">Vendi</button>
-            </div>
-          </pre>
-        </div>
-      </mat-expansion-panel>
-    
-    </mat-accordion>
+<div  class="chart_rigth">
+<canvas baseChart
+        [data]="coinsDataChart"
+        [labels]="coinsLabelsChart"
+        [chartType]="CoinsTypeChart"
+        [colors]="chartColors"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+</div>
 
+<div  class="chart_center">
+  <canvas baseChart
+          [data]="balanceDataChat"
+          [labels]="balanceLabelsChat"
+          [chartType]="balanceTypeChart"
+          [colors]="chartColors"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+  </div>
 
+<div class="infoSell">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
+<div class="margin-top_150">
+  <mat-paginator #paginator
+        [length]="totalRows$ | async"
+        [pageIndex]="0"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+      ></mat-paginator>
+      
+      <mat-accordion displayMode="flat" multi class="mat-table">
+        <section matSort class="mat-elevation-z2 mat-header-row">
+          <span class="mat-header-cell" >{{'coin.name' | translate}}</span>
+          <span class="mat-header-cell">{{'coin.initialCurrency' | translate}}</span>
+          <span class="mat-header-cell">{{'coin.currentCurrency' | translate}}</span>
+          <span class="mat-header-cell">{{'coin.totalCurrency' | translate}}</span>
+          <span class="mat-header-cell">{{'coin.quantity' | translate}}</span>
+          <span class="mat-header-cell">{{'coin.util' | translate}}</span>
+        </section>
+      
+        <mat-expansion-panel *ngFor="let item of displayedRows$| async;let i=index">
+          <mat-expansion-panel-header class="mat-row">
+            <span class="mat-cell">{{item.nameCoin}}</span>
+            <span class="mat-cell">{{item.initialCurrency}}</span>
+            <span class="mat-cell {{item.initialCurrency>=item.currentCurrency ? 'red' : 'green'}}">{{item.currentCurrency}}</span>
+            <span class="mat-cell">{{item.totalCurrency}}</span>
+            <span class="mat-cell">{{item.quantity}}</span>
+            <span class="mat-cell">{{item.util}}</span>
+          </mat-expansion-panel-header>
+          <div>
+            <pre>
+              <div class="sellForm">
+                <span>Quantita :</span>
+                <input type="text" class="imputBox" name='quantita' [(ngModel)] = "quantity" />
+                <button type="button" class="btn btn-outline-secondary sell" (click)="sell(i)">Vendi</button>
+              </div>
+            </pre>
+          </div>
+        </mat-expansion-panel>
+      
+      </mat-accordion>
+</div>
