@@ -52,7 +52,7 @@ public class LanguageService implements ILanguageService {
 			ManagerImage.getInstance().setImageDefault(lenguageType);
 			return new ResponseEntity<Response>(response,HttpStatus.OK);
 		} catch (Exception e) {
-			response.setEror(e.getMessage());
+			response.setError(e.getMessage());
 			ManagerImage.getInstance().setImageDefault(lenguageType);
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
 			return new ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);

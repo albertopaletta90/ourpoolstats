@@ -43,13 +43,4 @@ public class Login {
 		this.userType = userType;
 	}
 
-	public void setAllParameter(ModelMap model) {
-		this.username = (String) model.get("username");
-		this.password = (String) model.get("password");
-		this.userType = (UserType) model.get("userType");
-		
-	}
-	
-	
-
 }

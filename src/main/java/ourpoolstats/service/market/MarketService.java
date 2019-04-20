@@ -126,7 +126,7 @@ public class MarketService implements IMarketService {
 			ManagerImage.getInstance().setImageMarketCurrency(CurrencyType.EURO);		
 			if(listMarket.isEmpty()) {
 				response.setStatus(HttpStatus.NOT_FOUND.toString());
-				response.setEror("Lista Vuota");
+				response.setError("Lista Vuota");
 				return new ResponseEntity<Response>(response,HttpStatus.NOT_FOUND);
 			}
 			for(int i = 0; i<listMarket.size(); i++) {
@@ -140,7 +140,7 @@ public class MarketService implements IMarketService {
 			return new ResponseEntity<Response>(response,HttpStatus.OK);
 		}
 		catch (Exception e) {
-			response.setEror(e.getMessage());
+			response.setError(e.getMessage());
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
 			return new ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -155,7 +155,7 @@ public class MarketService implements IMarketService {
 			ManagerImage.getInstance().setImageMarketCurrency(CurrencyType.USD);
 			if(listMarket.isEmpty()) {
 				response.setStatus(HttpStatus.NOT_FOUND.toString());
-				response.setEror("Lista Vuota");
+				response.setError("Lista Vuota");
 				return new ResponseEntity<Response>(response,HttpStatus.NOT_FOUND);
 			}
 
@@ -170,7 +170,7 @@ public class MarketService implements IMarketService {
 			return new ResponseEntity<Response>(response,HttpStatus.OK);
 
 		} catch (Exception e) {
-			response.setEror(e.getMessage());
+			response.setError(e.getMessage());
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
 			return new ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 

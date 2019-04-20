@@ -56,7 +56,7 @@ public class CoinMarketService implements ICoinMarketService {
 		} catch (Exception e) {
 			coinMarketResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
 			coinMarketResponse.setCoinInfo(null);
-			coinMarketResponse.setEroor(e.getMessage());
+			coinMarketResponse.setError(e.getMessage());
 			return new ResponseEntity<CoinMarketResponse>(coinMarketResponse,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -145,7 +145,7 @@ public class CoinMarketService implements ICoinMarketService {
 
 
 	private ResponseEntity<Response> error(Exception e, Response response) {
-		response.setEror(e.getMessage());
+		response.setError(e.getMessage());
 		response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
 		return new ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 	}

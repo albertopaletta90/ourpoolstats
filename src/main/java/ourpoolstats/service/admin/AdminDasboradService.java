@@ -46,10 +46,12 @@ public class AdminDasboradService implements IAdminDasboradService {
 		String userType = "USER";
 		try {
 			jdbcTemplate.update(QueryAdminOption.getInstance().getInsertUserAdmin(),user.getUserName(),user.getUserSurname(),user.getEmail(),user.getUsername(),hashPswword,userType);
+			jdbcTemplate.update(QueryAdminOption.getInstance().getInsertToImageProfile(),user.getUsername());
+			jdbcTemplate.update(QueryAdminOption.getInstance().getInsertTouserOnline(),user.getUsername());
 		}catch (Exception e) {
 			AdminOperationLogger.getInstance().logger(user.getUsername(), false, AdminOperation.INSERTUSER);
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
-			response.setEror("Utente Già presente  " + e.getMessage());
+			response.setError("Utente Già presente  " + e.getMessage());
 			return new  ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
@@ -87,7 +89,7 @@ public class AdminDasboradService implements IAdminDasboradService {
 			return new  ResponseEntity<Response>(response, HttpStatus.OK);
 		}catch (Exception e) {
 			AdminOperationLogger.getInstance().logger(username, false, AdminOperation.CHANGETYPE);
-			response.setEror("Errore Tecnico " + e.getMessage());
+			response.setError("Errore Tecnico " + e.getMessage());
 			return new  ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -166,7 +168,7 @@ public class AdminDasboradService implements IAdminDasboradService {
 	
 	private ResponseEntity<Response> error(Response response, String username, Exception e) {
 		AdminOperationLogger.getInstance().logger(username, false, AdminOperation.DELETE);
-		response.setEror("Errore Tecnico " + e.getMessage());
+		response.setError("Errore Tecnico " + e.getMessage());
 		return new  ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 

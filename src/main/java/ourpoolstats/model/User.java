@@ -83,16 +83,4 @@ public class User implements Serializable {
 	public void setUserType(UserType userType) {
 		this.userType = userType;
 	}
-
-	public void setAllParameter(ModelMap model) {
-		//this.userId = (int) model.get("userId");
-		this.userName = (String) model.get("userName");
-		this.userSurname = (String) model.get("userSurname");
-		this.email = (String) model.get("email");
-		this.username = (String) model.get("username");
-		this.password = (String) model.get("password");
-		this.userType = (UserType) model.get("userType");
-	}
-
-
 }

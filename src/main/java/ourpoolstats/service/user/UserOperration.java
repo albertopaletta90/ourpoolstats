@@ -86,7 +86,7 @@ public class UserOperration implements IUserOperation {
 		List<String> imageProfile = jdbcTemplate.query(QueryImage.getInstance().getGetImageProfile(), new StringMapper(),username);
 		Response response = new Response();
 		response.setStatus(HttpStatus.OK.toString());
-		response.setEror("Nessun Errore");
+		response.setError("Nessun Errore");
 		response.setData(imageProfile);
 		return new ResponseEntity<Response>(response,HttpStatus.OK);
 		
@@ -127,7 +127,7 @@ public class UserOperration implements IUserOperation {
 	private ResponseEntity<Response> fail(Exception e ) {
 		Response response = new Response();
 		response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
-		response.setEror(e.getMessage());
+		response.setError(e.getMessage());
 		return new  ResponseEntity<Response>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 
 
@@ -162,7 +162,7 @@ public class UserOperration implements IUserOperation {
 			return new ResponseEntity<Response>(response,HttpStatus.OK);
 		} catch (Exception e) {
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
-			response.setEror(e.getMessage());
+			response.setError(e.getMessage());
 			return new ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
@@ -177,7 +177,7 @@ public class UserOperration implements IUserOperation {
 			return new ResponseEntity<Response>(response,HttpStatus.OK);
 		} catch (Exception e) {
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
-			response.setEror(e.getMessage());
+			response.setError(e.getMessage());
 			return new  ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}			
 	}
@@ -209,7 +209,7 @@ public class UserOperration implements IUserOperation {
 			return new  ResponseEntity<Response>(response,HttpStatus.OK);			
 		}catch (Exception e) {
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
-			response.setEror(e.getMessage());
+			response.setError(e.getMessage());
 			return new  ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
@@ -255,7 +255,7 @@ public class UserOperration implements IUserOperation {
 
 	private ResponseEntity<Response> error(Response response) {
 		response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
-		response.setEror("Errore Tecnico");
+		response.setError("Errore Tecnico");
 		return new  ResponseEntity<Response>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 

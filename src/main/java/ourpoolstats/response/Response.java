@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Response {
 	private String status;
-	private String eror = "Nessun Errore";
-	private List<String> data =new ArrayList<>();
+	private String error = "Nessun Errore";
+	private List<String> data = new ArrayList<>();
 
 	public Response() {
 	}
@@ -20,11 +20,11 @@ public class Response {
 	}
 
 	public String getEror() {
-		return eror;
+		return error;
 	}
 
-	public void setEror(String eror) {
-		this.eror = eror;
+	public void setError(String eror) {
+		this.error = eror;
 	}
 
 	public List<String> getData() {

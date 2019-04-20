@@ -23,9 +23,4 @@ public class Buy {
 		this.quantity = quantity;
 	}
 
-	public void setAllParameter(ModelMap model) {
-		this.indexCoin = Integer.parseInt((String)model.get("coin"));
-		this.quantity = new BigDecimal((String) model.get("quantity"));
-	}
-
 }

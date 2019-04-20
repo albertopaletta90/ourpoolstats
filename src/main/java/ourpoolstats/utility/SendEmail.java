@@ -54,10 +54,7 @@ public class SendEmail {
 
 			Transport.send(message);
 			UserOperration userOperration = new UserOperration();
-			String user = userOperration.findUsernameToEmail(emails);
-			//userOperration.changePassword(user, String.valueOf(miavar));
-			System.out.println("Done");
-
+			userOperration.findUsernameToEmail(emails);
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}

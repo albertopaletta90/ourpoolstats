@@ -47,7 +47,7 @@ public class CoinGekoService implements ICoinGekoService {
 		} catch (Exception e) {
 			coinGekoResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.toString());
 			coinGekoResponse.setCoinInfo(null);
-			coinGekoResponse.setEroor(e.getMessage());		
+			coinGekoResponse.setError(e.getMessage());		
 			return new ResponseEntity<CoinGekoResponse>(coinGekoResponse,HttpStatus.INTERNAL_SERVER_ERROR);			
 		}
 	}
