@@ -4,7 +4,7 @@ import ourpoolstats.client.coinmarket.Coin;
 
 public class CoinMarketResponse {
 	private String status;
-	private String eroor;
+	private String error;
 	private Coin coinInfo;
 	
 	public String getStatus() {
@@ -13,11 +13,11 @@ public class CoinMarketResponse {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getEroor() {
-		return eroor;
+	public String getError() {
+		return error;
 	}
-	public void setEroor(String eroor) {
-		this.eroor = eroor;
+	public void setError(String eroor) {
+		this.error = eroor;
 	}
 	public Coin getCoinInfo() {
 		return coinInfo;

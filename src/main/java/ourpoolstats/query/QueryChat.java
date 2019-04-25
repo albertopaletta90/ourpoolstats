@@ -3,8 +3,9 @@ package ourpoolstats.query;
 public class QueryChat {
 	
 	private static QueryChat instance;
-	public String getMessageMittente = "select mesage from message_private where username_mittente = ?";
-	public String getMessaggeDestinatario = "select mesage from message_private where username_destinatario = ?";
+	private String getMessageMittente = "select mesage from message_private where username_mittente = ?";
+	private String getMessaggeDestinatario = "select mesage from message_private where username_destinatario = ?";
+	private String sendMessage = "insert into message (messaggio,username_mittente,username_destinatario) values = ?";
 	
 	private QueryChat() {}
 	
@@ -24,8 +25,9 @@ public class QueryChat {
 	public String getGetMessaggeDestinatario() {
 		return getMessaggeDestinatario;
 	}
-	
-	
 
-
+	public String getSendMessage() {
+		return sendMessage;
+	}
+	
 }

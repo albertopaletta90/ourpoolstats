@@ -4,7 +4,7 @@ import ourpoolstats.client.coingeko.data.Market;
 
 public class CoinGekoResponse {
 	private String status;
-	private String eroor;
+	private String error;
 	private Market coinInfo;
 	
 	public String getStatus() {
@@ -14,10 +14,10 @@ public class CoinGekoResponse {
 		this.status = status;
 	}
 	public String getEroor() {
-		return eroor;
+		return error;
 	}
-	public void setEroor(String eroor) {
-		this.eroor = eroor;
+	public void setError(String eroor) {
+		this.error = eroor;
 	}
 	public Market getCoinInfo() {
 		return coinInfo;

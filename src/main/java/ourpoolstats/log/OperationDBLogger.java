@@ -12,8 +12,6 @@ import java.util.logging.Logger;
 import ourpoolstats.log.configuration.OurpoolStatsFilter;
 import ourpoolstats.log.configuration.OurpoolStatsFormatter;
 import ourpoolstats.log.configuration.OurpoolStatsHandler;
-import ourpoolstats.manager.ManagerDashboard;
-import ourpoolstats.response.LogResponse;
 import ourpoolstats.type.DataBaseOperation;
 
 public class OperationDBLogger {
@@ -34,7 +32,7 @@ public class OperationDBLogger {
 		return instance;
 	}
 
-	public void logger(String value,boolean status, DataBaseOperation operation,LogResponse logResponse) {
+	public void logger(String value,boolean status, DataBaseOperation operation) {
 		try {
 			LogManager.getLogManager().readConfiguration(new FileInputStream("C:\\Users\\Alberone\\git\\ourpoolstats\\mylogging.properties"));
 		} catch (SecurityException | IOException e1) {
@@ -55,55 +53,42 @@ public class OperationDBLogger {
 			case INSERTIMAGEPROFILE :
 				if(status) {
 					logger.log(Level.INFO, "<INSERTIMAGEPROFILE><OK> " + "All'Utente " + value + " è stata Inseruita per la prima Volta l'immagine di profilo </INSERTIMAGEPROFILE>");
-					ManagerDashboard.getInstance().getLog().add("<INSERTIMAGEPROFILE><OK> " + "All'Utente " + value + " è stata Inseruita per la prima Volta l'immagine di profilo </INSERTIMAGEPROFILE>");
 				}	
 				else if(!status) {
 					logger.log(Level.SEVERE, ("<INSERTIMAGEPROFILE><KO> " +  "All'Utente"  + value + " Non è stata Inserita L'immagine  </INSERTIMAGEPROFILE>"));
-					ManagerDashboard.getInstance().getLog().add("<INSERTIMAGEPROFILE><KO> " +  "All'Utente"  + value + " Non è stata Inserita L'immagine  </INSERTIMAGEPROFILE>");
 				}
-
-
 				break;
 			case INSERTLANGUAGE :
 				if(status) {
-					ManagerDashboard.getInstance().getLog().add("<INSERTLANGUAGE><OK> " + "All'Utente" + value + " è stata Inseruita per la prima Volta La Lingua</INSERTLANGUAGE>");
 					logger.log(Level.INFO, "<INSERTLANGUAGE><OK> " + "All'Utente " + value + " è stata Inseruita per la prima Volta La Lingua</INSERTLANGUAGE>");
 				}
 				else if(!status) {
-					ManagerDashboard.getInstance().getLog().add("<INSERTLANGUAGE><KO> " +  "All'Utente" + value + " Non è stata Inserita La Lingua </INSERTLANGUAGE>");
 					logger.log(Level.SEVERE, ("<INSERTLANGUAGE><KO> " +  "All'Utente"  + value + " Non è stata Inserita La Lingua </INSERTLANGUAGE>"));
 				}
 				break;
 			case INSERTLOGUSER :
 				if(status) {
-					ManagerDashboard.getInstance().getLog().add("<INSERTLOGUSER><OK> " + "All'Utente " + value + " è stata Inseruito Nei Log Di Accesso </INSERTLOGUSER>");
 					logger.log(Level.INFO, "<INSERTLOGUSER><OK> " + "All'Utente " + value + " è stata Inseruito Nei Log Di Accesso </INSERTLOGUSER>");
 				}
 				else if(!status) {
-					ManagerDashboard.getInstance().getLog().add("<INSERTLOGUSER><KO> " +  "L'Utente "  + value + " Non è stato Inserito nei Log di Accesso  </INSERTLOGUSER>");
 					logger.log(Level.SEVERE, ("<INSERTLOGUSER><KO> " +  "L'Utente"  + value + " Non è stato Inserito nei Log di Accesso  </INSERTLOGUSER>"));
 				}
 				break;
 			case UPDATELANGUAGE :
 				if(status) {
-					ManagerDashboard.getInstance().getLog().add("<UPDATELANGUAGE><OK> " + "All'Utente " + value + " è stata Modificata La Lingua</UPDATELANGUAGE>");
 					logger.log(Level.INFO, "<UPDATELANGUAGE><OK> " + "All'Utente " + value + " è stata Modificata La Lingua</UPDATELANGUAGE>");
 				}
 				else if(!status) {
-					ManagerDashboard.getInstance().getLog().add("<UPDATELANGUAGE><KO> " +  "All'Utente"  + value + " Non è stata Modificata La Lingua </UPDATELANGUAGE>");
 					logger.log(Level.SEVERE, ("<UPDATELANGUAGE><KO> " +  "All'Utente"  + value + " Non è stata Modificata La Lingua </UPDATELANGUAGE>"));
 				}					
 				break;
 			case GETLISTCOIN :
 				if(status) {
-					ManagerDashboard.getInstance().getLog().add("<GETLISTCOIN><OK> La Lista Di Monete Base é stata Generata   </GETLISTCOIN>");
 					logger.log(Level.INFO, "<GETLISTCOIN><OK> La Lista Di Monete Base é stata Generata   </GETLISTCOIN>");
 				}
 				else if(!status) {
-					ManagerDashboard.getInstance().getLog().add("\"<GETLISTCOIN><KO>La Lista Di Monete Base non é stata Generata  </GETLISTCOIN>\"");
 					logger.log(Level.SEVERE, ("<GETLISTCOIN><KO>La Lista Di Monete Base non é stata Generata  </GETLISTCOIN>"));
 				}
-
 				break;
 			default:
 				break;

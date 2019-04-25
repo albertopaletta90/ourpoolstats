@@ -2,8 +2,6 @@ package ourpoolstats.model;
 
 import java.math.BigDecimal;
 
-import org.springframework.ui.ModelMap;
-
 public class Buy {
 
 	private int indexCoin;
@@ -21,11 +19,6 @@ public class Buy {
 	}
 	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
-	}
-
-	public void setAllParameter(ModelMap model) {
-		this.indexCoin = Integer.parseInt((String)model.get("coin"));
-		this.quantity = new BigDecimal((String) model.get("quantity"));
 	}
 
 }

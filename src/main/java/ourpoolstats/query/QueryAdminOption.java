@@ -3,7 +3,7 @@ package ourpoolstats.query;
 public class QueryAdminOption {
 
 	private static QueryAdminOption instance;
-	
+
 	public  String insertUserAdmin = "insert into user (user_name,user_surname,email,username,password,user_type) values (?,?,?,?,?,?)";
 	public  String userOnline = "select distinct username from user_login where username <> ? ";
 	public  String searchUser = "select * from user u where u.username = ?";
@@ -12,16 +12,17 @@ public class QueryAdminOption {
 	public  String userLog = "select distinct username,date_login from user_login";
 	public  String userSingleLog = "select username,date_login from user_login where username = ?";
 	public  String getListUser = "select user_name,user_surname,username,email,user_type from user";
-	
-	
+	public  String insertToImageProfile ="insert into image_profile (username) values (?)";
+	public  String insertTouserOnline ="insert into user_online (username) values (?)";
+
 	private QueryAdminOption() {}
-	
+
 	public static QueryAdminOption getInstance() {
-		
+
 		if(instance==null) {
 			instance = new QueryAdminOption();
 		}
-		
+
 		return instance;
 	}
 
@@ -56,9 +57,13 @@ public class QueryAdminOption {
 	public String getGetListUser() {
 		return getListUser;
 	}
-	
-	
-	
-	
-	
+
+	public String getInsertToImageProfile() {
+		return insertToImageProfile;
+	}
+
+	public String getInsertTouserOnline() {
+		return insertTouserOnline;
+	}
+
 }

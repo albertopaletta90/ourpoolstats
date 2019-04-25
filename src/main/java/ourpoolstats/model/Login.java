@@ -1,7 +1,5 @@
 package ourpoolstats.model;
 
-import org.springframework.ui.ModelMap;
-
 import ourpoolstats.type.UserType;
 
 public class Login {
@@ -42,14 +40,5 @@ public class Login {
 	public void setUserType(UserType userType) {
 		this.userType = userType;
 	}
-
-	public void setAllParameter(ModelMap model) {
-		this.username = (String) model.get("username");
-		this.password = (String) model.get("password");
-		this.userType = (UserType) model.get("userType");
-		
-	}
-	
-	
 
 }
