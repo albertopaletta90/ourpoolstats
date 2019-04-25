@@ -2,8 +2,6 @@ package ourpoolstats.model;
 
 import java.io.Serializable;
 
-import org.springframework.ui.ModelMap;
-
 import ourpoolstats.type.UserType;
 
 public class User implements Serializable {

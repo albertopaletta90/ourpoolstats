@@ -2,8 +2,6 @@ package ourpoolstats.model;
 
 import java.math.BigDecimal;
 
-import org.springframework.ui.ModelMap;
-
 public class Buy {
 
 	private int indexCoin;

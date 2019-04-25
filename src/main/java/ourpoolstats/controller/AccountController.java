@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import ourpoolstats.api.UserOperation.ChangeEmailsExecute;
+import ourpoolstats.api.UserOperation.ChangePasswordExecute;
+import ourpoolstats.api.UserOperation.ImageProfileExecute;
+import ourpoolstats.api.UserOperation.ImageProfilePrepare;
+import ourpoolstats.api.UserOperation.LogoutExecute;
 import ourpoolstats.response.Response;
-import ourpoolstats.service.user.UserOperration;
 
 
 
@@ -18,41 +22,32 @@ import ourpoolstats.service.user.UserOperration;
 @RestController
 public class AccountController {
 	
-	@RequestMapping(value = "/addImage/{url}", method = RequestMethod.POST)
-	public ResponseEntity<Response> addImage(HttpServletRequest request,@PathVariable("url") String url){
-		String username = (String) request.getSession().getAttribute("username");
-		return new UserOperration().setImageProfile(username, url,"update");
+	@RequestMapping(value = "/addImage/{url}/username/{username}", method = RequestMethod.POST)
+	public ResponseEntity<Response> addImage(HttpServletRequest request,@PathVariable("url") String url,@PathVariable("username") String username){
+		return new ImageProfileExecute().setImageProfile(username, url,"update");
 	}
 
 	@RequestMapping(value = "/getImage/{username}", method = RequestMethod.POST)
 	public ResponseEntity<Response> getImage(HttpServletRequest request,@PathVariable("username") String username){
-		return new UserOperration().getImageProfile(username);
+		return new ImageProfilePrepare().getImageProfile(username);
 	}
 
 	
 	
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public ResponseEntity<Response> logout(HttpServletRequest request){
-		String username = (String) request.getSession().getAttribute("username");
-		return new UserOperration().deleteToUserOnline(username,request);
+	@RequestMapping(value = "/logout/{username}", method = RequestMethod.GET)
+	public ResponseEntity<Response> logout(@PathVariable("username") String username){
+		return new LogoutExecute().deleteToUserOnline(username);
 	}
 
 
 	@RequestMapping(value = "/changePassword/{username}/password{password}/newPassword{newPassword}", method = RequestMethod.POST)
 	public  ResponseEntity<Response> changePassword(HttpServletRequest request,@PathVariable("username")String username,@PathVariable("password")String password,@PathVariable("newPassword")String newPassword){
-		return new UserOperration().changePassword(username, password,newPassword);
+		return new ChangePasswordExecute().changePassword(username, password,newPassword);
 	}
 
 	@RequestMapping(value = "/changeEmail/{username}/email/{email}", method = RequestMethod.POST)
 	public ResponseEntity<Response> changeEmail(HttpServletRequest request,@PathVariable("username")String username,@PathVariable("email")String email){
-		return new UserOperration().changeEmail(username, email);
+		return new ChangeEmailsExecute().changeEmail(username, email);
 	}
-
-	@RequestMapping(value = "/deleteUserAction", method = RequestMethod.DELETE)
-	public ResponseEntity<Response> deleteUser(HttpServletRequest request) {
-		String username = (String)request.getSession().getAttribute("username");
-		return new UserOperration().deleteUser(username);
-	}
-
 
 }

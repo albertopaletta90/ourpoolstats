@@ -6,8 +6,6 @@ import ourpoolstats.client.coingeko.CoinGekoClient;
 import ourpoolstats.client.coingeko.data.Market;
 import ourpoolstats.client.coinmarket.CoinMarketClient;
 import ourpoolstats.model.CoinDB;
-import ourpoolstats.service.coin.CoinMarketService;
-import ourpoolstats.service.market.MarketService;
 import ourpoolstats.type.CryptoCurrency;
 import ourpoolstats.type.CurrencyType;
 public class ManagerCoin {
@@ -17,8 +15,6 @@ public class ManagerCoin {
 	private List<Market>coingekoCoin;
 	private List<CoinDB> listCoin = null;
 	private CoinMarketClient coinMarketClient = new CoinMarketClient();
-	private CoinMarketService coinService = new CoinMarketService();
-	private MarketService marketService = new MarketService(); 	
 
 	private CurrencyType currencyType = CurrencyType.EURO;
 	
@@ -53,14 +49,6 @@ public class ManagerCoin {
 		}
 		
 	}
-	
-//	public BigDecimal getSumCurrency() {
-//		BigDecimal sum = new BigDecimal("0");
-//		for (Balance element : listUserBalance) {
-//			sum = sum.add(element.getTotalCurrency());
-//		}
-//		return sum;
-//	}
 
 	public CryptoCurrency getCryptoCurrency() {
 		return cryptoCurrency;
@@ -86,14 +74,6 @@ public class ManagerCoin {
 		this.coinMarketClient = getCoin;
 	}
 
-	public CoinMarketService getCoinService() {
-		return coinService;
-	}
-
-	public void setCoinService(CoinMarketService coinService) {
-		this.coinService = coinService;
-	}
-
 	public CurrencyType getCurrencyType() {
 		return currencyType;
 	}
@@ -102,9 +82,6 @@ public class ManagerCoin {
 		this.currencyType = currencyType;
 	}
 
-	public MarketService getMarketService() {
-		return marketService;
-	}
 	
 	public List<CoinDB> getListCoin() {
 		return listCoin;

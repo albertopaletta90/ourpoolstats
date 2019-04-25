@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 import ourpoolstats.log.configuration.OurpoolStatsFilter;
 import ourpoolstats.log.configuration.OurpoolStatsFormatter;
 import ourpoolstats.log.configuration.OurpoolStatsHandler;
-import ourpoolstats.type.AdminOperation;
+import ourpoolstats.type.LogOperation;
 
 public class AdminOperationLogger {
 
@@ -35,7 +35,7 @@ public class AdminOperationLogger {
 
 
 
-	public void logger(String username,boolean status, AdminOperation operation) {
+	public void logger(String username,boolean status, LogOperation operation) {
 		try {
 			LogManager.getLogManager().readConfiguration(new FileInputStream("C:\\Users\\Alberone\\git\\ourpoolstats\\mylogging.properties"));
 		} catch (SecurityException | IOException e1) {

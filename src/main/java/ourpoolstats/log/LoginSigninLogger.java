@@ -12,8 +12,6 @@ import java.util.logging.Logger;
 import ourpoolstats.log.configuration.OurpoolStatsFilter;
 import ourpoolstats.log.configuration.OurpoolStatsFormatter;
 import ourpoolstats.log.configuration.OurpoolStatsHandler;
-import ourpoolstats.manager.ManagerDashboard;
-import ourpoolstats.response.LogResponse;
 
 public class LoginSigninLogger {
 	private static LoginSigninLogger instance;
@@ -35,7 +33,7 @@ public class LoginSigninLogger {
 
 
 
-	public void logger(String username,boolean status,LogResponse logResponse ) {
+	public void logger(String username,boolean status) {
 		try {
 			LogManager.getLogManager().readConfiguration(new FileInputStream("C:\\Users\\Alberone\\git\\ourpoolstats\\mylogging.properties"));
 		} catch (SecurityException | IOException e1) {
@@ -55,11 +53,9 @@ public class LoginSigninLogger {
 			//logging messages
 			if(status) {
 				logger.log(Level.INFO, "<LOGIN><OK> " + "L'utente " +  username + " ha effetuato corretamente L'acesso </LOGIN>");
-				ManagerDashboard.getInstance().getLog().add("<LOGIN><OK> " + "L'utente " +  username + " ha effetuato corretamente L'acesso </LOGIN>");
 			}				
 			else if(!status) {
 				logger.log(Level.SEVERE, "<LOGIN><KO> " + "L'utente " +  username + " Ha inserito in modo errato i dati. </LOGIN>");
-				ManagerDashboard.getInstance().getLog().add("<LOGIN><KO> " + "L'utente " +  username + " Ha inserito in modo errato i dati. </LOGIN>");
 			}
 				
 			logger.log(Level.CONFIG, "Config data");

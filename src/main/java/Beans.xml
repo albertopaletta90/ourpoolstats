@@ -19,7 +19,7 @@
 
 	<!-- Initialization for TransactionManager -->
 	<bean id="transactionManager"
-		class="ourpoolstats.utility.GetConnection">
+		class="ourpoolstats.utility.connection.GetConnection">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	

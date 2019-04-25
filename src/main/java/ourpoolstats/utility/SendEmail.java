@@ -11,7 +11,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import ourpoolstats.service.user.UserOperration;
+import ourpoolstats.commonOperation.CommonOperation;
 
 public class SendEmail {
 
@@ -53,8 +53,8 @@ public class SendEmail {
 							+ "Cordiali Saluti");
 
 			Transport.send(message);
-			UserOperration userOperration = new UserOperration();
-			userOperration.findUsernameToEmail(emails);
+			CommonOperation userOperration = new CommonOperation();
+		// 	userOperration.findUsernameToEmail(emails);
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}

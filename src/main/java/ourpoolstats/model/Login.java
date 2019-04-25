@@ -1,7 +1,5 @@
 package ourpoolstats.model;
 
-import org.springframework.ui.ModelMap;
-
 import ourpoolstats.type.UserType;
 
 public class Login {
