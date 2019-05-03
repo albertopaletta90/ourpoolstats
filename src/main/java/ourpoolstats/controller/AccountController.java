@@ -23,7 +23,7 @@ import ourpoolstats.response.Response;
 public class AccountController {
 	
 	@RequestMapping(value = "/addImage/{url}/username/{username}", method = RequestMethod.POST)
-	public ResponseEntity<Response> addImage(HttpServletRequest request,@PathVariable("url") String url,@PathVariable("username") String username){
+	public ResponseEntity<Response> addImage(@PathVariable("url") String url,@PathVariable("username") String username){
 		return new ImageProfileExecute().setImageProfile(username, url,"update");
 	}
 

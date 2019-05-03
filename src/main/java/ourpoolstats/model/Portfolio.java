@@ -106,6 +106,17 @@ public class Portfolio {
 	public void setNameCoinPartecipant(String nameCoinPartecipant) {
 		this.nameCoinPartecipant = nameCoinPartecipant;
 	}
+
+	public void setEmptyParams() {
+		this.id =0;
+		this.username = "";
+		this.userType = "";
+		this.nameCoin = "";
+		this.priceInitial = BigDecimal.valueOf(0);
+		this.priceCurrent = BigDecimal.valueOf(0);
+		this.quantity = BigDecimal.valueOf(0);
+		
+	}
 	
 	
 

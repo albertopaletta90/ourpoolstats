@@ -8,7 +8,7 @@ import ourpoolstats.query.QueryUser;
 import ourpoolstats.response.Response;
 import ourpoolstats.response.status.ResponseStatus;
 import ourpoolstats.type.LogOperation;
-import ourpoolstats.utility.connection.SetConnection;
+import ourpoolstats.utility.connection.GetConnection;
 
 public class ChangePasswordExecute {
 
@@ -19,8 +19,8 @@ public class ChangePasswordExecute {
 		CommonOperation userOperration = new CommonOperation();
 		if(userOperration.searchUserWithPassword(username, password)) {
 			try {
-				newPassword = SetConnection.getInstance().getJdbcTemplate().query(QueryUser.getInstance().getHashPassword(), new StringMapper(),password).get(0);
-				SetConnection.getInstance().getJdbcTemplate().update(QueryUser.getInstance().getChangePassword(),newPassword,username);
+				newPassword = GetConnection.getInstance().getJdbcTemplate().query(QueryUser.getInstance().getHashPassword(), new StringMapper(),password).get(0);
+				GetConnection.getInstance().getJdbcTemplate().update(QueryUser.getInstance().getChangePassword(),newPassword,username);
 				return new ResponseStatus().success(response, username, LogOperation.CHANGEPASSWORD, null);
 			} catch (Exception e) {
 				return new ResponseStatus().error(response, username, e, LogOperation.CHANGEPASSWORD);

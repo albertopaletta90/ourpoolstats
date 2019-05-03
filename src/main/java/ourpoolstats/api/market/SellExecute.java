@@ -12,7 +12,7 @@ import ourpoolstats.response.BalanceResponse;
 import ourpoolstats.response.status.BalanceResponseStatus;
 import ourpoolstats.type.DataBaseOperation;
 import ourpoolstats.type.LogOperation;
-import ourpoolstats.utility.connection.SetConnection;
+import ourpoolstats.utility.connection.GetConnection;
 
 public class SellExecute {
 
@@ -32,26 +32,26 @@ public class SellExecute {
 			if(quantity.compareTo(quantityCoin)==0) {
 				if(sell(indexCoin,DataBaseOperation.DELETEBALANCE,quantity)) {
 					reloadList(listMarket,username);
-					return new BalanceResponseStatus().success(username, balanceResponse,LogOperation.SEL,listMarket);
+					return new BalanceResponseStatus().success(username, balanceResponse,LogOperation.SELl,listMarket);
 				}
 				else {
 					reloadList(listMarket,username);
-					return new BalanceResponseStatus().error(balanceResponse,LogOperation.SEL,username);
+					return new BalanceResponseStatus().error(balanceResponse,LogOperation.SELl,username);
 				}
 			}
 			else {
 				if(sell(indexCoin,DataBaseOperation.UPDATEBALANCE,quantity)) {
 					reloadList(listMarket,username);
-					return new BalanceResponseStatus().success(username, balanceResponse,LogOperation.SEL,listMarket);
+					return new BalanceResponseStatus().success(username, balanceResponse,LogOperation.SELl,listMarket);
 				}
 				else {
 					reloadList(listMarket,username);
-					return new BalanceResponseStatus().error(balanceResponse,LogOperation.SEL,username);
+					return new BalanceResponseStatus().error(balanceResponse,LogOperation.SELl,username);
 				}
 			}
 		}
 		catch (Exception e) {
-			return new BalanceResponseStatus().badRequestError(balanceResponse,LogOperation.SEL,username);
+			return new BalanceResponseStatus().badRequestError(balanceResponse,LogOperation.SELl,username);
 		}
 
 	}
@@ -65,7 +65,7 @@ public class SellExecute {
 		switch (operation) {
 		case DELETEBALANCE:
 			try {
-				SetConnection.getInstance().getJdbcTemplate().update(QueryCoin.getInstance().getDeleteCoinBalance(),index);
+				GetConnection.getInstance().getJdbcTemplate().update(QueryCoin.getInstance().getDeleteCoinBalance(),index);
 				System.out.println(QueryCoin.getInstance().getDeleteCoinBalance());
 				return true;
 			}catch (Exception e) {
@@ -73,7 +73,7 @@ public class SellExecute {
 			}
 		case UPDATEBALANCE:
 			try {
-				SetConnection.getInstance().getJdbcTemplate().update(QueryCoin.getInstance().getUpdateQuantityCoinBalance(),quantity,index);
+				GetConnection.getInstance().getJdbcTemplate().update(QueryCoin.getInstance().getUpdateQuantityCoinBalance(),quantity,index);
 				return true;
 			}catch (Exception e) {	
 				return false;

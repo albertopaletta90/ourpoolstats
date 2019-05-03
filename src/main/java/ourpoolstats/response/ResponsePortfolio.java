@@ -24,13 +24,13 @@ public class ResponsePortfolio {
 	public void setError(String error) {
 		this.error = error;
 	}
-	public List<Portfolio> getPortfolio() {
+	public List<Portfolio> getMaster() {
 		return portfolio;
 	}
 	public void setPortfolio(List<Portfolio> portfolio) {
 		this.portfolio = portfolio;
 	}
-	public List<Portfolio> getListPartecipant() {
+	public List<Portfolio> getPartecipant() {
 		return listPartecipant;
 	}
 	public void setListPartecipant(List<Portfolio> listPartecipant) {

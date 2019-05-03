@@ -1,10 +1,12 @@
 package ourpoolstats.model;
 
+import java.sql.Date;
+
 public class Message {
 
 	private String message;
-	private String sender;
-	private String recipient;
+	private String username;
+	private Date dateMessage;
 	
 	public Message() {	
 	}
@@ -17,20 +19,20 @@ public class Message {
 		this.message = message;
 	}
 
-	public String getSender() {
-		return sender;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setSender(String sender) {
-		this.sender = sender;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getRecipient() {
-		return recipient;
+	public Date getDateMessage() {
+		return dateMessage;
 	}
 
-	public void setRecipient(String recipient) {
-		this.recipient = recipient;
+	public void setDateMessage(Date dateMessage) {
+		this.dateMessage = dateMessage;
 	}
-	
+		
 }

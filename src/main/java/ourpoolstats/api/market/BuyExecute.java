@@ -13,7 +13,7 @@ import ourpoolstats.query.QueryCoin;
 import ourpoolstats.response.BalanceResponse;
 import ourpoolstats.response.status.BalanceResponseStatus;
 import ourpoolstats.type.LogOperation;
-import ourpoolstats.utility.connection.SetConnection;
+import ourpoolstats.utility.connection.GetConnection;
 
 public class BuyExecute {
 	private CommonOperationCoin commonOperationCoin;
@@ -29,7 +29,7 @@ public class BuyExecute {
 			BigDecimal initialCurrency =ManagerCoin.getInstance().getListCoin().get(index).getPriceUsd();
 			BigDecimal totalCurrency = ManagerCoin.getInstance().getListCoin().get(index).getPriceUsd(); 
 			try {
-				SetConnection.getInstance().getJdbcTemplate().update(QueryCoin.getInstance().getBuyCoin(),username,coin,initialCurrency,totalCurrency.multiply(quantity),quantity);
+				GetConnection.getInstance().getJdbcTemplate().update(QueryCoin.getInstance().getBuyCoin(),username,coin,initialCurrency,totalCurrency.multiply(quantity),quantity);
 				listMarket =commonOperationCoin.getListCoinUser(username);
 				return new BalanceResponseStatus().success(username, balanceResponse,LogOperation.BUY,listMarket);
 			}

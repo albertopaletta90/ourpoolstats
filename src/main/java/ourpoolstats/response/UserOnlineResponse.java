@@ -2,13 +2,11 @@ package ourpoolstats.response;
 
 import java.util.List;
 
-import ourpoolstats.model.User;
-
 public class UserOnlineResponse {
 	
 	private String status;
 	private String error;
-	private List<User>user;
+	private List<String>user;
 	
 	public String getStatus() {
 		return status;
@@ -22,10 +20,10 @@ public class UserOnlineResponse {
 	public void setError(String error) {
 		this.error = error;
 	}
-	public List<User> getUserLog() {
+	public List<String> getData() {
 		return user;
 	}
-	public void setUserLog(List<User> userLog) {
-		this.user = userLog;
+	public void setUserOnline(List<String> userOnline) {
+		this.user = userOnline;
 	}
 }

@@ -13,7 +13,7 @@ import ourpoolstats.response.status.BalanceResponseStatus;
 import ourpoolstats.type.CurrencyType;
 import ourpoolstats.type.LogOperation;
 import ourpoolstats.utility.ConvertCurrency;
-import ourpoolstats.utility.connection.SetConnection;
+import ourpoolstats.utility.connection.GetConnection;
 
 public class ConvertCurrencyPrepare {
 	private CommonOperationCoin commonOperationCoin;
@@ -30,7 +30,7 @@ public class ConvertCurrencyPrepare {
 				BigDecimal initial = ConvertCurrency.getInstace().convertTo(currency, listMarket.get(i).getInitialCurrency());
 				listMarket.get(i).setTotalCurrency(total);
 				listMarket.get(i).setInitialCurrency(initial);
-				SetConnection.getInstance().getJdbcTemplate().update(QueryCoin.getInstance().getUpdateListMarketPersonal(),listMarket.get(i).getTotalCurrency(),listMarket.get(i).getInitialCurrency(),listMarket.get(i).getId());					
+				GetConnection.getInstance().getJdbcTemplate().update(QueryCoin.getInstance().getUpdateListMarketPersonal(),listMarket.get(i).getTotalCurrency(),listMarket.get(i).getInitialCurrency(),listMarket.get(i).getId());					
 			}
 			return new BalanceResponseStatus().success(username, balanceResponse,LogOperation.GETLISTMARKETPERSONAL, listMarket);
 		}

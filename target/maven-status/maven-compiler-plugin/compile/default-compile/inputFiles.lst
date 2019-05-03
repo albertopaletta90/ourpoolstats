@@ -27,6 +27,7 @@ C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\mapp
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\controller\AccountController.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\mapper\CoinDBMapper.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\log\configuration\OurpoolStatsFormatter.java
+C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\response\status\ChatResponseStatus.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\api\coin\GetListMarketPersonalPrepare.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\api\market\SellExecute.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\api\UserOperation\GetUserListPrepare.java
@@ -49,7 +50,7 @@ C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\mapp
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\api\UserOperation\ImageProfileExecute.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\api\chat\ChatExexute.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\response\UserListResponse.java
-C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\utility\Connection\SetConnection.java
+C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\utility\connection\SetConnection.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\response\status\UserListResponseStatus.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\response\LogUserResponse.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\log\configuration\OurpoolStatsHandler.java
@@ -90,13 +91,14 @@ C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\type
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\mapper\FirstLoginMapper.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\type\DataBaseOperation.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\mapper\LoginMapper.java
+C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\controller\ChatController.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\api\coin\CoingekoInfoPrepare.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\model\Message.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\response\ResponsePortfolio.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\response\status\UserLogResponseStatus.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\query\QueryPortfolio.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\response\ChatResponse.java
-C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\utility\Connection\GetConnection.java
+C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\utility\connection\GetConnection.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\query\QueryLanguage.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\api\coin\AddCoinExecute.java
 C:\Users\Alberone\eclipse-workspace\ourpoolstats\src\main\java\ourpoolstats\client\coingeko\data\Market.java

@@ -12,12 +12,14 @@ import ourpoolstats.api.coin.CoinMarketInfoPrepare;
 import ourpoolstats.api.coin.CoingekoInfoPrepare;
 import ourpoolstats.api.coin.GetListMarketPersonalPrepare;
 import ourpoolstats.api.coin.GoinGekoListPrepare;
+import ourpoolstats.api.coin.ImageCoinPrepare;
 import ourpoolstats.manager.ManagerCoin;
 import ourpoolstats.response.BalanceResponse;
 import ourpoolstats.response.CoinGekoListResponse;
 import ourpoolstats.response.CoinGekoResponse;
 import ourpoolstats.response.CoinMarketListResponse;
 import ourpoolstats.response.CoinMarketResponse;
+import ourpoolstats.response.Response;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
@@ -51,5 +53,10 @@ public class CoinController {
 		coinMarketResponse.setCoinMarketList(ManagerCoin.getInstance().getListCoin());
 		return new ResponseEntity<CoinMarketListResponse>(coinMarketResponse,HttpStatus.OK);
 
+	}
+	
+	@RequestMapping(value = "/imageCoin/{name}", method = RequestMethod.GET)
+	public  ResponseEntity<Response> getImageCoin(@PathVariable("name") String name) {
+		return new ImageCoinPrepare().getImageCoin(name);
 	}
 }
