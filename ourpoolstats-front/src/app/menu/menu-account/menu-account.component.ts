@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class MenuAccountComponent implements OnInit {
 
+  username : string = sessionStorage.getItem('username');
   constructor(private router: Router,private http: HttpClient) { }
 
   ngOnInit() {}
@@ -26,7 +27,7 @@ export class MenuAccountComponent implements OnInit {
   }
 
   logout(){
-    this.http.get('http://localhost:8080/newourpoolstats/logout').
+    this.http.get(`http://localhost:8080/newourpoolstats/logout/${this.username}`).
       subscribe(data => {
         this.router.navigate(['logout',{typeAlert : 'success' ,message: 'Arrivederci',activeAlert : true}]);              
       }, error => {    

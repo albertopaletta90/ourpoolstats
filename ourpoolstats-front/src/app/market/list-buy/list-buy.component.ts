@@ -1,17 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { CoinMarket,UserList, UserListResponse, getName, CoinMarketResponse, BalanceResponse } from '../../model/model';
+import { Component, OnInit,ViewChild } from '@angular/core';
+import { CoinMarket, CoinMarketResponse, BalanceResponse } from '../../model/model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { TranslateService } from '@ngx-translate/core';
-import { ActivatedRoute, RoutesRecognized, NavigationEnd } from '@angular/router';
-import { ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { of  } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators';
-import { MatSort, Sort } from '@angular/material';
-import { MatPaginator, PageEvent } from '@angular/material';
-import { fromMatSort, sortRows } from './datasource-utils';
-import { fromMatPaginator, paginateRows } from './datasource-utils';
+import { MatSort, Sort,MatPaginator, PageEvent } from '@angular/material';
+import { fromMatSort, sortRows,fromMatPaginator, paginateRows} from './datasource-utils';
 @Component({
   selector: 'app-list-buy',
   templateUrl: './list-buy.component.html',

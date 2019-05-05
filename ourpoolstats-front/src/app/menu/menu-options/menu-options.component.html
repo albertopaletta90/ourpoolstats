@@ -7,5 +7,5 @@
     <button type="submit" class="dropdown-item colorLeguage" ng-if="typeUser == 'ADMIN' || 'MANAGER'" (click)="goToAddCoin()">Aggiungi Monete</button>
     <button type="submit" class="dropdown-item colorLeguage" ng-if="typeUser == 'ADMIN' || 'MANAGER'"  (click)="goToDeleteCoin()">Cancella Monete</button>
     <button type="submit" class="dropdown-item colorLeguage" ng-if="typeUser == 'ADMIN' || 'MANAGER'" (click)="goToLogUser('all')">Visualizza Log Utenti</button>
-    <button type="submit" class="dropdown-item colorLeguage">Visualizza Utenti online</button>
+    <button type="submit" class="dropdown-item colorLeguage" (click)="goToUserOnline()">Visualizza Utenti online</button>
   </div>

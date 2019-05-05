@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import { User } from '../../../model/model';
 import { Router } from '@angular/router';
+import {FormControl, Validators} from '@angular/forms';
+import {ErrorMessage} from '../../../messages/messages'
 
 @Component({
   selector: 'app-create-user',
@@ -12,23 +13,24 @@ import { Router } from '@angular/router';
 export class CreateUserComponent implements OnInit {
 
   error: boolean = false;
-  name : string;
-  surname : string;
-  email : string;
-  username : string;
-  password : string;
+  name = new FormControl('', [Validators.required]);
+  surname = new FormControl('', [Validators.required]);
+  email = new FormControl('', [Validators.required, Validators.email]);
+  username = new FormControl('', [Validators.required]);
+  password = new FormControl('', [Validators.required]);
+  errorMessages = new ErrorMessage();
   U: User;
   typeAlert : string;
   message : string ;
   constructor(private http: HttpClient, private router: Router) {}
 
 createUser(){
-  let u = new User(this.name,this.surname,this.username,this.password,this.email);
-  this.http.post<User>(`http://localhost:8080/newourpoolstats/createUser/${this.name}/surname/${this.surname}/username/${this.username}/password/${this.password}/email/${this.email}`,{}).
+  let u = new User(this.name.value,this.surname.value,this.username.value,this.password.value,this.email.value);
+  this.http.post<User>(`http://localhost:8080/newourpoolstats/createUser/${this.name.value}/surname/${this.surname.value}/username/${this.username.value}/password/${this.password.value}/email/${this.email.value}`,{}).
       subscribe(data => {
         this.typeAlert = 'success';
         this.message = 'Utente inserito correttamente';
-        this.router.navigate(['dashboard',{typeAlert: this.typeAlert,message : this.message,activeAlert : true}]);
+        this.router.navigate(['listUser',{typeAlert: this.typeAlert,message : this.message,activeAlert : true}]);
     }, error => {
       this.error = true;
       this.typeAlert = 'danger';
@@ -38,11 +40,20 @@ createUser(){
 } 
 
 back(){
-  this.router.navigate(['dashboard']);
+  this.router.navigate(['listUser']);
 }
 
-  ngOnInit() {
+ngOnInit() {}
+
+getErrorMessage() {
+  
+  return this.name.hasError('required') ? this.errorMessages.getRequiredError() :
+         this.surname.hasError('required') ? this.errorMessages.getRequiredError() :
+         this.username.hasError('required') ? this.errorMessages.getRequiredError() :
+         this.password.hasError('required') ? this.errorMessages.getRequiredError() :
+         this.email.hasError('email') ? this.errorMessages.getEMailsError() :
+        '';
   }
 
-
 }
+

@@ -1,3 +1,24 @@
-<p>
-  portfolio works!
-</p>
+<div class="divMenu">
+	<app-menu-ourpoolstats></app-menu-ourpoolstats>
+</div>
+
+<div class="divDashboard">
+	<div class="lenguage">
+		<app-menu-language></app-menu-language>
+	</div>
+	<div class="buttonOption">
+		<app-menu-options></app-menu-options>
+	</div>
+	
+	<div class="viewDashboard">
+		<div *ngIf="view">
+			<app-alerts></app-alerts>
+		</div>
+    <div class="master">
+     <app-master></app-master>
+    </div>
+    <div class="partecipant">
+      <app-partecipant></app-partecipant>
+    </div>
+  </div>
+</div>

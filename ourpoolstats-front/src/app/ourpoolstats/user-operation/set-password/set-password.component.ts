@@ -25,6 +25,7 @@ changePassword(){
     
     this.http.post(`http://localhost:8080/newourpoolstats/changePassword/${sessionStorage.getItem("username")}/password${this.oldPassword}/newPassword${this.password}`,{}).
       subscribe(data => {
+        this.error = true;
           this.typeAlert = 'success';
           this.message = 'Password cambiata correttamente';
           this.router.navigate(['account',{typeAlert: this.typeAlert,message : this.message,activeAlert : true}]);
@@ -35,6 +36,12 @@ changePassword(){
           this.router.navigate(['setPassword',{typeAlert: this.typeAlert,message : this.message}]);  
       });
 
+  }
+  else{
+      this.error = true;
+      this.typeAlert = 'danger';
+      this.message = 'Le Due Password non coincidono';
+      this.router.navigate(['setPassword',{typeAlert: this.typeAlert,message : this.message}]); 
   }
 
 } 

@@ -37,4 +37,7 @@ export class MenuOptionsComponent implements OnInit {
       this.router.navigate(['listUser']);
   }
 
+  goToUserOnline(){
+    this.router.navigate(['userOnline']);
+  }
 }

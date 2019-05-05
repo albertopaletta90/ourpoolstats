@@ -13,14 +13,15 @@ export class AddImageComponent implements OnInit {
   error: boolean;
   typeAlert: string;
   image : string;
-
+  username : string = sessionStorage.getItem('username');
+  
   constructor(private http: HttpClient, private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   addImage(){debugger
-    this.http.post(`http://localhost:8080/newourpoolstats/addImage/${this.image}`,{}).
+    this.http.post(`http://localhost:8080/newourpoolstats/addImage/${this.image}/username/${this.username}`,{}).
     subscribe(data => {
       this.typeAlert = 'success';
       this.message = 'Immagine profilo cambiata correttamente';

@@ -21,10 +21,13 @@ export class ListUserComponent implements OnInit {
 
 
   userList : UserList[];
+  username : string = sessionStorage.getItem('username')
+  view : boolean;
 
-  private routeData;
-
-  public constructor(private route: ActivatedRoute,private http: HttpClient,private router: Router) {}
+  public constructor(private route: ActivatedRoute,private http: HttpClient,private router: Router) {
+    this.route.params.subscribe((params) => this.view = params.activeAlert);
+  
+  }
 
 
   @ViewChild(MatSort) sort: MatSort;
@@ -34,7 +37,7 @@ export class ListUserComponent implements OnInit {
   totalRows$: Observable<number>;
 
   ngOnInit() {
-    this.http.get<UserListResponse>('http://localhost:8080/newourpoolstats/getUserList')
+    this.http.get<UserListResponse>(`http://localhost:8080/newourpoolstats/getUserList/${this.username}`)
     .subscribe(data =>{
         this.userList = data.userList;
         const sortEvents$: Observable<Sort> = fromMatSort(this.sort);

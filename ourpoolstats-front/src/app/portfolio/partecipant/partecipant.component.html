@@ -1,0 +1,23 @@
+<div class="viewDashboard margin-top_20">	
+        <h4>Partecipanti</h4>		
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">{{'username' | translate}}</th>
+            <th scope="col">{{'coin.name' | translate}}</th>
+            <th scope="col">{{'coin.initialCurrency' | translate}}</th>
+            <th scope="col">{{'coin.currentCurrency' | translate}}</th>
+            <th scope="col">{{'coin.quantity' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let list of masterList"> 
+              <td>{{list.username}}</td>
+              <td>{{list.nameCoin}}</td>
+              <td>{{list.priceInitial}}</td>
+              <td>{{list.priceCurrent}}</td>
+              <td>{{list.quantity}}</td>
+        </tr>
+        </tbody>
+      </table>
+<div>

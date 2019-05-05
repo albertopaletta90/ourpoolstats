@@ -1,0 +1,12 @@
+.master{
+    position: absolute;
+    top:10%;
+    left : 0%;
+}
+
+.partecipant{
+    position: absolute;
+    margin-left: 30px;
+    top:10%;
+    left : 50%;
+}

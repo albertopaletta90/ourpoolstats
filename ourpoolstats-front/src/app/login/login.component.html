@@ -7,12 +7,13 @@
   </div>
    <form>
       <br>
-      <span class="imputBox">{{ 'username' | translate}}</span>
-      <input name = "user" type = "text" [(ngModel)] = "user" class="imputBox" >
+        <span class="imputBox">{{ 'username' | translate}}</span>
+        <input name = "user" type = "text" [(ngModel)] = "user" class="imputBox" >
       <p></p>
-      <span class="imputBox">{{ 'password' | translate}}</span>
-      <input  name = "pass" type = "password" [(ngModel)] = "pass" class="imputBox">
+        <span class="imputBox">{{ 'password' | translate}}</span>
+        <input  name = "pass" type = "password" [(ngModel)] = "pass" class="imputBox">
       <br />
-      <button type="submit" class="btn btn-outline-secondary buttonLogin" (click)="login()">{{ 'button.login' | translate}}</button>
+        <button type="submit" class="btn btn-outline-secondary buttonLogin" (click)="login()">{{ 'button.login' | translate}}</button>
   </form>
 </div>
+<ngx-spinner></ngx-spinner>
