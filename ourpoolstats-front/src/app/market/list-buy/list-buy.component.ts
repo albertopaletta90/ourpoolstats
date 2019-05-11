@@ -18,7 +18,8 @@ export class ListBuyComponent implements OnInit {
   quantity: string;
   coinMarketList: CoinMarket[];
   coinIndex : string;
-  username : string = sessionStorage.getItem('username')
+  username : string = sessionStorage.getItem('username');
+  view : boolean = false;
   constructor(private http: HttpClient,private router: Router) {}
 
   @ViewChild(MatSort) sort: MatSort;

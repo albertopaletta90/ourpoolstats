@@ -48,4 +48,7 @@ changePassword(){
   ngOnInit() {
   }
 
+  back(){
+    this.router.navigate(['dashboard']);
+  }
 }
