@@ -53,7 +53,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ListBuyComponent } from './market/list-buy/list-buy.component';
 import { ListSellComponent } from "./market/list-sell/ListSellComponent";
 import { ChartsModule } from 'ng2-charts';
-import { PieChartComponent } from './chartPie/piechart';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { MasterComponent } from './portfolio/master/master.component';
 import { PartecipantComponent } from './portfolio/partecipant/partecipant.component';
@@ -63,6 +62,10 @@ import {MatInputModule} from '@angular/material/input';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
+}
+
+export function getLink() {
+  return 'http://localhost:8080/newourpoolstats';
 }
 
 @NgModule({
@@ -104,7 +107,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ListUserComponent,
     ListBuyComponent,
     ListSellComponent,
-    PieChartComponent,
     PortfolioComponent,
     MasterComponent,
     PartecipantComponent 

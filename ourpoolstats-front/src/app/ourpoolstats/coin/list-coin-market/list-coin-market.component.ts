@@ -11,6 +11,7 @@ import { MatPaginator, PageEvent } from '@angular/material';
 import { fromMatSort, sortRows } from './datasource-utils';
 import { fromMatPaginator, paginateRows } from './datasource-utils';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { getLink } from 'src/app/app.module';
 
 @Component({
   selector: 'app-list-coin-market',
@@ -32,7 +33,7 @@ export class ListCoinMarketComponent implements OnInit {
 
   ngOnInit() {
       this.spinner.show();
-      this.http.get<CoinMarketResponse>('http://localhost:8080/newourpoolstats/getCoinMarketList').
+      this.http.get<CoinMarketResponse>(getLink()+'/getCoinMarketList').
       subscribe(data => {
           this.coinMarketList = data.coinMarketList;
           const sortEvents$: Observable<Sort> = fromMatSort(this.sort);

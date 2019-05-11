@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import 'rxjs/add/operator/map'
+import { getLink } from '../app.module';
 @Injectable()
 @Component({
   selector: 'app-login',
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.spinner.show();
     let u = new Login(this.user,this.pass);
-    this.http.post<LoginResponse>('http://localhost:8080/newourpoolstats/login/?login=' + this.user+','+this.pass,this.u).
+    this.http.post<LoginResponse>(getLink()+'/login/?login=' + this.user+','+this.pass,this.u).
       subscribe(data => {
         var go = (data.status == "200")? 'dashboard' : 'setPassword';
         var setPassword = (go == "dashboard") ? 'noSetAlert' : 'setAlert';

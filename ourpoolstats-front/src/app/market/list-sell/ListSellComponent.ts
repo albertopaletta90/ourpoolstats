@@ -10,6 +10,7 @@ import { MatSort, Sort } from '@angular/material';
 import { MatPaginator, PageEvent } from '@angular/material';
 import { fromMatSort, sortRows } from './datasource-utils';
 import { fromMatPaginator, paginateRows } from './datasource-utils';
+import { getLink } from 'src/app/app.module';
 
 @Component({
   selector: 'app-list-sell',
@@ -44,7 +45,7 @@ export class ListSellComponent implements OnInit {
   displayedRows$: Observable<Balance[]>;
   totalRows$: Observable<number>;
   ngOnInit() {
-    this.http.get<BalanceResponse>(`http://localhost:8080/newourpoolstats/getListMarket/${this.username}`).
+    this.http.get<BalanceResponse>(getLink()+`/getListMarket/${this.username}`).
       subscribe(data => {
         this.coinMarketList = data.balance;
         this.setChartPie();

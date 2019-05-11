@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { getLink } from 'src/app/app.module';
 
 @Component({
   selector: 'app-menu-account',
@@ -27,7 +28,7 @@ export class MenuAccountComponent implements OnInit {
   }
 
   logout(){
-    this.http.get(`http://localhost:8080/newourpoolstats/logout/${this.username}`).
+    this.http.get(getLink()+`/logout/${this.username}`).
       subscribe(data => {
         this.router.navigate(['logout',{typeAlert : 'success' ,message: 'Arrivederci',activeAlert : true}]);              
       }, error => {    

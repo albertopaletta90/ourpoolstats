@@ -7,6 +7,7 @@ import { of  } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators';
 import { MatSort, Sort,MatPaginator, PageEvent } from '@angular/material';
 import { fromMatSort, sortRows,fromMatPaginator, paginateRows} from './datasource-utils';
+import { getLink } from 'src/app/app.module';
 @Component({
   selector: 'app-list-buy',
   templateUrl: './list-buy.component.html',
@@ -27,7 +28,7 @@ export class ListBuyComponent implements OnInit {
   totalRows$: Observable<number>;
 
   ngOnInit() {
-      this.http.get<CoinMarketResponse>('http://localhost:8080/newourpoolstats/getCoinMarketList').
+      this.http.get<CoinMarketResponse>(getLink()+'/getCoinMarketList').
       subscribe(data => {
         this.coinMarketList = data.coinMarketList;
         const sortEvents$: Observable<Sort> = fromMatSort(this.sort);
@@ -41,7 +42,7 @@ export class ListBuyComponent implements OnInit {
 }
 
 buy(index : number){
-  this.http.post<BalanceResponse>(`http://localhost:8080/newourpoolstats/buy/${this.quantity}/coin/${index}/username/${this.username}`,{}).
+  this.http.post<BalanceResponse>(getLink()+`/buy/${this.quantity}/coin/${index}/username/${this.username}`,{}).
       subscribe(data => {
         this.router.navigate(['market',{typeAlert : 'success' ,message: 'Acquisto Avvenuto Correttamente',activeAlert : true}]);  
       }, error => {

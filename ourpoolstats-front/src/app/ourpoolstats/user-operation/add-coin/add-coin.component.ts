@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { getLink } from 'src/app/app.module';
 
 @Component({
   selector: 'app-add-coin',
@@ -21,7 +22,7 @@ export class AddCoinComponent implements OnInit {
 
   addCoin(){
     this.spinner.show();
-    this.http.post(`http://localhost:8080/newourpoolstats/addCoin/${this.nameCoin}`,{}).
+    this.http.post(getLink()+`/addCoin/${this.nameCoin}`,{}).
     subscribe(data => {
       this.typeAlert = 'success';
       this.message = 'Moneta inserita correttamente';

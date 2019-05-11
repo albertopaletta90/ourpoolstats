@@ -1,10 +1,7 @@
-export class ErrorMessage{
+export function getRequiredError(){
+    return "Campo Obligatorio";
+}
 
-    getRequiredError(){
-        return "Campo Obligatorio";
-    }
-
-    getEMailsError(){
-        return "Email Non Valida";
-    }
+export function getEMailsError(){
+    return "Email Non Valida";
 }

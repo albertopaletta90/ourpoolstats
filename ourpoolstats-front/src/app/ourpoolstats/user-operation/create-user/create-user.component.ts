@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../../../model/model';
 import { Router } from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
-import {ErrorMessage} from '../../../messages/messages'
+import {getRequiredError, getEMailsError} from '../../../messages/messages'
 
 @Component({
   selector: 'app-create-user',
@@ -18,7 +18,6 @@ export class CreateUserComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   username = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
-  errorMessages = new ErrorMessage();
   U: User;
   typeAlert : string;
   message : string ;
@@ -47,11 +46,11 @@ ngOnInit() {}
 
 getErrorMessage() {
   
-  return this.name.hasError('required') ? this.errorMessages.getRequiredError() :
-         this.surname.hasError('required') ? this.errorMessages.getRequiredError() :
-         this.username.hasError('required') ? this.errorMessages.getRequiredError() :
-         this.password.hasError('required') ? this.errorMessages.getRequiredError() :
-         this.email.hasError('email') ? this.errorMessages.getEMailsError() :
+  return this.name.hasError('required') ? getRequiredError() :
+         this.surname.hasError('required') ? getRequiredError() :
+         this.username.hasError('required') ? getRequiredError() :
+         this.password.hasError('required') ? getRequiredError() :
+         this.email.hasError('email') ? getEMailsError() :
         '';
   }
 
