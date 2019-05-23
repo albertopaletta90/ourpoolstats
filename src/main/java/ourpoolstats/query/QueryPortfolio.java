@@ -8,6 +8,7 @@ public class QueryPortfolio {
 	private String getPortfolioUser = "select id,username,type_username,name_coin,quantity,price_initial,price_current from portfolio_user where username = ?";
 	private String deleteCoinToPortfolio = "delete from portfolio_user where id = ?";
 	private String getPortfolioPartecipant = "select id,username,type_username,name_coin,quantity,price_initial,price_current from portfolio_user where partecipant = ?";
+	private String getType = "select type_username from portfolio_user where username = ?";
 	
 	private QueryPortfolio() {}
 	
@@ -36,7 +37,10 @@ public class QueryPortfolio {
 	public String getGetPortfolioPartecipant() {
 		return getPortfolioPartecipant;
 	}
-	
+
+	public String getGetType() {
+		return getType;
+	}
 	
 
 }

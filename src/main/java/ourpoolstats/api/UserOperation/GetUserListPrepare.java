@@ -10,7 +10,7 @@ import ourpoolstats.model.UserList;
 import ourpoolstats.query.QueryAdminOption;
 import ourpoolstats.response.UserListResponse;
 import ourpoolstats.response.status.UserListResponseStatus;
-import ourpoolstats.utility.connection.SetConnection;
+import ourpoolstats.utility.connection.GetConnection;
 
 public class GetUserListPrepare {
 
@@ -18,7 +18,7 @@ public class GetUserListPrepare {
 		UserListResponse userListResponse = new UserListResponse();
 		List<UserList>userList = new ArrayList<>();
 		try {
-			userList = SetConnection.getInstance().getJdbcTemplate().query(QueryAdminOption.getInstance().getGetListUser(), new UserListMapper());
+			userList = GetConnection.getInstance().getJdbcTemplate().query(QueryAdminOption.getInstance().getGetListUser(), new UserListMapper());
 			return new UserListResponseStatus().success(userListResponse,userList,username);
 		} catch (Exception e) {
 			return new UserListResponseStatus().error(userListResponse,userList,username,e);

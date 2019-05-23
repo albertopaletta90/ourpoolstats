@@ -6,14 +6,14 @@ import ourpoolstats.query.QueryAdminOption;
 import ourpoolstats.response.Response;
 import ourpoolstats.response.status.ResponseStatus;
 import ourpoolstats.type.LogOperation;
-import ourpoolstats.utility.connection.SetConnection;
+import ourpoolstats.utility.connection.GetConnection;
 
 public class DeleteUserExecute {
 
 	public ResponseEntity<Response> deleteUser(String username) {
 		Response response = new Response();
 		try {
-			int row =SetConnection.getInstance().getJdbcTemplate().update(QueryAdminOption.getInstance().getDeleteUser(),username);
+			int row =GetConnection.getInstance().getJdbcTemplate().update(QueryAdminOption.getInstance().getDeleteUser(),username);
 			if(row==0) {
 				return new ResponseStatus().error(response,username,new Exception(),LogOperation.DELETE);
 			}

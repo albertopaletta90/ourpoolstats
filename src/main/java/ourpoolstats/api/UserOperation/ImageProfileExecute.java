@@ -6,7 +6,7 @@ import ourpoolstats.query.QueryImage;
 import ourpoolstats.response.Response;
 import ourpoolstats.response.status.ResponseStatus;
 import ourpoolstats.type.LogOperation;
-import ourpoolstats.utility.connection.SetConnection;
+import ourpoolstats.utility.connection.GetConnection;
 
 public class ImageProfileExecute {
 
@@ -15,7 +15,7 @@ public class ImageProfileExecute {
 		switch (method) {
 		case "insert":
 			try {
-				SetConnection.getInstance().getJdbcTemplate().update(QueryImage.getInstance().getInsetImageProfile(),username,url);
+				GetConnection.getInstance().getJdbcTemplate().update(QueryImage.getInstance().getInsetImageProfile(),username,url);
 				return new ResponseStatus().success(response, username, LogOperation.IMAGEPROFILE, null);
 			} catch (Exception e) {
 				return new ResponseStatus().error(response, username, e, null);
@@ -23,7 +23,7 @@ public class ImageProfileExecute {
 
 		case "update":
 			try {
-				SetConnection.getInstance().getJdbcTemplate().update(QueryImage.getInstance().getSetImageProfile(),url,username);
+				GetConnection.getInstance().getJdbcTemplate().update(QueryImage.getInstance().getSetImageProfile(),url,username);
 				return new ResponseStatus().success(response, username, LogOperation.IMAGEPROFILE, null);
 			} catch (Exception e) {
 				return new ResponseStatus().error(response, username, e, null);

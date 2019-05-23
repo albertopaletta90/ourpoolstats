@@ -9,12 +9,12 @@ import ourpoolstats.model.UserLog;
 import ourpoolstats.query.QueryAdminOption;
 import ourpoolstats.response.LogUserResponse;
 import ourpoolstats.response.status.UserLogResponseStatus;
-import ourpoolstats.utility.connection.SetConnection;
+import ourpoolstats.utility.connection.GetConnection;
 
 public class GetAccessAllUserPrapare {
 
 	public ResponseEntity<LogUserResponse> logUser() {
-		List<UserLog>list = SetConnection.getInstance().getJdbcTemplate().query(QueryAdminOption.getInstance().getUserLog(), new UserLogMapper());
+		List<UserLog>list = GetConnection.getInstance().getJdbcTemplate().query(QueryAdminOption.getInstance().getUserLog(), new UserLogMapper());
 		LogUserResponse logUserResponse = new LogUserResponse();
 		if(list != null) {
 			return new UserLogResponseStatus().succesLog(logUserResponse,list,"");

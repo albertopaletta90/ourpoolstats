@@ -18,6 +18,7 @@ public enum LogOperation {
 	CONVERTCOIN,
 	GETLISTMARKETPERSONAL,
 	BUY,
-	SEL,
-	INFOCOIN
+	SELl,
+	INFOCOIN,
+	CHAT
 }
