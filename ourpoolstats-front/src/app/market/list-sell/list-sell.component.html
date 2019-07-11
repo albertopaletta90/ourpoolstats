@@ -31,6 +31,7 @@
       
       <mat-accordion displayMode="flat" multi class="mat-table">
         <section matSort class="mat-elevation-z2 mat-header-row">
+            <span class="mat-header-cell" >{{'coin.image' | translate}}</span>
           <span class="mat-header-cell" >{{'coin.name' | translate}}</span>
           <span class="mat-header-cell">{{'coin.initialCurrency' | translate}}</span>
           <span class="mat-header-cell">{{'coin.currentCurrency' | translate}}</span>
@@ -41,18 +42,19 @@
       
         <mat-expansion-panel *ngFor="let item of displayedRows$| async;let i=index">
           <mat-expansion-panel-header class="mat-row">
+            <span class="mat-cell"><img src='{{item.image}}' width="30px"></span>
             <span class="mat-cell">{{item.nameCoin}}</span>
-            <span class="mat-cell">{{item.initialCurrency}}</span>
-            <span class="mat-cell {{item.initialCurrency>=item.currentCurrency ? 'red' : 'green'}}">{{item.currentCurrency}}</span>
-            <span class="mat-cell">{{item.totalCurrency}}</span>
-            <span class="mat-cell">{{item.quantity}}</span>
-            <span class="mat-cell">{{item.util}}</span>
+            <span class="mat-cell">{{item.initialCurrency | currency}}</span>
+            <span class="mat-cell {{item.initialCurrency>=item.currentCurrency ? 'red' : 'green'}}">{{item.currentCurrency | currency}}</span>
+            <span class="mat-cell">{{item.totalCurrency | currency}}</span>
+            <span class="mat-cell">{{item.quantity }}</span>
+            <span class="mat-cell {{item.util>=0 ? 'green' : 'red'}}">{{item.util| currency}}</span>
           </mat-expansion-panel-header>
           <div>
             <pre>
               <div class="sellForm">
                 <span>Quantita :</span>
-                <input type="text" class="imputBox" name='quantita' [(ngModel)] = "quantity" />
+                <input type="text" class="imputBox" name='quantita + i' [(ngModel)] = "quantity" />
                 <button type="button" class="btn btn-outline-secondary sell" (click)="sell(i)">Vendi</button>
               </div>
             </pre>

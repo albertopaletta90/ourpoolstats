@@ -36,6 +36,29 @@ export class UserListResponse {
     constructor(public status: String, public error: String,public userList : Array<UserList>) { }
 }
 
+export class StringResponse {
+    constructor(public data:string[]) {}
+}
+
+export class PortfolioResponse {
+    constructor(public status:string,
+                public error : string,
+                public master: Portfolio[],
+                public partecipant: Portfolio[]) {}
+}
+
+
+export class Portfolio {
+    constructor(public id :number,
+                public username : string,
+                public userType : string,
+                public nameCoin : string,
+                public priceInitial : number,
+                public priceCurrent : number,
+                public quantity : number,
+                public partecipant : boolean,
+                public nameCoinPartecipant : string){}
+}
 
 export class Login {
     constructor(public user: String, password: String) {}
@@ -98,7 +121,7 @@ export class CoinGeko {
 }
 
 export class Balance{
-        constructor(public id : number,public username : string, public nameCoin : string, public initialCurrency : number, public currentCurrency : number, public totalCurrency : number, public quantity : number,public util : number){}
+        constructor(public id : number,public username : string, public nameCoin : string, public initialCurrency : number, public currentCurrency : number, public totalCurrency : number, public quantity : number,public util : number ,public image : string){}
 }
 
 export class UserLog {

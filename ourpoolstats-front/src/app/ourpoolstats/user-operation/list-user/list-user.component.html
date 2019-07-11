@@ -8,6 +8,9 @@
   <div class="buttonOption">
     <app-menu-options></app-menu-options>
   </div>
+  <div *ngIf="view">
+      <app-alerts></app-alerts>
+  </div>
   <div class="viewDashboard">		
       <mat-paginator #paginator
       [length]="totalRows$ | async"

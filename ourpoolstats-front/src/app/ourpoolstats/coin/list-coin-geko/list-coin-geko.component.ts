@@ -12,6 +12,7 @@ import { MatSort, Sort } from '@angular/material';
 import { MatPaginator, PageEvent } from '@angular/material';
 import { fromMatSort, sortRows } from './datasource-utils';
 import { fromMatPaginator, paginateRows } from './datasource-utils';
+import { getLink } from 'src/app/app.module';
 
 @Component({
   selector: 'app-list-coin-geko',
@@ -30,7 +31,7 @@ export class ListCoinGekoComponent implements OnInit {
   totalRows$: Observable<number>;
 
   ngOnInit() {
-    this.http.get<CoinGekoResponse>('http://localhost:8080/newourpoolstats/getCoinGekoList').
+    this.http.get<CoinGekoResponse>(getLink()+'/getCoinGekoList').
       subscribe(data => {
         this.coingekoList = data.coingekoList;
         const sortEvents$: Observable<Sort> = fromMatSort(this.sort);

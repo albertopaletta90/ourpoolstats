@@ -16,16 +16,25 @@
                 <nav>
                     <p class="imputBox"><strong>{{'operation.createUser' | translate}}</strong></p>
                   </nav>
-                  <span class="imputBox">{{'name'| translate}}</span>
-                  <input type="text" name="name" class="imputBox"  [(ngModel)]="name" >
-                  <span class="imputBox">{{'surname' | translate}}</span>
-                  <input type="text" name="userSurname" class="imputBox"  [(ngModel)]="surname" >
-                  <span class="imputBox">{{'email' | translate}}</span>
-                  <input type="text" name="email" class="imputBox"  [(ngModel)]="email" >
-                  <span class="imputBox">{{'username' | translate}}</span>
-                  <input type="text" name="username" class="imputBox"  [(ngModel)]="username"  >
-                  <span class="imputBox">{{'password' | translate}}</span>
-                  <input type="password" name ="password" class="imputBox"  [(ngModel)]="password" ><br />
+                  <mat-form-field class="imputBox">
+                    <input matInput placeholder="{{'name' | translate}}" [formControl]="name" required>
+                    <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="imputBox">
+                    <input matInput placeholder="{{'surname' | translate}}" [formControl]="surname" required>
+                    <mat-error *ngIf="surname.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field><mat-form-field class="imputBox">
+                    <input matInput placeholder="Email" [formControl]="email" required>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="imputBox">
+                    <input matInput placeholder="{{'username' | translate}}" [formControl]="username" required>
+                    <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="imputBox">
+                    <input matInput placeholder="{{'password' | translate}}" [formControl]="password" required>
+                    <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
                   <nav> 
                     <button type="submit" class="btn btn-outline-secondary margin-top_10 margin-left_30" (click)="back()">{{'button.back' | translate}}</button>
                     <button type="submit" (click)="createUser()"  class="btn btn-outline-secondary margin-top_10 margin-left_30">{{'button.confirm' | translate}}</button>		

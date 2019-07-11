@@ -57,7 +57,13 @@
         "back": "Indietro",
         "sell" : "Vendi",
         "buy" : "Compra",
-        "login" : "Login"
+        "login" : "Login",
+        "chat" : "Chat",
+        "sendEmail" : "Invia email"
+    },
+    "portfolio":{
+        "partecipant" : "Partecipanti",
+        "master" : "Master Nod"
     },
     "menu":{
         "account" :{

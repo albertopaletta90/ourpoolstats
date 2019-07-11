@@ -18,9 +18,10 @@
             <app-alerts></app-alerts>
         </div>
       <div class="deleteUser margin-top_40">
+          <ngx-spinner></ngx-spinner>
         <form>
             <nav>
-              <p><strong>{{'operation.addCoin' | translate}}</strong></p>
+              <p><strong>{{'operation.deleteCoin' | translate}}</strong></p>
             </nav>	
               <span class="imputBox">{{'name' | translate}}</span><br />
               <input type="text" name="username" class="imputBox" [(ngModel)]="nameCoin" >

@@ -24,7 +24,7 @@ export class DeleteUserComponent implements OnInit {
     subscribe(data => {
       this.typeAlert = 'success';
       this.message = 'Utente cancellato correttamente';
-      this.router.navigate(['dashboard',{typeAlert: this.typeAlert,message : this.message,activeAlert : true}]);
+      this.router.navigate(['listUser',{typeAlert: this.typeAlert,message : this.message,activeAlert : true}]);
   }, error => {
     this.error = true;
       this.typeAlert = 'danger';

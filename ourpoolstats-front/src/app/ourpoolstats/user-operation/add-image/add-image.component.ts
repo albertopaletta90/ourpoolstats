@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { getLink } from 'src/app/app.module';
 
 @Component({
   selector: 'app-add-image',
@@ -13,14 +14,15 @@ export class AddImageComponent implements OnInit {
   error: boolean;
   typeAlert: string;
   image : string;
-
+  username : string = sessionStorage.getItem('username');
+  
   constructor(private http: HttpClient, private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   addImage(){debugger
-    this.http.post(`http://localhost:8080/newourpoolstats/addImage/${this.image}`,{}).
+    this.http.post(getLink()+`/addImage/${this.image}/username/${this.username}`,{}).
     subscribe(data => {
       this.typeAlert = 'success';
       this.message = 'Immagine profilo cambiata correttamente';

@@ -122,6 +122,10 @@ const routes: Routes = [
 {
   path: 'portfolio',
   component : PortfolioComponent
+},
+{
+  path: 'userOnline',
+  component : UserOnlineComponent
 }
   
 ];
@@ -134,4 +138,3 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 }
-

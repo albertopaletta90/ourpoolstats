@@ -10,11 +10,6 @@
     <div class="buttonOption">
       <app-menu-market></app-menu-market>
     </div>
-  
-    <div class="buttonCoin">
-      <app-menu-coin></app-menu-coin>
-    </div>
-  
     <div class="viewDashboard">
       <div *ngIf="view">
         <app-alerts></app-alerts>
@@ -41,7 +36,7 @@
                 <mat-expansion-panel-header class="mat-row">
                   <span class="mat-cell"><img src='{{item.symbol}}' width="30px"></span>
                   <span class="mat-cell">{{item.name}}</span>
-                  <span class="mat-cell">{{item.priceUsd}}</span>
+                  <span class="mat-cell">{{item.priceUsd | currency}}</span>
                   <span class="mat-cell">{{item.priceBtc}}</span>
                   <span class="mat-cell {{item.perc_1>=0 ? 'green' : 'red'}}">{{item.perc_1}}</span>
                   <span class="mat-cell {{item.perc_24>=0 ? 'green' : 'red'}}">{{item.perc_24}}</span>

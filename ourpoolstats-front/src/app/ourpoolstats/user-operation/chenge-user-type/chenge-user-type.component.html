@@ -23,8 +23,16 @@
             <nav class="margin-top_30">
               <p><strong>{{'operation.changeTypeUser' | translate}}</strong></p>
             </nav>
-              <span class="imputBox">{{'userType' | translate}}</span><br>
-              <input type="text" name="userType"class="inputBox" [(ngModel)]="userType" ><br>
+              <mat-form-field>
+                <mat-label>{{'userType' | translate}}</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let types of type" 
+                              [value]="types.value"
+                              (click)="setParams($event, types)">
+                    {{types.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
               <nav>  
                 <button type="submit" class="btn btn-outline-secondary buttonBack margin-top_10" (click)="back()">{{'button.back' | translate}}</button>
                 <button type="submit" class="btn btn-outline-secondary margin-top_10 margin-left" (click)="changeUserType()">{{'button.confirm'| translate}}</button>
